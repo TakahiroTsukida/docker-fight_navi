@@ -1,0 +1,51 @@
+body {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #FFFFFF;
+  color: #000;
+}
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  color: #000 !important;
+}
+
+.nav-link {
+  color: #fff !important;
+}
+
+.table-dark {
+  color: #fff;
+}
+
+.list-group-item {
+  border-color: #fff;
+  background-color: #000;
+}
+
+.login-box {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.login-header {
+  background-color: rgba(0, 0, 0, 0.25)
+}
+
+.login-body {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+
+//ここから追記
+
+.top-text {
+  margin: 60px auto;
+}
+
+.gest-logo {
+  margin-top: 60px;
+}

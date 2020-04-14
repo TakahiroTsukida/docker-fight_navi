@@ -1,0 +1,60 @@
+@media only screen and (max-width: 480px) {
+    .radio-inline {
+        display: block;
+    }
+}
+
+.icon {
+    color: #808080;
+}
+
+.label {
+    vertical-align: middle;
+    padding: 0 0 15px 0;
+}
+
+.profile-img {
+    width: 15%;
+}
+
+.review-user {
+    width: 10%;
+}
+
+$pc: 992px; // PC 1024px
+$tab: 768px; // タブレット
+
+@mixin tab {
+  @media (min-width: ($tab)) {
+    @content;
+  }
+}
+@mixin pc {
+  @media (min-width: ($pc)) {
+    @content;
+  }
+}
+
+
+h2 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.body {
+  margin: 10px 10px;
+
+  @include tab {
+    margin: 30px 40px;
+  }
+
+  @include pc {
+    margin: 30px 60px;
+  }
+
+}
