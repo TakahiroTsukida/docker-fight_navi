@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Admin\Admin;
-use App\Admin\Store;
+use App\Admin\Shop;
 use App\Admin\Type;
 use App\Admin\Price;
 use App\Admin\Personal;
@@ -14,45 +14,47 @@ use App\Admin\Image;
 use Carbon\Carbon;
 use Storage;
 
-class StoreController extends Controller
+class ShopController extends Controller
 {
   public function add () {
       $admin = Admin::find(Auth::user()->id);
 
-      return view('admin.store.create', ['admin' => $admin]);
+      return view('admin.shop.create', ['admin' => $admin]);
   }
 
   public function create(Request $request) {
-    //  $this->validate($request, Store::$rules);
-    //  dd($request);
-      $store = new Store;
+
+      $this->validate($request, Shop::$rules);
+      //dd($request);
 
       $form = $request->all();
 
-      //storesテーブル保存
+      //shopsテーブル保存
+      $shop = new Shop;
       $admin = Auth::user();
-      $store->admin_id = $admin->id;
-      $store->name = $form['name'];
-      $store->tel = $form['tel'];
-      $store->address_number = $form['address_number'];
-      $store->address_ken = $form['address_ken'];
-      $store->address_city = $form['address_city'];
-      $store->open = $form['open'];
-      $store->close = $form['close'];
-      $store->web = $form['web'];
-      $store->description = $form['description'];
-      $store->save();
+      $shop->admin_id = $admin->id;
+      $shop->name = $form['name'];
+      $shop->tel = $form['tel'];
+      $shop->address_number = $form['address_number'];
+      $shop->address_ken = $form['address_ken'];
+      $shop->address_city = $form['address_city'];
+      $shop->open = $form['open'];
+      $shop->close = $form['close'];
+      $shop->web = $form['web'];
+      $shop->description = $form['description'];
+      //$shop->save();
 
       //imagesテーブル保存
       if (isset($form['image'])) {
           $image = new Image;
           $path = $request->file('image')->store('public/image/store_images');
           $image->image_path = basename($path);
+          dd($image);
           $image->save();
       }
 
-      //store_typeの中間テーブルに保存
-      if (is_array($form->type)) {
+      //shop_typeの中間テーブルに保存
+      if (is_array($form->type[])) {
             $admin = Auth::user();
             $admin->type()->detach();
             $admin->type()->attach($form->type);

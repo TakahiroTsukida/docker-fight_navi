@@ -54,7 +54,7 @@
                                                 <label class="ml-2 mt-1 align-middle ">メールアドレス編集</label>
                                             </li>
                                         </a>
-                                        <a href="{{ route('admin.store.add') }}" class="main-menu">
+                                        <a href="{{ route('admin.shop.add') }}" class="main-menu">
                                             <li class="list-group-item-light py-3 pl-3 border">
                                                 <i class="fas fa-dumbbell fa-2x align-middle"></i>
                                                 <label class="ml-2">ジム・道場新規登録</label>

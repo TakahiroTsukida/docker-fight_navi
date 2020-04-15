@@ -53,13 +53,13 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('profile/edit', 'Admin\AdminController@edit')->name('admin.profile.edit');
         Route::post('profile/edit', 'Admin\AdminController@update')->name('admin.profile.update');
 
-        Route::get('store/create', 'Admin\StoreController@add')->name('admin.store.add');
-        Route::post('store/create', 'Admin\StoreController@create')->name('admin.store.create');
+        Route::get('shop/create', 'Admin\ShopController@add')->name('admin.shop.add');
+        Route::post('shop/create', 'Admin\ShopController@create')->name('admin.shop.create');
 
-        Route::get('store/edit', 'Admin\StoreController@edit')->name('admin.store.edit');
-        Route::post('store/edit', 'Admin\StoreController@update')->name('admin.store.update');
+        Route::get('shop/edit', 'Admin\ShopController@edit')->name('admin.shop.edit');
+        Route::post('shop/edit', 'Admin\ShopController@update')->name('admin.shop.update');
 
-        Route::get('store/delete', 'Admin\AdminController@delete')->name('admin.store.delete');
+        Route::get('shop/delete', 'Admin\AdminController@delete')->name('admin.shop.delete');
     });
 });
 

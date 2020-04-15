@@ -8,7 +8,15 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <form action="{{ route('admin.store.create') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.shop.create') }}" method="post" enctype="multipart/form-data">
+
+                            @if (count($errors) > 0)
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
 
                             {{-- name --}}
                             <div class="form-group mt-4">

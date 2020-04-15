@@ -9,7 +9,6 @@ class Shop extends Model
   protected $guarded = array('id');
 
   public static $rules = array(
-      'admin_id' => 'required',
       'name' => 'required',
 
       //配列で最低１個以上はチェック必須
