@@ -60,5 +60,10 @@ class Admin extends Authenticatable
 
   );
 
+  public function stores()
+  {
+      return $this->hasMany('App\Admin\Store');
+  }
+
 
 }

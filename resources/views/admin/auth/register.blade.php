@@ -10,14 +10,17 @@
                     <form method="POST" action="{{ route('admin.register') }}">
                         @csrf
 
-
-                        @if (count($errors) > 0)
-                        <ul>
-                            @foreach($errors->all() as $e)
-                                <li>{{ $e }}</li>
-                            @endforeach
-                        </ul>
-                        @endif
+                        <div class="form-group row justify-content-center mt-5">
+                            <div class="col-md-8 col-lg-6">
+                                @if (count($errors) > 0)
+                                    <ul>
+                                        @foreach($errors->all() as $e)
+                                            <li><span>{{ $e }}</span></li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </div>
+                        </div>
 
 
                         <div class="form-group row justify-content-center mt-5">
@@ -84,7 +87,7 @@
                         <div class="form-group row  justify-content-center mt-4">
                             <div class="col-md-8 col-lg-6">
                                 <label for="password">パスワード</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -97,7 +100,7 @@
                         <div class="form-group row justify-content-center mt-4">
                             <div class="col-md-8 col-lg-6">
                                 <label for="password-confirm">パスワード（確認用）</label>
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" required autocomplete="new-password">
                             </div>
                         </div>
 
