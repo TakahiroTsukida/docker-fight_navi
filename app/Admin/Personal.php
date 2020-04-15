@@ -15,8 +15,8 @@ class Personal extends Model
       'price' => 'required|integer',
   );
 
-  public function Stores()
+  public function shops()
   {
-      return $this->belongsToMany('App\Admin\Store');
+      return $this->belongsToMany('App\Admin\Shop');
   }
 }

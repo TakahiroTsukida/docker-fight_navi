@@ -23,25 +23,25 @@
 
                                 <div class="checkbox">
                                    <label>
-                                       <input type="checkbox" name="type[]" value="boxing">
+                                       <input type="checkbox" name="type[boxing]" value="1">
                                        ボクシング
                                    </label>
                                 </div>
                                 <div class="checkbox">
                                    <label>
-                                       <input type="checkbox" name="type[]" value="kick">
+                                       <input type="checkbox" name="type[kickboxing]" value="1">
                                        キックボクシング
                                    </label>
                                 </div>
                                 <div class="checkbox">
                                    <label>
-                                       <input type="checkbox" name="type[]" value="mma">
+                                       <input type="checkbox" name="type[mma]" value="1">
                                        総合格闘技
                                    </label>
                                 </div>
                                 <div class="checkbox">
                                    <label>
-                                       <input type="checkbox" name="type[]" value="personal">
+                                       <input type="checkbox" name="type[personal]" value="1">
                                        パーソナルトレーニング
                                    </label>
                                 </div>
@@ -60,7 +60,7 @@
                                 <label class="d-block">住所</label>
 
                                 <label>郵便番号(ハイフンなし)</label>
-                                <input type="tel" name="address_number" maxlength="7" class="form-control" placeholder="1030013" value="{{ old('address_number') }}">
+                                <input type="tel" name="address_number" maxlength="7" class="form-control" placeholder="例）1030013" value="{{ old('address_number') }}">
 
                                 <label class="mt-3">都道府県</label>
                                   <select name="address_ken" class="form-control">
@@ -68,7 +68,7 @@
                                   </select>
 
                                 <label class="mt-3">市区町村以降</label>
-                                <input type="text" name="address_city" class="form-control" placeholder="中央区日本橋人形町" value="{{ old('address_city') }}">
+                                <input type="text" name="address_city" class="form-control" value="{{ old('address_city') }}">
                             </div>
 
 
@@ -76,10 +76,10 @@
                             {{-- price --}}
                             <div class="form-group mt-4">
                                 <label class="d-inline mr-1">
-                                    <input type="hidden" name="price_name[]" value="join">
+                                    <input type="hidden" name="price[name][]" value="入会金">
                                     入会金
                                   </label>
-                                <input type="number" name="price[]" class="form-control col-sm-4 d-inline mx-1" placeholder="例）11000" value="{{ old('price[]') }}">
+                                <input type="number" name="price[price][]" class="form-control col-sm-4 d-inline mx-1" placeholder="半角数字" value="{{ old('price[price][]') }}">
                                 <p class="d-inline ml-1"><small>円（税込）</small></p>
                             </div>
 
@@ -89,40 +89,42 @@
 
                             <div class="form-group">
                                 <label class="d-inline ml-3 mr-1">
-                                    <input type="hidden" name="price_name[]" value="man">
+                                    <input type="hidden" name="price[name][]" value="男性">
                                     男性
                                 </label>
-                                <input type="number" name="price[]" class="form-control col-sm-4 d-inline mx-1" placeholder="例）11000" value="{{ old('price[]') }}">
+                                <input type="number" name="price[price][]" class="form-control col-sm-4 d-inline mx-1" placeholder="半角数字" value="{{ old('price[price][]') }}">
                                 <p class="d-inline ml-1"><small>円/月（税込）</small></p>
                             </div>
 
                             <div class="form-group">
                                 <label class="d-inline ml-3 mr-1">
-                                    <input type="hidden" name="price_name[]" value="woman">
+                                    <input type="hidden" name="price[name][]" value="女性">
                                     女性
                                 </label>
-                                <input type="number" name="price[]" class="form-control col-sm-4 d-inline mx-1" placeholder="例）8800" value="{{ old('price[]') }}">
+                                <input type="number" name="price[price][]" class="form-control col-sm-4 d-inline mx-1" placeholder="半角数字" value="{{ old('price[price][]') }}">
+                                <p class="d-inline ml-1"><small>円/月（税込）</small></p>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <input type="text" name="price[name][]" class="form-control d-inline ml-3 mr-1 col-sm-1" value="{{ old('price[name][]') }}">
+                                <input type="number" name="price[price][]" class="form-control col-sm-4 d-inline mx-1" placeholder="半角数字" value="{{ old('price[price][]') }}">
                                 <p class="d-inline ml-1"><small>円/月（税込）</small></p>
                             </div>
 
                             <div class="form-group">
-                                <label class="d-inline ml-3 mr-1">
-                                    <input type="hidden" name="price_name[]" value="student">
-                                    学生
-                                </label>
-                                <input type="number" name="price[]" class="form-control col-sm-4 d-inline mx-1" placeholder="例）8800" value="{{ old('price[]') }}">
+                                <input type="text" name="price[name][]" class="form-control d-inline ml-3 mr-1 col-sm-1" value="{{ old('price[name][]') }}">
+                                <input type="number" name="price[price][]" class="form-control col-sm-4 d-inline mx-1" value="{{ old('price[price][]') }}">
                                 <p class="d-inline ml-1"><small>円/月（税込）</small></p>
                             </div>
 
                             <div class="form-group">
-                                <label class="d-inline ml-3 mr-1">その他の会費</label>
-                            <div>
-
-                            <div class="form-group">
-                                <input type="text" name="price_name[]" class="form-control d-inline ml-3 mr-1 col-sm-2" value="{{ old('price[]') }}">
-                                <input type="number" name="price[]" class="form-control col-sm-4 d-inline mx-1" placeholder="例）8800" value="{{ old('price[]') }}">
+                                <input type="text" name="price[name][]" class="form-control d-inline ml-3 mr-1 col-sm-1" value="{{ old('price[name][]') }}">
+                                <input type="number" name="price[price][]" class="form-control col-sm-4 d-inline mx-1" value="{{ old('price[price][]') }}">
                                 <p class="d-inline ml-1"><small>円/月（税込）</small></p>
                             </div>
+
 
                             <div class="form-group mt-4">
                                 <label>パーソナルトレーニング会費（コースがある場合のみ入力）</label>
@@ -132,14 +134,14 @@
                                 <label class="d-inline ml-3 mr-1">①</label>
 
                                 {{-- コース名 --}}
-                                <input type="text" name="personal_course[]" class="form-control col-sm-4 d-inline mx-1" placeholder="例）ボクシング" value="{{ old('personal_course[]') }}">
+                                <input type="text" name="personal[course][]" class="form-control col-sm-4 d-inline mx-1" placeholder="コース名" value="{{ old('personal[course][]') }}">
 
                                 {{-- 時間 --}}
-                                <input type="number" name="personal_time[]" class="form-control col-sm-2 d-inline mx-1" placeholder="50" value="{{ old('personal_time[]') }}">
+                                <input type="number" name="personal[time][]" class="form-control col-sm-2 d-inline mx-1" placeholder="例)50" value="{{ old('personal[time][]') }}">
                                 <p class="d-inline ml-1"><small>分</small></p>
 
                                 {{-- 金額 --}}
-                                <input type="number" name="personal_price[]" class="form-control col-sm-2 d-inline mx-1" placeholder="5500" value="{{ old('personal_price[]') }}">
+                                <input type="number" name="personal[price][]" class="form-control col-sm-2 d-inline mx-1" placeholder="例)5500" value="{{ old('personal[price][]') }}">
                                 <p class="d-inline ml-1"><small>円（税込）</small></p>
                             </div>
 
@@ -147,14 +149,14 @@
                                 <label class="d-inline ml-3 mr-1">②</label>
 
                                 {{-- コース名 --}}
-                                <input type="text" name="personal_course[]" class="form-control col-sm-4 d-inline mx-1" placeholder="例）ボクシング" value="{{ old('personal_course[]') }}">
+                                <input type="text" name="personal[course][]" class="form-control col-sm-4 d-inline mx-1" value="{{ old('personal[course][]') }}">
 
                                 {{-- 時間 --}}
-                                <input type="number" name="personal_time[]" class="form-control col-sm-2 d-inline mx-1" placeholder="50" value="{{ old('personal_time[]') }}">
+                                <input type="number" name="personal[time][]" class="form-control col-sm-2 d-inline mx-1" value="{{ old('personal[time][]') }}">
                                 <p class="d-inline ml-1"><small>分</small></p>
 
                                 {{-- 金額 --}}
-                                <input type="number" name="personal_price[]" class="form-control col-sm-2 d-inline mx-1" placeholder="5500" value="{{ old('personal_price[]') }}">
+                                <input type="number" name="personal[price][]" class="form-control col-sm-2 d-inline mx-1" value="{{ old('personal[price][]') }}">
                                 <p class="d-inline ml-1"><small>円（税込）</small></p>
                             </div>
 
@@ -162,14 +164,44 @@
                                 <label class="d-inline ml-3 mr-1">③</label>
 
                                 {{-- コース名 --}}
-                                <input type="text" name="personal_course[]" class="form-control col-sm-4 d-inline mx-1" placeholder="例）ボクシング" value="{{ old('personal_course[]') }}">
+                                <input type="text" name="personal[course][]" class="form-control col-sm-4 d-inline mx-1" value="{{ old('personal[course][]') }}">
 
                                 {{-- 時間 --}}
-                                <input type="number" name="personal_time[]" class="form-control col-sm-2 d-inline mx-1" placeholder="50" value="{{ old('personal_time[]') }}">
+                                <input type="number" name="personal[time][]" class="form-control col-sm-2 d-inline mx-1" value="{{ old('personal[time][]') }}">
                                 <p class="d-inline ml-1"><small>分</small></p>
 
                                 {{-- 金額 --}}
-                                <input type="number" name="personal_price[]" class="form-control col-sm-2 d-inline mx-1" placeholder="5500" value="{{ old('personal_price[]') }}">
+                                <input type="number" name="personal[price][]" class="form-control col-sm-2 d-inline mx-1" value="{{ old('personal[price][]') }}">
+                                <p class="d-inline ml-1"><small>円（税込）</small></p>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="d-inline ml-3 mr-1">④</label>
+
+                                {{-- コース名 --}}
+                                <input type="text" name="personal[course][]" class="form-control col-sm-4 d-inline mx-1" value="{{ old('personal[course][]') }}">
+
+                                {{-- 時間 --}}
+                                <input type="number" name="personal[time][]" class="form-control col-sm-2 d-inline mx-1" value="{{ old('personal[time][]') }}">
+                                <p class="d-inline ml-1"><small>分</small></p>
+
+                                {{-- 金額 --}}
+                                <input type="number" name="personal[price][]" class="form-control col-sm-2 d-inline mx-1" value="{{ old('personal[price][]') }}">
+                                <p class="d-inline ml-1"><small>円（税込）</small></p>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="d-inline ml-3 mr-1">⑤</label>
+
+                                {{-- コース名 --}}
+                                <input type="text" name="personal[course][]" class="form-control col-sm-4 d-inline mx-1" value="{{ old('personal[course][]') }}">
+
+                                {{-- 時間 --}}
+                                <input type="number" name="personal[time][]" class="form-control col-sm-2 d-inline mx-1" value="{{ old('personal[time][]') }}">
+                                <p class="d-inline ml-1"><small>分</small></p>
+
+                                {{-- 金額 --}}
+                                <input type="number" name="personal[price][]" class="form-control col-sm-2 d-inline mx-1" value="{{ old('personal[price][]') }}">
                                 <p class="d-inline ml-1"><small>円（税込）</small></p>
                             </div>
 

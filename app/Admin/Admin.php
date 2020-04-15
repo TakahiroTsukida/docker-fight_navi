@@ -60,9 +60,9 @@ class Admin extends Authenticatable
 
   );
 
-  public function stores()
+  public function shops()
   {
-      return $this->hasMany('App\Admin\Store');
+      return $this->hasMany('App\Admin\Shop');
   }
 
 

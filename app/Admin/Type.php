@@ -12,8 +12,8 @@ class Type extends Model
       'name' => 'required',
   );
 
-  public function stores()
+  public function shops()
   {
-      return $this->belongsToMany('App\Admin\Store');
+      return $this->belongsToMany('App\Admin\Shop');
   }
 }

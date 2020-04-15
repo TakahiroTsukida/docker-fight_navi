@@ -16,8 +16,8 @@ class Price extends Model
 
 
 
-  public function stores()
+  public function shops()
   {
-      return $this->belongsToMany('App\Admin\Store');
+      return $this->belongsToMany('App\Admin\Shop');
   }
 }

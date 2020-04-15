@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStorePriceTable extends Migration
+class CreateShopPriceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateStorePriceTable extends Migration
      */
     public function up()
     {
-        Schema::create('store_price', function (Blueprint $table) {
-          $table->unsignedBigInteger('store_id');
+        Schema::create('shop_price', function (Blueprint $table) {
+          $table->unsignedBigInteger('shop_id');
           $table->unsignedBigInteger('price_id');
-          $table->primary(['store_id', 'price_id']);
+          $table->primary(['shop_id', 'price_id']);
 
           //外部キー制約
-          $table->foreign('store_id')
+          $table->foreign('shop_id')
                 ->references('id')
-                ->on('stores')
+                ->on('shops')
                 ->onDelete('cascade');
           $table->foreign('price_id')
                 ->references('id')
@@ -37,6 +37,6 @@ class CreateStorePriceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('store_price');
+        Schema::dropIfExists('shop_price');
     }
 }

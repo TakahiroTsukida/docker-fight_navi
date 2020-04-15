@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStoreImageTable extends Migration
+class CreateShopImageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateStoreImageTable extends Migration
      */
     public function up()
     {
-        Schema::create('store_image', function (Blueprint $table) {
-          $table->unsignedBigInteger('store_id');
+        Schema::create('shop_image', function (Blueprint $table) {
+          $table->unsignedBigInteger('shop_id');
           $table->unsignedBigInteger('image_id');
-          $table->primary(['store_id', 'image_id']);
+          $table->primary(['shop_id', 'image_id']);
 
           //外部キー制約
-          $table->foreign('store_id')
+          $table->foreign('shop_id')
                 ->references('id')
-                ->on('stores')
+                ->on('shops')
                 ->onDelete('cascade');
           $table->foreign('image_id')
                 ->references('id')
@@ -37,6 +37,6 @@ class CreateStoreImageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('store_image');
+        Schema::dropIfExists('shop_image');
     }
 }
