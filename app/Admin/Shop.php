@@ -21,7 +21,7 @@ class Shop extends Model
 
       //prices
       //片方が入力されている場合、片方も必須
-      'price[name][*]' => 'array|required_with:price[price][*]',
+      'price[price][name][*]' => 'array|required_with:price[price][price][*]',
       'price[price][*]' => 'array|required_with:price[name][*]',
 
       //personals

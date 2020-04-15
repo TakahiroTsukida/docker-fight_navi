@@ -23,8 +23,9 @@ class ShopController extends Controller
   }
 
   public function create(Request $request) {
+      dd($request);
 
-      $this->validate($request, Shop::$rules);
+/*      $this->validate($request, Shop::$rules);
 
       $form = $request->all();
 
@@ -48,7 +49,6 @@ class ShopController extends Controller
           $image = new Image;
           $path = $request->file('image')->store('public/image/store_images');
           $image->image_path = basename($path);
-          dd($image);
           $image->save();
       }
 
@@ -71,6 +71,17 @@ class ShopController extends Controller
           }
       }
 
+      //shop_priceの中間テーブルに保存
+      if (is_array($form['price'])) {
+          foreach ($form['price'] as $key1 => $value1) {
+              foreach($value1 as $key2 => $value2) {
+                $shop->prices()->detach();
+                $shop->prices()->attach();
+              }
+          }
+      }
+
+
       //personalsテーブルに保存
       foreach ($form['personal']['course'] as $key => $value) {
           if ($value != null) {
@@ -82,11 +93,17 @@ class ShopController extends Controller
           }
       }
 
-
+      //shop_personalの中間テーブルに保存
+      if (is_array($form['personal'])) {
+          foreach ($form['personal']['course'] as $key => $value) {
+              $shop->personals()->detach($value);
+              $shop->personals()->attach($value);
+          }
+      }
+*/
       unset($form['_token']);
       unset($form['image']);
 
-
-      return view('admin.profile.mypage');
+      return view('admin.profile.mypage', ['admin' => $admin]);
   }
 }

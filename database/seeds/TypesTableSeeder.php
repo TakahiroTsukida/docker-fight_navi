@@ -30,7 +30,7 @@ class TypesTableSeeder extends Seeder
 
 
       $type = new \App\Admin\Type([
-      'name' => 'キックボクシング',
+      'name' => 'パーソナルトレーニング',
       ]);
       $type->save();
 
