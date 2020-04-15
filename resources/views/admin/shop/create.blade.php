@@ -31,25 +31,25 @@
 
                                 <div class="checkbox">
                                    <label>
-                                       <input type="checkbox" name="type[boxing]" value="1">
+                                       <input type="checkbox" name="type[]" value="1">
                                        ボクシング
                                    </label>
                                 </div>
                                 <div class="checkbox">
                                    <label>
-                                       <input type="checkbox" name="type[kickboxing]" value="1">
+                                       <input type="checkbox" name="type[]" value="2">
                                        キックボクシング
                                    </label>
                                 </div>
                                 <div class="checkbox">
                                    <label>
-                                       <input type="checkbox" name="type[mma]" value="1">
+                                       <input type="checkbox" name="type[]" value="3">
                                        総合格闘技
                                    </label>
                                 </div>
                                 <div class="checkbox">
                                    <label>
-                                       <input type="checkbox" name="type[personal]" value="1">
+                                       <input type="checkbox" name="type[]" value="4">
                                        パーソナルトレーニング
                                    </label>
                                 </div>

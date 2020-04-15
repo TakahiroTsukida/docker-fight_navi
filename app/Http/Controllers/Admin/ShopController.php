@@ -25,7 +25,6 @@ class ShopController extends Controller
   public function create(Request $request) {
 
       $this->validate($request, Shop::$rules);
-      //dd($request);
 
       $form = $request->all();
 
@@ -42,7 +41,7 @@ class ShopController extends Controller
       $shop->close = $form['close'];
       $shop->web = $form['web'];
       $shop->description = $form['description'];
-      //$shop->save();
+      $shop->save();
 
       //imagesテーブル保存
       if (isset($form['image'])) {
@@ -53,32 +52,32 @@ class ShopController extends Controller
           $image->save();
       }
 
+
       //shop_typeの中間テーブルに保存
-      if (is_array($form->type[])) {
-            $admin = Auth::user();
-            $admin->type()->detach();
-            $admin->type()->attach($form->type);
+      if (is_array($form['type'])) {
+          foreach ($form['type'] as $key => $value) {
+              $shop->types()->detach($value);
+              $shop->types()->attach($value);
+          }
       }
 
       //pricesテーブルに保存
-      foreach ($form->price['name'] as $key => $value) {
+      foreach ($form['price']['name'] as $key => $value) {
           if ($value != null) {
               $price = new Price;
               $price->name = $value;
-              $price->price = $form->price['price'][$key];
-              dd($price);
+              $price->price = $form['price']['price'][$key];
               $price->save();
           }
       }
 
       //personalsテーブルに保存
-      foreach ($form->personal['course'] as $key => $value) {
+      foreach ($form['personal']['course'] as $key => $value) {
           if ($value != null) {
               $personal = new Personal;
               $personal->course = $value;
-              $personal->time = $form->personal['time'][$key];
-              $personal->price = $form->personal['price'][$key];
-              dd($price);
+              $personal->time = $form['personal']['time'][$key];
+              $personal->price = $form['personal']['price'][$key];
               $personal->save();
           }
       }
