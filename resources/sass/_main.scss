@@ -56,5 +56,10 @@ h3 {
   @include pc {
     margin: 30px 60px;
   }
+}
 
+.error {
+  color: red;
+  font-size: 15px;
+  font-weight: bold;
 }

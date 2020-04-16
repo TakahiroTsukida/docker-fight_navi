@@ -15,6 +15,7 @@ class CreatePersonalsTable extends Migration
     {
         Schema::create('personals', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('shop_id');
             $table->string('course');
             $table->unsignedInteger('time');
             $table->unsignedInteger('price');

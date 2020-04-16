@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Admin\Admin;
+use App\Admin\Shop;
 use Carbon\Carbon;
 
 class AdminController extends Controller
@@ -13,8 +14,13 @@ class AdminController extends Controller
     public function mypage() {
 
         $admin = Auth::user();
+        $shops = Shop::where('admin_id', $admin->id)->get()->sortByDesc('updated_at');
 
-        return view('admin.profile.mypage', ['admin' => $admin]);
+
+        return view('admin.profile.mypage', [
+            'admin' => $admin,
+            'shops' => $shops,
+        ]);
     }
 
     public function edit() {
@@ -36,7 +42,7 @@ class AdminController extends Controller
         $admin->fill($admin_form)->save();
 
 
-        return redirect('admin/profile/mypage');
+        return redirect()->route('admin.profile.mypage');
     }
 
 }

@@ -11175,3 +11175,9 @@ h3 {
   }
 }
 
+.error {
+  color: red;
+  font-size: 15px;
+  font-weight: bold;
+}
+

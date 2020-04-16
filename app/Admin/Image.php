@@ -16,6 +16,6 @@ class Image extends Model
 
   public function shops()
   {
-      return $this->belongsToMany('App\Admin\Shop');
+      return $this->belongsTo('App\Admin\Shop');
   }
 }

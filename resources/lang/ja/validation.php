@@ -116,6 +116,20 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => '名前',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+
+
+        'shop_name' => 'ジム・道場名',
+        'tel' => '電話番号',
+        'type' => 'ジャンル',
+        'address_number' => '郵便番号',
+        'address_ken' => '都道府県',
+        'address_city' => '市区町村以降',
+
+
+    ],
 
 ];

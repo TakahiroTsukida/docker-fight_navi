@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <p class="site-title">
-                            <a class="mx-auto mt-3" href="{{ url('/admin/profile/mypage') }}">
+                            <a class="mx-auto mt-3" href="{{ route('admin.profile.mypage') }}">
                                 <img src="{{ asset('image/Fightなび.png') }}" alt="Fightなび">
                             </a>
                         </p>

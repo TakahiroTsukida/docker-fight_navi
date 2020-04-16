@@ -23,9 +23,8 @@ class ShopController extends Controller
   }
 
   public function create(Request $request) {
-      dd($request);
 
-/*      $this->validate($request, Shop::$rules);
+      $this->validate($request, Shop::$rules);
 
       $form = $request->all();
 
@@ -33,7 +32,7 @@ class ShopController extends Controller
       $shop = new Shop;
       $admin = Auth::user();
       $shop->admin_id = $admin->id;
-      $shop->name = $form['name'];
+      $shop->name = $form['shop_name'];
       $shop->tel = $form['tel'];
       $shop->address_number = $form['address_number'];
       $shop->address_ken = $form['address_ken'];
@@ -49,6 +48,7 @@ class ShopController extends Controller
           $image = new Image;
           $path = $request->file('image')->store('public/image/store_images');
           $image->image_path = basename($path);
+          $image->shop_id = $shop->id;
           $image->save();
       }
 
@@ -65,27 +65,18 @@ class ShopController extends Controller
       foreach ($form['price']['name'] as $key => $value) {
           if ($value != null) {
               $price = new Price;
+              $price->shop_id = $shop->id;
               $price->name = $value;
               $price->price = $form['price']['price'][$key];
               $price->save();
           }
       }
 
-      //shop_priceの中間テーブルに保存
-      if (is_array($form['price'])) {
-          foreach ($form['price'] as $key1 => $value1) {
-              foreach($value1 as $key2 => $value2) {
-                $shop->prices()->detach();
-                $shop->prices()->attach();
-              }
-          }
-      }
-
-
       //personalsテーブルに保存
       foreach ($form['personal']['course'] as $key => $value) {
           if ($value != null) {
               $personal = new Personal;
+              $personal->shop_id = $shop->id;
               $personal->course = $value;
               $personal->time = $form['personal']['time'][$key];
               $personal->price = $form['personal']['price'][$key];
@@ -93,17 +84,8 @@ class ShopController extends Controller
           }
       }
 
-      //shop_personalの中間テーブルに保存
-      if (is_array($form['personal'])) {
-          foreach ($form['personal']['course'] as $key => $value) {
-              $shop->personals()->detach($value);
-              $shop->personals()->attach($value);
-          }
-      }
-*/
       unset($form['_token']);
       unset($form['image']);
-
-      return view('admin.profile.mypage', ['admin' => $admin]);
+      return redirect('admin/profile/mypage');
   }
 }

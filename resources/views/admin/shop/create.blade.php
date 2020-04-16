@@ -10,25 +10,22 @@
 
                         <form action="{{ route('admin.shop.create') }}" method="post" enctype="multipart/form-data">
 
-                            @if (count($errors) > 0)
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            @endif
-
                             {{-- name --}}
                             <div class="form-group mt-4">
-                                <label for="name">ジム・道場名</label>
-                                <input type="text" name="name" class="form-control" placeholder="例）Example GYM" value="{{ old('name') }}">
+                                <label>ジム・道場名</label>
+                                @error('shop_name')
+                                    <p class="error">{{ $message }}</p>
+                                @enderror
+                                <input type="text" name="shop_name" class="form-control" placeholder="例）Example GYM" value="{{ old('shop_name') }}">
                             </div>
 
 
                             {{-- type --}}
                             <div class="form-group mt-4">
                                 <label>ジャンル（複数回答可）</label>
-
+                                @error('type')
+                                    <p class="error">{{ $message }}</p>
+                                @enderror
                                 <div class="checkbox">
                                    <label>
                                        <input type="checkbox" name="type[]" value="1">
@@ -59,6 +56,9 @@
                             {{-- tel --}}
                             <div class="form-group mt-4">
                                 <label for="tel">電話番号（ハイフンなし）</label>
+                                @error('tel')
+                                    <p class="error">{{ $message }}</p>
+                                @enderror
                                 <input type="text" name="tel" maxlength="11" class="form-control" placeholder="例) 0312345678" value="{{ old('tel') }}">
                             </div>
 
@@ -68,14 +68,23 @@
                                 <label class="d-block">住所</label>
 
                                 <label>郵便番号(ハイフンなし)</label>
+                                @error('address_number')
+                                    <p class="error">{{ $message }}</p>
+                                @enderror
                                 <input type="tel" name="address_number" maxlength="7" class="form-control" placeholder="例）1030013" value="{{ old('address_number') }}">
 
                                 <label class="mt-3">都道府県</label>
+                                @error('address_ken')
+                                    <p class="error">{{ $message }}</p>
+                                @enderror
                                   <select name="address_ken" class="form-control">
                                     @include('parts/address_ken');
                                   </select>
 
                                 <label class="mt-3">市区町村以降</label>
+                                @error('address_city')
+                                    <p class="error">{{ $message }}</p>
+                                @enderror
                                 <input type="text" name="address_city" class="form-control" value="{{ old('address_city') }}">
                             </div>
 
@@ -86,9 +95,12 @@
                                 <label class="d-inline mr-1">
                                     <input type="hidden" name="price[name][]" value="入会金">
                                     入会金
-                                  </label>
+                                </label>
                                 <input type="number" name="price[price][]" class="form-control col-sm-4 d-inline mx-1" placeholder="半角数字" value="{{ old('price[price][]') }}">
                                 <p class="d-inline ml-1"><small>円（税込）</small></p>
+                                @error('price[price].*')
+                                    <p class="error">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div class="form-group mt-4">
