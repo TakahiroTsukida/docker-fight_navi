@@ -11,11 +11,12 @@ use Carbon\Carbon;
 
 class AdminController extends Controller
 {
+
+
     public function mypage() {
 
         $admin = Auth::user();
-        $shops = Shop::where('admin_id', $admin->id)->get()->sortByDesc('updated_at');
-
+        $shops = Shop::with('types','prices','personals')->get()->sortByDesc('updated_at');
 
         return view('admin.profile.mypage', [
             'admin' => $admin,

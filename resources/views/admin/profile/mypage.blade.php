@@ -64,16 +64,23 @@
               </div>
 
               @foreach ($shops as $shop)
+                  @if($shop->admin_id == Auth::user()->id)
 
-              <div class="row justify-content-center">
-                  <div class="col-sm-12">
-                      <div class="card">
-                          <div class="card-body">
-                              <div class="offset-lg-2">
-                                  <div class="form-group row">
-                                      <p>{{ $shop->name }}</p>
-                                      <p>{{ $shop->address_ken }}{{ $shop->address_city }}</p>
-                                      <p>ジャンル： </p>
+                      <div class="row justify-content-center">
+                          <div class="col-sm-12">
+                              <div class="card">
+                                  <div class="card-body">
+                                      <div class="offset-lg-2">
+                                          <div class="form-group row">
+                                              <div>
+                                                  <p>{{ $shop->name }}</p>
+                                              </div>
+
+                                              <p>{{ $shop->address_ken }}{{ $shop->address_city }}</p>
+                                      <p>ジャンル：</p>
+                                      @foreach($shop->types as $type)
+                                              <p>{{ $type->name }}</p>
+                                      @endforeach
                                   </div>
 
                                   <div class="form-group row">
@@ -212,10 +219,10 @@
                               </div>
                           </div>
                       </div>
-                  </div>
-              </div>
 
+                  @endif
               @endforeach
+
           </div>
       </div>
 
