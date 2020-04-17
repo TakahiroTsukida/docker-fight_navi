@@ -11149,40 +11149,177 @@ img {
   width: 10%;
 }
 
-h2 {
-  font-size: 18px;
+.error {
+  color: red;
+  font-size: 15px;
   font-weight: bold;
 }
 
-h3 {
+h2 {
   font-size: 16px;
   font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: 18px;
+  }
+}
+
+h3 {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  h3 {
+    font-size: 16px;
+  }
+}
+
+label {
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  label {
+    font-size: 14px;
+  }
 }
 
 p {
   display: block;
   float: none;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  p {
+    font-size: 16px;
+  }
+}
+
+.card-group {
+  margin-top: 15px;
+}
+
+@media (min-width: 768px) {
+  .card-group {
+    margin-top: 20px;
+  }
 }
 
 .body {
-  margin: 10px 10px;
+  margin: 10px 18px;
 }
 
 @media (min-width: 768px) {
   .body {
-    margin: 30px 40px;
+    margin: 30px 48px;
   }
 }
 
 @media (min-width: 992px) {
   .body {
-    margin: 30px 60px;
+    margin: 30px 68px;
   }
 }
 
-.error {
-  color: red;
-  font-size: 15px;
-  font-weight: bold;
+.profile {
+  margin-top: 7px;
+}
+
+@media (min-width: 768px) {
+  .profile {
+    margin-top: 10px;
+  }
+}
+
+.admin {
+  margin-left: 8px;
+}
+
+@media (min-width: 768px) {
+  .admin {
+    margin-left: 16px;
+  }
+}
+
+@media (min-width: 992px) {
+  .admin {
+    margin-left: 20px;
+  }
+}
+
+.link {
+  font-size: 13px;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .link {
+    font-size: 15px;
+  }
+}
+
+.symbol {
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .symbol {
+    font-size: 15px;
+  }
+}
+
+.shop-about {
+  font-size: 14px;
+  margin-left: 10px;
+  display: inline;
+}
+
+@media (min-width: 768px) {
+  .shop-about {
+    font-size: 16px;
+  }
+}
+
+.type {
+  float: left;
+}
+
+.type-list {
+  margin-left: 70px;
+}
+
+@media (min-width: 768px) {
+  .type-list {
+    margin-left: 100px;
+  }
+}
+
+.description {
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .description {
+    font-size: 14px;
+  }
+}
+
+.shop-text {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .shop-text {
+    font-size: 16px;
+  }
+}
+
+.shop-price {
+  margin-left: 35px;
+  margin-top: 10px;
 }
 

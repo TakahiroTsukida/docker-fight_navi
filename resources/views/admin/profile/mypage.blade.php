@@ -4,59 +4,61 @@
   <div class="container">
       <div class="row justify-content-center">
           <div class="col-sm-12 mx-auto">
-              <div class="card">
+              <div class="card card-group">
                   <div class="card-body">
                       <div class="body">
 
-                          <div class="ml-2 my-2">
+                          <div>
                               <h2>登録情報</h2>
-                              <h3 class="my-2">個人情報</h3>
+                              <h3>個人情報</h3>
                           </div>
 
-                          <div class="ml-2 my-2">
+                          <div class="profile">
                               <label>名前</label>
-                              <p class="ml-2">{{ $admin->name }}</p>
+                              <p class="admin">{{ $admin->name }}</p>
                           </div>
-                          <div class="ml-2 my-2">
+
+                          <div class="profile">
                               <label>性別</label>
-                              <p class="ml-2">{{ $admin->gender }}</p>
+                              <p class="admin">{{ $admin->gender }}</p>
                           </div>
-                          <div class="ml-2 my-2">
+
+                          <div class="profile">
                               <label>誕生日</label>
-                              <p class="ml-2">{{ $admin->birthday }}</p>
+                              <p class="admin">{{ $admin->birthday }}</p>
                           </div>
-                          <div class="ml-2 my-2">
+                          <div class="profile">
                               <label>メールアドレス</label>
-                              <p class="ml-2">{{ $admin->email }}</p>
+                              <p class="admin">{{ $admin->email }}</p>
                           </div>
 
 
-                          <div class="ml-2 mt-4">
+                          <div class="profile">
                               <h3>会社情報</h3>
                           </div>
 
-                          <div class="ml-2 my-2">
+                          <div class="profile">
                               <label>会社名</label>
-                              <p class="ml-2">{{ $admin->company_name }}</p>
+                              <p class="admin">{{ $admin->company_name }}</p>
                           </div>
 
                           @if (isset($admin->tel))
-                              <div class="ml-2 my-2">
+                              <div class="profile">
                                   <label>電話番号</label>
-                                  <p class="ml-2">{{ $admin->tel }}</p>
+                                  <p class="admin">{{ $admin->tel }}</p>
                               </div>
                           @endif
 
-                          <div class="ml-2 my-2">
+                          <div class="profile">
                               <label>住所</label>
-                              <p class="ml-2">〒{{ $admin->address_number }}</p>
-                              <p class="ml-2">{{ $admin->address_ken }}{{ $admin->address_city }}</p>
+                              <p class="admin"><span class="symbol">〒 </span>{{ $admin->address_number }}</p>
+                              <p class="admin">{{ $admin->address_ken }}{{ $admin->address_city }}</p>
                           </div>
 
                           @if (isset($admin->tel))
-                              <div class="ml-2 my-2">
+                              <div class="profile">
                                   <label>ホームページ</label>
-                                  <a class="ml-2 d-block" href="{{ $admin->web }}">{{ $admin->web }}</a>
+                                  <a class="link admin" href="{{ $admin->web }}">{{ $admin->web }}</a>
                               </div>
                           @endif
                       </div>
@@ -66,121 +68,68 @@
               @foreach ($shops as $shop)
                   @if($shop->admin_id == Auth::user()->id)
 
-                      <div class="row justify-content-center">
-                          <div class="col-sm-12">
-                              <div class="card">
-                                  <div class="card-body">
-                                      <div class="offset-lg-2">
-                                          <div class="form-group row">
-                                              <div>
-                                                  <p>{{ $shop->name }}</p>
-                                              </div>
+                      <div class="card card-group">
+                          <div class="card-body">
+                              <div class="body">
 
-                                              <p>{{ $shop->address_ken }}{{ $shop->address_city }}</p>
-                                      <p>ジャンル：</p>
-                                      @foreach($shop->types as $type)
-                                              <p>{{ $type->name }}</p>
+                                  <div>
+                                      <h2>{{ $shop->name }}</h2>
+                                  </div>
+
+                                  <div class="profile">
+                                    @if (isset($shop->address_number))
+                                      <p><span class="symbol">〒 </span>{{ $shop->address_number }}</p>
+                                    @endif
+                                      <p>{{ $shop->address_ken }}{{ $shop->address_city }}</p>
+                                  </div>
+
+                                  <div class="profile">
+                                      <p class="type">ジャンル：</p>
+                                      <ul class="type-list">
+                                          @foreach($shop->types as $type)
+                                              <li class="shop-text">{{ $type->name }}</li>
+                                          @endforeach
+                                      </ul>
+                                  </div>
+
+                                  <div class="profile">
+                                      <label class="shop-text">簡単な説明</label>
+                                      <p class="description">{{ $shop->description }}</p>
+                                  </div>
+
+                                  <div class="profile mt-3">
+                                      <i class="far fa-handshake fa-lg"></i>
+                                      @foreach ($shop->prices as $price)
+                                          @if ($price->name == "入会金")
+                                          <p class="shop-about">{{ $price->name }} <strong>{{ $price->price }}</strong><span class="symbol">円（税込）</span></p><br>
+                                          @endif
                                       @endforeach
                                   </div>
 
-                                  <div class="form-group row">
-                                      <label class="col">レッスン　<i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star-half" style="color: #fbca4d;"></i>
-                                          <strong class="pl-2">4.5</strong>
-                                      </label>
+                                  <div class="profile">
+                                      <i class="fas fa-yen-sign fa-lg"></i>
+                                      <p class="shop-about">月会費</label>
+                                      @foreach ($shop->prices as $price)
+                                          @if ($price->name != "入会金")
+                                          <p class="shop-price">{{ $price->name }} <strong>{{ $price->price }}</strong><span class="symbol">円（税込）</span></p>
+                                          @endif
+                                      @endforeach
                                   </div>
 
-                                  <div class="form-group row">
-                                      <label class="col">値段　　　<i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <strong class="pl-2">4.0</strong>
-                                      </label>
+                                  <div class="profile">
+                                      <i class="fas fa-user-friends fa-lg"></i>
+                                      <label class="shop-about">パーソナルトレーニング会費</label>
                                   </div>
 
-                                  <div class="form-group row">
-                                      <label class="col">清潔さ　　<i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <strong class="pl-2">4.0</strong>
-                                      </label>
-                                  </div>
-
-                                  <div class="form-group row">
-                                      <label class="col">接客　　　<i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <strong class="pl-2">4.0</strong>
-                                      </label>
-                                  </div>
-
-                                  <div class="form-group row">
-                                      <label class="col">雰囲気　　<i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                          <strong class="pl-2">4.0</strong>
-                                      </label>
-                                  </div>
-
-                                  <div class="form-group row">
-                                      <label class="col-md-4">簡単な説明</label>
-                                  </div>
-
-                                  <div class="form-group row mt-4">
-                                      <i class="far fa-handshake fa-2x ml-3"></i>
-                                      <label class="col ml-1">入会金　　<strong>11000円</strong><small>（税込）</small></label>
-                                  </div>
-
-                                  <div class="form-group row mt-4">
-                                      <i class="fas fa-yen-sign fa-2x ml-4"></i>
-                                      <label class="col ml-2">月会費</label>
-                                  </div>
-
-                                  <div class="form-group">
-                                      <label for="man_price" class="d-inline ml-5">男性　<strong>11000円</strong><small>（税込）</small></label>
-                                  </div>
-
-                                  <div class="form-group">
-                                      <label for="woman_price" class="d-inline ml-5">女性　<strong> 8800円</strong><small>（税込）</small></label>
-                                  </div>
-
-                                  <div class="form-group">
-                                      <label for="student_price" class="d-inline ml-5">学生　<strong> 8800円</strong><small>（税込）</small></label>
-                                  </div>
-
-                                  <div class="form-group mt-4">
-                                      <i class="fas fa-funnel-dollar fa-2x ml-2"></i>
-                                      <label for="other_price" class="ml-2">その他の会費</label>
-                                  </div>
-
-                                  <div class="form-group mt-4">
-                                      <i class="fas fa-user-friends fa-2x ml-2"></i>
-                                      <label class="ml-2">パーソナルトレーニング会費</label>
-                                  </div>
-
-                                  <div class="form-group">
-                                      <label class="d-inline ml-3 mr-1 ml-5">①　　ボクシング　　　60分　 <strong>5500円</strong>
-                                          <small>（税込）</small>
-                                      </label>
-                                  </div>
-
-                                  <div class="form-group">
-                                      <label class="d-inline ml-3 mr-1 ml-5">②　　ボクシング　　　80分　 <strong>7000円</strong>
-                                          <small>（税込）</small>
-                                      </label>
-                                  </div>
-
-                                  <div class="form-group">
-                                      <label class="d-inline ml-3 mr-1 ml-5">③　　ボクシング　 　110分　 <strong>8800円</strong>
-                                          <small>（税込）</small>
-                                      </label>
+                                  <div class="profile">
+                                      @foreach ($shop->personals as $personal)
+                                          <p class="shop-price">
+                                            {{ $personal->course }}　
+                                            {{ $personal->time }} 分　
+                                            <strong>{{ $personal->price }}</strong>
+                                             <span class="symbol">円（税込）</span>
+                                          </p>
+                                      @endforeach
                                   </div>
 
                                   <div class="form-group mt-4">

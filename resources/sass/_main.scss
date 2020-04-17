@@ -21,6 +21,11 @@
     width: 10%;
 }
 
+
+
+
+
+
 $pc: 992px; // PC 1024px
 $tab: 768px; // タブレット
 
@@ -35,36 +40,143 @@ $tab: 768px; // タブレット
   }
 }
 
-
-h2 {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-h3 {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-p {
-  display: block;
-  float:none;
-}
-
-.body {
-  margin: 10px 10px;
-
-  @include tab {
-    margin: 30px 40px;
-  }
-
-  @include pc {
-    margin: 30px 60px;
-  }
-}
-
 .error {
   color: red;
   font-size: 15px;
   font-weight: bold;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: bold;
+
+  @include tab {
+    font-size: 18px;
+  }
+}
+
+h3 {
+  font-size: 14px;
+  font-weight: bold;
+
+  @include tab {
+    font-size: 16px;
+  }
+}
+
+label {
+  font-size: 12px;
+
+  @include tab {
+      font-size: 14px;
+  }
+}
+
+p {
+  display: block;
+  float: none;
+  font-size: 14px;
+
+  @include tab {
+    font-size: 16px
+  }
+
+}
+
+//class
+.card-group {
+  margin-top: 15px;
+  @include tab{
+    margin-top: 20px;
+  }
+}
+
+
+.body {
+  margin: 10px 18px;
+
+  @include tab {
+    margin: 30px 48px;
+  }
+
+  @include pc {
+    margin: 30px 68px;
+  }
+}
+
+.profile {
+  margin-top: 7px;
+
+  @include tab {
+    margin-top: 10px;
+  }
+}
+
+.admin {
+  margin-left: 8px;
+
+  @include tab {
+    margin-left: 16px;
+  }
+
+  @include pc {
+    margin-left: 20px;
+  }
+}
+
+.link {
+  font-size: 13px;
+  display: block;
+  @include tab {
+    font-size: 15px;
+  }
+}
+
+
+.symbol {
+  font-size: 12px;
+
+  @include tab {
+    font-size: 15px;
+  }
+}
+
+
+.shop-about {
+  font-size: 14px;
+  margin-left: 10px;
+  display: inline;
+  @include tab {
+    font-size: 16px;
+  }
+}
+
+.type {
+  float: left;
+}
+
+.type-list {
+  margin-left: 70px;
+  @include tab {
+    margin-left: 100px
+  }
+}
+
+.description {
+  font-size: 12px;
+  @include tab {
+    font-size: 14px
+  }
+}
+
+.shop-text {
+  font-size: 14px;
+  @include tab {
+    font-size: 16px;
+  }
+}
+
+.shop-price {
+  margin-left: 35px;
+  margin-top: 10px;
 }
