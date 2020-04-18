@@ -59,7 +59,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('shop/edit', 'Admin\ShopController@edit')->name('admin.shop.edit');
         Route::post('shop/edit', 'Admin\ShopController@update')->name('admin.shop.update');
 
-        Route::get('shop/delete', 'Admin\AdminController@delete')->name('admin.shop.delete');
+        Route::get('shop/delete', 'Admin\ShopController@delete')->name('admin.shop.delete');
     });
 });
 

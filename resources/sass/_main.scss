@@ -65,10 +65,10 @@ h3 {
 }
 
 label {
-  font-size: 12px;
+  font-size: 16px;
 
   @include tab {
-      font-size: 14px;
+      font-size: 18px;
   }
 }
 
@@ -81,6 +81,10 @@ p {
     font-size: 16px
   }
 
+}
+
+i {
+  display: inline;
 }
 
 //class
@@ -105,10 +109,10 @@ p {
 }
 
 .profile {
-  margin-top: 7px;
+  margin-top: 15px;
 
   @include tab {
-    margin-top: 10px;
+    margin-top: 20px;
   }
 }
 
@@ -139,44 +143,4 @@ p {
   @include tab {
     font-size: 15px;
   }
-}
-
-
-.shop-about {
-  font-size: 14px;
-  margin-left: 10px;
-  display: inline;
-  @include tab {
-    font-size: 16px;
-  }
-}
-
-.type {
-  float: left;
-}
-
-.type-list {
-  margin-left: 70px;
-  @include tab {
-    margin-left: 100px
-  }
-}
-
-.description {
-  font-size: 12px;
-  @include tab {
-    font-size: 14px
-  }
-}
-
-.shop-text {
-  font-size: 14px;
-  @include tab {
-    font-size: 16px;
-  }
-}
-
-.shop-price {
-  margin-left: 35px;
-  margin-top: 10px;
 }

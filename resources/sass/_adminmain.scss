@@ -1,0 +1,167 @@
+$pc: 992px; // PC 1024px
+$tab: 768px; // タブレット
+
+@mixin tab {
+  @media (min-width: ($tab)) {
+    @content;
+  }
+}
+@mixin pc {
+  @media (min-width: ($pc)) {
+    @content;
+  }
+}
+
+.shop-name {
+  font-size: 18px;
+  border-bottom: solid 1px #C0C0C0;
+  margin: 20px 0;
+  @include tab {
+    font-size: 22px;
+    margin: 40px 0;
+  }
+}
+
+.shop-body {
+  margin: 20px 5px;
+  @include tab {
+    margin: 20px 68px;
+
+  }
+}
+.admin-label {
+  font-size: 13px;
+  @include tab {
+    font-size: 15px;
+  }
+}
+
+.shop-about {
+  font-size: 14px;
+  margin-left: 0px;
+  display: inline;
+  @include tab {
+    font-size: 16px;
+  }
+}
+
+.address {
+  margin-left: 3px;
+}
+
+.type {
+  font-size: 14px;
+  float: left;
+  @include tab {
+    font-size: 16px;
+  }
+}
+
+.type-list {
+  margin-left: 70px;
+  @include tab {
+    margin-left: 100px;
+  }
+}
+
+.type-text {
+  font-size: 14px;
+  margin: 3px 0;
+  @include tab {
+    font-size: 16px;
+  }
+}
+
+.description {
+  font-size: 12px;
+  margin-bottom: 30px;
+  @include tab {
+    font-size: 14px;
+  }
+}
+
+.shop-text {
+  font-size: 14px;
+  @include tab {
+    font-size: 16px;
+  }
+}
+
+
+.join {
+  font-size: 14px;
+  margin-left: 5px;
+  display: inline;
+  @include tab {
+    font-size: 16px;
+  }
+}
+
+.price-name {
+  font-size: 14px;
+  margin-left: 30px;
+  display: block;
+  @include tab {
+    font-size: 16px;
+    display: inline;
+  }
+}
+
+.shop-price {
+  margin-left: 35px;
+  margin-top: 10px;
+}
+
+.personal-course {
+  display: block;
+  margin: 10px 0 0 0;
+
+  @include tab {
+    display: inline;
+  }
+}
+
+.personal-time {
+  display: inline;
+  margin-left: 30px;
+  @include tab {
+    margin-left: 15px;
+  }
+}
+
+.personal-price {
+  display: inline;
+  @include tab {
+    margin-left: 10px;
+  }
+}
+
+.open {
+  margin-left: 30px;
+  display: block;
+}
+
+.shop-image {
+  width: 25%;
+  @include tab {
+  }
+}
+
+.center-btn {
+  text-align: center;
+  margin: 30px 0 20px 0;
+  @include tab {
+    margin: 40px 0 30px 0;
+  }
+}
+
+.shop-btn {
+  font-size: 12px;
+  padding: 5px 15px;
+  margin: 0 10px;
+  @include tab {
+    font-size: 16px;
+    padding: 8px 30px;
+    margin: 0 15px;
+  }
+}

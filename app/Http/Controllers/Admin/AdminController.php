@@ -14,23 +14,16 @@ class AdminController extends Controller
 
 
     public function mypage() {
-
         $admin = Auth::user();
-        $shops = Shop::with('types','prices','personals')->get()->sortByDesc('updated_at');
-
-        return view('admin.profile.mypage', [
-            'admin' => $admin,
-            'shops' => $shops,
-        ]);
+        $shops = Shop::with('types','prices','personals')->get()->sortByDesc('created_at');
+        return view('admin.profile.mypage', ['admin' => $admin, 'shops' => $shops]);
     }
 
     public function edit() {
         $admin = Auth::user();
-
         if (empty($admin)) {
             abort(404);
         }
-
         return view('admin.profile.edit', ['admin' => $admin]);
     }
 
@@ -41,7 +34,6 @@ class AdminController extends Controller
 
         unset($admin_form['_token']);
         $admin->fill($admin_form)->save();
-
 
         return redirect()->route('admin.profile.mypage');
     }

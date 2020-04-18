@@ -6,6 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shop extends Model
 {
+
+  protected $fillable = [
+        'admin_id',
+        'tel',
+        'address_number',
+        'address_ken',
+        'address_city',
+        'open',
+        'close',
+        'web',
+        'description',
+    ];
+
   protected $guarded = array('id');
 
   public static $rules = array(

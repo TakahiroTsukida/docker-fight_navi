@@ -1,3 +1,18 @@
+$pc: 992px; // PC 1024px
+$tab: 768px; // タブレット
+
+@mixin tab {
+  @media (min-width: ($tab)) {
+    @content;
+  }
+}
+@mixin pc {
+  @media (min-width: ($pc)) {
+    @content;
+  }
+}
+
+
 body {
   background-repeat: no-repeat;
   background-position: center;

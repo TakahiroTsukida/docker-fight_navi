@@ -11178,12 +11178,12 @@ h3 {
 }
 
 label {
-  font-size: 12px;
+  font-size: 16px;
 }
 
 @media (min-width: 768px) {
   label {
-    font-size: 14px;
+    font-size: 18px;
   }
 }
 
@@ -11197,6 +11197,10 @@ p {
   p {
     font-size: 16px;
   }
+}
+
+i {
+  display: inline;
 }
 
 .card-group {
@@ -11226,12 +11230,12 @@ p {
 }
 
 .profile {
-  margin-top: 7px;
+  margin-top: 15px;
 }
 
 @media (min-width: 768px) {
   .profile {
-    margin-top: 10px;
+    margin-top: 20px;
   }
 }
 
@@ -11272,9 +11276,42 @@ p {
   }
 }
 
+.shop-name {
+  font-size: 18px;
+  border-bottom: solid 1px #C0C0C0;
+  margin: 20px 0;
+}
+
+@media (min-width: 768px) {
+  .shop-name {
+    font-size: 22px;
+    margin: 40px 0;
+  }
+}
+
+.shop-body {
+  margin: 20px 5px;
+}
+
+@media (min-width: 768px) {
+  .shop-body {
+    margin: 20px 68px;
+  }
+}
+
+.admin-label {
+  font-size: 13px;
+}
+
+@media (min-width: 768px) {
+  .admin-label {
+    font-size: 15px;
+  }
+}
+
 .shop-about {
   font-size: 14px;
-  margin-left: 10px;
+  margin-left: 0px;
   display: inline;
 }
 
@@ -11284,8 +11321,19 @@ p {
   }
 }
 
+.address {
+  margin-left: 3px;
+}
+
 .type {
+  font-size: 14px;
   float: left;
+}
+
+@media (min-width: 768px) {
+  .type {
+    font-size: 16px;
+  }
 }
 
 .type-list {
@@ -11298,8 +11346,20 @@ p {
   }
 }
 
+.type-text {
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+@media (min-width: 768px) {
+  .type-text {
+    font-size: 16px;
+  }
+}
+
 .description {
   font-size: 12px;
+  margin-bottom: 30px;
 }
 
 @media (min-width: 768px) {
@@ -11318,8 +11378,99 @@ p {
   }
 }
 
+.join {
+  font-size: 14px;
+  margin-left: 5px;
+  display: inline;
+}
+
+@media (min-width: 768px) {
+  .join {
+    font-size: 16px;
+  }
+}
+
+.price-name {
+  font-size: 14px;
+  margin-left: 30px;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .price-name {
+    font-size: 16px;
+    display: inline;
+  }
+}
+
 .shop-price {
   margin-left: 35px;
   margin-top: 10px;
+}
+
+.personal-course {
+  display: block;
+  margin: 10px 0 0 0;
+}
+
+@media (min-width: 768px) {
+  .personal-course {
+    display: inline;
+  }
+}
+
+.personal-time {
+  display: inline;
+  margin-left: 30px;
+}
+
+@media (min-width: 768px) {
+  .personal-time {
+    margin-left: 15px;
+  }
+}
+
+.personal-price {
+  display: inline;
+}
+
+@media (min-width: 768px) {
+  .personal-price {
+    margin-left: 10px;
+  }
+}
+
+.open {
+  margin-left: 30px;
+  display: block;
+}
+
+.shop-image {
+  width: 25%;
+}
+
+.center-btn {
+  text-align: center;
+  margin: 30px 0 20px 0;
+}
+
+@media (min-width: 768px) {
+  .center-btn {
+    margin: 40px 0 30px 0;
+  }
+}
+
+.shop-btn {
+  font-size: 12px;
+  padding: 5px 15px;
+  margin: 0 10px;
+}
+
+@media (min-width: 768px) {
+  .shop-btn {
+    font-size: 16px;
+    padding: 8px 30px;
+    margin: 0 15px;
+  }
 }
 
