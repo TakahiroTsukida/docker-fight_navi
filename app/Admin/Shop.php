@@ -34,16 +34,14 @@ class Shop extends Model
 
       //prices
       //片方が入力されている場合、片方も必須
-      'price[name].*' => 'array|required_with:price[price].*|distinct',
-      'price[price].*'=> 'array|required_with:price[name].*',
+      'price.name.*' => 'required_with:price.price.*|distinct',
+      'price.price.*'=> 'required_with:price.name.*',
 
       //personals
       //どれかが入力されている場合、全ての行が入力必須
-      'personal[course].*' => 'array|required_with:personal[time].*|required_with:personal[price].*',
-
-      'personal[time].*' => 'array|numeric|required_with:personal[course].*|required_with:personal[price].*',
-
-      'personal[price].*' => 'array|numeric|required_with:personal[course].*|required_with:personal[time].*',
+      'personal.course.*' => 'array|required_with:personal.time.*|required_with:personal.price.*',
+      'personal.time.*' => 'array|numeric|required_with:personal.course.*|required_with:personal.price.*',
+      'personal.price.*' => 'array|numeric|required_with:personal.course.*|required_with:personal.time.*',
 
       //shops
       'open' => 'nullable',

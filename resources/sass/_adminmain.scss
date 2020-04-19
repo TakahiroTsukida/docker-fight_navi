@@ -155,6 +155,13 @@ $tab: 768px; // タブレット
   }
 }
 
+.btn-group {
+  margin: 50px 0 30px 0;
+  @include tab {
+    margin: 100px 0 70px 0;
+  }
+}
+
 .shop-btn {
   font-size: 12px;
   padding: 5px 15px;
@@ -164,4 +171,100 @@ $tab: 768px; // タブレット
     padding: 8px 30px;
     margin: 0 15px;
   }
+}
+
+.shop-btn-lg {
+  font-size: 14px;
+  padding: 7px 15px;
+  margin: 0 10px;
+  @include tab {
+    font-size: 18px;
+    padding: 10px 30px;
+    margin: 0 15px;
+  }
+}
+
+.price-item-name {
+  width: 100px;
+  display: inline;
+  @include tab {
+    width: 130px;
+  }
+}
+
+.price-item {
+  width: 80px;
+  display: inline;
+  @include tab {
+    width: 100px;
+  }
+}
+
+.form-join {
+  margin-left: 58px;
+  @include tab {
+    margin-left: 83px;
+  }
+}
+
+.form-tel {
+  width: 70%;
+  @include tab {
+    width: 250px;
+  }
+}
+
+.form-address {
+  display: block;
+  @include tab {
+    display: inline;
+  }
+}
+
+.form-number {
+  width: 170px;
+  @include tab {
+    width: 230px;
+  }
+}
+
+.form-ken {
+  width: 100%;
+  @include tab {
+    width: 250px;
+  }
+}
+
+.form-personal-c {
+  width: 170px;
+  display: block;
+  @include tab {
+    width: 230px;
+    display: inline;
+  }
+}
+
+.form-personal-t {
+  width: 60px;
+  margin-top: 5px;
+  display: inline;
+  margin-left: 10%;
+  @include tab {
+    margin-left: 10px;
+  }
+}
+
+.form-personal-p {
+  width: 80px;
+  margin-top: 5px;
+  display: inline;
+  @include tab {
+    margin-left: 10px;
+    width: 100px;
+  }
+}
+
+.personal-group {
+  border-bottom: solid 1px #C0C0C0;
+  padding-bottom: 18px;
 }

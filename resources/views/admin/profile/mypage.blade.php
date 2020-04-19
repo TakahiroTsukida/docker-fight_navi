@@ -4,6 +4,7 @@
   <div class="container">
       <div class="row justify-content-center">
           <div class="col-sm-12 mx-auto">
+              <h1 class="page-title">マイページ</h1>
               <div class="card card-group">
                   <div class="card-body">
                       <div class="body">

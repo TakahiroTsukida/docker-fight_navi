@@ -11155,6 +11155,17 @@ img {
   font-weight: bold;
 }
 
+h1 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 18px;
+  }
+}
+
 h2 {
   font-size: 16px;
   font-weight: bold;
@@ -11201,6 +11212,25 @@ p {
 
 i {
   display: inline;
+}
+
+input[type=number] {
+  text-align: right;
+}
+
+input.center {
+  text-align: center;
+}
+
+.page-title {
+  margin: 35px 0 30px 0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .page-title {
+    margin: 45px 0 40px 0;
+  }
 }
 
 .card-group {
@@ -11273,6 +11303,39 @@ i {
 @media (min-width: 768px) {
   .symbol {
     font-size: 15px;
+  }
+}
+
+.price-en {
+  font-size: 8px;
+  display: inline;
+}
+
+@media (min-width: 768px) {
+  .price-en {
+    font-size: 10px;
+  }
+}
+
+.warning-text {
+  font-size: 12px;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .warning-text {
+    font-size: 14px;
+    display: inline;
+  }
+}
+
+.i-con {
+  width: 20px;
+}
+
+@media (min-width: 768px) {
+  .i-con {
+    width: 25px;
   }
 }
 
@@ -11460,6 +11523,16 @@ i {
   }
 }
 
+.btn-group {
+  margin: 50px 0 30px 0;
+}
+
+@media (min-width: 768px) {
+  .btn-group {
+    margin: 100px 0 70px 0;
+  }
+}
+
 .shop-btn {
   font-size: 12px;
   padding: 5px 15px;
@@ -11472,5 +11545,134 @@ i {
     padding: 8px 30px;
     margin: 0 15px;
   }
+}
+
+.shop-btn-lg {
+  font-size: 14px;
+  padding: 7px 15px;
+  margin: 0 10px;
+}
+
+@media (min-width: 768px) {
+  .shop-btn-lg {
+    font-size: 18px;
+    padding: 10px 30px;
+    margin: 0 15px;
+  }
+}
+
+.price-item-name {
+  width: 100px;
+  display: inline;
+}
+
+@media (min-width: 768px) {
+  .price-item-name {
+    width: 130px;
+  }
+}
+
+.price-item {
+  width: 80px;
+  display: inline;
+}
+
+@media (min-width: 768px) {
+  .price-item {
+    width: 100px;
+  }
+}
+
+.form-join {
+  margin-left: 58px;
+}
+
+@media (min-width: 768px) {
+  .form-join {
+    margin-left: 83px;
+  }
+}
+
+.form-tel {
+  width: 70%;
+}
+
+@media (min-width: 768px) {
+  .form-tel {
+    width: 250px;
+  }
+}
+
+.form-address {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .form-address {
+    display: inline;
+  }
+}
+
+.form-number {
+  width: 170px;
+}
+
+@media (min-width: 768px) {
+  .form-number {
+    width: 230px;
+  }
+}
+
+.form-ken {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .form-ken {
+    width: 250px;
+  }
+}
+
+.form-personal-c {
+  width: 170px;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .form-personal-c {
+    width: 230px;
+    display: inline;
+  }
+}
+
+.form-personal-t {
+  width: 60px;
+  margin-top: 5px;
+  display: inline;
+  margin-left: 10%;
+}
+
+@media (min-width: 768px) {
+  .form-personal-t {
+    margin-left: 10px;
+  }
+}
+
+.form-personal-p {
+  width: 80px;
+  margin-top: 5px;
+  display: inline;
+}
+
+@media (min-width: 768px) {
+  .form-personal-p {
+    margin-left: 10px;
+    width: 100px;
+  }
+}
+
+.personal-group {
+  border-bottom: solid 1px #C0C0C0;
+  padding-bottom: 18px;
 }
 

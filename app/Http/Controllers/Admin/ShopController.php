@@ -27,6 +27,7 @@ class ShopController extends Controller
 
 
     public function create(Request $request) {
+      //dd($request->all());
         $this->validate($request, Shop::$rules);
         $form = $request->all();
         //shopsテーブル保存
@@ -82,11 +83,11 @@ class ShopController extends Controller
 
     public function edit(Request $request) {
         $shop = Shop::find($request->id);
-
+        $types = array_column ( $shop->types->toArray() , 'id');
         if(empty($shop)) {
            abort(404);
         }
-        return view('admin.shop.edit',['shop_form' => $shop]);
+        return view('admin.shop.edit',['shop' => $shop, 'types' => $types]);
     }
 
 
@@ -145,14 +146,9 @@ class ShopController extends Controller
     }
 
       public function delete(Request $request) {
-        //price削除
-          $price = Price::where('shop_id', $request->id)->get();
-          $price->delete();
-        //personal削除
-          $personal = Personal::where('shop_id', $request->id)->get();
-          $personal->delete();
-        //shop削除
           $shop = Shop::find($request->id);
+          $shop->prices->each->delete();
+          $shop->personals->each->delete();
           $shop->delete();
           return redirect('admin/profile/mypage');
       }

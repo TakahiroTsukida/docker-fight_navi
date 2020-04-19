@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-sm-12 mx-auto">
                 <div class="text-center">
-                    <h5>管理ユーザープロフィール編集</h5>
+                    <h2 class="page-title">管理ユーザー　プロフィール編集</h2>
                 </div>
                 <div class="card">
                     <div class="card-body">
@@ -67,7 +67,10 @@
 
                                 <div class="form-group">
                                     <label>都道府県</label>
-                                    <input type="text" name="address_ken" class="form-control" value="{{ $admin->address_ken }}">
+                                    <select name="address_ken" class="form-control form-ken">
+                                      <option value="{{ $admin->address_ken }}" selected>{{ $admin->address_ken }}</option>
+                                      @include('parts/address_ken')
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
@@ -82,9 +85,11 @@
                             </div>
 
                             <div class="form-group row justify-content-center">
-                                <div>
-                                    <a href="{{ route('user.profile.mypage') }}" class="btn btn-success mx-3 mt-5 mb-3 px-5 rounded-pill">戻る</a>
-                                    <input type="submit" class="btn btn-primary mx-3 mt-5 mb-3 px-5 rounded-pill" value="更新">
+                                <div class="btn-group">
+                                    <a href="{{ route('user.profile.mypage') }}" class="btn btn-success shop-btn-lg">戻る</a>
+                                </div>
+                                <div class="btn-group">
+                                    <input type="submit" class="btn btn-primary shop-btn-lg" value="更新">
                                 </div>
                             </div>
                         {{ csrf_field() }}
