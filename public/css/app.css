@@ -11508,6 +11508,10 @@ input.center {
   display: block;
 }
 
+.image-group {
+  display: inline;
+}
+
 .shop-image {
   width: 25%;
 }

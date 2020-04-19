@@ -182,16 +182,30 @@
                                       <i class="fas fa-image fa-lg"></i>
                                       <label class="shop-about">写真</label>
                                   </div>
-                                  <div class="profile">
-                                      <p class="shop-image"><img src="{{ asset('image/写真のフリーアイコン7.png') }}"></p>
+
+                                  @if (isset($shop->images))
+                                      @foreach ($shop->images as $image)
+                                          <div class="image-group">
+                                              <p class="shop-image"><img src="{{ asset('storage/image/store_images/'.$image->image_path) }}"></p>
+                                          </div>
+                                      @endforeach
                                       <a href="#" class="link">もっと見る</a>
-                                  </div>
+                                  @else
+                                      <div class="profile">
+                                          <label class="shop-about">現在写真は登録されていません</label>
+                                      </div>
+                                  @endif
+
+
+
                                   <div class="profile">
                                       <div class="center-btn">
                                           <a href="{{ route('admin.shop.edit',['id' => $shop->id]) }}" class="btn btn-success shop-btn">編集</a>
                                           <button type="button" class="btn btn-danger shop-btn" data-toggle="modal" data-target="#testModal">削除</button>
                                       </div>
                                   </div>
+
+
 
                                   <!-- ボタン・リンククリック後に表示される画面の内容 -->
                                   <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">

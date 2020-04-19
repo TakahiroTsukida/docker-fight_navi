@@ -141,6 +141,10 @@ $tab: 768px; // タブレット
   display: block;
 }
 
+.image-group {
+  display: inline;
+}
+
 .shop-image {
   width: 25%;
   @include tab {
