@@ -15,7 +15,9 @@
                                 @include('parts/admin/label/shop/name')
 
                                 @error('shop_name')
-                                    <p class="error">{{ $message }}</p>
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
                                 @enderror
                                 <input type="text" name="shop_name" class="form-control" placeholder="例）Example GYM" value="{{ old('shop_name') }}">
                             </div>
@@ -26,7 +28,9 @@
                                 @include('parts/admin/label/shop/type')
 
                                 @error('type')
-                                    <p class="error">{{ $message }}</p>
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
                                 @enderror
                                 <div class="checkbox">
                                    <label>
@@ -60,7 +64,9 @@
                                 @include('parts/admin/label/shop/tel')
 
                                 @error('tel')
-                                    <p class="error">{{ $message }}</p>
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
                                 @enderror
                                 <input type="text" name="tel" maxlength="11" class="form-control" placeholder="例) 0312345678" value="{{ old('tel') }}">
                             </div>
@@ -68,6 +74,7 @@
 
                             {{-- address --}}
                             <div class="form-group mt-4">
+                                {{-- 住所 --}}
                                 @include('parts/admin/label/shop/address')
                             </div>
 
@@ -75,24 +82,34 @@
                                 @include('parts/admin/label/shop/address_number')
 
                                 @error('address_number')
-                                    <p class="error">{{ $message }}</p>
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    <div>
                                 @enderror
                                 <input type="tel" name="address_number" maxlength="7" class="form-control form-number" placeholder="例）1030013" value="{{ old('address_number') }}">
                             </div>
+
                             <div class="form-address">
+                                {{-- 都道府県 --}}
                                 @include('parts/admin/label/shop/address_ken')
 
                                 @error('address_ken')
-                                    <p class="error">{{ $message }}</p>
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
                                 @enderror
                                 <select name="address_ken" class="form-control form-ken">
                                   @include('parts/address_ken');
                                 </select>
                             </div>
+
                             <div class="form-group">
+                                {{-- 市区町村以降 --}}
                                 @include('parts/admin/label/shop/address_city')
                                 @error('address_city')
-                                    <p class="error">{{ $message }}</p>
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
                                 @enderror
                                 <input type="text" name="address_city" class="form-control" value="{{ old('address_city') }}">
                             </div>
@@ -101,15 +118,17 @@
 
                             {{-- price --}}
                             <div class="form-group mt-4">
+                                @error('price.price.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 <label class="shop-text">
                                     <input type="hidden" name="price[name][]" value="入会金">
                                     入会金
                                 </label>
                                 <input type="number" name="price[price][]" class="form-control price-item form-join" placeholder="半角数字" value="{{ old('price[price][]') }}">
                                 <p class="price-en">円（税込）</p>
-                                @error('price[price].*')
-                                    <p class="error">{{ $message }}</p>
-                                @enderror
                             </div>
 
                             <div class="form-group mt-4">
@@ -118,6 +137,11 @@
                             </div>
 
                             <div class="form-group mt-4">
+                                @error('price.price.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 <label class="d-inline shop-text">
                                     <input type="hidden" name="price[name][]" value="男性">
                                     　男性
@@ -127,6 +151,11 @@
                             </div>
 
                             <div class="form-group">
+                                @error('price.price.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 <label class="d-inline shop-text">
                                     <input type="hidden" name="price[name][]" value="女性">
                                     　女性
@@ -137,53 +166,73 @@
 
                             {{-- prices --}}
                             <div class="form-group mt-4">
+                                @error('price.name.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                @error('price.price.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 <input type="text" name="price[name][]" class="form-control price-item-name" value="{{ old('price[name][]') }}">
                                 <input type="number" name="price[price][]" class="form-control price-item" value="{{ old('price[price][]') }}">
                                 <p class="price-en"><small>円（税込）</small></p>
-                                @error('price[price][]')
-                                    <p class="error">{{ $message }}</p>
-                                @enderror
                             </div>
 
                             {{-- prices --}}
                             <div class="form-group mt-4">
+                                @error('price.name.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                @error('price.price.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 <input type="text" name="price[name][]" class="form-control price-item-name" value="{{ old('price[name][]') }}">
                                 <input type="number" name="price[price][]" class="form-control price-item" value="{{ old('price[price][]') }}">
                                 <p class="price-en"><small>円（税込）</small></p>
-                                @error('price[price][]')
-                                    <p class="error">{{ $message }}</p>
-                                @enderror
                             </div>
 
                             {{-- prices --}}
                             <div class="form-group mt-4">
+                                @error('price.name.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                @error('price.price.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 <input type="text" name="price[name][]" class="form-control price-item-name" value="{{ old('price[name][]') }}">
                                 <input type="number" name="price[price][]" class="form-control price-item" value="{{ old('price[price][]') }}">
                                 <p class="price-en"><small>円（税込）</small></p>
-                                @error('price[price][]')
-                                    <p class="error">{{ $message }}</p>
-                                @enderror
                             </div>
 
                             {{-- prices --}}
                             <div class="form-group mt-4">
+                                @error('price.name.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                @error('price.price.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 <input type="text" name="price[name][]" class="form-control price-item-name" value="{{ old('price[name][]') }}">
                                 <input type="number" name="price[price][]" class="form-control price-item" value="{{ old('price[price][]') }}">
                                 <p class="price-en"><small>円（税込）</small></p>
-                                @error('price[price][]')
-                                    <p class="error">{{ $message }}</p>
-                                @enderror
                             </div>
 
-                            {{-- prices --}}
-                            <div class="form-group mt-4">
-                                <input type="text" name="price[name][]" class="form-control price-item-name" value="{{ old('price[name][]') }}">
-                                <input type="number" name="price[price][]" class="form-control price-item" value="{{ old('price[price][]') }}">
-                                <p class="price-en"><small>円（税込）</small></p>
-                                @error('price[price][]')
-                                    <p class="error">{{ $message }}</p>
-                                @enderror
-                            </div>
+
 
 
 
@@ -193,6 +242,22 @@
                             </div>
 
                             <div class="form-group personal-group">
+                               {{-- バリデーションエラー --}}
+                                @error('personal.course.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                @error('personal.time.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                @error('personal.price.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 {{-- コース名 --}}
                                 <input type="text" name="personal[course][]" class="form-control shop-text form-personal-c" placeholder="コース名" value="{{ old('personal[course][]') }}">
                                 {{-- 時間 --}}
@@ -204,48 +269,114 @@
                             </div>
 
                             <div class="form-group personal-group">
+                               {{-- バリデーションエラー --}}
+                                @error('personal.course.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                @error('personal.time.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                @error('personal.price.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 {{-- コース名 --}}
-                                <input type="text" name="personal[course][]" class="form-control shop-text form-personal-c" value="{{ old('personal[course][]') }}">
+                                <input type="text" name="personal[course][]" class="form-control shop-text form-personal-c" placeholder="コース名" value="{{ old('personal[course][]') }}">
                                 {{-- 時間 --}}
-                                <input type="number" name="personal[time][]" class="form-control shop-text form-personal-t" value="{{ old('personal[time][]') }}">
+                                <input type="number" name="personal[time][]" class="form-control shop-text form-personal-t" placeholder="例)50" value="{{ old('personal[time][]') }}">
                                 <p class="price-en">分</p>
                                 {{-- 金額 --}}
-                                <input type="number" name="personal[price][]" class="form-control shop-text form-personal-p" value="{{ old('personal[price][]') }}">
+                                <input type="number" name="personal[price][]" class="form-control shop-text form-personal-p" placeholder="例)5500" value="{{ old('personal[price][]') }}">
                                 <p class="price-en">円（税込）</p>
                             </div>
 
                             <div class="form-group personal-group">
+                               {{-- バリデーションエラー --}}
+                                @error('personal.course.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                @error('personal.time.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                @error('personal.price.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 {{-- コース名 --}}
-                                <input type="text" name="personal[course][]" class="form-control shop-text form-personal-c" value="{{ old('personal[course][]') }}">
+                                <input type="text" name="personal[course][]" class="form-control shop-text form-personal-c" placeholder="コース名" value="{{ old('personal[course][]') }}">
                                 {{-- 時間 --}}
-                                <input type="number" name="personal[time][]" class="form-control shop-text form-personal-t" value="{{ old('personal[time][]') }}">
+                                <input type="number" name="personal[time][]" class="form-control shop-text form-personal-t" placeholder="例)50" value="{{ old('personal[time][]') }}">
                                 <p class="price-en">分</p>
                                 {{-- 金額 --}}
-                                <input type="number" name="personal[price][]" class="form-control shop-text form-personal-p" value="{{ old('personal[price][]') }}">
+                                <input type="number" name="personal[price][]" class="form-control shop-text form-personal-p" placeholder="例)5500" value="{{ old('personal[price][]') }}">
                                 <p class="price-en">円（税込）</p>
                             </div>
 
                             <div class="form-group personal-group">
+                               {{-- バリデーションエラー --}}
+                                @error('personal.course.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                @error('personal.time.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                @error('personal.price.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 {{-- コース名 --}}
-                                <input type="text" name="personal[course][]" class="form-control shop-text form-personal-c" value="{{ old('personal[course][]') }}">
+                                <input type="text" name="personal[course][]" class="form-control shop-text form-personal-c" placeholder="コース名" value="{{ old('personal[course][]') }}">
                                 {{-- 時間 --}}
-                                <input type="number" name="personal[time][]" class="form-control shop-text form-personal-t" value="{{ old('personal[time][]') }}">
+                                <input type="number" name="personal[time][]" class="form-control shop-text form-personal-t" placeholder="例)50" value="{{ old('personal[time][]') }}">
                                 <p class="price-en">分</p>
                                 {{-- 金額 --}}
-                                <input type="number" name="personal[price][]" class="form-control shop-text form-personal-p" value="{{ old('personal[price][]') }}">
+                                <input type="number" name="personal[price][]" class="form-control shop-text form-personal-p" placeholder="例)5500" value="{{ old('personal[price][]') }}">
                                 <p class="price-en">円（税込）</p>
                             </div>
 
                             <div class="form-group personal-group">
+                               {{-- バリデーションエラー --}}
+                                @error('personal.course.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                @error('personal.time.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                @error('personal.price.*')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 {{-- コース名 --}}
-                                <input type="text" name="personal[course][]" class="form-control shop-text form-personal-c" value="{{ old('personal[course][]') }}">
+                                <input type="text" name="personal[course][]" class="form-control shop-text form-personal-c" placeholder="コース名" value="{{ old('personal[course][]') }}">
                                 {{-- 時間 --}}
-                                <input type="number" name="personal[time][]" class="form-control shop-text form-personal-t" value="{{ old('personal[time][]') }}">
+                                <input type="number" name="personal[time][]" class="form-control shop-text form-personal-t" placeholder="例)50" value="{{ old('personal[time][]') }}">
                                 <p class="price-en">分</p>
                                 {{-- 金額 --}}
-                                <input type="number" name="personal[price][]" class="form-control shop-text form-personal-p" value="{{ old('personal[price][]') }}">
+                                <input type="number" name="personal[price][]" class="form-control shop-text form-personal-p" placeholder="例)5500" value="{{ old('personal[price][]') }}">
                                 <p class="price-en">円（税込）</p>
                             </div>
+
+
 
 
                             {{-- shop --}}
