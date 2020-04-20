@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
     <div class="col-md-12 mx-auto">
-        <div class="text-center">
+        <div class="text-center page-title">
             <img src="{{ asset('image/1700ec56fa396b05d10486da417d0f65_m.jpg') }}" alt="fightなび" width="100%">
         </div>
         <div>

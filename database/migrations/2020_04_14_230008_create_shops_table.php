@@ -21,9 +21,12 @@ class CreateShopsTable extends Migration
             $table->string('address_number')->nullable();
             $table->string('address_ken');
             $table->string('address_city');
+            $table->string('address_other')->nullable();
             $table->string('open')->nullable();
             $table->string('close')->nullable();
             $table->string('web')->nullable();
+            $table->string('trial');
+            $table->string('trial_price')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
         });

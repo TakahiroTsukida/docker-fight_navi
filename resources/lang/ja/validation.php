@@ -127,8 +127,11 @@ return [
         'type' => 'ジャンル',
         'address_number' => '郵便番号',
         'address_ken' => '都道府県',
-        'address_city' => '市区町村以降',
+        'address_city' => '市区町村',
+        'address_other' => '市区町村以降',
 
+        'trial' => '入会前の体験',
+        'trial_price' => '体験の金額',
 
     ],
 

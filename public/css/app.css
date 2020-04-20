@@ -11222,9 +11222,12 @@ input.center {
   text-align: center;
 }
 
+.title {
+  text-align: center;
+}
+
 .page-title {
   margin: 35px 0 30px 0;
-  text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -11337,6 +11340,10 @@ input.center {
   .i-con {
     width: 25px;
   }
+}
+
+.search_type {
+  display: inline;
 }
 
 .shop-name {

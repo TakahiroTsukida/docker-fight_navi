@@ -24,8 +24,8 @@ class UserController extends Controller
         return view('user.search.index');
     }
 
-    public function store() {
-        return view('user.search.store');
+    public function shop() {
+        return view('user.search.shop');
     }
 
 

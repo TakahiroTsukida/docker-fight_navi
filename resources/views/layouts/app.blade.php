@@ -55,7 +55,7 @@
                                                 <label class="ml-2 mt-1 align-middle ">メールアドレス編集</label>
                                             </li>
                                         </a>
-                                        <a href="{{ route('store') }}" class="main-menu">
+                                        <a href="{{ route('user.search') }}" class="main-menu">
                                             <li class="list-group-item-light py-3 pl-3 border">
                                                 <i class="fas fa-dumbbell fa-2x align-middle"></i>
                                                 <label class="ml-2">ジムを検索する</label>

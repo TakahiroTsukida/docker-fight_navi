@@ -13,9 +13,12 @@ class Shop extends Model
         'address_number',
         'address_ken',
         'address_city',
+        'address_other',
         'open',
         'close',
         'web',
+        'trial',
+        'trial_price',
         'description',
     ];
 
@@ -31,6 +34,7 @@ class Shop extends Model
       'address_number' => 'nullable|digits:7',
       'address_ken' => 'required',
       'address_city' => 'required',
+      'address_city' => 'nullable',
 
       //prices
       //片方が入力されている場合、片方も必須
@@ -47,6 +51,8 @@ class Shop extends Model
       'open' => 'nullable',
       'close' => 'nullable',
       'web' => 'nullable|active_url',
+      'trial' => 'required',
+      'trial_price' => 'nullable|numeric',
       'description' => 'nullable|max:300',
 
       //images

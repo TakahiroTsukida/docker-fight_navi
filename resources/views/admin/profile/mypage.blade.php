@@ -4,7 +4,7 @@
   <div class="container">
       <div class="row justify-content-center">
           <div class="col-sm-12 mx-auto">
-              <h1 class="page-title">マイページ</h1>
+              <h1 class="page-title title">マイページ</h1>
               <div class="card card-group">
                   <div class="card-body">
                       <div class="body">
@@ -88,6 +88,14 @@
                                               <li class="type-text"><i class="fas fa-check"></i> {{ $type->name }}</li>
                                           @endforeach
                                       </ul>
+                                  </div>
+
+                                  <div class="profile">
+                                      <label class="shop-about d-inline"><i class="fas fa-star" style="color: #fbca4d;"></i>入会前の体験：</label>
+                                          <p class="type-text d-inline">{{ $shop->trial }}</p>
+                                          @if ($shop->trial == '有料')
+                                          <p class="type-text d-inline">{{ $shop->trial_price }}<span class="symbol">円</span></p>
+                                          @endif
                                   </div>
 
                                   @if (isset($shop->description))
@@ -175,7 +183,7 @@
                                       @if (isset($shop->address_number))
                                       <p class="open"><span class="symbol">〒 </span>{{ $shop->address_number }}</p>
                                       @endif
-                                      <p class="open">{{ $shop->address_ken }}{{ $shop->address_city }}</p>
+                                      <p class="open">{{ $shop->address_ken }}{{ $shop->address_city }}{{ $shop->address_other }}</p>
                                   </div>
 
                                   <div class="profile">

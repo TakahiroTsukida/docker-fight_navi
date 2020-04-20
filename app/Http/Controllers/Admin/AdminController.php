@@ -17,6 +17,7 @@ class AdminController extends Controller
         $admin = Auth::user();
         //$shops = Shop::with('types','prices','personals')->get()->sortByDesc('created_at');
         $shops = Shop::where('admin_id',$admin->id)->get()->sortByDesc('created_at');
+        //$personals = $shops->personals()->get()->sortByDesc('time');
         return view('admin.profile.mypage', ['admin' => $admin, 'shops' => $shops]);
     }
 

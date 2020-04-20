@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col">
-            <div class="card">
+            <div class="card page-title">
                 <div class="card-body">
                     <h5 class="text-center mt-5 mb-3">管理ユーザー  ログイン</h5>
                     <form method="POST" action="{{ route('admin.login') }}">

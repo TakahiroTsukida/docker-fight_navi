@@ -8,8 +8,7 @@
                     <div class="card-body">
                         <div class="form-group row">
                             <div class="col-sm-8 offset-md-2 my-3 text-left">
-                                <img src="{{ asset('image/検索用の虫眼鏡アイコン 7.png') }}" alt="検索" width="30">
-                                <label for="search_gym">ジム名・キーワードで検索</label>
+                                <label for="search_gym"><i class="fas fa-search fa-lg"></i>ジム名・キーワードで検索</label>
                             </div>
                         </div>
                         <div class="form-group row mb-5">
@@ -20,27 +19,28 @@
 
                         <div class="form-group row mt-5">
                             <div class="col-sm-8 offset-md-2 mt-2 mb-3 text-left">
-                                <label class="mb-2">詳細条件</label>
-                                <br>
-                                <img src="{{ asset('image/ボクシングなど格闘競技のヘッドギア.png') }}" alt="検索" width="30">
-                                <label for="search_type">カテゴリー</label>
+                                <label class="mb-2 d-block">詳細条件</label>
+
+                                <img src="{{ asset('image/ボクシングなど格闘競技のヘッドギア.png') }}" alt="検索" class="i-con">
+                                <label class="d-inline">カテゴリー</label>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-sm-6 col-md-4 offset-md-2">
-                                <button type="submit" class="btn btn-outline-dark col-sm-12 mb-3">ボクシング</button>
-                                <button type="submit" class="btn btn-outline-dark col-sm-12 mb-3">総合格闘技</button>
+                                <label><input type="checkbox" class="btn btn-outline-dark col-sm-12 mb-3" value="1">ボクシング</label>
+
+                                <label><input type="checkbox" class="btn btn-outline-dark col-sm-12 mb-3" value="3">総合格闘技</label>
                             </div>
                             <div class="col-sm-6 col-md-4">
-                                <button type="submit" class="btn btn-outline-dark col-sm-12 mb-3">キックボクシング</button>
-                                <button type="submit" class="btn btn-outline-dark col-sm-12 mb-3 text-nowrap"><small>パーソナルトレーニング</small></button>
+                                <label><input type="checkbox" class="btn btn-outline-dark col-sm-12 mb-3" value="2">キックボクシング</label>
+                                <label><input type="checkbox" class="btn btn-outline-dark col-sm-12 mb-3 text-nowrap"><small>パーソナルトレーニング</small></label>
                             </div>
                         </div>
 
                         <div class="form-group row mt-4">
                             <div class="col-sm-8 offset-md-2 my-3 text-left">
-                                <img src="{{ asset('image/地図マーカーのアイコン素材4.png') }}" alt="検索" width="30">
+                                <img src="{{ asset('image/地図マーカーのアイコン素材4.png') }}" alt="検索" class="i-con">
                                 <label for="search_gym">場所から選ぶ</label>
                             </div>
                         </div>
