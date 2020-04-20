@@ -20,7 +20,12 @@ class UserController extends Controller
         return view('user.home');
     }
 
-    public function search() {
+    public function search(Request $request) {
+      //  dd($request);
+      //  $cond_search_shop = $request->input('search_shop');
+
+        //dd($cond_search_shop);
+
         return view('user.search.index');
     }
 

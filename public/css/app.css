@@ -11351,7 +11351,7 @@ input.center {
   left: -9999px;
 }
 
-.category-group label {
+.category-group p {
   display: block;
   position: relative;
   text-align: center;
@@ -11372,12 +11372,16 @@ input.center {
 }
 
 @media (min-width: 992px) {
-  .category-group label {
+  .category-group p {
     font-size: 16px;
   }
 }
 
-.category-group label::before {
+.category-group label {
+  display: block;
+}
+
+.category-group p::before {
   display: block;
   position: absolute;
   top: 10px;
@@ -11393,12 +11397,12 @@ input.center {
   box-shadow: 0 0 20px rgba(0, 0, 0, .6);
 }*/
 
-.category-group input:checked + label {
+.category-group input:checked + p {
   background-color: #222222;
   color: #fff;
 }
 
-.category-group input:checked + label::before {
+.category-group input:checked + p::before {
   background-color: #000000;
 }
 

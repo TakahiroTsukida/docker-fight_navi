@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 mt-3">
+
                 <div class="card page-title border-dark">
                     <div class="card-body">
 
@@ -15,7 +16,7 @@
                             </div>
                             <div class="form-group row mb-5">
                                 <div class="col-md-8 offset-md-2">
-                                    <input type="text" name="search_gym" class="form-control">
+                                    <input type="text" name="search_shop" class="form-control">
                                 </div>
                             </div>
 
@@ -30,18 +31,25 @@
 
                             <div class="form-group row">
                                 <div class="category-group col-sm-6 col-md-4 offset-md-2">
-                                        <input type="checkbox" id="category1" value="1">
-                                        <label for="category1">ボクシング</label>
+                                    <label for="category1">
+                                        <input type="checkbox" name="type[]" id="category1" value="1">
+                                        <p>ボクシング</p>
+                                    </label>
 
-                                        <input type="checkbox" id="category2" value="2">
-                                        <label for="category2">キックボクシング</label>
+                                    <label for="category2">
+                                        <input type="checkbox" name="type[]" id="category2" value="2">
+                                        <p>キックボクシング</p>
+                                    </label>
                                 </div>
                                 <div class="category-group col-sm-6 col-md-4">
-                                        <input type="checkbox" id="category3" value="3">
-                                        <label for="category3">総合格闘技</label>
-
-                                        <input type="checkbox" id="category4" value="4">
-                                        <label for="category4" class="personal_categoty">パーソナルトレーニング</label>
+                                    <label for="category3">
+                                        <input type="checkbox" name="type[]" id="category3" value="3">
+                                        <p>総合格闘技</p>
+                                    </label>
+                                    <label for="category4">
+                                        <input type="checkbox" name="type[]" id="category4" value="4">
+                                        <p>パーソナルトレーニング</p>
+                                    </label>
                                 </div>
                             </div>
 
@@ -63,7 +71,8 @@
                             </div>
 
                             <div class="row justify-content-center my-5">
-                                <button type="submit" class="btn btn-primary rounded-pill px-5">検索</button>
+                                {{ csrf_field() }}
+                                <input type="submit" class="btn btn-primary rounded-pill px-5" value="検索">
                             </div>
                         </form>
                     </div>
