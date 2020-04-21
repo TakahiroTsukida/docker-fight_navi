@@ -18,7 +18,7 @@ Route::get('/', 'User\UserController@show_top')->name('top');
 Route::group(['prefix' => 'user'], function() {
     Route::get('home', 'User\UserController@show_home')->name('home');
     Route::get('search', 'User\UserController@search')->name('user.search');
-    Route::get('shop', 'User\UserController@store')->name('shop');
+    Route::get('shop', 'User\UserController@shop')->name('shop');
 
 
     Route::group(['middleware' => 'auth'], function() {

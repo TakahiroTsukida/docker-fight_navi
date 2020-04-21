@@ -4,6 +4,152 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12">
+              <div class="card card-group">
+                  <div class="card-body">
+                      <div class="shop-body">
+
+                          <div class="profile">
+                              <h2 class="shop-name">{{ $shop->name }}</h2>
+                          </div>
+
+                          <div class="profile">
+                              <p class="address">{{ $shop->address_ken }}{{ $shop->address_city }}</p>
+                          </div>
+
+                          <div class="profile">
+                              <label class="type">ジャンル：</label>
+                              <ul class="type-list">
+                                  @foreach($shop->types as $type)
+                                      <li class="type-text"><i class="fas fa-check"></i> {{ $type->name }}</li>
+                                  @endforeach
+                              </ul>
+                          </div>
+
+                          <div class="profile">
+                              <label class="shop-about d-inline"><i class="fas fa-star" style="color: #fbca4d;"></i>入会前の体験：</label>
+                                  <p class="type-text d-inline">{{ $shop->trial }}</p>
+                                  @if ($shop->trial == '有料')
+                                  <p class="type-text d-inline">{{ $shop->trial_price }}<span class="symbol">円</span></p>
+                                  @endif
+                          </div>
+
+                          <div class="profile">
+                              <i class="fas fa-image fa-lg"></i>
+                              <label class="shop-about">写真</label>
+                          </div>
+
+                          @if (isset($shop->images))
+                              @foreach ($shop->images as $image)
+                                  <div class="image-group">
+                                      <p class="shop-image"><img src="{{ asset('storage/image/store_images/'.$image->image_path) }}"></p>
+                                  </div>
+                              @endforeach
+                              <a href="#" class="link">もっと見る</a>
+                          @else
+                              <div class="profile">
+                                  <label class="shop-about">現在写真は登録されていません</label>
+                              </div>
+                          @endif
+
+                          @if (isset($shop->description))
+                          <div class="profile">
+                              <label class="admin-label">簡単な説明</label>
+                              <p class="description">{{ $shop->description }}</p>
+                          </div>
+                          @endif
+
+                          @if (isset($shop->prices))
+                          <div class="profile">
+                              <i class="far fa-handshake fa-lg"></i>
+                              @foreach ($shop->prices as $price)
+                                  @if ($price->name == "入会金")
+                                  <label class="join">{{ $price->name }}</label>
+                                  <p class="join"><strong>{{ $price->price }}</strong><span class="symbol">円（税込）</span></p><br>
+                                  @endif
+                              @endforeach
+                          </div>
+                          @endif
+
+                          @if (isset($shop->prices))
+                          <div class="profile">
+                              <i class="fas fa-yen-sign fa-lg"></i>
+                              <label class="shop-about">月会費</label>
+                              @foreach ($shop->prices as $price)
+                                  @if ($price->name != "入会金")
+                                  <p class="shop-price">{{ $price->name }} <strong>{{ $price->price }}</strong><span class="symbol">円（税込）</span></p>
+                                  @endif
+                              @endforeach
+                          </div>
+                          @endif
+
+                          @if (isset($shop->personals))
+                          <div class="profile mt-3">
+                              <i class="fas fa-user-friends fa-lg"></i>
+                              <label class="shop-about">パーソナルトレーニング会費</label>
+                          </div>
+                              @foreach ($shop->personals as $personal)
+                                  <div class="shop-price">
+                                      <p class="personal-course">{{ $personal->course }}</p>
+                                      <p class="personal-time">{{ $personal->time }} 分</p>
+                                      <p class="personal-price">{{ $personal->price }}
+                                         <span class="symbol">円（税込）</span>
+                                      </p><br>
+                                  </div>
+                              @endforeach
+                          @endif
+
+                          @if (isset($shop->open))
+                          <div class="profile">
+                              <i class="fas fa-calendar-alt fa-lg"></i>
+                              <label class="shop-about">営業日</label>
+                              <p class="open">{{ $shop->open }}</p>
+                          </div>
+                          @endif
+
+                          @if (isset($shop->close))
+                          <div class="profile">
+                              <i class="fas fa-calendar-alt fa-lg" style="color: #7d7d7d;"></i>
+                              <label class="shop-about">定休日</label>
+                              <p class="open">{{ $shop->close }}</p>
+                          </div>
+                          @endif
+
+                          @if (isset($shop->tel))
+                          <div class="profile">
+                              <i class="fas fa-phone fa-lg"></i>
+                              <label class="shop-about">電話番号</label>
+                              <p class="open">{{ $shop->tel }}</p>
+                          </div>
+                          @endif
+
+                          @if (isset($shop->web))
+                          <div class="profile">
+                              <i class="fas fa-home fa-lg"></i>
+                              <label class="shop-about">ホームページ</label>
+                              <a href="{{ $shop->web }}" class="open">{{ $shop->web }}</a>
+                          </div>
+                          @endif
+
+                          <div class="profile">
+                              <i class="fas fa-map-marker-alt fa-lg"></i>
+                              <label class="shop-about">住所</label>
+                              @if (isset($shop->address_number))
+                              <p class="open"><span class="symbol">〒 </span>{{ $shop->address_number }}</p>
+                              @endif
+                              <p class="open">{{ $shop->address_ken }}{{ $shop->address_city }}{{ $shop->address_other }}</p>
+                          </div>
+
+                          <div class="profile">
+                              <div class="center-btn">
+                                  <a href="#" class="btn btn-success shop-btn">戻る</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+
                 <div class="card">
                     <div class="card-body">
                         <div class="offset-lg-2">
@@ -56,199 +202,7 @@
                                     <strong class="pl-2">4.0</strong>
                                 </label>
                             </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-4">簡単な説明</label>
-                            </div>
-
-                            <div class="form-group row mt-4">
-                                <i class="far fa-handshake fa-2x ml-3"></i>
-                                <label class="col ml-1">入会金　　<strong>11000円</strong><small>（税込）</small></label>
-                            </div>
-
-                            <div class="form-group row mt-4">
-                                <i class="fas fa-yen-sign fa-2x ml-4"></i>
-                                <label class="col ml-2">月会費</label>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="man_price" class="d-inline ml-5">男性　<strong>11000円</strong><small>（税込）</small></label>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="woman_price" class="d-inline ml-5">女性　<strong> 8800円</strong><small>（税込）</small></label>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="student_price" class="d-inline ml-5">学生　<strong> 8800円</strong><small>（税込）</small></label>
-                            </div>
-
-                            <div class="form-group mt-4">
-                                <i class="fas fa-funnel-dollar fa-2x ml-2"></i>
-                                <label for="other_price" class="ml-2">その他の会費</label>
-                            </div>
-
-                            <div class="form-group mt-4">
-                                <i class="fas fa-user-friends fa-2x ml-2"></i>
-                                <label class="ml-2">パーソナルトレーニング会費</label>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="d-inline ml-3 mr-1 ml-5">①　　ボクシング　　　60分　 <strong>5500円</strong>
-                                    <small>（税込）</small>
-                                </label>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="d-inline ml-3 mr-1 ml-5">②　　ボクシング　　　80分　 <strong>7000円</strong>
-                                    <small>（税込）</small>
-                                </label>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="d-inline ml-3 mr-1 ml-5">③　　ボクシング　 　110分　 <strong>8800円</strong>
-                                    <small>（税込）</small>
-                                </label>
-                            </div>
-
-                            <div class="form-group mt-4">
-                                <i class="fas fa-calendar-alt fa-2x ml-2"></i>
-                                <label class="ml-2">営業日</label>
-                            </div>
-
-                            <div class="form-group mt-4">
-                                <i class="fas fa-calendar-alt fa-2x ml-2" style="color: #7d7d7d;"></i>
-                                <label class="ml-2">定休日</label>
-                            </div>
-
-                            <div class="form-group mt-4">
-                                <i class="fas fa-phone fa-2x ml-2"></i>
-                                <label class="ml-2">電話番号</label>
-                            </div>
-
-                            <div class="form-group mt-4">
-                                <i class="fas fa-home fa-2x ml-2"></i>
-                                <label class="ml-2">ホームページ</label>
-                            </div>
-
-                            <div class="form-group mt-4">
-                                <i class="fas fa-map-marker-alt fa-2x ml-2"></i>
-                                <label class="ml-2">住所</label>
-                            </div>
-
-                            <div class="form-group mt-4">
-                                <i class="fas fa-image fa-2x ml-2"></i>
-                                <label class="ml-2">写真</label>
-                            </div>
-                            <div class="form-group row">
-                                <img src="{{ asset('image/写真のフリーアイコン7.png') }}" width="100">
-                                <a href="#">もっと見る</a>
-                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row justify-content-center mt-4">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-body">
-
-                        <div class="form-group row">
-                            <div class="col-md-12 ml-5 my-3">
-                                <div>
-                                    <img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name" width="60">
-                                    <p> name </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="ml-3">
-                                <h6>レビュー</h6>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="ml-3">
-                                <p> GYM_name / adress / city </p>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="ml-3">
-                                <p>ジャンル： type </p>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="resson" class="col-sm-3 col-form-label">レッスン</label>
-                            <select name="resson" class="col-sm-9 form-control">
-
-                                @include('parts/review/resson');
-
-                            </select>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="price" class="col-sm-3 col-form-label">値段</label>
-                            <select name="price" class="col-sm-9 form-control">
-
-                                @include('parts/review/price');
-
-                            </select>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="clean" class="col-sm-3 col-form-label">清潔さ</label>
-                            <select name="clean" class="col-sm-9 form-control">
-
-                                @include('parts/review/clean');
-
-                            </select>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="service" class="col-sm-3 col-form-label">接客</label>
-                            <select name="service" class="col-sm-9 form-control">
-
-                                @include('parts/review/service');
-
-                            </select>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="atmosphere" class="col-sm-3 col-form-label">雰囲気</label>
-                            <select name="price" class="col-sm-9 form-control">
-
-                                @include('parts/review/atmosphere');
-
-                            </select>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="impression" class="col-sm-3 col-form-label">感想</label>
-                            <div class="col-sm-12">
-                                <textarea rows="10" cols="200" name="impression" class="form-control" placeholder="ご自由にお書きください"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-4">
-                                <p>更新日時</p>
-                            </div>
-                        </div>
-
-                        <div class="form-group row justify-content-center">
-                            <div>
-                                <input type="submit" class="btn btn-success mx-3 mt-5 mb-3 px-5 rounded-pill" value="編集">
-                                <input type="submit" class="btn btn-danger mx-3 mt-5 mb-3 px-5 rounded-pill" value="削除">
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>

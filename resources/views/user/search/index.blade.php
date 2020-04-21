@@ -16,7 +16,7 @@
                             </div>
                             <div class="form-group row mb-5">
                                 <div class="col-md-8 offset-md-2">
-                                    <input type="text" name="search_shop" class="form-control">
+                                    <input type="text" name="search_shop" class="form-control" value="{{ $search_shop }}">
                                 </div>
                             </div>
 
@@ -32,22 +32,22 @@
                             <div class="form-group row">
                                 <div class="category-group col-sm-6 col-md-4 offset-md-2">
                                     <label for="category1">
-                                        <input type="checkbox" name="type[]" id="category1" value="1">
+                                        <input type="checkbox" name="type[]" id="category1" value="1" {{ is_array($search_type) && in_array("1", $search_type, true)? 'checked="checked"' : '' }}>
                                         <p>ボクシング</p>
                                     </label>
 
                                     <label for="category2">
-                                        <input type="checkbox" name="type[]" id="category2" value="2">
+                                        <input type="checkbox" name="type[]" id="category2" value="2" {{ is_array($search_type) && in_array("2", $search_type, true)? 'checked="checked"' : '' }}>
                                         <p>キックボクシング</p>
                                     </label>
                                 </div>
                                 <div class="category-group col-sm-6 col-md-4">
                                     <label for="category3">
-                                        <input type="checkbox" name="type[]" id="category3" value="3">
+                                        <input type="checkbox" name="type[]" id="category3" value="3" {{ is_array($search_type) && in_array("3", $search_type, true)? 'checked="checked"' : '' }}>
                                         <p>総合格闘技</p>
                                     </label>
                                     <label for="category4">
-                                        <input type="checkbox" name="type[]" id="category4" value="4">
+                                        <input type="checkbox" name="type[]" id="category4" value="4" {{ is_array($search_type) && in_array("4", $search_type, true)? 'checked="checked"' : '' }}>
                                         <p>パーソナルトレーニング</p>
                                     </label>
                                 </div>
@@ -63,6 +63,9 @@
                             <div class="form-group row">
                                 <div class="col mb-3">
                                     <select name="address_ken" class="form-control col-sm-12 col-md-8 offset-md-2">
+                                        @if (isset($search_address_ken))
+                                        <option value="{{ $search_address_ken }}" selected>{{ $search_address_ken }}</option>
+                                        @endif
 
                                         @include('parts/address_ken');
 
@@ -77,13 +80,93 @@
                         </form>
                     </div>
                 </div>
+                @if (isset($shops))
+                    @foreach ($shops as $shop)
+                          <div class="card card-group">
+                              <div class="card-body">
+                                  <div class="shop-body">
 
-                <div class="card border-dark">
-                    <div class="card-body">
+                                      <div class="profile">
+                                          <h2 class="shop-name">{{ $shop->name }}</h2>
+                                      </div>
 
+                                      <div class="profile">
+                                          <p class="address">{{ $shop->address_ken }}{{ $shop->address_city }}</p>
+                                      </div>
 
+                                      <div class="profile">
+                                          <label class="type">ジャンル：</label>
+                                          <ul class="type-list">
+                                              @foreach($shop->types as $type)
+                                                  <li class="type-text"><i class="fas fa-check"></i> {{ $type->name }}</li>
+                                              @endforeach
+                                          </ul>
+                                      </div>
+
+                                      <div class="profile">
+                                          <i class="fas fa-image fa-lg"></i>
+                                          <label class="shop-about">写真</label>
+                                      </div>
+
+                                      @if (isset($shop->images))
+                                          @foreach ($shop->images as $image)
+                                              <div class="image-group">
+                                                  <p class="shop-image"><img src="{{ asset('storage/image/store_images/'.$image->image_path) }}"></p>
+                                              </div>
+                                          @endforeach
+                                          <a href="#" class="link">もっと見る</a>
+                                      @else
+                                          <div class="profile">
+                                              <label class="shop-about">現在写真は登録されていません</label>
+                                          </div>
+                                      @endif
+
+                                      <div class="profile">
+                                          <label class="shop-about d-inline"><i class="fas fa-star" style="color: #fbca4d;"></i>入会前の体験：</label>
+                                              <p class="type-text d-inline">{{ $shop->trial }}</p>
+                                              @if ($shop->trial == '有料')
+                                              <p class="type-text d-inline">{{ $shop->trial_price }}<span class="symbol">円</span></p>
+                                              @endif
+                                      </div>
+
+                                      @if (isset($shop->prices))
+                                      <div class="profile">
+                                          <i class="far fa-handshake fa-lg"></i>
+                                          @foreach ($shop->prices as $price)
+                                              @if ($price->name == "入会金")
+                                              <label class="join">{{ $price->name }}</label>
+                                              <p class="join"><strong>{{ $price->price }}</strong><span class="symbol">円（税込）</span></p><br>
+                                              @endif
+                                          @endforeach
+                                      </div>
+                                      @endif
+
+                                      @if (isset($shop->prices))
+                                      <div class="profile">
+                                          <i class="fas fa-yen-sign fa-lg"></i>
+                                          <label class="shop-about">月会費</label>
+                                          @foreach ($shop->prices as $price)
+                                              @if ($price->name != "入会金")
+                                              <p class="shop-price">{{ $price->name }} <strong>{{ $price->price }}</strong><span class="symbol">円（税込）</span></p>
+                                              @endif
+                                          @endforeach
+                                      </div>
+                                      @endif
+
+                                      <div class="profile">
+                                          <div class="center-btn">
+                                              <a href="{{ route('shop', ['id' => $shop->id]) }}" class="btn btn-primary shop-btn">詳細を見る</a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                    @endforeach
+                @else
+                    <div class="page-title title">
+                        <label>検索結果がありません</label>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>
