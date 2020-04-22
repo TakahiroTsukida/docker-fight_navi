@@ -24,7 +24,6 @@ class UserController extends Controller
 
 
     public function search(Request $request) {
-        //dd($request);
         $search_name = $request->input('search_shop');
         $search_type = $request->input('type');
         $search_address_ken = $request->input('address_ken');
@@ -36,8 +35,6 @@ class UserController extends Controller
                   ->whereIn('shop_type.type_id', $search_type)
                   ->select('shops.*');
         }
-
-
         //都道府県検索
         if (!empty($search_address_ken)) {
             $query->where('address_ken', $search_address_ken);
@@ -46,7 +43,6 @@ class UserController extends Controller
         if (!empty($search_name)) {
             $query->where('name', 'like', '%'.$search_name.'%');
         }
-
         $cond_shops = $query->get();
         $shops = $cond_shops->unique('id');
 
@@ -61,8 +57,9 @@ class UserController extends Controller
 
 
 
+
+
     public function shop(Request $request) {
-        dd($request);
         $shop = Shop::find($request->id);
         if (empty($shop)) {
             abort(404);
@@ -70,6 +67,8 @@ class UserController extends Controller
 
         return view('user.search.shop', ['shop' => $shop]);
     }
+
+
 
 
     public function mypage() {

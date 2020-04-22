@@ -142,6 +142,7 @@
                           <div class="profile">
                               <div class="center-btn">
                                   <a href="#" class="btn btn-success shop-btn">戻る</a>
+                                  <a href="{{ action('User\ReviewController@add', ['id' => $shop->id]) }}" class="btn btn-primary shop-btn">新規レビュー</a>
                               </div>
                           </div>
                       </div>
@@ -150,7 +151,7 @@
 
 
 
-                <div class="card">
+                <div class="card page-title">
                     <div class="card-body">
                         <div class="offset-lg-2">
                             <div class="form-group row">

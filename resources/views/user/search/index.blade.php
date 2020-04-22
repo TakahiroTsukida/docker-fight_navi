@@ -155,7 +155,7 @@
 
                                       <div class="profile">
                                           <div class="center-btn">
-                                              <a href="{{ route('shop', ['id' => $shop->id]) }}" class="btn btn-primary shop-btn">詳細を見る</a>
+                                              <a href="{{ action('User\UserController@shop', ['id' => $shop->id]) }}" class="btn btn-primary shop-btn">詳細を見る</a>
                                           </div>
                                       </div>
                                   </div>
