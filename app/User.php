@@ -40,6 +40,16 @@ class User extends Authenticatable
     protected $guarded = array('id');
 
     public static $rules = array(
-        'name' => 'required|max:60',        
+        'name' => 'required|max:60',
     );
+
+
+
+    public function profiles() {
+        return $this->hasOne('App\User\Profile');
+    }
+
+    public function reviews() {
+        return $this->hasMany('App\User\Review');
+    }
 }

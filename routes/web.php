@@ -22,10 +22,13 @@ Route::group(['prefix' => 'user'], function() {
 
 
     Route::group(['middleware' => 'auth'], function() {
-        Route::get('profile/mypage', 'User\UserController@mypage')->name('user.profile.mypage');
+        Route::get('profile/mypage{id}', 'User\ProfileController@mypage')->name('user.profile.mypage');
 
-        Route::get('profile/edit', 'User\UserController@edit')->name('user.profile.edit');
-        Route::post('profile/edit', 'User\UserController@update')->name('user.profile.update');
+        Route::get('profile/create', 'User\ProfileController@add')->name('user.profile.add');
+        Route::post('profile/create', 'User\ProfileController@create');
+
+        Route::get('profile/edit', 'User\ProfileController@edit')->name('user.profile.edit');
+        Route::post('profile/edit', 'User\ProfileController@update')->name('user.profile.update');
 
         Route::get('review/create', 'User\ReviewController@add')->name('review.add');
         Route::post('review/create', 'User\ReviewController@create')->name('review.create');

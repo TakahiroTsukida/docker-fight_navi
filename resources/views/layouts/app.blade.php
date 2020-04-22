@@ -36,19 +36,29 @@
                             <div id="nav-content">
                                 <div>
                                     <ul class="list-group">
-                                        <a href="{{ route('user.profile.mypage') }}" class="main-menu">
+                                        <a href="{{ route('user.profile.mypage', ['id' => Auth::user()->id]) }}" class="main-menu">
                                             <li class="list-group-item-light py-5 pl-3 border">
                                                 <p class="menu-logo"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="アイコン" width="60" class="rounded-circle"></p>
                                                 <label class="ml-2 menu-label">{{ Auth::user()->name }}</label>
                                             </li>
                                         </a>
 
-                                        <a href="{{ route('user.profile.edit') }}" class="main-menu">
+                                        @if(Auth::user()->profiles)
+                                        <a href="{{ route('user.profile.edit',['id' => Auth::user()->id]) }}" class="main-menu">
                                             <li class="list-group-item-light py-3 pl-3 border">
                                                 <i class="fas fa-cog fa-2x align-middle"></i>
                                                 <label class="ml-2 mt-1 align-middle ">プロフィール編集</label>
                                             </li>
                                         </a>
+                                        @else
+                                        <a href="{{ route('user.profile.add',['id' => Auth::user()->id]) }}" class="main-menu">
+                                            <li class="list-group-item-light py-3 pl-3 border">
+                                                <i class="fas fa-cog fa-2x align-middle"></i>
+                                                <label class="ml-2 mt-1 align-middle ">プロフィール作成</label>
+                                            </li>
+                                        </a>
+                                        @endif
+
                                         <a href="#" class="main-menu">
                                             <li class="list-group-item-light py-3 pl-3 border">
                                                 <i class="fas fa-envelope fa-2x align-middle"></i>

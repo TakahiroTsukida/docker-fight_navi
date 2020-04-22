@@ -22,8 +22,10 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-md-8 offset-md-2">
-                        <input type="text" name="search_gym" class="form-control">
-                        <button type="submit" class="btn btn-primary mt-2">検索</button>
+                        <form action="{{ route('user.search') }}" method="get">
+                            <input type="text" name="search_shop" class="form-control">
+                            <input type="submit" class="btn btn-primary mt-2" value="検索">
+                        </form>
                     </div>
                 </div>
             </div>

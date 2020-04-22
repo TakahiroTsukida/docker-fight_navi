@@ -85,4 +85,8 @@ class Shop extends Model
       return $this->hasMany('App\Admin\Image');
   }
 
+  public function reviews() {
+      return $this->hasMany('App\User\Review');
+  }
+
 }

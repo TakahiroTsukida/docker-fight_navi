@@ -1,15 +1,15 @@
 @extends('layouts.app')
-@section('title', 'プロフィール編集')
+@section('title', 'プロフィール作成')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12 mx-auto">
                 <div class="text-center">
-                    <h5　class="page-title">プロフィール編集</h5>
+                    <h2　class="page-title">プロフィール作成</h2>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ action('User\ProfileController@update') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ action('User\ProfileController@create') }}" method="post" enctype="multipart/form-data">
                             <div>
                                 <p class="col-sm-2 offset-sm-5"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name"></p>
                             </div>
@@ -46,7 +46,7 @@
                             <div>
                                 <div class="form-group">
                                     <label>名前</label>
-                                    <input type="text" name="name" class="form-control" value="{{ isset($profile->name) ? $profile->name : $user->name }}">
+                                    <input type="text" name="name" class="form-control" value="{{ $user->name }}">
                                 </div>
 
                                 <div class="form-group">
@@ -60,19 +60,11 @@
                                     <label>性別</label>
                                     <div>
                                         <label class="radio-inline ml-sm-1 mr-5">
-                                            @if (isset($profile->gender))
-                                            <input type="radio" name="gender" value="男性" {{ $profile->gender == '男性' ? 'checked="checked"' : '' }}>
-                                            @else
                                             <input type="radio" name="gender" value="男性">
-                                            @endif
                                             男性
                                         </label>
                                         <label class="radio-inline">
-                                            @if (isset($profile->gender))
-                                            <input type="radio" name="gender" value="女性" {{ $profile->gender == '女性' ? 'checked="checked"' : '' }}>
-                                            @else
                                             <input type="radio" name="gender" value="女性">
-                                            @endif
                                             女性
                                         </label>
                                     </div>
@@ -80,20 +72,20 @@
 
                                 <div class="form-group">
                                     <label for="birthday">生年月日</label>
-                                    <input type="date" name="birthday" class="form-control" value="{{ isset($profile->birthday) ? $profile->birthday : ''}}">
+                                    <input type="date" name="birthday" class="form-control" value="{{ old('birthday') }}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="introduction">自己紹介</label>
-                                    <textarea class="form-control" name="introduction" rows="5" maxlength="100">{{ isset($profile->introduction) ? $profile->introduction : '' }}</textarea>
+                                    <label>自己紹介</label>
+                                    <textarea class="form-control" name="introduction" rows="5" maxlength="100">{{ old('introduction') }}</textarea>
                                 </div>
                             </div>
 
-                            <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 
                             <div class="form-group row justify-content-center">
                                 <div>
-                                    <a href="#" class="btn btn-success mx-3 mt-5 mb-3 px-5 rounded-pill">戻る</a>
+                                    <a href="{{ route('user.profile.mypage', ['id' => Auth::user()->id]) }}" class="btn btn-success mx-3 mt-5 mb-3 px-5 rounded-pill">戻る</a>
                                     <input type="submit" class="btn btn-primary mx-3 mt-5 mb-3 px-5 rounded-pill" value="更新">
                                 </div>
                             </div>
