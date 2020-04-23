@@ -106,6 +106,187 @@ $tab: 768px; // タブレット
     box-shadow: 6px 0 25px rgba(0,0,0,.15);
 }
 
+nav {
+    img {
+        width: 120px;
+        @include tab {
+            width: 200px;
+        }
+    }
+
+    div {
+        .header {
+            display: inline-block;
+            width: 100%;
+        }
+    }
+}
+
+nav.navbar.navbar-light {
+    box-shadow: 2px 2px 4px gray;
+    @include tab {
+        padding: 5px 5px 5px 30px;
+    }
+}
+
+.navbar-light {
+    .menu-icon {
+        border-color: #fff;
+        float: right;
+        margin: 14px -13px 0 0;
+        @include tab {
+            margin: 28px 10px 0 0;
+            padding: 5px 15px;
+        }
+    }
+}
+
+a.navbar-brand.header-img {
+    float: left;
+    margin: 8px 5px 0 0;
+    @include pc {
+        margin: 5px 5px 5px 20px;
+    }
+}
+
+a.nav-item {
+    font-size: 14px;
+    margin: 5px 5px 5px 10px;
+    color: #000;
+
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    @include tab {
+        font-size: 19px;
+        margin: 10px 5px 10px 15px;
+    }
+    @include pc {
+        width: 80px;
+        font-size: 20px;
+        margin: 10px;
+        text-align: center;
+    }
+}
+
+span.menu-label {
+    @include tab {
+      font-size: 16px;
+      vertical-align: middle;
+    }
+    @include pc {
+        font-size: 12px;
+        margin-top: 9px;
+    }
+}
+
+a.nav-item-login {
+    font-size: 14px;
+    margin: 5px 5px 5px 10px;
+    color: #000;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    @include tab {
+        font-size: 19px;
+        margin: 10px 5px 10px 30px;
+    }
+    i {
+        margin: 5px 5px 5px 5px;
+        vertical-align: middle;
+    }
+}
+
+i.fas.default {
+    margin-right: 13px;
+}
+
+i.fas.small {
+    margin-right: 7px;
+}
+
+span.login-label {
+    @include tab {
+      font-size: 16px;
+      vertical-align: middle;
+    }
+}
+
+a.nav-item::after {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #333;
+    transform: scale(0, 1);
+    transform-origin: left top;
+    transition: transform .3s;
+
+    @media (min-width: 350px) {
+        width: 45%;
+    }
+    @media (min-width: 500px) {
+        width: 30%;
+    }
+    @include tab {
+        width: 25%;
+    }
+    @include pc {
+        width: 100%;
+    }
+}
+a.nav-item:hover::after {
+    transform: scale(1, 1);
+
+    @include pc {
+
+    }
+}
+
+a.nav-item-login::after {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    content: '';
+    width: 70%;
+    height: 2px;
+    background: #333;
+    transform: scale(0, 1);
+    transform-origin: left top;
+    transition: transform .3s;
+    @media (min-width: 350px) {
+        width: 50%;
+    }
+    @media (min-width: 500px) {
+        width: 40%;
+    }
+    @include tab {
+        width: 30%;
+    }
+    @include pc {
+        width: 25%;
+    }
+}
+
+a.nav-item-login:hover::after {
+    transform: scale(1, 1);
+}
+
+
+.navbar-nav.clear_box {
+    clear: both;
+}
+
+.nav-item i {
+    vertical-align: middle;
+    margin-right: 3px;
+    @include pc {
+        display: block;
+    }
+}
+
 //メインメニュー
 .main-menu {
     text-decoration: none;

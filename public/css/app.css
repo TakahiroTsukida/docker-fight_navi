@@ -11077,6 +11077,227 @@ img {
   box-shadow: 6px 0 25px rgba(0, 0, 0, 0.15);
 }
 
+nav img {
+  width: 120px;
+}
+
+@media (min-width: 768px) {
+  nav img {
+    width: 200px;
+  }
+}
+
+nav div .header {
+  display: inline-block;
+  width: 100%;
+}
+
+nav.navbar.navbar-light {
+  box-shadow: 2px 2px 4px gray;
+}
+
+@media (min-width: 768px) {
+  nav.navbar.navbar-light {
+    padding: 5px 5px 5px 30px;
+  }
+}
+
+.navbar-light .menu-icon {
+  border-color: #fff;
+  float: right;
+  margin: 14px -13px 0 0;
+}
+
+@media (min-width: 768px) {
+  .navbar-light .menu-icon {
+    margin: 28px 10px 0 0;
+    padding: 5px 15px;
+  }
+}
+
+a.navbar-brand.header-img {
+  float: left;
+  margin: 8px 5px 0 0;
+}
+
+@media (min-width: 992px) {
+  a.navbar-brand.header-img {
+    margin: 5px 5px 5px 20px;
+  }
+}
+
+a.nav-item {
+  font-size: 14px;
+  margin: 5px 5px 5px 10px;
+  color: #000;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  a.nav-item {
+    font-size: 19px;
+    margin: 10px 5px 10px 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  a.nav-item {
+    width: 80px;
+    font-size: 20px;
+    margin: 10px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) {
+  span.menu-label {
+    font-size: 16px;
+    vertical-align: middle;
+  }
+}
+
+@media (min-width: 992px) {
+  span.menu-label {
+    font-size: 12px;
+    margin-top: 9px;
+  }
+}
+
+a.nav-item-login {
+  font-size: 14px;
+  margin: 5px 5px 5px 10px;
+  color: #000;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  a.nav-item-login {
+    font-size: 19px;
+    margin: 10px 5px 10px 30px;
+  }
+}
+
+a.nav-item-login i {
+  margin: 5px 5px 5px 5px;
+  vertical-align: middle;
+}
+
+i.fas.default {
+  margin-right: 13px;
+}
+
+i.fas.small {
+  margin-right: 7px;
+}
+
+@media (min-width: 768px) {
+  span.login-label {
+    font-size: 16px;
+    vertical-align: middle;
+  }
+}
+
+a.nav-item::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #333;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.3s;
+}
+
+@media (min-width: 350px) {
+  a.nav-item::after {
+    width: 45%;
+  }
+}
+
+@media (min-width: 500px) {
+  a.nav-item::after {
+    width: 30%;
+  }
+}
+
+@media (min-width: 768px) {
+  a.nav-item::after {
+    width: 25%;
+  }
+}
+
+@media (min-width: 992px) {
+  a.nav-item::after {
+    width: 100%;
+  }
+}
+
+a.nav-item:hover::after {
+  transform: scale(1, 1);
+}
+
+a.nav-item-login::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  content: "";
+  width: 70%;
+  height: 2px;
+  background: #333;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.3s;
+}
+
+@media (min-width: 350px) {
+  a.nav-item-login::after {
+    width: 50%;
+  }
+}
+
+@media (min-width: 500px) {
+  a.nav-item-login::after {
+    width: 40%;
+  }
+}
+
+@media (min-width: 768px) {
+  a.nav-item-login::after {
+    width: 30%;
+  }
+}
+
+@media (min-width: 992px) {
+  a.nav-item-login::after {
+    width: 25%;
+  }
+}
+
+a.nav-item-login:hover::after {
+  transform: scale(1, 1);
+}
+
+.navbar-nav.clear_box {
+  clear: both;
+}
+
+.nav-item i {
+  vertical-align: middle;
+  margin-right: 3px;
+}
+
+@media (min-width: 992px) {
+  .nav-item i {
+    display: block;
+  }
+}
+
 .main-menu {
   text-decoration: none;
 }
@@ -11220,6 +11441,83 @@ input[type=number] {
 
 input.center {
   text-align: center;
+}
+
+.app_imgtext {
+  position: relative;
+}
+
+.app_imgtext p {
+  position: absolute;
+  color: white;
+  top: 35%;
+  left: 5%;
+  font-size: 5px;
+}
+
+@media (min-width: 380px) {
+  .app_imgtext p {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 420px) {
+  .app_imgtext p {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 500px) {
+  .app_imgtext p {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 600px) {
+  .app_imgtext p {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .app_imgtext p {
+    font-size: 19px;
+  }
+}
+
+@media (min-width: 900px) {
+  .app_imgtext p {
+    font-size: 22px;
+    top: 40%;
+  }
+}
+
+@media (min-width: 992px) {
+  .app_imgtext p {
+    font-size: 22px;
+    top: 40%;
+    left: 10%;
+  }
+}
+
+.main-text {
+  text-align: center;
+  font-size: 12px;
+  margin: 40px 8px;
+}
+
+@media (min-width: 500px) {
+  .main-text {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .main-text {
+    font-size: 17px;
+    line-height: 2em;
+    margin: 60px 8px;
+  }
 }
 
 .title {
