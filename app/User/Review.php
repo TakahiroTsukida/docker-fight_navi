@@ -20,6 +20,7 @@ class Review extends Model
 
     protected $guarded = array('id');
 
+    protected $dates = ['display_date'];
 
     public static $rules = array(
         'resson' => 'required|numeric',

@@ -22,8 +22,11 @@ class ProfileController extends Controller
             return view('top');
         }
         $profile = $user->profiles;
-        $reviews = Review::where('user_id', $user->id)->get();
-
+        $query = Review::query();
+        $query->join('shops', 'reviews.shop_id', '=', 'shops.id')
+              ->where('user_id', $user->id);
+        $reviews = $query->get();
+        
         return view('user.profile.mypage',['user' => $user, 'profile' => $profile, 'reviews' => $reviews]);
     }
 

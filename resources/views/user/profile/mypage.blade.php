@@ -33,24 +33,25 @@
 
         <div class="row justify-content-center">
             <div class="col-sm-12">
-                <h5 class="text-center">最近の投稿</h5>
+                <h5 class="text-center page-title">最近の投稿</h5>
             </div>
         </div>
 
         <div class="row justify-content-center">
             <div class="col-sm-12 mx-auto">
                 @foreach ($reviews as $review)
-                    <div class="card">
+                    <div class="card page-title">
                         <div class="card-body">
                             <div>
+                                @if(isset($profile->image_path))
                                 <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$profile->image_path) }}" alt="name" class="rounded-pill"></p>
-
-                                <p> {{ $review->user_id }} </p>
+                                @endif
+                                <p> {{ isset($profile->name) ? $profile->name : $user->name }} </p>
                             </div>
                             <div>
                                 <p>レビュー</p>
-                                <p> GYM_name / adress / city </p>
-                                <p>ジャンル： type </p>
+                                <a href="{{ action('User\UserController@shop', ['id' => $review->shop_id]) }}">
+                                <p> {{ $review->name }} / {{ $review->address_ken }} / {{ $review->address_city }} </p></a>
                                 <p>レッスン： {{ $review->resson }} </p>
                                 <p>値段　： {{ $review->price }} </p>
                                 <p>清潔さ： {{ $review->clean }} </p>
@@ -69,7 +70,7 @@
 
                             <div>
                                 <p>更新日時</p>
-                                <p>{{ $review->update_at }}</p>
+                                <p>{{ $review->updated_at->format('Y / m / d') }}</p>
                             </div>
 
                             <div class="form-group row justify-content-center">

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\User\Profile;
+use App\User\Review;
 use App\Admin\Shop;
 use Carbon\Carbon;
 use Storage;
@@ -64,7 +65,11 @@ class UserController extends Controller
         if (empty($shop)) {
             abort(404);
         }
+        $query = Review::query();
+        $query->join('profiles', 'reviews.user_id', '=', 'profiles.user_id')
+              ->where('shop_id', $shop->id);
+        $reviews = $query->get();
 
-        return view('user.search.shop', ['shop' => $shop]);
+        return view('user.search.shop', ['shop' => $shop, 'reviews' => $reviews]);
     }
 }

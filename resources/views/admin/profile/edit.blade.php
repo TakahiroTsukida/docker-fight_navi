@@ -86,7 +86,7 @@
 
                             <div class="form-group row justify-content-center">
                                 <div class="btn-group">
-                                    <a href="{{ route('user.profile.mypage') }}" class="btn btn-success shop-btn-lg">戻る</a>
+                                    <a href="{{ route('admin.profile.mypage') }}" class="btn btn-success shop-btn-lg">戻る</a>
                                 </div>
                                 <div class="btn-group">
                                     <input type="submit" class="btn btn-primary shop-btn-lg" value="更新">
