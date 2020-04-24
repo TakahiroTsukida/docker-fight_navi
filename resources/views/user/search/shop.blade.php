@@ -141,8 +141,7 @@
 
                           <div class="profile">
                               <div class="center-btn">
-                                  <a href="#" class="btn btn-success shop-btn">戻る</a>
-                                  <a href="{{ action('User\ReviewController@add', ['id' => $shop->id]) }}" class="btn btn-primary shop-btn">新規レビュー</a>
+                                  <a href="{{ action('User\ReviewController@add', ['id' => $shop->id]) }}" class="btn btn-primary shop-btn new-review"><i class="fas fa-edit fa-lg review"></i><span class="small-text">新規レビュー</span></a>
                               </div>
                           </div>
                       </div>
@@ -151,230 +150,219 @@
 
 
               @foreach ($reviews as $review)
-                <div class="card page-title">
-                    <div class="card-body">
-                        <div class="offset-lg-2">
-                            <div class="form-group row">
-                                <p> {{ $shop->name }} </p>
-                                <p> {{ $shop->address_ken }} / {{ $shop->address_city }} </p>
-                            </div>
+                  <div class="card page-title">
+                      <div class="card-body mypage-body">
+                          <div class="review-group">
+                              @if(isset($review->image_path))
+                              <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$review->image_path) }}" alt="name" class="rounded-circle"></p>
+                              @else
+                              <p class="review-user"><img src="{{ asset('storage/image/app_images/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
+                              @endif
+                              <p class="user-name"> {{ isset($review->name) ? $review->name : '' }} </p>
+                          </div>
+                          <div>
+                              <a href="{{ action('User\UserController@shop', ['id' => $review->shop_id]) }}">
+                              <p class="review-shop">{{ $shop->name }}</P></a>
+                              <p class="review-address"><i class="fas fa-map-marker-alt fa-lg"></i> {{ $shop->address_ken }}  {{ $shop->address_city }}</p>
+                          </div>
+                          <div class="review-item">
+                              <p class="review-text">レッスン</p>
+                                  <div class="review-star">
+                                      @switch ($review->resson)
+                                          @case ($review->resson = 1)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->resson = 2)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->resson = 3)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->resson = 4)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->resson = 5)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                      @endswitch
+                                  </div>
+                              <p class="review-point">{{ $review->resson }}</p>
+                          </div>
 
-                            <div class="">
-                                @if (isset($review->name))
-                                <p>{{ $review->name }}</p>
-                                @endif
-                            </div>
+                          <div class="review-item">
+                              <p class="review-text">値段</p>
+                                  <div class="review-star">
+                                      @switch ($review->price)
+                                          @case ($review->price = 1)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->price = 2)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->price = 3)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->price = 4)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->price = 5)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                      @endswitch
+                                  </div>
+                              <p class="review-point">{{ $review->price }}</p>
+                          </div>
 
-                            <div class="form-group row">
-                                <label>レッスン</label>
-                                    @switch ($review->resson)
-                                        @case ($review->resson = 1)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->resson = 2)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->resson = 3)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->resson = 4)
-                                            <i class="fas fa-star-half" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->resson = 5)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                    @endswitch
-                                    <p><strong class="pl-2">{{ $review->resson }}</strong></p>
-                            </div>
+                          <div class="review-item">
+                              <p class="review-text">清潔さ</p>
+                                  <div class="review-star">
+                                      @switch ($review->clean)
+                                          @case ($review->clean = 1)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->clean = 2)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->clean = 3)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->clean = 4)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->clean = 5)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                      @endswitch
+                                  </div>
+                              <p class="review-point">{{ $review->clean }}</p>
+                          </div>
 
-                            <div class="form-group row">
-                                <label>値段</label>
-                                    @switch ($review->price)
-                                        @case ($review->price = 1)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->price = 2)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->price = 3)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->price = 4)
-                                            <i class="fas fa-star-half" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->price = 5)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                    @endswitch
-                                    <p><strong class="pl-2">{{ $review->price }}</strong></p>
-                            </div>
+                          <div class="review-item">
+                              <p class="review-text">接客</p>
+                                  <div class="review-star">
+                                      @switch ($review->service)
+                                          @case ($review->service = 1)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->service = 2)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->service = 3)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->service = 4)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->service = 5)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                      @endswitch
+                                  </div>
+                              <p class="review-point">{{ $review->service }}</p>
+                          </div>
 
-                            <div class="form-group row">
-                                <label>レッスン</label>
-                                    @switch ($review->resson)
-                                        @case ($review->resson = 1)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->resson = 2)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->resson = 3)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->resson = 4)
-                                            <i class="fas fa-star-half" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->resson = 5)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                    @endswitch
-                                    <p><strong class="pl-2">{{ $review->resson }}</strong></p>
-                            </div>
+                          <div class="review-item">
+                              <p class="review-text">雰囲気</p>
+                                  <div class="review-star">
+                                      @switch ($review->atmosphere)
+                                          @case ($review->atmosphere = 1)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->atmosphere = 2)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->atmosphere = 3)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->atmosphere = 4)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($review->atmosphere = 5)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                      @endswitch
+                                  </div>
+                              <p class="review-point">{{ $review->atmosphere }}</p>
+                          </div>
 
-                            <div class="form-group row">
-                                <label>清潔さ</label>
-                                    @switch ($review->clean)
-                                        @case ($review->clean = 1)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->clean = 2)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->clean = 3)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->clean = 4)
-                                            <i class="fas fa-star-half" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->clean = 5)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                    @endswitch
-                                    <p><strong class="pl-2">{{ $review->clean }}</strong></p>
-                            </div>
+                          <div class="review-text-group">
+                              <p><i class="far fa-thumbs-up fa-lg"></i>良かった点</p>
+                              <p class="review-merit"> {{ $review->merit }} </p>
+                          </div>
 
-                            <div class="form-group row">
-                                <label>接客</label>
-                                    @switch ($review->service)
-                                        @case ($review->service = 1)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->service = 2)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->service = 3)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->service = 4)
-                                            <i class="fas fa-star-half" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->service = 5)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                    @endswitch
-                                    <p><strong class="pl-2">{{ $review->service }}</strong></p>
-                            </div>
+                          <div class="review-text-group">
+                              <p><i class="far fa-hand-point-down fa-lg"></i>直したほうが良い点</p>
+                              <p class="review-merit"> {{ $review->demerit }} </p>
+                          </div>
 
-                            <div class="form-group row">
-                                <label>雰囲気</label>
-                                    @switch ($review->atmosphere)
-                                        @case ($review->atmosphere = 1)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->atmosphere = 2)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->atmosphere = 3)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->atmosphere = 4)
-                                            <i class="fas fa-star-half" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                        @case ($review->atmosphere = 5)
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                            <i class="fas fa-star" style="color: #fbca4d;"></i>
-                                        @break
-                                    @endswitch
-                                    <p><strong class="pl-2">{{ $review->atmosphere }}</strong></p>
-                            </div>
+                          <div class="review-item">
+                              <p class="review-update"><i class="fas fa-undo fa-lg"></i>更新日時</p>
+                              <p class="review-updated_at">{{ $review->updated_at->format('Y / m / d') }}</p>
+                          </div>
+                          @auth
+                              @if ($review->user_id == Auth::user()->id)
+                                  <div class="revier-btn-group">
+                                      <div>
+                                          <a href="#" class="btn btn-success review-btn">編集</a>
+                                          <button type="#" class="btn btn-danger review-btn">削除</button>
+                                      </div>
+                                  </div>
+                              @endif
+                          @endauth
 
-                            <div class="">
-                                <div class="">
-                                    <label>良かった点</label>
-                                    <p>{{ $review->merit }}</p>
-                                </div>
-                                <div class="">
-                                    <label>直したほうが良い点</label>
-                                    <p>{{ $review->demerit }}</p>
-                                </div>
-                            </div>
-                            <div>
-                                <p>更新日時</p>
-                                <p>{{ $review->updated_at->format('Y / m / d') }}</p>
-                            </div>
+                      </div>
+                  </div>
 
-                        </div>
-                    </div>
-                </div>
             @endforeach
             </div>
         </div>

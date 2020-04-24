@@ -25,7 +25,7 @@ class ProfileController extends Controller
         $query = Review::query();
         $query->join('shops', 'reviews.shop_id', '=', 'shops.id')
               ->where('user_id', $user->id);
-        $reviews = $query->get();
+        $reviews = $query->get()->sortByDesc('updated_at');
         
         return view('user.profile.mypage',['user' => $user, 'profile' => $profile, 'reviews' => $reviews]);
     }

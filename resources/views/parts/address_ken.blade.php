@@ -1,15 +1,15 @@
 <option value="">都道府県を選択してください</option>
 <option value="北海道">北海道</option>
-<option value="青森">青森県</option>
-<option value="秋田">秋田県</option>
-<option value="山形">山形県</option>
-<option value="岩手">岩手県</option>
-<option value="宮城">宮城県</option>
-<option value="福島">福島県</option>
+<option value="青森県">青森県</option>
+<option value="秋田県">秋田県</option>
+<option value="山形県">山形県</option>
+<option value="岩手県">岩手県</option>
+<option value="宮城県">宮城県</option>
+<option value="福島県">福島県</option>
 
-<option value="愛知">愛知県</option>
-<option value="岐阜">岐阜県</option>
-<option value="静岡">静岡県</option>
+<option value="愛知県">愛知県</option>
+<option value="岐阜県">岐阜県</option>
+<option value="静岡県">静岡県</option>
 <option value="三重県">三重県</option>
 <option value="新潟県">新潟県</option>
 <option value="山梨県">山梨県</option>

@@ -30,6 +30,8 @@ class UserController extends Controller
         $search_name = $request->input('search_shop');
         $search_type = $request->input('type');
         $search_address_ken = $request->input('address_ken');
+        $search_address_city = $request->input('address_city');
+
 
         $query = Shop::query();
         //タイプ検索
@@ -46,6 +48,10 @@ class UserController extends Controller
         if (!empty($search_name)) {
             $query->where('name', 'like', '%'.$search_name.'%');
         }
+        if (!empty($search_address_city)) {
+            $query->where('address_city', 'like', '%'.$search_address_city.'%');
+        }
+
         $cond_shops = $query->get();
         $shops = $cond_shops->unique('id');
 
@@ -54,6 +60,7 @@ class UserController extends Controller
           'search_shop' => $search_name,
           'search_type' => $search_type,
           'search_address_ken' => $search_address_ken,
+          'search_address_city' => $search_address_city,
         ]);
     }
 

@@ -11363,11 +11363,47 @@ a.nav-item-login:hover::after {
 }
 
 .profile-img {
-  width: 15%;
+  width: 80px;
+  float: left;
+}
+
+@media (min-width: 768px) {
+  .profile-img {
+    width: 150px;
+  }
+}
+
+.myname {
+  margin: 15px 0 15px 90px;
+}
+
+@media (min-width: 768px) {
+  .myname {
+    margin: 37px 0 15px 170px;
+    font-size: 18px;
+  }
+}
+
+.review-group {
+  display: inline-block;
+  width: 100%;
 }
 
 .review-user {
-  width: 10%;
+  width: 70px;
+  float: left;
+}
+
+@media (min-width: 768px) {
+  .mypage-body {
+    padding: 50px;
+  }
+}
+
+@media (min-width: 992px) {
+  .mypage-body {
+    padding: 80px;
+  }
 }
 
 .error {
@@ -11453,6 +11489,7 @@ input.center {
   top: 35%;
   left: 5%;
   font-size: 5px;
+  text-shadow: 1px 1px 15px black, 0 0 1em black, 0 0 0.2em black;
 }
 
 @media (min-width: 380px) {
@@ -11542,6 +11579,34 @@ input.center {
   .card-group {
     margin-top: 20px;
   }
+}
+
+.type-group {
+  display: inline-block;
+  width: 100%;
+}
+
+.type-group .left-group {
+  float: left;
+}
+
+.type-group .right-group {
+  float: right;
+}
+
+.top-ken {
+  width: 95%;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .top-ken {
+    width: 70%;
+  }
+}
+
+.ken-submit {
+  float: right;
 }
 
 .body {
@@ -11702,6 +11767,170 @@ input.center {
 
 .category-group input:checked + p::before {
   background-color: #000000;
+}
+
+@media (min-width: 576px) {
+  label.left-group {
+    margin-left: -16px;
+  }
+}
+
+@media (min-width: 576px) {
+  label.right-group {
+    margin-right: -16px;
+  }
+}
+
+.myprofile {
+  display: inline-block;
+  width: 100%;
+}
+
+p.user-name {
+  margin: 15px 0 0 75px;
+}
+
+p.review-shop {
+  font-size: 17px;
+  color: #000;
+  border-bottom: solid 1px #cccccc;
+  margin: 15px 0;
+}
+
+@media (min-width: 768px) {
+  p.review-shop {
+    margin: 30px 0;
+    font-size: 20px;
+  }
+}
+
+p.review-address {
+  margin: 5px 0 10px 3px;
+}
+
+.review-item {
+  display: inline-block;
+  width: 100%;
+  margin: 5px 0 5px 0;
+}
+
+@media (min-width: 768px) {
+  .review-item {
+    margin: 5px 0 5px 0;
+    font-size: 19px;
+  }
+}
+
+p.review-text {
+  float: left;
+  margin: 2px 3px 0 0;
+  position: absolute;
+}
+
+.review-star {
+  display: inline;
+  margin-left: 58px;
+}
+
+@media (min-width: 768px) {
+  .review-star {
+    margin-left: 75px;
+  }
+}
+
+p.review-point {
+  display: inline;
+  position: absolute;
+  left: 230px;
+  font-weight: bold;
+  padding-top: 2px;
+}
+
+@media (min-width: 768px) {
+  p.review-point {
+    left: 350px;
+  }
+}
+
+.review-text-group {
+  margin: 15px 0;
+}
+
+label.review-coment {
+  font-size: 14px;
+}
+
+p.review-merit {
+  margin: 5px 3px;
+}
+
+i.far.fa-hand-point-down {
+  margin-right: 2px;
+}
+
+@media (min-width: 768px) {
+  i.far.fa-hand-point-down {
+    margin-right: 0;
+  }
+}
+
+i.fas.fa-undo {
+  margin-right: 2px;
+  vertical-align: middle;
+}
+
+p.review-update {
+  display: inline;
+}
+
+p.review-updated_at {
+  display: inline;
+  margin-left: 15px;
+}
+
+.revier-btn-group {
+  width: 100%;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.review-btn {
+  padding: 5px 40px;
+}
+
+@media (min-width: 768px) {
+  .review-btn {
+    padding: 10px 60px;
+    margin: 20px;
+  }
+}
+
+.review-label {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .review-label {
+    font-size: 16px;
+  }
+}
+
+h2.shop-name {
+  color: #000;
+}
+
+a.new-review {
+  font-size: 18px;
+}
+
+i.fas.fa-edit.fa-lg.review {
+  vertical-align: baseline;
+}
+
+span.small-text {
+  font-size: 13px;
+  margin-left: 3px;
+  vertical-align: middle;
 }
 
 .shop-name {
@@ -12043,5 +12272,67 @@ input.center {
 .personal-group {
   border-bottom: solid 1px #C0C0C0;
   padding-bottom: 18px;
+}
+
+footer {
+  margin-top: 50px;
+}
+
+.footer_imgtext {
+  position: relative;
+}
+
+.footer_imgtext p {
+  position: absolute;
+  color: white;
+  top: 35%;
+  left: 5%;
+  font-size: 5px;
+  text-shadow: 1px 1px 15px black, 0 0 1em black, 0 0 0.2em black;
+}
+
+@media (min-width: 380px) {
+  .footer_imgtext p {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 420px) {
+  .footer_imgtext p {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 500px) {
+  .footer_imgtext p {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 600px) {
+  .footer_imgtext p {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .footer_imgtext p {
+    font-size: 19px;
+  }
+}
+
+@media (min-width: 900px) {
+  .footer_imgtext p {
+    font-size: 22px;
+    top: 40%;
+  }
+}
+
+@media (min-width: 992px) {
+  .footer_imgtext p {
+    font-size: 22px;
+    top: 40%;
+    left: 10%;
+  }
 }
 

@@ -31,22 +31,22 @@
 
                             <div class="form-group row">
                                 <div class="category-group col-sm-6 col-md-4 offset-md-2">
-                                    <label for="category1">
+                                    <label for="category1" class="right-group">
                                         <input type="checkbox" name="type[]" id="category1" value="1" {{ is_array($search_type) && in_array("1", $search_type, true)? 'checked="checked"' : '' }}>
                                         <p>ボクシング</p>
                                     </label>
 
-                                    <label for="category2">
+                                    <label for="category2" class="right-group">
                                         <input type="checkbox" name="type[]" id="category2" value="2" {{ is_array($search_type) && in_array("2", $search_type, true)? 'checked="checked"' : '' }}>
                                         <p>キックボクシング</p>
                                     </label>
                                 </div>
                                 <div class="category-group col-sm-6 col-md-4">
-                                    <label for="category3">
+                                    <label for="category3" class="left-group">
                                         <input type="checkbox" name="type[]" id="category3" value="3" {{ is_array($search_type) && in_array("3", $search_type, true)? 'checked="checked"' : '' }}>
                                         <p>総合格闘技</p>
                                     </label>
-                                    <label for="category4">
+                                    <label for="category4" class="left-group">
                                         <input type="checkbox" name="type[]" id="category4" value="4" {{ is_array($search_type) && in_array("4", $search_type, true)? 'checked="checked"' : '' }}>
                                         <p>パーソナルトレーニング</p>
                                     </label>
@@ -73,6 +73,12 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <div class="col mb-3">
+                                    <input type="text" name="address_city" class="form-control col-sm-12 col-md-8 offset-md-2" placeholder="市区町村名をご入力ください" value="{{ $search_address_city }}">
+                                </div>
+                            </div>
+
                             <div class="row justify-content-center my-5">
                                 {{ csrf_field() }}
                                 <input type="submit" class="btn btn-primary rounded-pill px-5" value="検索">
@@ -85,10 +91,11 @@
                           <div class="card card-group">
                               <div class="card-body">
                                   <div class="shop-body">
-
+                                      <a href="{{ action('User\UserController@shop', ['id' => $shop->id]) }}">
                                       <div class="profile">
                                           <h2 class="shop-name">{{ $shop->name }}</h2>
                                       </div>
+                                      </a>
 
                                       <div class="profile">
                                           <p class="address">{{ $shop->address_ken }}{{ $shop->address_city }}</p>
@@ -155,7 +162,7 @@
 
                                       <div class="profile">
                                           <div class="center-btn">
-                                              <a href="{{ action('User\UserController@shop', ['id' => $shop->id]) }}" class="btn btn-primary shop-btn">詳細を見る</a>
+
                                           </div>
                                       </div>
                                   </div>

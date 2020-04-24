@@ -1,0 +1,55 @@
+$pc: 992px; // PC 1024px
+$tab: 768px; // タブレット
+
+@mixin tab {
+  @media (min-width: ($tab)) {
+    @content;
+  }
+}
+@mixin pc {
+  @media (min-width: ($pc)) {
+    @content;
+  }
+}
+
+
+footer {
+    margin-top: 50px;
+}
+
+.footer_imgtext {
+    position: relative;
+}
+
+.footer_imgtext p {
+    position: absolute;
+    color: white;
+    top: 35%;
+    left: 5%;
+    font-size: 5px;
+    text-shadow: 1px 1px 15px black, 0 0 1em black, 0 0 0.2em black;
+    @media (min-width: 380px) {
+        font-size: 12px;
+    }
+    @media (min-width: 420px) {
+        font-size: 13px;
+    }
+    @media (min-width: 500px) {
+        font-size: 15px;
+    }
+    @media (min-width: 600px) {
+        font-size: 18px;
+    }
+    @include tab {
+        font-size: 19px;
+    }
+    @media (min-width: 900px) {
+        font-size: 22px;
+        top: 40%;
+    }
+    @include pc {
+        font-size: 22px;
+        top: 40%;
+        left: 10%;
+    }
+}

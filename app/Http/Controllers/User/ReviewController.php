@@ -18,8 +18,9 @@ class ReviewController extends Controller
         if (empty($shop)) {
             return view('top');
         }
-
-        return view('user.review.create',['shop' => $shop]);
+        $user = Auth::user();
+        $profile = $user->profiles;
+        return view('user.review.create',['shop' => $shop, 'user' => $user, 'profile' => $profile]);
     }
 
 
@@ -42,8 +43,23 @@ class ReviewController extends Controller
 
 
 
-    public function edit() {
-        return view('user.review.edit');
+    public function edit(Request $request) {
+        $review = Review::find($request->review_id);
+        $shop = Shop::find($request->shop_id);
+
+        return view('user.review.edit', ['review' => $review, 'shop' => $shop]);
+    }
+
+
+
+    public function update(Request $request) {
+          $this->validate($request, Review::$rules);
+          $review = Review::find($request->review_id);
+          $form = $request->all();
+
+          $review->fill($form)->save();
+
+          return redirect()->route('user.profile.mypage', ['id' => Auth::user()->id]);
     }
 
 

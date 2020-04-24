@@ -19,8 +19,8 @@
                             </div>
                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                 <div class="navbar-nav clear_box">
-                                      <a class="nav-item active" href="#"><i class="fas fa-search fa-lg"></i><span class="menu-label">ジム検索<span><span class="sr-only">(current)</span></a>
-                                      <a class="nav-item" href="#"><i class="fas fa-edit fa-lg"></i><span class="menu-label">新規レビュー</span></a>
+                                      <a class="nav-item active" href="{{ route('user.search') }}"><i class="fas fa-search fa-lg"></i><span class="menu-label">ジム検索<span><span class="sr-only">(current)</span></a>
+                                      <a class="nav-item" href="{{ route('user.search') }}"><i class="fas fa-edit fa-lg"></i><span class="menu-label">新規レビュー</span></a>
                                       <a class="nav-item" href="{{ route('login') }}"><i class="fas fa-sign-in-alt fa-lg small"></i><span class="menu-label">ログイン</span></a>
                                       <a class="nav-item disabled" href="{{ route('register') }}"><i class="fas fa-user-plus fa-lg"></i><span class="menu-label">新規登録</span></a>
                                 </div>
@@ -59,73 +59,6 @@
                                 </div>
                             </div>
                         </nav>
-
-
-
-
-                        <!-- <div id="nav-drawer">
-                            <input id="nav-input" type="checkbox" class="nav-unshown">
-                            <label id="nav-open" for="nav-input">
-                                <span></span>
-                            </label>
-                            <label class="nav-unshown" id="nav-close" for="nav-input"></label>
-                            <div id="nav-content">
-                                <div>
-                                    <ul class="list-group">
-                                        <a href="{{ route('user.profile.mypage', ['id' => Auth::user()->id]) }}" class="main-menu">
-                                            <li class="list-group-item-light py-5 pl-3 border">
-                                                <p class="menu-logo"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="アイコン" width="60" class="rounded-circle"></p>
-                                                <label class="ml-2 menu-label">{{ Auth::user()->name }}</label>
-                                            </li>
-                                        </a>
-
-                                        @if(Auth::user()->profiles)
-                                        <a href="{{ route('user.profile.edit',['id' => Auth::user()->id]) }}" class="main-menu">
-                                            <li class="list-group-item-light py-3 pl-3 border">
-                                                <i class="fas fa-cog fa-2x align-middle"></i>
-                                                <label class="ml-2 mt-1 align-middle ">プロフィール編集</label>
-                                            </li>
-                                        </a>
-                                        @else
-                                        <a href="{{ route('user.profile.add',['id' => Auth::user()->id]) }}" class="main-menu">
-                                            <li class="list-group-item-light py-3 pl-3 border">
-                                                <i class="fas fa-cog fa-2x align-middle"></i>
-                                                <label class="ml-2 mt-1 align-middle ">プロフィール作成</label>
-                                            </li>
-                                        </a>
-                                        @endif
-
-                                        <a href="#" class="main-menu">
-                                            <li class="list-group-item-light py-3 pl-3 border">
-                                                <i class="fas fa-envelope fa-2x align-middle"></i>
-                                                <label class="ml-2 mt-1 align-middle ">メールアドレス編集</label>
-                                            </li>
-                                        </a>
-                                        <a href="{{ route('user.search') }}" class="main-menu">
-                                            <li class="list-group-item-light py-3 pl-3 border">
-                                                <i class="fas fa-dumbbell fa-2x align-middle"></i>
-                                                <label class="ml-2">ジムを検索する</label>
-                                            </li>
-                                        </a>
-                                        <a href="{{ route('logout') }}" class="main-menu" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            <li class="list-group-item-light py-3 pl-3 border">
-                                               <i class="fas fa-sign-out-alt fa-2x align-middle"></i>
-                                               <label class="ml-2">ログアウト</label>
-                                            </li>
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                        </form>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="site-title">
-                            <a class="mx-auto mt-3" href="{{ url('/') }}">
-                                <img src="{{ asset('image/Fightなび.png') }}" alt="Fightなび">
-                            </a>
-                        </p> -->
                     @endguest
 
 
@@ -142,5 +75,16 @@
                     @yield('content')
                 </main>
         </div>
+        <footer>
+            <div class="">
+                <div class="footer_imgtext">
+                    <img src="{{ asset('storage/image/app_images/publicdomainq-0008765xetjvc.jpg') }}" class="header-img">
+                    <p>みんなのオススメジムがみつかる</p>
+                </div>
+
+            </div>
+
+        </footer>
+
     </body>
 </html>

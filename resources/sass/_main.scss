@@ -1,3 +1,17 @@
+$pc: 992px; // PC 1024px
+$tab: 768px; // タブレット
+
+@mixin tab {
+  @media (min-width: ($tab)) {
+    @content;
+  }
+}
+@mixin pc {
+  @media (min-width: ($pc)) {
+    @content;
+  }
+}
+
 @media only screen and (max-width: 480px) {
     .radio-inline {
         display: block;
@@ -14,31 +28,40 @@
 }
 
 .profile-img {
-    width: 15%;
+    width: 80px;
+    float: left;
+    @include tab {
+        width: 150px;
+    }
+}
+
+.myname {
+    margin: 15px 0 15px 90px;
+    @include tab {
+        margin: 37px 0 15px 170px;
+        font-size: 18px;
+    }
+}
+
+.review-group {
+    display: inline-block;
+    width: 100%;
 }
 
 .review-user {
-    width: 10%;
+    width: 70px;
+    float: left;
 }
 
-
-
-
-
-
-$pc: 992px; // PC 1024px
-$tab: 768px; // タブレット
-
-@mixin tab {
-  @media (min-width: ($tab)) {
-    @content;
-  }
+.mypage-body {
+    @include tab {
+        padding: 50px;
+    }
+    @include pc {
+        padding: 80px;
+    }
 }
-@mixin pc {
-  @media (min-width: ($pc)) {
-    @content;
-  }
-}
+
 
 .error {
   color: red;
@@ -114,6 +137,7 @@ input.center {
     top: 35%;
     left: 5%;
     font-size: 5px;
+    text-shadow: 1px 1px 15px black, 0 0 1em black, 0 0 0.2em black;
     @media (min-width: 380px) {
         font-size: 12px;
     }
@@ -174,6 +198,30 @@ input.center {
   }
 }
 
+.type-group {
+    display: inline-block;
+    width: 100%;
+
+    .left-group {
+        float: left;
+    }
+
+    .right-group {
+        float: right;
+    }
+}
+
+.top-ken {
+    width: 95%;
+    text-align: center;
+    @include tab {
+        width: 70%;
+    }
+}
+
+.ken-submit {
+    float: right;
+}
 
 .body {
   margin: 10px 18px;
@@ -307,4 +355,151 @@ input.center {
 
 .category-group input:checked + p::before {
   background-color: #000000;
+}
+
+label.left-group {
+    @media (min-width: 576px) {
+        margin-left: -16px;
+    }
+}
+
+label.right-group {
+    @media (min-width: 576px) {
+        margin-right: -16px;
+    }
+}
+
+.myprofile {
+    display: inline-block;
+    width: 100%;
+}
+
+
+
+
+
+p.user-name {
+    margin: 15px 0 0 75px;
+}
+
+p.review-shop {
+    font-size: 17px;
+    color: #000;
+    border-bottom: solid 1px #cccccc;
+    margin: 15px 0;
+    @include tab {
+      margin: 30px 0;
+      font-size: 20px;
+    }
+}
+
+p.review-address {
+    margin: 5px 0 10px 3px;
+}
+
+.review-item {
+    display: inline-block;
+    width: 100%;
+    margin: 5px 0 5px 0;
+    @include tab {
+        margin: 5px 0 5px 0;
+        font-size: 19px;
+    }
+}
+
+p.review-text {
+    float: left;
+    margin: 2px 3px 0 0;
+    position: absolute;
+}
+
+.review-star {
+    display: inline;
+    margin-left: 58px;
+    @include tab {
+        margin-left: 75px;
+    }
+}
+
+p.review-point {
+    display: inline;
+    position: absolute;
+    left: 230px;
+    font-weight: bold;
+    padding-top: 2px;
+    @include tab {
+        left: 350px;
+    }
+}
+
+.review-text-group {
+    margin: 15px 0;
+}
+
+label.review-coment {
+    font-size: 14px;
+}
+
+p.review-merit {
+    margin: 5px 3px;
+}
+
+i.far.fa-hand-point-down {
+    margin-right: 2px;
+    @include tab {
+        margin-right: 0;
+    }
+}
+
+i.fas.fa-undo {
+    margin-right: 2px;
+    vertical-align: middle;
+}
+
+p.review-update {
+    display: inline;
+}
+
+p.review-updated_at {
+    display: inline;
+    margin-left: 15px;
+}
+
+.revier-btn-group {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.review-btn {
+    padding: 5px 40px;
+    @include tab {
+      padding: 10px 60px;
+      margin: 20px;
+    }
+}
+
+.review-label {
+    font-size: 14px;
+    @include tab {
+        font-size: 16px;
+    }
+}
+
+h2.shop-name {
+    color: #000;
+}
+
+a.new-review {
+    font-size: 18px;
+}
+
+i.fas.fa-edit.fa-lg.review {
+    vertical-align: baseline;
+}
+
+span.small-text {
+    font-size: 13px;
+    margin-left: 3px;
+    vertical-align: middle;
 }
