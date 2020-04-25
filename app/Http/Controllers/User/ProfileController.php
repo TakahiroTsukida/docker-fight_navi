@@ -22,11 +22,17 @@ class ProfileController extends Controller
             return view('top');
         }
         $profile = $user->profiles;
-        $query = Review::query();
-        $query->join('shops', 'reviews.shop_id', '=', 'shops.id')
-              ->where('user_id', $user->id);
-        $reviews = $query->get()->sortByDesc('updated_at');
-        
+        $reviews = Review::join('shops', 'reviews.shop_id', '=', 'shops.id')
+                          ->select('reviews.*', 'name', 'address_ken', 'address_city')
+                          ->where('user_id', $user->id)
+                          ->get()->sortByDesc('updated_at');
+
+        // $reviews = Review::where('user_id', $user->id)->get();
+        //
+        // $reviews = Review::query();
+        // $query->leftJoin('shops', 'reviews.shop_id', '=', 'shops.id')
+        //       ->where('user_id', $user->id);
+        // $reviews = $query->get()->sortByDesc('updated_at');
         return view('user.profile.mypage',['user' => $user, 'profile' => $profile, 'reviews' => $reviews]);
     }
 

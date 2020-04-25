@@ -269,6 +269,16 @@ $tab: 768px; // タブレット
 }
 
 .personal-group {
-  border-bottom: solid 1px #C0C0C0;
-  padding-bottom: 18px;
+    border-bottom: solid 1px #C0C0C0;
+    padding-bottom: 18px;
+}
+
+.trial-block {
+    display: inline-block;
+    width: 100%;
+}
+
+.trial-price {
+    width: 100px;
+    display: inline;
 }

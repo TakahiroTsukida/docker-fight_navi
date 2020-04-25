@@ -5,11 +5,30 @@
     </head>
     <body>
         <div id="app">
-            <nav class="navbar navbar-light navbar-laravel">
-                <div class="container">
+            <nav>
+                <div>
 
                     @guest
-                        <div class="mx-2">
+
+                        <nav class="navbar navbar-expand-lg navbar-light">
+                            <div class="header">
+                                <a class="navbar-brand header-img" href="{{ url('/') }}">
+                                    <img src="{{ asset('storage/image/app_images/Fightなび.png') }}" alt="Fightなび">
+                                </a>
+                                <button class="navbar-toggler menu-icon" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                                <div class="navbar-nav clear_box">
+                                      <a class="nav-item active" href="{{ route('admin.login') }}"><i class="fas fa-sign-in-alt fa-lg small"></i><span class="menu-label">管理ユーザーログイン<span><span class="sr-only">(current)</span></a>
+                                      <a class="nav-item disabled" href="{{ route('admin.show.register') }}"><i class="fas fa-user-plus fa-lg"></i><span class="menu-label">管理ユーザー新規登録</span></a>
+                                </div>
+                            </div>
+                        </nav>
+
+
+                        <!-- <div class="mx-2">
                             <p class="site-title">
                                 <a href="{{ url('/') }}">
                                     <img src="{{ asset('image/Fightなび.png') }}" alt="Fightなび">
@@ -25,60 +44,41 @@
                             </ul>
                             <ul class="navbar-nav ml-auto">
                             </ul>
-                        </div>
-                    @else
-                        <div id="nav-drawer">
-                            <input id="nav-input" type="checkbox" class="nav-unshown">
-                            <label id="nav-open" for="nav-input">
-                                <span></span>
-                            </label>
-                            <label class="nav-unshown" id="nav-close" for="nav-input"></label>
-                            <div id="nav-content">
-                                <div>
-                                    <ul class="list-group">
-                                        <a href="{{ route('admin.profile.mypage') }}" class="main-menu">
-                                            <li class="list-group-item-light py-4 pl-3 border">
-                                                <label class="ml-2 menu-label">{{ Auth::user()->name }}</label>
-                                            </li>
-                                        </a>
+                        </div> -->
 
-                                        <a href="{{ route('admin.profile.edit') }}" class="main-menu">
-                                            <li class="list-group-item-light py-3 pl-3 border">
-                                                <i class="fas fa-cog fa-2x align-middle"></i>
-                                                <label class="ml-2 mt-1 align-middle ">プロフィール編集</label>
-                                            </li>
-                                        </a>
-                                        <a href="#" class="main-menu">
-                                            <li class="list-group-item-light py-3 pl-3 border">
-                                                <i class="fas fa-envelope fa-2x align-middle"></i>
-                                                <label class="ml-2 mt-1 align-middle ">メールアドレス編集</label>
-                                            </li>
-                                        </a>
-                                        <a href="{{ route('admin.shop.add') }}" class="main-menu">
-                                            <li class="list-group-item-light py-3 pl-3 border">
-                                                <i class="fas fa-dumbbell fa-2x align-middle"></i>
-                                                <label class="ml-2">ジム・道場新規登録</label>
-                                            </li>
-                                        </a>
-                                        <a href="{{ route('admin.logout') }}" class="main-menu" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            <li class="list-group-item-light py-3 pl-3 border">
-                                               <i class="fas fa-sign-out-alt fa-2x align-middle"></i>
-                                               <label class="ml-2">ログアウト</label>
-                                            </li>
-                                        </a>
-                                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                        </form>
-                                    </ul>
+
+                    @else
+                        <nav class="navbar navbar-light">
+                            <div class="header">
+                                <a class="navbar-brand header-img" href="{{ url('/') }}">
+                                    <img src="{{ asset('storage/image/app_images/Fightなび.png') }}" alt="Fightなび">
+                                </a>
+                                <button class="navbar-toggler menu-icon" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                                <div class="navbar-nav clear_box">
+                                      <a class="nav-item-login active" href="{{ route('admin.profile.mypage') }}"><i class="fas fa-user fa-lg default"></i><span class="login-label">マイページ</span><span class="sr-only">(current)</span></a>
+
+                                      <a class="nav-item-login" href="{{ route('admin.profile.edit') }}"><i class="fas fa-user-cog fa-lg"></i><span class="login-label">プロフィール編集</span><span class="sr-only">(current)</span></a>
+
+                                      <a class="nav-item-login" href="#"><i class="fas fa-envelope fa-lg default"></i><span class="login-label">メールアドレス変更</span></a>
+
+                                      <a class="nav-item-login" href="#"><i class="fas fa-search fa-lg default"></i><span class="login-label">ジム検索</span><span class="sr-only">(current)</span></a>
+
+                                      <a class="nav-item-login" href="{{ route('admin.shop.add') }}"><i class="fas fa-edit fa-lg default"></i><span class="login-label">新規ジム・道場登録</span></a>
+
+                                      <a class="nav-item-login disabled" href="{{ route('admin.logout') }}" onclick="event.preventDefault();
+                                                   document.getElementById('logout-form').submit();">
+                                             <i class="fas fa-sign-out-alt fa-lg default"></i><span class="login-label">ログアウト</span></a>
+                                     <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                                     @csrf
+                                     </form>
                                 </div>
                             </div>
-                        </div>
-                        <p class="site-title">
-                            <a class="mx-auto mt-3" href="{{ route('admin.profile.mypage') }}">
-                                <img src="{{ asset('image/Fightなび.png') }}" alt="Fightなび">
-                            </a>
-                        </p>
+                        </nav>
+
                     @endguest
 
 

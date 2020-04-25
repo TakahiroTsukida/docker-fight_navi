@@ -65,7 +65,12 @@ class ReviewController extends Controller
 
 
 
-    public function delete() {
-        return view('user.review.delete');
+    public function delete(Request $request) {
+        $review = Review::find($request->review_id);
+        dd($review);
+        // $review->delete();
+
+
+        return redirect()->route('user.profile.mypage', ['id' => Auth::user()->id]);
     }
 }

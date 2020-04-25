@@ -2,7 +2,7 @@
 @section('title', 'fightなび')
 @section('content')
     <div class="app_imgtext">
-        <img src="{{ asset('image/1700ec56fa396b05d10486da417d0f65_m.jpg') }}" alt="fightなび">
+        <img src="{{ asset('storage/image/app_images/1700ec56fa396b05d10486da417d0f65_m.jpg') }}" alt="fightなび">
         <p>あなたにあった<br>
           ボクシング、キックボクシング<br>
           総合格闘技ジムをみつけよう。</p>

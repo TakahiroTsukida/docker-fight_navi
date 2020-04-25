@@ -77,10 +77,11 @@
         </div>
         <footer>
             <div class="">
-                <div class="footer_imgtext">
+              
+                <!-- <div class="footer_imgtext">
                     <img src="{{ asset('storage/image/app_images/publicdomainq-0008765xetjvc.jpg') }}" class="header-img">
                     <p>みんなのオススメジムがみつかる</p>
-                </div>
+                </div> -->
 
             </div>
 

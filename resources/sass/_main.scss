@@ -275,6 +275,7 @@ input.center {
 .price-en {
   font-size: 8px;
   display: inline;
+  vertical-align: -webkit-baseline-middle;
   @include tab {
     font-size: 10px;
   }

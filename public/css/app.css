@@ -11675,6 +11675,7 @@ input.center {
 .price-en {
   font-size: 8px;
   display: inline;
+  vertical-align: -webkit-baseline-middle;
 }
 
 @media (min-width: 768px) {
@@ -12272,6 +12273,16 @@ span.small-text {
 .personal-group {
   border-bottom: solid 1px #C0C0C0;
   padding-bottom: 18px;
+}
+
+.trial-block {
+  display: inline-block;
+  width: 100%;
+}
+
+.trial-price {
+  width: 100px;
+  display: inline;
 }
 
 footer {
