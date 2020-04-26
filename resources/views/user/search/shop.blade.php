@@ -148,7 +148,7 @@
                   </div>
               </div>
 
-
+              @if(isset($reviews))
               @foreach ($reviews as $review)
                   <div class="card page-title">
                       <div class="card-body mypage-body">
@@ -158,7 +158,7 @@
                               @else
                               <p class="review-user"><img src="{{ asset('storage/image/app_images/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
                               @endif
-                              <p class="user-name"> {{ isset($review->name) ? $review->name : '' }} </p>
+                              <p class="user-name"> {{ $review->name }} </p>
                           </div>
                           <div>
                               <a href="{{ action('User\UserController@shop', ['id' => $review->shop_id]) }}">
@@ -364,6 +364,7 @@
                   </div>
 
             @endforeach
+            @endif
             </div>
         </div>
     </div>

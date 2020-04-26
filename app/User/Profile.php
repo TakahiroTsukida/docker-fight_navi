@@ -33,11 +33,3 @@ class Profile extends Model
 
         'image' => 'nullable|image|max:512',
     );
-
-
-
-    public function users() {
-        return $this->belongsTo('App\User');
-    }
-
-}

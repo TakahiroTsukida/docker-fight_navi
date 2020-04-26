@@ -209,28 +209,29 @@
                                   <div class="profile">
                                       <div class="center-btn">
                                           <a href="{{ route('admin.shop.edit',['id' => $shop->id]) }}" class="btn btn-success shop-btn">編集</a>
-                                          <button type="button" class="btn btn-danger shop-btn" data-toggle="modal" data-target="#testModal">削除</button>
+                                          <button type="button" class="btn btn-danger shop-btn" data-toggle="modal" data-target="#exampleModalCenter{{ $shop->id }}">削除</button>
                                       </div>
                                   </div>
 
-
-
-                                  <!-- ボタン・リンククリック後に表示される画面の内容 -->
-                                  <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-                                      <div class="modal-dialog">
-                                          <div class="modal-content">
-                                              <div class="modal-header">
-                                                  <h4 class="modal-title" id="myModalLabel">削除確認画面</h4>
-                                              </div>
-                                              <div class="modal-body">
-                                                  <label>本当にデータを削除しますか？</label>
-                                              </div>
-                                              <div class="modal-footer">
-                                                  <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-                                                  <a href="{{ route('admin.shop.delete',['id' => $shop->id]) }}" class="btn btn-danger">削除</a>
-                                              </div>
-                                          </div>
+                                  <!-- Modal -->
+                                  <div class="modal fade" id="exampleModalCenter{{ $shop->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalCenterTitle">削除確認画面</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          本当にこのデータを削除しますか？
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                                          <a href="{{ route('admin.shop.delete',['id' => $shop->id]) }}" class="btn btn-danger">削除</a>
+                                        </div>
                                       </div>
+                                    </div>
                                   </div>
                               </div>
                           </div>

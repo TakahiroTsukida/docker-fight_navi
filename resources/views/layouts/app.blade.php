@@ -38,18 +38,16 @@
                             </div>
                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                 <div class="navbar-nav clear_box">
-                                      <a class="nav-item-login active" href="{{ route('user.profile.mypage', ['id' => Auth::user()->id]) }}"><i class="fas fa-user fa-lg default"></i><span class="login-label">マイページ</span><span class="sr-only">(current)</span></a>
+                                      <a class="nav-item-login active" href="{{ route('user.profile.mypage') }}"><i class="fas fa-user fa-lg default"></i><span class="login-label">マイページ</span><span class="sr-only">(current)</span></a>
 
-                                      @if(Auth::user()->profiles)
-                                          <a class="nav-item-login" href="{{ route('user.profile.edit',['id' => Auth::user()->id]) }}"><i class="fas fa-user-cog fa-lg"></i><span class="login-label">プロフィール編集</span><span class="sr-only">(current)</span></a>
-                                      @else
-                                          <a class="nav-item-login" href="{{ route('user.profile.add',['id' => Auth::user()->id]) }}"><i class="fas fa-user-cog fa-lg"></i><span class="login-label">プロフィール作成</span><span class="sr-only">(current)</span></a>
-                                      @endif
+                                      <a class="nav-item-login" href="{{ route('user.profile.edit') }}"><i class="fas fa-user-cog fa-lg"></i><span class="login-label">プロフィール編集</span><span class="sr-only">(current)</span></a>
 
                                       <a class="nav-item-login" href="{{ route('user.search') }}"><i class="fas fa-search fa-lg default"></i><span class="login-label">ジム検索</span><span class="sr-only">(current)</span></a>
 
                                       <a class="nav-item-login" href="{{ route('user.search') }}"><i class="fas fa-edit fa-lg default"></i><span class="login-label">新規レビュー</span></a>
-                                      <a class="nav-item-login" href="#"><i class="fas fa-envelope fa-lg default"></i><span class="login-label">メールアドレス変更</span></a>
+
+                                      <a class="nav-item-login" href="{{ route('user.resets.email') }}"><i class="fas fa-envelope fa-lg default"></i><span class="login-label">メールアドレス変更</span></a>
+
                                       <a class="nav-item-login disabled" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">
                                              <i class="fas fa-sign-out-alt fa-lg default"></i><span class="login-label">ログアウト</span></a>
@@ -77,7 +75,7 @@
         </div>
         <footer>
             <div class="">
-              
+
                 <!-- <div class="footer_imgtext">
                     <img src="{{ asset('storage/image/app_images/publicdomainq-0008765xetjvc.jpg') }}" class="header-img">
                     <p>みんなのオススメジムがみつかる</p>

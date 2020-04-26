@@ -15,13 +15,12 @@ use Storage;
 
 class ProfileController extends Controller
 {
-    public function mypage($id) {
-        $user = User::find($id);
+    public function mypage() {
+        $user = User::find(Auth::user()->id);
         // $profile = Profile::where('user_id', $user->id);
         if (empty($user)) {
             return view('top');
         }
-        $profile = $user->profiles;
         $reviews = Review::join('shops', 'reviews.shop_id', '=', 'shops.id')
                           ->select('reviews.*', 'name', 'address_ken', 'address_city')
                           ->where('user_id', $user->id)
@@ -33,72 +32,71 @@ class ProfileController extends Controller
         // $query->leftJoin('shops', 'reviews.shop_id', '=', 'shops.id')
         //       ->where('user_id', $user->id);
         // $reviews = $query->get()->sortByDesc('updated_at');
-        return view('user.profile.mypage',['user' => $user, 'profile' => $profile, 'reviews' => $reviews]);
+        return view('user.profile.mypage',['user' => $user, 'reviews' => $reviews]);
     }
 
 
 
-    public function add(Request $request) {
-        $user = User::find($request->id);
-
-        return view('user.profile.create', ['user' => $user]);
-    }
-
-
-
-    public function create(Request $request) {
-        $this->validate($request, Profile::$create_rules);
-        $profile = new Profile;
-        $form = $request->all();
-
-        if (isset($form['image'])) {
-            $path = $form->file('image')->store('public/image/profile_images');
-            $profile->image_path = basename($path);
-            unset($form['image']);
-        }
-        unset($form['_token']);
-        $profile->user_id = $form['user_id'];
-        $profile->fill($form)->save();
-
-        return redirect()->route('user.profile.mypage', ['id' => Auth::user()->id]);
-    }
-
+    // public function add() {
+    //     $user = User::find(Auth::user()->id);
+    //
+    //     return view('user.profile.create', ['user' => $user]);
+    // }
+    //
+    //
+    //
+    // public function create(Request $request) {
+    //     $this->validate($request, User::$rules);
+    //     $user = User::find(Auth::user()->id);
+    //     $form = $request->all();
+    //
+    //     if (isset($form['image'])) {
+    //         $path = $form->file('image')->store('public/image/profile_images');
+    //         $user->image_path = basename($path);
+    //         unset($form['image']);
+    //     }
+    //     unset($form['_token']);
+    //     $user->fill($form)->save();
+    //
+    //     return redirect()->route('user.profile.mypage', ['id' => Auth::user()->id]);
+    // }
 
 
 
-    public function edit(Request $request) {
-        $user = User::find($request->id);
-        //$profile = Profile::where('user_id', Auth::user()->id);
-        $profile = $user->profiles;
 
+    public function edit() {
+        $user = User::find(Auth::user()->id);
         if (empty($user)) {
             abort(404);
         }
 
-        return view('user.profile.edit', ['user' => $user, 'profile' => $profile]);
+        return view('user.profile.edit', ['user' => $user]);
     }
 
 
     public function update(Request $request) {
-        $this->validate($request, Profile::$edit_rules);
-        $user = User::find($request->user_id);
-        $profile = $user->profiles;
-        if(empty($profile)) {
+        $this->validate($request, User::$rules);
+        $user = User::find(Auth::user()->id);
+        if(empty($user)) {
             abort(404);
         }
-        // $profile = Profile::where('user_id', $request->user_id)->get();
         $form = $request->all();
 
         if (isset($form['image'])) {
             $path = $request->file('image')->store('public/image/profile_images');
-            $profile->image_path = basename($path);
+            $user->image_path = basename($path);
             unset($form['image']);
+        } elseif (isset($request->remove)) {
+            $user->image_path = null;
+            unset($form['remove']);
         }
-
         unset($form['_token']);
-        $profile->fill($form)->save();
+        $user->fill($form)->save();
 
+        return redirect('user/profile/mypage');
+    }
 
-        return redirect()->route('user.profile.mypage', ['id' => Auth::user()->id]);
+    public function resets_email() {
+        return view('user.profile.emails.reset');
     }
 }

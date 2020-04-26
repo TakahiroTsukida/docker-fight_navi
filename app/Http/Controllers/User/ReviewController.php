@@ -19,15 +19,13 @@ class ReviewController extends Controller
             return view('top');
         }
         $user = Auth::user();
-        $profile = $user->profiles;
-        return view('user.review.create',['shop' => $shop, 'user' => $user, 'profile' => $profile]);
+        return view('user.review.create',['shop' => $shop, 'user' => $user]);
     }
 
 
 
 
     public function create(Request $request) {
-        // dd($request);
         $this->validate($request, Review::$rules);
         $user_id = Auth::user()->id;
 
@@ -37,7 +35,7 @@ class ReviewController extends Controller
         $review->user_id = $user_id;
         $review->fill($form)->save();
 
-        return redirect()->route('user.profile.mypage', ['id' => Auth::user()->id]);
+        return redirect('user/profile/mypage');
     }
 
 
@@ -59,18 +57,18 @@ class ReviewController extends Controller
 
           $review->fill($form)->save();
 
-          return redirect()->route('user.profile.mypage', ['id' => Auth::user()->id]);
+          return redirect('user/profile/mypage');
     }
 
 
 
 
     public function delete(Request $request) {
+        dd($request);
         $review = Review::find($request->review_id);
-        dd($review);
         // $review->delete();
 
 
-        return redirect()->route('user.profile.mypage', ['id' => Auth::user()->id]);
+        return redirect('user/profile/mypage');
     }
 }

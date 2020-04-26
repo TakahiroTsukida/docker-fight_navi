@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'gender', 'birthday', 'introduction',
     ];
 
     /**
@@ -41,13 +42,13 @@ class User extends Authenticatable
 
     public static $rules = array(
         'name' => 'required|max:60',
+        'gender' => 'nullable',
+        'birthday' => 'nullable',
+        'introduction' => 'nullable',
+
+        'image' => 'nullable|image|max:512',
     );
 
-
-
-    public function profiles() {
-        return $this->hasOne('App\User\Profile');
-    }
 
     public function reviews() {
         return $this->hasMany('App\User\Review');

@@ -22,7 +22,11 @@ Route::group(['prefix' => 'user'], function() {
 
 
     Route::group(['middleware' => 'auth'], function() {
-        Route::get('profile/mypage{id}', 'User\ProfileController@mypage')->name('user.profile.mypage');
+
+        Route::get('email', 'User\ProfileController@resets_email')->name('user.resets.email');
+
+
+        Route::get('profile/mypage', 'User\ProfileController@mypage')->name('user.profile.mypage');
 
         Route::get('profile/create', 'User\ProfileController@add')->name('user.profile.add');
         Route::post('profile/create', 'User\ProfileController@create');
@@ -48,7 +52,6 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('register', 'Admin\Auth\RegisterController@showRegistrationForm')->name('admin.show.register');
     Route::post('register', 'Admin\Auth\RegisterController@register')->name('admin.register');
 
-
     Route::group(['middleware' => 'auth:admin'], function() {
 
         Route::get('profile/mypage', 'Admin\AdminController@mypage')->name('admin.profile.mypage');
@@ -68,4 +71,7 @@ Route::group(['prefix' => 'admin'], function() {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Auth::routes(); //(['verify' => true]);
+
+Route::get("user/reset/{token}", "User\ChangeEmailController@reset");
+Route::post('user/email', 'User\ChangeEmailController@sendChangeEmailLink');

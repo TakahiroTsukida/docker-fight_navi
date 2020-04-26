@@ -11,13 +11,22 @@
                     <div class="card-body">
                         <form action="{{ action('User\ProfileController@update') }}" method="post" enctype="multipart/form-data">
                             <div>
-                                <p class="col-sm-2 offset-sm-5"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name"></p>
+                                @if (isset($user->image_path))
+                                    <p class="col-sm-2 offset-sm-5"><img src="{{ asset('storage/image/profile_images/'.$user->image_path) }}" alt="name"></p>
+                                @else
+                                    <p class="col-sm-2 offset-sm-5"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name"></p>
+                                @endif  
                             </div>
 
                             <div>
+                                @error('image')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 <input type="file" class="form-control-file" name="image">
                                 <div class="form-text text-info">
-                                    設定中:
+                                    設定中:  {{ isset($user->image_path) ? $user->image_path : '' }}
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
@@ -46,7 +55,12 @@
                             <div>
                                 <div class="form-group">
                                     <label>名前</label>
-                                    <input type="text" name="name" class="form-control" value="{{ isset($profile->name) ? $profile->name : $user->name }}">
+                                        @error('name')
+                                            <div>
+                                                <p class="error price-en">{{ $message }}</p>
+                                            </div>
+                                        @enderror
+                                    <input type="text" name="name" class="form-control" value="{{ $user->name }}">
                                 </div>
 
                                 <div class="form-group">
@@ -59,9 +73,14 @@
                                 <div class="form-group">
                                     <label>性別</label>
                                     <div>
+                                        @error('gender')
+                                            <div>
+                                                <p class="error price-en">{{ $message }}</p>
+                                            </div>
+                                        @enderror
                                         <label class="radio-inline ml-sm-1 mr-5">
-                                            @if (isset($profile->gender))
-                                            <input type="radio" name="gender" value="男性" {{ $profile->gender == '男性' ? 'checked="checked"' : '' }}>
+                                            @if (isset($user->gender))
+                                            <input type="radio" name="gender" value="男性" {{ $user->gender == '男性' ? 'checked="checked"' : '' }}>
                                             @else
                                             <input type="radio" name="gender" value="男性">
                                             @endif
@@ -69,7 +88,7 @@
                                         </label>
                                         <label class="radio-inline">
                                             @if (isset($profile->gender))
-                                            <input type="radio" name="gender" value="女性" {{ $profile->gender == '女性' ? 'checked="checked"' : '' }}>
+                                            <input type="radio" name="gender" value="女性" {{ $user->gender == '女性' ? 'checked="checked"' : '' }}>
                                             @else
                                             <input type="radio" name="gender" value="女性">
                                             @endif
@@ -80,12 +99,17 @@
 
                                 <div class="form-group">
                                     <label for="birthday">生年月日</label>
-                                    <input type="date" name="birthday" class="form-control" value="{{ isset($profile->birthday) ? $profile->birthday : ''}}">
+                                    <input type="date" name="birthday" class="form-control" value="{{ $user->birthday }}">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="introduction">自己紹介</label>
-                                    <textarea class="form-control" name="introduction" rows="5" maxlength="100">{{ isset($profile->introduction) ? $profile->introduction : '' }}</textarea>
+                                    @error('introduction')
+                                        <div>
+                                            <p class="error price-en">{{ $message }}</p>
+                                        </div>
+                                    @enderror
+                                    <textarea class="form-control" name="introduction" rows="5" maxlength="100">{{ $user->introduction }}</textarea>
                                 </div>
                             </div>
 

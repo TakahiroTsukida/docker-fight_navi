@@ -50,7 +50,7 @@
                     @else
                         <nav class="navbar navbar-light">
                             <div class="header">
-                                <a class="navbar-brand header-img" href="{{ url('/') }}">
+                                <a class="navbar-brand header-img" href="{{ url('/admin/profile/mypage') }}">
                                     <img src="{{ asset('storage/image/app_images/Fightなび.png') }}" alt="Fightなび">
                                 </a>
                                 <button class="navbar-toggler menu-icon" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

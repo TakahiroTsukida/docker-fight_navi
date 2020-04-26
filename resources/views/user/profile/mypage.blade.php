@@ -5,27 +5,27 @@
         <div class="card page-title">
             <div class="col-sm-12 mx-auto card-body mypage-body">
                 <div class="myprofile">
-                    @if (isset($profile->image_path))
-                        <p class="profile-img"><img src="{{ asset('storage/image/profile_images/'.$profile->image_path) }}" alt="name" class="rounded-circle"></p>
+                    @if (isset($user->image_path))
+                        <p class="profile-img"><img src="{{ asset('storage/image/profile_images/'.$user->image_path) }}" alt="name" class="rounded-circle"></p>
                     @else
-                        <p class="profile_img"><img src="{{ asset('storage/image/app_images/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
+                        <p class="profile-img"><img src="{{ asset('storage/image/app_images/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
                     @endif
-                    <p class="myname">{{ isset($profile->name) ? $profile->name : $user->name }}</p>
+                    <p class="myname">{{ $user->name }}</p>
                 </div>
-                @if (isset($profile->gender))
+                @if (isset($user->gender))
                 <div class="profile">
-                    <p><i class="fas fa-transgender fa-lg"></i> {{ $profile->gender }}</p>
+                    <p><i class="fas fa-transgender fa-lg"></i> {{ $user->gender }}</p>
                 </div>
                 @endif
-                @if (isset($profile->birthday))
+                @if (isset($user->birthday))
                 <div class="profile">
-                    <p><i class="fas fa-birthday-cake fa-lg"></i> {{ $profile->birthday }}</p>
+                    <p><i class="fas fa-birthday-cake fa-lg"></i> {{ $user->birthday }}</p>
                 </div>
                 @endif
                 <div class="profile">
                     <p>自己紹介</p>
-                    @if(isset($profile->introduction))
-                        <p class="text-left">{{ $profile->introduction }}</p>
+                    @if(isset($user->introduction))
+                        <p class="text-left">{{ $user->introduction }}</p>
                     @endif
                 </div>
             </div>
@@ -37,6 +37,7 @@
             </div>
         </div>
 
+
         <div class="row justify-content-center">
             <div class="col-sm-12 mx-auto">
               @if (isset($reviews))
@@ -44,16 +45,16 @@
                     <div class="card page-title">
                         <div class="card-body mypage-body">
                             <div class="review-group">
-                                @if(isset($profile->image_path))
-                                    <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$profile->image_path) }}" alt="name" class="rounded-circle"></p>
+                                @if(isset($user->image_path))
+                                    <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$user->image_path) }}" alt="name" class="rounded-circle"></p>
                                 @else
                                     <p class="review-user"><img src="{{ asset('storage/image/app_images/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
                                 @endif
-                                <p class="user-name"> {{ isset($profile->name) ? $profile->name : $user->name }} </p>
+                                <p class="user-name"> {{ $user->name }} </p>
                             </div>
                             <div>
                                 <a href="{{ action('User\UserController@shop', ['id' => $review->shop_id]) }}">
-                                <p class="review-shop">{{ $review->name }}</P></a>
+                                <p class="review-shop">{{ $review->name }}</p></a>
                                 <p class="review-address"><i class="fas fa-map-marker-alt fa-lg"></i> {{ $review->address_ken }}  {{ $review->address_city }}</p>
                             </div>
                             <div class="review-item">
@@ -244,17 +245,14 @@
                             <div class="revier-btn-group">
                                 <div>
                                     <a href="{{ route('review.edit', ['review_id' => $review->id, 'shop_id' => $review->shop_id]) }}" class="btn btn-success review-btn">編集</a>
-                                    <!-- <button type="#" class="btn btn-danger review-btn">削除</button> -->
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-danger review-btn" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <button type="button" class="btn btn-danger review-btn" data-toggle="modal" data-target="#exampleModalCenter{{ $review->id }}">
                                       削除
                                     </button>
                                 </div>
                             </div>
 
-
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal fade" id="exampleModalCenter{{ $review->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                               <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">

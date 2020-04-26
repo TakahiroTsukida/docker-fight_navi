@@ -73,8 +73,9 @@ class UserController extends Controller
             abort(404);
         }
         $query = Review::query();
-        $query->join('profiles', 'reviews.user_id', '=', 'profiles.user_id')
-              ->where('shop_id', $shop->id);
+        $query->join('users', 'reviews.user_id', '=', 'users.id')
+              ->where('shop_id', $shop->id)
+              ->select('reviews.*', 'name', 'gender', 'image_path');
         $reviews = $query->get();
 
         return view('user.search.shop', ['shop' => $shop, 'reviews' => $reviews]);
