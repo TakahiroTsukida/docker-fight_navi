@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\User\EmailReset;
-use App\Notifications\User\ChangeEmail;
+use App\User;
+use Carbon\Carbon;
+
+
 
 class ChangeEmailController extends Controller
 {
@@ -32,12 +35,11 @@ class ChangeEmailController extends Controller
             $param['token'] = $token;
             $email_reset = EmailReset::create($param);
 
-            DB::commit();
-
             $email_reset->sendEmailResetNotification($token);
-
+            DB::commit();
             return redirect('user/email')->with('flash_message', '確認メールを送信しました。');
         } catch (\Exception $e) {
+            dd($e);
             DB::rollback();
             return redirect('user/email')->with('flash_message', 'メール更新に失敗しました。');
         }

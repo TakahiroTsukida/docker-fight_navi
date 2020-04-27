@@ -3,9 +3,15 @@
 namespace App\User;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\User\ChangeEmail;
 
 class EmailReset extends Model
 {
+
+    use Notifiable;
+
+    
     protected $fillable = [
         'user_id',
         'new_email',

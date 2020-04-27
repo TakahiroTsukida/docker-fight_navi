@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notification;
 class ChangeEmail extends Notification
 {
     use Queueable;
+    public $token;
 
     /**
      * Create a new notification instance.
@@ -42,10 +43,10 @@ class ChangeEmail extends Notification
      {
          return (new MailMessage)
              ->subject('メールアドレス変更') // 件名
-             ->view('user.profile.mails.changeEmail') // メールテンプレートの指定
+             ->view('user.profile.emails.changeEmail') // メールテンプレートの指定
              ->action(
                  'メールアドレス変更',
-                 url('reset', $this->token) //アクセスするURL
+                 url('user/reset', $this->token) //アクセスするURL
              );
      }
 

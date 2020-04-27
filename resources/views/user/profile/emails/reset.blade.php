@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 page-title">
             <!-- フラッシュメッセージ -->
             @if (session('flash_message'))
             <div class="flash_message alert-success text-center py-3 my-2">
@@ -19,12 +19,10 @@
                         {{ session('status') }}
                     </div>
                     @endif
-
-                    You are logged in!
                 </div>
 
                 <div class="card-body">
-                    新規メールアドレスを入力してください
+                    新しいメールアドレスを入力してください
                     <form action="email" method="POST">
                         {{ csrf_field() }}
                         <input type="email" name="new_email">

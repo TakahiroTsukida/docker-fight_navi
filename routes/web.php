@@ -21,7 +21,7 @@ Route::group(['prefix' => 'user'], function() {
     Route::get('shop', 'User\UserController@shop');
 
 
-    Route::group(['middleware' => 'auth'], function() {
+    Route::group(['middleware' => 'verified'], function() {
 
         Route::get('email', 'User\ProfileController@resets_email')->name('user.resets.email');
 
@@ -71,7 +71,7 @@ Route::group(['prefix' => 'admin'], function() {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes(); //(['verify' => true]);
+Auth::routes(['verify' => true]);
 
 Route::get("user/reset/{token}", "User\ChangeEmailController@reset");
 Route::post('user/email', 'User\ChangeEmailController@sendChangeEmailLink');
