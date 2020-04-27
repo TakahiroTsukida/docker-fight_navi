@@ -20,11 +20,11 @@ Route::group(['prefix' => 'user'], function() {
     Route::get('search', 'User\UserController@search')->name('user.search');
     Route::get('shop', 'User\UserController@shop');
 
-
     Route::group(['middleware' => 'verified'], function() {
 
         Route::get('email', 'User\ProfileController@resets_email')->name('user.resets.email');
-
+        Route::get("user/reset/{token}", "User\ChangeEmailController@reset");
+        Route::post('user/email', 'User\ChangeEmailController@sendChangeEmailLink');
 
         Route::get('profile/mypage', 'User\ProfileController@mypage')->name('user.profile.mypage');
 
@@ -72,6 +72,3 @@ Route::group(['prefix' => 'admin'], function() {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes(['verify' => true]);
-
-Route::get("user/reset/{token}", "User\ChangeEmailController@reset");
-Route::post('user/email', 'User\ChangeEmailController@sendChangeEmailLink');

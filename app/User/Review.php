@@ -10,11 +10,9 @@ class Review extends Model
     protected $fillable = [
         'user_id',
         'shop_id',
-        'resson',
-        'price',
-        'clean',
-        'service',
-        'atmosphere',
+        'total_point',
+        'learn',
+        'season',
         'merit',
         'demerit',
     ];
@@ -24,11 +22,9 @@ class Review extends Model
     protected $dates = ['display_date'];
 
     public static $rules = array(
-        'resson' => 'required|numeric',
-        'price' => 'required|numeric',
-        'clean' => 'required|numeric',
-        'service' => 'required|numeric',
-        'atmosphere' => 'required|numeric',
+        'total_point' => 'required|numeric',
+        'learn' => 'required',
+        'season' => 'required',
         'merit' => 'nullable|max:300',
         'demerit' => 'nullable|max:300',
     );

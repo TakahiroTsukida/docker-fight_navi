@@ -34,52 +34,36 @@
                         @endif
 
                         <div class="form-group row">
-                            <p for="resson" class="col-sm-3 col-lg-2 col-form-label review-label">レッスン</p>
-                            <select name="resson" class="col-sm-9 col-lg-10 form-control">
-                                <option value="{{ $review->resson }}" selected>{{ $review->resson }}</option>
-                                @include('parts/review/resson');
+                            <p class="col-sm-3 col-lg-2 col-form-label review-label">総合評価</p>
+                            <select name="total_point" class="col-sm-9 col-lg-10 form-control">
+                                <option value="{{ $review->total_point }}" selected>{{ $review->total_point }}点</option>
+                                @include('parts/review/total_point')
                             </select>
                         </div>
 
                         <div class="form-group row">
-                            <p for="price" class="col-sm-3 col-lg-2 col-form-label review-label">値段</p>
-                            <select name="price" class="col-sm-9 col-lg-10 form-control">
-                                <option value="{{ $review->price }}" selected>{{ $review->price }}</option>
-                                @include('parts/review/price');
+                            <p class="col-sm-3 col-lg-2 col-form-label review-label">通い方</p>
+                            <select name="learn" class="col-sm-9 col-lg-10 form-control">
+                                <option value="{{ $review->learn }}" selected>{{ $review->learn }}</option>
+                                @include('parts/review/learn')
                             </select>
                         </div>
 
                         <div class="form-group row">
-                            <p for="clean" class="col-sm-3 col-lg-2 col-form-label review-label">清潔さ</p>
-                            <select name="clean" class="col-sm-9 col-lg-10 form-control">
-                                <option value="{{ $review->clean }}" selected>{{ $review->clean }}</option>
-                                @include('parts/review/clean');
+                            <p class="col-sm-3 col-lg-2 col-form-label review-label">時期</p>
+                            <select name="season" class="col-sm-9 col-lg-10 form-control">
+                                <option value="{{ $review->season }}" selected>{{ $review->season }}</option>
+                                @include('parts/review/season')
                             </select>
                         </div>
 
                         <div class="form-group row">
-                            <p for="service" class="col-sm-3 col-lg-2 col-form-label review-label">接客</p>
-                            <select name="service" class="col-sm-9 col-lg-10 form-control">
-                                <option value="{{ $review->service }}" selected>{{ $review->service }}</option>
-                                @include('parts/review/service');
-                            </select>
-                        </div>
-
-                        <div class="form-group row">
-                            <p for="atmosphere" class="col-sm-3 col-lg-2 col-form-label review-label">雰囲気</p>
-                            <select name="atmosphere" class="col-sm-9 col-lg-10 form-control">
-                                <option value="{{ $review->atmosphere }}" selected>{{ $review->atmosphere }}</option>
-                                @include('parts/review/atmosphere');
-                            </select>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-form-label review-label">良いと思うところ</label>
+                            <label class="col-form-label review-label">良かったところ</label>
                             <textarea rows="10" cols="200" name="merit" class="form-control" placeholder="ご自由にお書きください">{{ $review->merit }}</textarea>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-form-label review-label">直した方が良いと思うところ</label>
+                            <label class="col-form-label review-label">イマイチなところ</label>
                             <textarea rows="10" cols="200" name="demerit" class="form-control" placeholder="ご自由にお書きください">{{ $review->demerit }}</textarea>
                         </div>
 

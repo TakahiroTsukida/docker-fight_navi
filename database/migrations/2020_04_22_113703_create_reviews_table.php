@@ -17,11 +17,9 @@ class CreateReviewsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('shop_id');
-            $table->integer('resson');
-            $table->integer('price');
-            $table->integer('clean');
-            $table->integer('service');
-            $table->integer('atmosphere');
+            $table->integer('total_point');
+            $table->string('learn');
+            $table->string('season');
             $table->string('merit')->nullable();
             $table->string('demerit')->nullable();
 

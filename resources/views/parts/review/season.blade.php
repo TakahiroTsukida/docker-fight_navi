@@ -1,0 +1,13 @@
+<option value="">時期を選んでください</option>
+<option value="2020年">2020年</option>
+<option value="2019年">2019年</option>
+<option value="2018年">2018年</option>
+<option value="2017年">2017年</option>
+<option value="2016年">2016年</option>
+<option value="2015年">2015年</option>
+<option value="2014年">2014年</option>
+<option value="2013年">2013年</option>
+<option value="2012年">2012年</option>
+<option value="2011年">2011年</option>
+<option value="2010年">2010年</option>
+<option value="2009年以前">2009年以前</option>

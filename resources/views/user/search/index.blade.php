@@ -162,7 +162,7 @@
 
                                       <div class="profile">
                                           <div class="center-btn">
-
+                                              <a href="{{ action('User\UserController@shop', ['id' => $shop->id]) }}" class="btn btn-primary">詳細を見る</a>
                                           </div>
                                       </div>
                                   </div>
