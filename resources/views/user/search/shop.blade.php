@@ -10,6 +10,78 @@
 
                           <div class="profile">
                               <h2 class="shop-name">{{ $shop->name }}</h2>
+
+                              @if(count($favorite) >= 1)
+                              <form action="{{ action('User\FavoriteController@delete') }}">
+                                  <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                                  <button type="submit"><i class="fas fa-bookmark fa-lg" style="color: #FF3366;"></i></button>
+                              </form>
+                              @else
+                              <form action="{{ action('User\FavoriteController@add') }}">
+                                  <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                                  <button type="submit"><i class="fas fa-bookmark fa-lg" style="color: #C0C0C0;"></i></button>
+                              </form>
+                              @endif
+                          </div>
+
+                          <div class="review-item">
+                              <p class="review-text">総合評価</p>
+                              @if(isset($total_point))
+                                  <div class="review-star">
+                                      @switch ($total_point)
+                                          @case ($total_point < 1.5)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($total_point < 2)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($total_point < 2.5)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($total_point < 3)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($total_point < 3.5)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($total_point < 4)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($total_point < 4.5)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($total_point < 5)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                          @case ($total_point = 5)
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          @break
+                                      @endswitch
+                                  </div>
+                              <p class="review-point">{{ round($total_point, 1) }}点</p>
+                              @else
+                              <p class="review-point">レビューなし</p>
+                              @endif
                           </div>
 
                           <div class="profile">

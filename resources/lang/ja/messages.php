@@ -22,7 +22,7 @@ return [
 
     // メール
     "Mail" => [
-        "Opning" => "ご利用ありがとうございます。",
+        "Opning" => "fightなびにご登録ありがとうございます。",
         "Whoops" => "ご迷惑をおかけいたします。",
         "Regards" => "引き続きのご利用をよろしくお願いいたします。",
         "NotClick" =>"「:actionText」がクリックできない場合は以下のURLをブラウザにコピーして下さい。\n[:actionURL](:actionURL)",

@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\User\VerifyEmailCustom;
+use App\Notifications\User\CustomPasswordReset;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -50,7 +52,21 @@ class User extends Authenticatable implements MustVerifyEmail
     );
 
 
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmailCustom);
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new CustomPasswordReset($token));
+    }
+
     public function reviews() {
         return $this->hasMany('App\User\Review');
+    }
+
+    public function favorites() {
+        return $this->hasMany('App\User\Favorite');
     }
 }

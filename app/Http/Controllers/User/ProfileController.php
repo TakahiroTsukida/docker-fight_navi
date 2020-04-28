@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 use App\User\Profile;
 use App\User\Review;
+use App\User\Favorite;
 use App\Admin\Shop;
 use Carbon\Carbon;
 use Storage;
@@ -98,5 +99,15 @@ class ProfileController extends Controller
 
     public function resets_email() {
         return view('user.profile.emails.reset');
+    }
+
+    public function favorite() {
+        $user = Auth::user();
+        $favorites = Favorite::join('shops', 'favorites.shop_id', '=', 'shops.id')
+                              ->where('user_id', $user->id)
+                              ->select('favorites.*', 'name', 'address_ken', 'address_city')
+                              ->get();
+      
+        return view('user.profile.favorite', ['favorites' => $favorites]);
     }
 }

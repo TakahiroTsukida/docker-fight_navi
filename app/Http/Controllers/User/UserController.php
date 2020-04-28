@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 use App\User\Profile;
 use App\User\Review;
+use App\User\Favorite;
 use App\Admin\Shop;
+
 use Carbon\Carbon;
 use Storage;
 
@@ -69,6 +71,8 @@ class UserController extends Controller
 
     public function shop(Request $request) {
         $shop = Shop::find($request->id);
+        $user = Auth::user();
+
         if (empty($shop)) {
             abort(404);
         }
@@ -78,6 +82,26 @@ class UserController extends Controller
               ->select('reviews.*', 'name', 'gender', 'image_path');
         $reviews = $query->get();
 
-        return view('user.search.shop', ['shop' => $shop, 'reviews' => $reviews]);
+        $point = $reviews->toArray();
+        if (count($point) >= 1) {
+            $review_point = array_sum(array_column($point, 'total_point'));
+            $review_count = count(array_column($point, 'total_point'));
+            $total_point = $review_point / $review_count; //平均点
+        } else {
+            $total_point = null;
+        }
+
+        $favorite_query = Favorite::query();
+        $favorite_query->where('user_id', $user->id);
+        $favorite_query->where('shop_id', $request->id);
+        $favorite = $favorite_query->get();
+         // dd($favorite);
+        return view('user.search.shop', [
+            'shop' => $shop,
+            'reviews' => $reviews,
+            'user' => $user,
+            'favorite' => $favorite,
+            'total_point' => $total_point,
+        ]);
     }
 }

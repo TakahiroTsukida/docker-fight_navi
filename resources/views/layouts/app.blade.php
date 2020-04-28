@@ -40,6 +40,8 @@
                                 <div class="navbar-nav clear_box">
                                       <a class="nav-item-login active" href="{{ route('user.profile.mypage') }}"><i class="fas fa-user fa-lg default"></i><span class="login-label">マイページ</span><span class="sr-only">(current)</span></a>
 
+                                      <a class="nav-item-login" href="{{ route('user.profile.favorite') }}"><i class="fas fa-bookmark fa-lg"></i><span class="login-label">お気に入り</span><span class="sr-only">(current)</span></a>
+
                                       <a class="nav-item-login" href="{{ route('user.profile.edit') }}"><i class="fas fa-user-cog fa-lg"></i><span class="login-label">プロフィール編集</span><span class="sr-only">(current)</span></a>
 
                                       <a class="nav-item-login" href="{{ route('user.search') }}"><i class="fas fa-search fa-lg default"></i><span class="login-label">ジム検索</span><span class="sr-only">(current)</span></a>

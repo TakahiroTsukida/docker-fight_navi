@@ -186,7 +186,7 @@
                                       <p class="open">{{ $shop->address_ken }}{{ $shop->address_city }}{{ $shop->address_other }}</p>
                                   </div>
 
-                                  <div class="profile">
+                                  <!-- <div class="profile">
                                       <i class="fas fa-image fa-lg"></i>
                                       <label class="shop-about">写真</label>
                                   </div>
@@ -202,7 +202,7 @@
                                       <div class="profile">
                                           <label class="shop-about">現在写真は登録されていません</label>
                                       </div>
-                                  @endif
+                                  @endif -->
 
 
 

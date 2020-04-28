@@ -23,7 +23,7 @@
 
                 <div class="card-body">
                     新しいメールアドレスを入力してください
-                    <form action="email" method="POST">
+                    <form action={{ action('User\ChangeEmailController@sendChangeEmailLink') }} method="POST">
                         {{ csrf_field() }}
                         <input type="email" name="new_email">
                         <input type="submit">

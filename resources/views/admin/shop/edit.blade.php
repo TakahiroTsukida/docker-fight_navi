@@ -275,14 +275,14 @@
                                 <textarea name="description" class="form-control shop-text" rows="10" placeholder="ご自由にお書きください">{{ $shop->description }}</textarea>
                             </div>
 
-                            <div class="input-group">
+                            <!-- <div class="input-group">
                                 <label class="input-group-btn">
                                     <span class="btn btn-success">
                                         画像アップロード<input type="file" name="image" style="display:none">
                                     </span>
                                 </label>
                                 <input type="text" class="form-control" readonly="">
-                            </div>
+                            </div> -->
 
                             <input type="hidden" name="id" value="{{ $shop->id }}">
 

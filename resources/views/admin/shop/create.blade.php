@@ -334,9 +334,9 @@
                                 <textarea name="description" class="form-control" rows="10" placeholder="ご自由にお書きください">{{ old('description') }}</textarea>
                             </div>
 
-                            <div class="input-group mt-4">
+                            <!-- <div class="input-group mt-4">
                                 <input type="file" name="image" value="画像アップロード">
-                            </div>
+                            </div> -->
 
                             <div class="form-group row justify-content-center">
                                 <div class="btn-group">

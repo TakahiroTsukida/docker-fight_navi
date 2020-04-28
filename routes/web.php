@@ -18,15 +18,20 @@ Route::get('/', 'User\UserController@show_top')->name('top');
 Route::group(['prefix' => 'user'], function() {
     Route::get('home', 'User\UserController@show_home')->name('home');
     Route::get('search', 'User\UserController@search')->name('user.search');
-    Route::get('shop', 'User\UserController@shop');
+    Route::get('shop', 'User\UserController@shop')->name('user.shop');
 
     Route::group(['middleware' => 'verified'], function() {
 
         Route::get('email', 'User\ProfileController@resets_email')->name('user.resets.email');
-        Route::get("user/reset/{token}", "User\ChangeEmailController@reset");
-        Route::post('user/email', 'User\ChangeEmailController@sendChangeEmailLink');
+        Route::get("reset/{token}", "User\ChangeEmailController@reset");
+        Route::post('email', 'User\ChangeEmailController@sendChangeEmailLink');
 
         Route::get('profile/mypage', 'User\ProfileController@mypage')->name('user.profile.mypage');
+        Route::get('profile/favorite', 'User\ProfileController@favorite')->name('user.profile.favorite');
+
+        Route::get('favorite/add', 'User\FavoriteController@add');
+        Route::get('favorite/delete', 'User\FavoriteController@delete');
+        Route::get('mypage/favorite/delete', 'User\FavoriteController@mypage_delete');
 
         Route::get('profile/create', 'User\ProfileController@add')->name('user.profile.add');
         Route::post('profile/create', 'User\ProfileController@create');

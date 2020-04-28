@@ -23,6 +23,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/home';
     public const TOP = '/';
+    public const MYPAGE = 'user/profile/mypage';
+
 
     public const ADMIN_HOME = '/admin/profile/mypage';
 

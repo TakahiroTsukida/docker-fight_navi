@@ -11,6 +11,7 @@ use App\Admin\Type;
 use App\Admin\Price;
 use App\Admin\Personal;
 use App\Admin\Image;
+use App\User\Favorite;
 use Carbon\Carbon;
 use Storage;
 
@@ -37,13 +38,13 @@ class ShopController extends Controller
         $shop->name = $form['shop_name'];
         $shop->fill($form)->save();
         //imagesテーブル保存
-        if (isset($form['image'])) {
-            $image = new Image;
-            $path = $request->file('image')->store('public/image/store_images');
-            $image->image_path = basename($path);
-            $image->shop_id = $shop->id;
-            $image->save();
-        }
+        // if (isset($form['image'])) {
+        //     $image = new Image;
+        //     $path = $request->file('image')->store('public/image/store_images');
+        //     $image->image_path = basename($path);
+        //     $image->shop_id = $shop->id;
+        //     $image->save();
+        // }
         //shop_typeの中間テーブルに保存
         if (is_array($form['type'])) {
             foreach ($form['type'] as $key => $value) {
@@ -103,13 +104,13 @@ class ShopController extends Controller
         $shop->name = $form['shop_name'];
         $shop->fill($form)->save();
         //imagesテーブル保存
-        if (isset($form['image'])) {
-            $image = new Image;
-            $path = $request->file('image')->store('public/image/store_images');
-            $image->image_path = basename($path);
-            $image->shop_id = $shop->id;
-            $image->save();
-        }
+        // if (isset($form['image'])) {
+        //     $image = new Image;
+        //     $path = $request->file('image')->store('public/image/store_images');
+        //     $image->image_path = basename($path);
+        //     $image->shop_id = $shop->id;
+        //     $image->save();
+        // }
         //shop_typeの中間テーブルに保存
         if (is_array($form['type'])) {
             foreach ($form['type'] as $key => $value) {

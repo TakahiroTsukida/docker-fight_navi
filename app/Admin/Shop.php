@@ -89,4 +89,8 @@ class Shop extends Model
       return $this->hasMany('App\User\Review');
   }
 
+  public function favorites() {
+      return $this->hasMany('App\User\Favorite');
+  }
+
 }

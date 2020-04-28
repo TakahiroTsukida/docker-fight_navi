@@ -33,3 +33,4 @@ class Profile extends Model
 
         'image' => 'nullable|image|max:512',
     );
+}
