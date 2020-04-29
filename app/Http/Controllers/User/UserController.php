@@ -34,7 +34,6 @@ class UserController extends Controller
         $search_address_ken = $request->input('address_ken');
         $search_address_city = $request->input('address_city');
 
-
         $query = Shop::query();
         //タイプ検索
         if (!empty($search_type)) {
@@ -50,6 +49,7 @@ class UserController extends Controller
         if (!empty($search_name)) {
             $query->where('name', 'like', '%'.$search_name.'%');
         }
+
         if (!empty($search_address_city)) {
             $query->where('address_city', 'like', '%'.$search_address_city.'%');
         }
@@ -84,18 +84,23 @@ class UserController extends Controller
 
         $point = $reviews->toArray();
         if (count($point) >= 1) {
-            $review_point = array_sum(array_column($point, 'total_point'));
-            $review_count = count(array_column($point, 'total_point'));
-            $total_point = $review_point / $review_count; //平均点
+            $total_point = array_sum(array_column($point, 'total_point')) / count(array_column($point, 'total_point'));
         } else {
             $total_point = null;
         }
 
-        $favorite_query = Favorite::query();
-        $favorite_query->where('user_id', $user->id);
-        $favorite_query->where('shop_id', $request->id);
-        $favorite = $favorite_query->get();
-         // dd($favorite);
+        if (count($shop->favorites) >= 1) {
+            $favorite_query = Favorite::query();
+            $favorite_query->where('user_id', $user->id);
+            $favorite_query->where('shop_id', $request->id);
+            $favorite = $favorite_query->get();
+        } else {
+            $favorite = null;
+        }
+        // $favorite = Favorite::where('user_id', $user->id)
+        //                     ->where('shop_id', $request->id)
+        //                     ->get();
+
         return view('user.search.shop', [
             'shop' => $shop,
             'reviews' => $reviews,

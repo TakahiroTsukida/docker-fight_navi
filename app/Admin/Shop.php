@@ -93,4 +93,12 @@ class Shop extends Model
       return $this->hasMany('App\User\Favorite');
   }
 
+  // public function favorites() {
+  //     return $this->belongsToMany('App\User')->withTimestamps();
+  // }
+
+  // public function favorite_users() {
+  //     return $this->belongsToMany('App\User')->withTimestamps();
+  // }
+
 }

@@ -94,6 +94,7 @@
                                       <a href="{{ action('User\UserController@shop', ['id' => $shop->id]) }}">
                                       <div class="profile">
                                           <h2 class="shop-name">{{ $shop->name }}</h2>
+                                          
                                       </div>
                                       </a>
 

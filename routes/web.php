@@ -22,6 +22,9 @@ Route::group(['prefix' => 'user'], function() {
 
     Route::group(['middleware' => 'verified'], function() {
 
+        // Route::post('shop','User\FavoriteController@store')->name('favorites.favorite');
+        // Route::delete('shop','User\FavoriteController@destroy')->name('favorites.unfavorite');
+
         Route::get('email', 'User\ProfileController@resets_email')->name('user.resets.email');
         Route::get("reset/{token}", "User\ChangeEmailController@reset");
         Route::post('email', 'User\ChangeEmailController@sendChangeEmailLink');

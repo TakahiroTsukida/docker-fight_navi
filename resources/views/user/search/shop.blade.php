@@ -10,18 +10,22 @@
 
                           <div class="profile">
                               <h2 class="shop-name">{{ $shop->name }}</h2>
+                              @auth
+                                  @if(isset($favorite))
+                                      <form action="{{ action('User\FavoriteController@delete') }}">
+                                          <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                                          <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                          <button type="submit"><i class="fas fa-bookmark fa-lg" style="color: #FF3366;"></i></button>
+                                      </form>
+                                  @else
+                                      <form action="{{ action('User\FavoriteController@add') }}">
+                                          <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                                          <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                          <button type="submit"><i class="fas fa-bookmark fa-lg" style="color: #C0C0C0;"></i></button>
+                                      </form>
+                                  @endif
+                              @endauth
 
-                              @if(count($favorite) >= 1)
-                              <form action="{{ action('User\FavoriteController@delete') }}">
-                                  <input type="hidden" name="shop_id" value="{{ $shop->id }}">
-                                  <button type="submit"><i class="fas fa-bookmark fa-lg" style="color: #FF3366;"></i></button>
-                              </form>
-                              @else
-                              <form action="{{ action('User\FavoriteController@add') }}">
-                                  <input type="hidden" name="shop_id" value="{{ $shop->id }}">
-                                  <button type="submit"><i class="fas fa-bookmark fa-lg" style="color: #C0C0C0;"></i></button>
-                              </form>
-                              @endif
                           </div>
 
                           <div class="review-item">

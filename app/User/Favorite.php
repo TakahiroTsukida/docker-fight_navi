@@ -11,7 +11,6 @@ class Favorite extends Model
         'shop_id',
     ];
 
-    protected $guarded = array('id');
 
     protected $dates = ['display_date'];
 
