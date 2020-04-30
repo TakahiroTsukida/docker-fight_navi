@@ -14,20 +14,42 @@
                                       <a href="{{ action('User\UserController@shop', ['id' => $favorite->shop_id]) }}">
                                       <div class="profile">
                                           <h2 class="shop-name">{{ $favorite->name }}</h2>
-
-                                          <form action="{{ action('User\FavoriteController@mypage_delete') }}">
-                                              <input type="hidden" name="shop_id" value="{{ $favorite->shop_id }}">
-                                              <button type="submit"><i class="fas fa-bookmark fa-lg" style="color: #FF3366;"></i></button>
-                                          </form>
-
                                       </div>
                                       </a>
+
+                                      <div>
+                                          <button type="button" data-toggle="modal" data-target="#exampleModalCenter{{ $favorite->id }}">
+                                            <i class="fas fa-bookmark fa-lg" style="color: #FF3366;"></i>
+                                          </button>
+                                      </div>
+
 
                                       <div class="profile">
                                           <p class="address">{{ $favorite->address_ken }}{{ $favorite->address_city }}</p>
                                       </div>
                                   </div>
                               </div>
+                          </div>
+
+                          <!-- Modal -->
+                          <div class="modal fade" id="exampleModalCenter{{ $favorite->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalCenterTitle">確認画面</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  {{ $favorite->name }}をお気に入りから削除しますか？
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                                  <a href="{{ action('User\FavoriteController@mypage_delete', ['shop_id' => $favorite->shop_id]) }}" class="btn btn-danger">削除</a>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                     @endforeach
                 @else

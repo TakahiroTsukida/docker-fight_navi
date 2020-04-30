@@ -49,7 +49,7 @@ class UserController extends Controller
         if (!empty($search_name)) {
             $query->where('name', 'like', '%'.$search_name.'%');
         }
-
+        //市区町村検索
         if (!empty($search_address_city)) {
             $query->where('address_city', 'like', '%'.$search_address_city.'%');
         }
@@ -90,16 +90,11 @@ class UserController extends Controller
         }
 
         if (count($shop->favorites) >= 1) {
-            $favorite_query = Favorite::query();
-            $favorite_query->where('user_id', $user->id);
-            $favorite_query->where('shop_id', $request->id);
-            $favorite = $favorite_query->get();
+            $favorites = $shop->favorites;
+            $favorite = $favorites->where('user_id', Auth::user()->id)->first();
         } else {
             $favorite = null;
         }
-        // $favorite = Favorite::where('user_id', $user->id)
-        //                     ->where('shop_id', $request->id)
-        //                     ->get();
 
         return view('user.search.shop', [
             'shop' => $shop,

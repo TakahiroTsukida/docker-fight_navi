@@ -22,6 +22,8 @@ Route::group(['prefix' => 'user'], function() {
 
     Route::group(['middleware' => 'verified'], function() {
 
+        Route::get('search/favorite/add', 'User\FavoriteController@search_add');
+        Route::get('search/favorite/delete', 'User\FavoriteController@search_delete');
         // Route::post('shop','User\FavoriteController@store')->name('favorites.favorite');
         // Route::delete('shop','User\FavoriteController@destroy')->name('favorites.unfavorite');
 

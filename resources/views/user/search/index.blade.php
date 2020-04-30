@@ -88,13 +88,22 @@
                 </div>
                 @if (isset($shops))
                     @foreach ($shops as $shop)
+                        @php
+                          $favorites = $shop->favorites;
+                          $favorite = $favorites->where('user_id', Auth::user()->id)->first();
+                        @endphp
+
                           <div class="card card-group">
                               <div class="card-body">
                                   <div class="shop-body">
                                       <a href="{{ action('User\UserController@shop', ['id' => $shop->id]) }}">
                                       <div class="profile">
                                           <h2 class="shop-name">{{ $shop->name }}</h2>
-                                          
+                                          @if (isset($favorite))
+                                              <label><i class="fas fa-bookmark fa-lg" style="color: #FF3366;"></i></label>
+                                          @else
+                                              <label><i class="fas fa-bookmark fa-lg" style="color: #C0C0C0;"></i></label>
+                                          @endif
                                       </div>
                                       </a>
 
