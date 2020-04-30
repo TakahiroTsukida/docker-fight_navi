@@ -15,7 +15,7 @@
                                     <p class="col-sm-2 offset-sm-5"><img src="{{ asset('storage/image/profile_images/'.$user->image_path) }}" alt="name"></p>
                                 @else
                                     <p class="col-sm-2 offset-sm-5"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name"></p>
-                                @endif  
+                                @endif
                             </div>
 
                             <div>
@@ -32,7 +32,7 @@
                                     <label class="form-check-label">
                                         <input type="checkbox" class="form-check-input" name="remove" value="true">
                                         画像を削除
-                                    </label
+                                    </label>
                                 </div>
                             </div>
 

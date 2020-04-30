@@ -37,14 +37,14 @@ class ShopController extends Controller
         $shop->admin_id = $admin->id;
         $shop->name = $form['shop_name'];
         $shop->fill($form)->save();
-        //imagesテーブル保存
-        // if (isset($form['image'])) {
-        //     $image = new Image;
-        //     $path = $request->file('image')->store('public/image/store_images');
-        //     $image->image_path = basename($path);
-        //     $image->shop_id = $shop->id;
-        //     $image->save();
-        // }
+        // imagesテーブル保存
+        if (isset($form['image'])) {
+            $image = new Image;
+            $path = $request->file('image')->store('public/image/store_images');
+            $image->image_path = basename($path);
+            $image->shop_id = $shop->id;
+            $image->save();
+        }
         //shop_typeの中間テーブルに保存
         if (is_array($form['type'])) {
             foreach ($form['type'] as $key => $value) {
@@ -84,10 +84,11 @@ class ShopController extends Controller
 
     public function edit(Request $request) {
         $shop = Shop::find($request->id);
-        $types = array_column ( $shop->types->toArray() , 'id');
         if(empty($shop)) {
            abort(404);
         }
+        $types = array_column ( $shop->types->toArray() , 'id');
+
         return view('admin.shop.edit',['shop' => $shop, 'types' => $types]);
     }
 
@@ -104,13 +105,17 @@ class ShopController extends Controller
         $shop->name = $form['shop_name'];
         $shop->fill($form)->save();
         //imagesテーブル保存
-        // if (isset($form['image'])) {
-        //     $image = new Image;
-        //     $path = $request->file('image')->store('public/image/store_images');
-        //     $image->image_path = basename($path);
-        //     $image->shop_id = $shop->id;
-        //     $image->save();
-        // }
+        if (isset($form['image'])) {
+            $image = new Image;
+            $path = $request->file('image')->store('public/image/store_images');
+            $image->image_path = basename($path);
+            $image->shop_id = $shop->id;
+            $image->save();
+        } elseif (isset($request->remove)) {
+            $shop_image = $shop->images->first();
+            $shop_image->delete();
+            unset($form['remove']);
+        }
         //shop_typeの中間テーブルに保存
         if (is_array($form['type'])) {
             foreach ($form['type'] as $key => $value) {

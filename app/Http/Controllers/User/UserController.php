@@ -88,14 +88,16 @@ class UserController extends Controller
         } else {
             $total_point = null;
         }
-
-        if (count($shop->favorites) >= 1) {
-            $favorites = $shop->favorites;
-            $favorite = $favorites->where('user_id', Auth::user()->id)->first();
+        if(isset($user)) {
+            if (count($shop->favorites) >= 1) {
+                $favorites = $shop->favorites;
+                $favorite = $favorites->where('user_id', $user->id)->first();
+            } else {
+                $favorite = null;
+            }
         } else {
             $favorite = null;
         }
-
         return view('user.search.shop', [
             'shop' => $shop,
             'reviews' => $reviews,

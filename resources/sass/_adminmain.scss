@@ -15,10 +15,10 @@ $tab: 768px; // タブレット
 .shop-name {
   font-size: 18px;
   border-bottom: solid 1px #C0C0C0;
-  margin: 20px 0;
+  margin: 20px 0 0 0;;
   @include tab {
     font-size: 22px;
-    margin: 40px 0;
+    margin: 40px 0 0 0;
   }
 }
 
@@ -46,7 +46,7 @@ $tab: 768px; // タブレット
 }
 
 .address {
-  margin-left: 3px;
+    margin: 0 0 10px 3px;
 }
 
 .type {

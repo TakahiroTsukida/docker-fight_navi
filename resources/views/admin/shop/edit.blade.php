@@ -275,15 +275,27 @@
                                 <textarea name="description" class="form-control shop-text" rows="10" placeholder="ご自由にお書きください">{{ $shop->description }}</textarea>
                             </div>
 
-                            <!-- <div class="input-group">
-                                <label class="input-group-btn">
-                                    <span class="btn btn-success">
-                                        画像アップロード<input type="file" name="image" style="display:none">
-                                    </span>
-                                </label>
-                                <input type="text" class="form-control" readonly="">
-                            </div> -->
+                            @php
+                                $shop_image = $shop->images->first();
+                            @endphp
 
+
+                            @if (isset($shop_image))
+                                <div class="form-check mt-4">
+                                    <p class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="remove" value="true">
+                                        設定中の画像を削除
+                                    </p>
+                                </div>
+                                <div class="form-text text-info">
+                                    <p>設定中<img src="{{ asset('storage/image/store_images/'.$shop_image->image_path) }}"></p>
+                                </div>
+
+                            @else
+                                <div class="input-group mt-4">
+                                    <input type="file" name="image" value="画像アップロード">
+                                </div>
+                            @endif
                             <input type="hidden" name="id" value="{{ $shop->id }}">
 
                             <div class="form-group row justify-content-center">
