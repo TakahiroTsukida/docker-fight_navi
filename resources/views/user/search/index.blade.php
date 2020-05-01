@@ -124,7 +124,7 @@
                                           <p class="address"><i class="fas fa-map-marker-alt fa-lg mr-1"></i>{{ $shop->address_ken }}{{ $shop->address_city }}</p>
                                       </div>
 
-                                      <div class="review-item mb-5">
+                                      <div class="review-item mb-2">
                                           <p class="review-text">総合評価</p>
                                           @if(isset($total_point))
                                               <div class="review-star">
@@ -198,10 +198,10 @@
 
                                       <div class="center-btn">
                                       <!-- Button trigger modal -->
-                                      <button type="button" class="btn btn-primary float-right mr-3 mb-4" data-toggle="modal" data-target="#exampleModalLong{{ $shop->id }}">
-                                        詳細
-                                      </button>
-                                    </div>
+                                          <button type="button" class="btn btn-primary float-right mr-3" data-toggle="modal" data-target="#exampleModalLong{{ $shop->id }}">
+                                            詳細
+                                          </button>
+                                      </div>
 
                                       <!-- Modal -->
                                       <div class="modal fade" id="exampleModalLong{{ $shop->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">

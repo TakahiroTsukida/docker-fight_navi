@@ -12113,12 +12113,12 @@ span.small-text {
 
 .center-btn {
   text-align: center;
-  margin: 30px 0 20px 0;
+  margin: 5px 0 20px 0;
 }
 
 @media (min-width: 768px) {
   .center-btn {
-    margin: 40px 0 30px 0;
+    margin: 10px 0 30px 0;
   }
 }
 
