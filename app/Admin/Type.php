@@ -14,6 +14,6 @@ class Type extends Model
 
   public function shops()
   {
-      return $this->belongsToMany('App\Admin\Shop');
+      return $this->belongsToMany('App\Admin\Shop', 'shop_type', 'shop_id', 'type_id');
   }
 }
