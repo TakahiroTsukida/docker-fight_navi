@@ -23,7 +23,7 @@
                             </ul>
                         </div>
 
-                        <form action="{{ route('review.create') }}" method="post">
+                        <form action="{{ route('user.review.create') }}" method="post">
 
                             @if (count($errors) > 0)
                                 <ul>

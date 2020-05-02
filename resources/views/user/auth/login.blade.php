@@ -7,7 +7,7 @@
             <div class="card page-title">
                 <div class="card-body">
                     <h5 class="text-center mt-5 mb-3">ログイン</h5>
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('user.login') }}">
                         @csrf
 
                         <div class="form-group row justify-content-center mt-5">

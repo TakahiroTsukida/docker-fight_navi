@@ -21,8 +21,8 @@
                                 <div class="navbar-nav clear_box">
                                       <a class="nav-item active" href="{{ route('user.search') }}"><i class="fas fa-search fa-lg"></i><span class="menu-label">ジム検索<span><span class="sr-only">(current)</span></a>
                                       <a class="nav-item" href="{{ route('user.search') }}"><i class="fas fa-edit fa-lg"></i><span class="menu-label">新規レビュー</span></a>
-                                      <a class="nav-item" href="{{ route('login') }}"><i class="fas fa-sign-in-alt fa-lg small"></i><span class="menu-label">ログイン</span></a>
-                                      <a class="nav-item disabled" href="{{ route('register') }}"><i class="fas fa-user-plus fa-lg"></i><span class="menu-label">新規登録</span></a>
+                                      <a class="nav-item" href="{{ route('user.login') }}"><i class="fas fa-sign-in-alt fa-lg small"></i><span class="menu-label">ログイン</span></a>
+                                      <a class="nav-item disabled" href="{{ route('user.register') }}"><i class="fas fa-user-plus fa-lg"></i><span class="menu-label">新規登録</span></a>
                                 </div>
                             </div>
                         </nav>
@@ -50,10 +50,10 @@
 
                                       <a class="nav-item-login" href="{{ route('user.resets.email') }}"><i class="fas fa-envelope fa-lg default"></i><span class="login-label">メールアドレス変更</span></a>
 
-                                      <a class="nav-item-login disabled" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                      <a class="nav-item-login disabled" href="{{ route('user.logout') }}" onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">
                                              <i class="fas fa-sign-out-alt fa-lg default"></i><span class="login-label">ログアウト</span></a>
-                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                      <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
                                       @csrf
                                       </form>
                                 </div>

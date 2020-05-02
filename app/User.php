@@ -3,14 +3,14 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
+// use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\User\VerifyEmailCustom;
 use App\Notifications\User\CustomPasswordReset;
 use App\Admin\Shop;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable //implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -53,15 +53,15 @@ class User extends Authenticatable implements MustVerifyEmail
     );
 
 
-    public function sendEmailVerificationNotification()
-    {
-        $this->notify(new VerifyEmailCustom);
-    }
-
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notify(new CustomPasswordReset($token));
-    }
+    // public function sendEmailVerificationNotification()
+    // {
+    //     $this->notify(new VerifyEmailCustom);
+    // }
+    //
+    // public function sendPasswordResetNotification($token)
+    // {
+    //     $this->notify(new CustomPasswordReset($token));
+    // }
 
     public function reviews() {
         return $this->hasMany('App\User\Review');

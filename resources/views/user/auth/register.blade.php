@@ -7,7 +7,7 @@
             <div class="card page-title">
                 <div class="card-body">
                     <h5 class="text-center mt-5 mb-3">新規会員登録</h5>
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('user.register') }}">
                         @csrf
 
                         <div class="form-group row justify-content-center mt-5">

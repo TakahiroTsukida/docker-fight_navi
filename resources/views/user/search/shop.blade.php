@@ -317,7 +317,7 @@
                               @if ($review->user_id == Auth::user()->id)
                                   <div class="revier-btn-group">
                                       <div>
-                                          <a href="{{ route('review.edit', ['review_id' => $review->id, 'shop_id' => $shop->id]) }}" class="btn btn-success review-btn">編集</a>
+                                          <a href="{{ route('user.review.edit', ['review_id' => $review->id, 'shop_id' => $shop->id]) }}" class="btn btn-success review-btn">編集</a>
                                           <button type="button" class="btn btn-danger review-btn" data-toggle="modal" data-target="#exampleModalCenter{{ $review->id }}">
                                             削除
                                           </button>
@@ -339,7 +339,7 @@
                                         </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                                          <a href="{{ route('review.delete',['review_id' => $review->id]) }}" class="btn btn-danger">削除</a>
+                                          <a href="{{ route('user.review.delete',['review_id' => $review->id]) }}" class="btn btn-danger">削除</a>
                                         </div>
                                       </div>
                                     </div>
