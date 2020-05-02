@@ -10,7 +10,7 @@
 
                           <div class="profile">
                               <h2 class="shop-name">{{ $shop->name }}</h2>
-                              @auth
+                              @if (Auth::guard('user')->check())
                                   @if(isset($favorite))
                                       <form action="{{ action('User\FavoriteController@delete') }}">
                                           <input type="hidden" name="shop_id" value="{{ $shop->id }}">
@@ -24,7 +24,7 @@
                                           <button type="submit"><i class="fas fa-bookmark fa-lg" style="color: #C0C0C0;"></i></button>
                                       </form>
                                   @endif
-                              @endauth
+                              @endif
 
                           </div>
 
@@ -105,7 +105,10 @@
                           <button type="button" class="btn btn-primary mr-3" data-toggle="modal" data-target="#exampleModalLong{{ $shop->id }}">
                             詳細
                           </button>
+
+                          @unless (Auth::guard('admin')->check())
                           <a href="{{ action('User\ReviewController@add', ['id' => $shop->id]) }}" class="btn btn-success"><i class="fas fa-edit fa-lg review"></i><span class="small-text">新規レビュー</span></a>
+                          @endunless
                         </div>
 
                           <!-- Modal -->
@@ -353,6 +356,8 @@
                   </div>
 
             @endforeach
+
+            {{ $shops->links() }}
             @endif
             </div>
         </div>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\User;
 use App\User\Profile;
 use App\User\Review;
@@ -56,7 +58,6 @@ class UserController extends Controller
 
         $cond_shops = $query->get();
         $shops = $cond_shops->unique('id');
-
         return view('user.search.index', [
           'shops' => $shops,
           'search_shop' => $search_name,

@@ -86,16 +86,16 @@
                         </form>
                     </div>
                 </div>
-                @if (isset($shops))
+                @if (count($shops) >= 1)
                     @foreach ($shops as $shop)
-                        @auth
+                        @if (Auth::guard('user')->check())
                           @php
                             if(isset($shop->favorites)) {
                                 $favorites = $shop->favorites;
                                 $favorite = $favorites->where('user_id', Auth::user()->id)->first();
                             }
                           @endphp
-                        @endauth
+                        @endif
 
                         @php
                             if (count($shop->reviews) >= 1) {

@@ -285,18 +285,33 @@
                             <div class="form-group mt-4">
                                 {{-- 営業日 --}}
                                 @include('parts/admin/label/shop/open')
+                                @error('open')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 <input type="text" name="open" class="form-control" placeholder="例）平日15:00~21:00　土日祝13:00~17:00" value="{{ old('open') }}">
                             </div>
 
                             <div class="form-group mt-4">
                                 {{-- 定休日 --}}
                                 @include('parts/admin/label/shop/close')
+                                @error('close')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 <input type="text" name="close" class="form-control" placeholder="例）毎月第２水曜日" value="{{ old('close') }}">
                             </div>
 
                             <div class="form-group mt-4">
                                 {{-- ホームページ --}}
                                 @include('parts/admin/label/shop/web')
+                                @error('web')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 <input type="text" name="web" class="form-control" placeholder="例）https://example.com" value="{{ old('web') }}">
                             </div>
 
@@ -331,10 +346,20 @@
                             <div class="form-group mt-4">
                                 {{-- 簡単な説明 --}}
                                 @include('parts/admin/label/shop/description')
+                                @error('description')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 <textarea name="description" class="form-control" rows="10" placeholder="ご自由にお書きください">{{ old('description') }}</textarea>
                             </div>
 
                             <div class="input-group mt-4">
+                                @error('image')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 <input type="file" name="image" value="画像アップロード">
                             </div>
 

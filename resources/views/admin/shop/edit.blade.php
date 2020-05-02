@@ -272,6 +272,11 @@
                             <div class="form-group mt-4">
                                 {{-- 簡単な説明 --}}
                                 @include('parts/admin/label/shop/description')
+                                @error('description')
+                                    <div>
+                                        <p class="error price-en">{{ $message }}</p>
+                                    </div>
+                                @enderror
                                 <textarea name="description" class="form-control shop-text" rows="10" placeholder="ご自由にお書きください">{{ $shop->description }}</textarea>
                             </div>
 
@@ -293,6 +298,11 @@
 
                             @else
                                 <div class="input-group mt-4">
+                                    @error('image')
+                                        <div>
+                                            <p class="error price-en">{{ $message }}</p>
+                                        </div>
+                                    @enderror
                                     <input type="file" name="image" value="画像アップロード">
                                 </div>
                             @endif
