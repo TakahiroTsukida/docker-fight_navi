@@ -37,7 +37,6 @@ $tab: 768px; // タブレット
 }
 
 .shop-about {
-  font-size: 14px;
   margin-left: 0px;
   display: inline;
   @include tab {
@@ -50,7 +49,6 @@ $tab: 768px; // タブレット
 }
 
 .type {
-  font-size: 14px;
   float: left;
   @include tab {
     font-size: 16px;
@@ -65,7 +63,7 @@ $tab: 768px; // タブレット
 }
 
 .type-text {
-  font-size: 14px;
+  font-size: 12px;
   margin: 3px 0;
   @include tab {
     font-size: 16px;
@@ -89,12 +87,7 @@ $tab: 768px; // タブレット
 
 
 .join {
-  font-size: 14px;
-  margin-left: 5px;
   display: inline;
-  @include tab {
-    font-size: 16px;
-  }
 }
 
 .price-name {
@@ -139,6 +132,8 @@ $tab: 768px; // タブレット
 .open {
   margin-left: 30px;
   display: block;
+  @include tab {
+  }
 }
 
 .image-group {

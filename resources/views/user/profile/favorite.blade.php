@@ -8,25 +8,19 @@
                 @if (count($favorites) >= 1)
                     @foreach ($favorites as $favorite)
                           <div class="card card-group">
-                              <div class="card-body">
-                                  <div class="shop-body">
-
+                              <div class="search-body">
+                                  <div class="search-list">
                                       <a href="{{ action('User\UserController@shop', ['id' => $favorite->shop_id]) }}">
-                                      <div class="profile">
-                                          <h2 class="shop-name">{{ $favorite->name }}</h2>
-                                      </div>
+                                      <h2 class="search-name">{{ $favorite->name }}</h2>
                                       </a>
-
-                                      <div>
-                                          <button type="button" data-toggle="modal" data-target="#exampleModalCenter{{ $favorite->id }}">
-                                            <i class="fas fa-bookmark fa-lg" style="color: #FF3366;"></i>
-                                          </button>
-                                      </div>
+                                      <button type="button" data-toggle="modal" data-target="#exampleModalCenter{{ $favorite->id }}" class="favorite-icon">
+                                        <i class="fas fa-bookmark fa-lg" style="color: #FF3366;"></i>
+                                      </button>
+                                  </div>
 
 
-                                      <div class="profile">
-                                          <p class="address">{{ $favorite->address_ken }}{{ $favorite->address_city }}</p>
-                                      </div>
+                                  <div class="search-list mb-2">
+                                      <p class="search-name"><i class="fas fa-map-marker-alt fa-lg mr-1"></i>{{ $favorite->address_ken }}{{ $favorite->address_city }}</p>
                                   </div>
                               </div>
                           </div>

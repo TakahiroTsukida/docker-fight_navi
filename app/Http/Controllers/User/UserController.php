@@ -58,6 +58,11 @@ class UserController extends Controller
 
         $cond_shops = $query->get();
         $shops = $cond_shops->unique('id');
+
+        // $shops->join('reviews', 'shops.id', '=', 'reviews.shop_id')
+        //       ->select('shops.*', 'total_point');
+        // dd($shops);
+
         return view('user.search.index', [
           'shops' => $shops,
           'search_shop' => $search_name,

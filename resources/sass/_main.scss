@@ -69,7 +69,7 @@ $tab: 768px; // タブレット
   font-weight: bold;
 }
 h1 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   @include tab {
     font-size: 18px;
@@ -78,7 +78,7 @@ h1 {
 }
 
 h2 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
 
   @include tab {
@@ -87,7 +87,7 @@ h2 {
 }
 
 h3 {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
 
   @include tab {
@@ -96,7 +96,7 @@ h3 {
 }
 
 label {
-  font-size: 16px;
+  font-size: 13px;
 
   @include tab {
       font-size: 18px;
@@ -106,7 +106,7 @@ label {
 p {
   display: block;
   float: none;
-  font-size: 14px;
+  font-size: 12px;
 
   @include tab {
     font-size: 16px
@@ -403,33 +403,39 @@ p.review-address {
     width: 100%;
     margin: 5px 0 5px 0;
     @include tab {
-        margin: 5px 0 5px 0;
-        font-size: 19px;
+        margin: 10px 0 10px 0;
     }
 }
 
 p.review-text {
     float: left;
-    margin: 2px 3px 0 0;
+    margin: 2px 3px 0 15px;
     position: absolute;
+    @include tab {
+      margin: 0 3px 0 80px;
+    }
 }
 
 .review-star {
     display: inline;
-    margin-left: 58px;
+    margin-left: 71px;
+    font-size: 12px;
+    vertical-align: text-bottom;
     @include tab {
-        margin-left: 75px;
+        margin-left: 155px;
+        font-size: 15px;
+        vertical-align: baseline;
     }
 }
 
 p.review-point {
     display: inline;
     position: absolute;
-    left: 230px;
+    left: 185px;
     font-weight: bold;
     padding-top: 2px;
     @include tab {
-        left: 350px;
+        left: 300px;
     }
 }
 
@@ -503,4 +509,93 @@ span.small-text {
     font-size: 13px;
     margin-left: 3px;
     vertical-align: middle;
+}
+
+.search-body {
+    margin: 15px 0 10px 0;
+    width: 100%;
+    @include tab {
+        margin: 30px 0 20px 0;
+    }
+}
+
+.search-list {
+    display: inline-block;
+    width: 100%;
+    @include tab {
+        margin-top: 5px;
+    }
+}
+
+.search-name {
+    color: #000;
+    display: inline;
+    margin-left: 15px;
+    @include tab {
+        margin-left: 80px;
+    }
+}
+
+.favorite-icon {
+    float: right;
+    font-size: 15px;
+    margin-right: 15px;
+    @include tab {
+        font-size: 20px;
+        margin-right: 80px;
+    }
+}
+
+button.favorite-icon {
+    margin-right: 0;
+    background-color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255) rgb(255, 255, 255) rgb(255, 255, 255);
+    @include tab {
+        margin-right: 55px;
+    }
+}
+
+.show-btn {
+    font-size: 12px;
+    margin-right: 15px;
+    width: 70px;
+    @include tab {
+      font-size: 15px;
+      margin: 15px 30px 15px 0;
+      width: 150px;
+    }
+}
+
+.right-btn {
+    float: right;
+    display: block;
+}
+
+.modal-cont {
+    margin: 0 10px 0 10px;
+}
+
+p.shop-img img {
+    object-fit: cover;
+    height: 190px;
+    @media only screen and (min-width: 350px) {
+        height: 240px;
+    }
+    @media only screen and (min-width: 420px) {
+        height: 300px;
+    }
+    @media only screen and (min-width: 500px) {
+        height: 330px;
+    }
+    @media only screen and (min-width: 576px) {
+        height: 350px;
+    }
+    @include tab {
+        height: 460px;
+    }
+    @include pc {
+        height: 620px;
+    }
 }

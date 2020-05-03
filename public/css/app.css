@@ -11194,6 +11194,10 @@ i.fas.small {
   margin-right: 7px;
 }
 
+i.fas.fa-bookmark.fa-lg {
+  margin-right: 15px;
+}
+
 @media (min-width: 768px) {
   span.login-label {
     font-size: 16px;
@@ -11413,7 +11417,7 @@ a.nav-item-login:hover::after {
 }
 
 h1 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
 }
 
@@ -11424,7 +11428,7 @@ h1 {
 }
 
 h2 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -11435,7 +11439,7 @@ h2 {
 }
 
 h3 {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
 }
 
@@ -11446,7 +11450,7 @@ h3 {
 }
 
 label {
-  font-size: 16px;
+  font-size: 13px;
 }
 
 @media (min-width: 768px) {
@@ -11458,7 +11462,7 @@ label {
 p {
   display: block;
   float: none;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 @media (min-width: 768px) {
@@ -11817,39 +11821,48 @@ p.review-address {
 
 @media (min-width: 768px) {
   .review-item {
-    margin: 5px 0 5px 0;
-    font-size: 19px;
+    margin: 10px 0 10px 0;
   }
 }
 
 p.review-text {
   float: left;
-  margin: 2px 3px 0 0;
+  margin: 2px 3px 0 15px;
   position: absolute;
+}
+
+@media (min-width: 768px) {
+  p.review-text {
+    margin: 0 3px 0 80px;
+  }
 }
 
 .review-star {
   display: inline;
-  margin-left: 58px;
+  margin-left: 71px;
+  font-size: 12px;
+  vertical-align: text-bottom;
 }
 
 @media (min-width: 768px) {
   .review-star {
-    margin-left: 75px;
+    margin-left: 155px;
+    font-size: 15px;
+    vertical-align: baseline;
   }
 }
 
 p.review-point {
   display: inline;
   position: absolute;
-  left: 230px;
+  left: 185px;
   font-weight: bold;
   padding-top: 2px;
 }
 
 @media (min-width: 768px) {
   p.review-point {
-    left: 350px;
+    left: 300px;
   }
 }
 
@@ -11934,6 +11947,132 @@ span.small-text {
   vertical-align: middle;
 }
 
+.search-body {
+  margin: 15px 0 10px 0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .search-body {
+    margin: 30px 0 20px 0;
+  }
+}
+
+.search-list {
+  display: inline-block;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .search-list {
+    margin-top: 5px;
+  }
+}
+
+.search-name {
+  color: #000;
+  display: inline;
+  margin-left: 15px;
+}
+
+@media (min-width: 768px) {
+  .search-name {
+    margin-left: 80px;
+  }
+}
+
+.favorite-icon {
+  float: right;
+  font-size: 15px;
+  margin-right: 15px;
+}
+
+@media (min-width: 768px) {
+  .favorite-icon {
+    font-size: 20px;
+    margin-right: 80px;
+  }
+}
+
+button.favorite-icon {
+  margin-right: 0;
+  background-color: #fff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: white white white;
+}
+
+@media (min-width: 768px) {
+  button.favorite-icon {
+    margin-right: 55px;
+  }
+}
+
+.show-btn {
+  font-size: 12px;
+  margin-right: 15px;
+  width: 70px;
+}
+
+@media (min-width: 768px) {
+  .show-btn {
+    font-size: 15px;
+    margin: 15px 30px 15px 0;
+    width: 150px;
+  }
+}
+
+.right-btn {
+  float: right;
+  display: block;
+}
+
+.modal-cont {
+  margin: 0 10px 0 10px;
+}
+
+p.shop-img img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 190px;
+}
+
+@media only screen and (min-width: 350px) {
+  p.shop-img img {
+    height: 240px;
+  }
+}
+
+@media only screen and (min-width: 420px) {
+  p.shop-img img {
+    height: 300px;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  p.shop-img img {
+    height: 330px;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  p.shop-img img {
+    height: 350px;
+  }
+}
+
+@media (min-width: 768px) {
+  p.shop-img img {
+    height: 460px;
+  }
+}
+
+@media (min-width: 992px) {
+  p.shop-img img {
+    height: 620px;
+  }
+}
+
 .shop-name {
   font-size: 18px;
   border-bottom: solid 1px #C0C0C0;
@@ -11968,7 +12107,6 @@ span.small-text {
 }
 
 .shop-about {
-  font-size: 14px;
   margin-left: 0px;
   display: inline;
 }
@@ -11984,7 +12122,6 @@ span.small-text {
 }
 
 .type {
-  font-size: 14px;
   float: left;
 }
 
@@ -12005,7 +12142,7 @@ span.small-text {
 }
 
 .type-text {
-  font-size: 14px;
+  font-size: 12px;
   margin: 3px 0;
 }
 
@@ -12037,15 +12174,7 @@ span.small-text {
 }
 
 .join {
-  font-size: 14px;
-  margin-left: 5px;
   display: inline;
-}
-
-@media (min-width: 768px) {
-  .join {
-    font-size: 16px;
-  }
 }
 
 .price-name {
