@@ -357,7 +357,6 @@
 
             @endforeach
 
-            {{ $shops->links() }}
             @endif
             </div>
         </div>

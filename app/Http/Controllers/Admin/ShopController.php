@@ -153,8 +153,8 @@ class ShopController extends Controller
 
       public function delete(Request $request) {
           $shop = Shop::find($request->id);
-          $shop->prices->each->delete();
-          $shop->personals->each->delete();
+          // $shop->prices->each->delete();
+          // $shop->personals->each->delete();
           $shop->delete();
           return redirect('admin/profile/mypage');
       }
