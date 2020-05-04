@@ -113,15 +113,14 @@
                 </main>
         </div>
         <footer>
-            <div class="">
-
-                <!-- <div class="footer_imgtext">
-                    <img src="{{ asset('storage/image/app_images/publicdomainq-0008765xetjvc.jpg') }}" class="header-img">
-                    <p>みんなのオススメジムがみつかる</p>
-                </div> -->
-
+            <div class="footer-menu">
+               <ul class="footer-list">
+                  <li class="footer-item"><a href="{{ url('/') }}">fightなびトップページ</a></li>
+                  <li class="footer-item"><a href="{{ action('User\UserController@privacy') }}" class="footer-link">プライバシーポリシー</a></li>
+                  <li class="footer-item"><a href="{{ action('User\UserController@description') }}">ジム・道場運営者の方々へ</a></li>
+                  <li class="footer-item"><a href="{{ route('admin.login') }}" class="footer-link">管理ユーザーメニュー</a></li>
+               </ul>
             </div>
-
         </footer>
 
     </body>

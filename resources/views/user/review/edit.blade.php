@@ -73,10 +73,10 @@
 
                         <div class="form-group row justify-content-center">
                             <div class="revier-btn-group">
-                                <a href="#" class="btn btn-success review-btn">戻る</a>
+                                <button type="button" class="btn btn-success show-btn" onclick=history.back()>戻る</button>
 
                                 {{ csrf_field() }}
-                                <input type="submit" class="btn btn-primary review-btn" value="更新">
+                                <input type="submit" class="btn btn-primary show-btn" value="更新">
                             </div>
                         </div>
 

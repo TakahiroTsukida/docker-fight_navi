@@ -333,3 +333,10 @@ a.nav-item-login:hover::after {
     display: inline-block;
     vertical-align: top;
 }
+
+nav.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #fff;
+}

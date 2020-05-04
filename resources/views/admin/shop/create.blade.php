@@ -360,15 +360,15 @@
                                         <p class="error price-en">{{ $message }}</p>
                                     </div>
                                 @enderror
-                                <input type="file" name="image" value="画像アップロード">
+                                <input type="file" name="image" class="file-upload" value="画像アップロード">
                             </div>
 
                             <div class="form-group row justify-content-center">
                                 <div class="btn-group">
-                                    <a href="#" class="btn btn-success shop-btn-lg">戻る</a>
+                                    <button type="button" class="btn btn-success show-btn" onclick=history.back()>戻る</button>
                                 </div>
                                 <div class="btn-group">
-                                    <input type="submit" class="btn btn-primary shop-btn-lg" value="登録">
+                                    <input type="submit" class="btn btn-primary show-btn" value="登録">
                                 </div>
                             </div>
                         {{ csrf_field() }}

@@ -43,7 +43,7 @@
               @if (isset($reviews))
                 @foreach ($reviews as $review)
                     <div class="card page-title">
-                        <div class="card-body mypage-body">
+                        <div class="search-body">
                             <div class="review-group">
                                 @if(isset($user->image_path))
                                     <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$user->image_path) }}" alt="name" class="rounded-circle"></p>
@@ -52,10 +52,13 @@
                                 @endif
                                 <p class="user-name"> {{ $user->name }} </p>
                             </div>
-                            <div>
+                            <div class="search-list">
                                 <a href="{{ action('User\UserController@shop', ['id' => $review->shop_id]) }}">
-                                <p class="review-shop">{{ $review->name }}</p></a>
-                                <p class="review-address"><i class="fas fa-map-marker-alt fa-lg"></i> {{ $review->address_ken }}  {{ $review->address_city }}</p>
+                                    <p class="search-name">{{ $review->name }}</p>
+                                </a>
+                            </div>
+                            <div class="search-list">
+                                <p class="search-name"><i class="fas fa-map-marker-alt fa-lg mr-1"></i> {{ $review->address_ken }}  {{ $review->address_city }}</p>
                             </div>
                             <div class="review-item">
                                 <p class="review-text">総合評価</p>
@@ -94,14 +97,14 @@
                             <div class="review-item">
                                 <p class="review-text">通い方</p>
                                 <div class="review-star">
-                                    <p>{{ $review->learn }}</p>
+                                    <p class="d-inline">{{ $review->learn }}</p>
                                 </div>
                             </div>
 
                             <div class="review-item">
                                 <p class="review-text">時期</p>
                                 <div class="review-star">
-                                    <p>{{ $review->season }}</p>
+                                    <p class="d-inline">{{ $review->season }}</p>
                                 </div>
                             </div>
 
@@ -115,15 +118,15 @@
                                 <p class="review-merit"> {{ $review->demerit }} </p>
                             </div>
 
-                            <div class="review-item">
+                            <div class="review-up-group">
                                 <p class="review-update"><i class="fas fa-undo fa-lg"></i>更新日時</p>
                                 <p class="review-updated_at">{{ $review->updated_at->format('Y / m / d') }}</p>
                             </div>
 
                             <div class="revier-btn-group">
                                 <div>
-                                    <a href="{{ route('user.review.edit', ['review_id' => $review->id, 'shop_id' => $review->shop_id]) }}" class="btn btn-success review-btn">編集</a>
-                                    <button type="button" class="btn btn-danger review-btn" data-toggle="modal" data-target="#exampleModalCenter{{ $review->id }}">
+                                    <a href="{{ route('user.review.edit', ['review_id' => $review->id, 'shop_id' => $review->shop_id]) }}" class="btn btn-success show-btn">編集</a>
+                                    <button type="button" class="btn btn-danger show-btn" data-toggle="modal" data-target="#exampleModalCenter{{ $review->id }}">
                                       削除
                                     </button>
                                 </div>

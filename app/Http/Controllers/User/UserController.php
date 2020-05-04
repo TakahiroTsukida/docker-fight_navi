@@ -29,12 +29,20 @@ class UserController extends Controller
         return view('user.home');
     }
 
+    public function privacy() {
+        return view('privacy');
+    }
+
+    public function description() {
+        return view('description');
+    }
 
     public function search(Request $request) {
         $search_name = $request->input('search_shop');
         $search_type = $request->input('type');
         $search_address_ken = $request->input('address_ken');
         $search_address_city = $request->input('address_city');
+        $search_sort = $request->input('sort');
 
         $query = Shop::query();
         //タイプ検索
@@ -56,11 +64,64 @@ class UserController extends Controller
             $query->where('address_city', 'like', '%'.$search_address_city.'%');
         }
 
-        $cond_shops = $query->get();
-        $shops = $cond_shops->unique('id');
 
-        // $shops->join('reviews', 'shops.id', '=', 'reviews.shop_id')
-        //       ->select('shops.*', 'total_point');
+        $cond_shops = $query->get()->unique('id');
+
+
+        $shops = array();
+
+
+        foreach ($cond_shops as $shop) {
+            $total_point = 0;
+            $favorites_count = 0;
+            //ポイント平均
+            if (count($shop->reviews) >= 1) {
+                $reviews = $shop->reviews->toArray();
+                $total_point = array_sum(array_column($reviews, 'total_point')) / count(array_column($reviews, 'total_point'));
+            }
+
+            //お気に入り総数
+            if (count($shop->favorites) >= 1) {
+                $all_fovorites = $shop->favorites->toArray();
+                $favorites_count = count($all_fovorites);
+            }
+
+            $shops[] = array('shop' => $shop, 'point' => $total_point, 'favorites' => $favorites_count);
+        }
+
+
+        if (isset($search_sort)) {
+            //お気に入り順
+            if ($search_sort == 'favorite_desc') {
+                foreach ((array) $shops as $key => $value) {
+                    $sort[$key] = $value['favorites'];
+                }
+                array_multisort($sort, SORT_DESC, $shops);
+            }
+
+            if ($search_sort == 'favorite_asc') {
+                foreach ((array) $shops as $key => $value) {
+                    $sort[$key] = $value['favorites'];
+                }
+                array_multisort($sort, SORT_ASC, $shops);
+            }
+
+            //ポイント順
+            if ($search_sort == 'point_desc') {
+                foreach ((array) $shops as $key => $value) {
+                    $sort[$key] = $value['point'];
+                }
+                array_multisort($sort, SORT_DESC, $shops);
+            }
+
+            if ($search_sort == 'point_asc') {
+                foreach ((array) $shops as $key => $value) {
+                    $sort[$key] = $value['point'];
+                }
+                array_multisort($sort, SORT_ASC, $shops);
+            }
+        }
+
         // dd($shops);
 
         return view('user.search.index', [
@@ -69,6 +130,7 @@ class UserController extends Controller
           'search_type' => $search_type,
           'search_address_ken' => $search_address_ken,
           'search_address_city' => $search_address_city,
+          'search_sort' => $search_sort,
         ]);
     }
 

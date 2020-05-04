@@ -247,7 +247,6 @@ $tab: 768px; // タブレット
   width: 60px;
   margin-top: 5px;
   display: inline;
-  margin-left: 10%;
   @include tab {
     margin-left: 10px;
   }
@@ -276,4 +275,19 @@ $tab: 768px; // タブレット
 .trial-price {
     width: 100px;
     display: inline;
+}
+
+.admin-login {
+    margin: 90px 0;
+    @include tab {
+        margin: 150px 0;
+    }
+}
+
+.file-upload {
+    font-size: 12px;
+    width: 100%;
+    @include tab {
+        font-size: 16px;
+    }
 }

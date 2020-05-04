@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12">
-                <h2 class="page-title">登録済みジム・道場編集</h2>
+                <h2 class="page-title title">登録済みジム・道場編集</h2>
                 <div class="card">
                     <div class="body">
 
@@ -237,35 +237,41 @@
                             </div>
 
 
-                            <div class="form-address">
-                                {{-- 無料体験 --}}
-                                @include('parts/admin/label/shop/trial')
+                            <div class="trial-group">
+                                <div class="trial-list">
+                                    {{-- 無料体験 --}}
+                                    @include('parts/admin/label/shop/trial')
 
-                                @error('trial')
-                                    <div>
-                                        <p class="error price-en">{{ $message }}</p>
+                                    @error('trial')
+                                        <div>
+                                            <p class="error price-en">{{ $message }}</p>
+                                        </div>
+                                    @enderror
+                                    <select name="trial" class="form-control form-ken">
+                                        <option value="{{ $shop->trial }}" selected>{{ $shop->trial }}</option>
+                                        @switch ($shop->trial)
+                                            @case('無料')
+                                                <option value="有料">有料</option>
+                                                <option value="なし">なし</option>
+                                                @break
+                                            @case('有料')
+                                                <option value="無料">無料</option>
+                                                <option value="なし">なし</option>
+                                                @break
+                                            @case('なし')
+                                                <option value="無料">無料</option>
+                                                <option value="有料">有料</option>
+                                                @break
+                                        @endswitch
+                                    </select>
+                                </div>
+                                <div class="trial-list">
+                                    <label class="mt-3 shop-text">有料の場合のみ金額を記入</lebel>
+                                    <div class="trial-block">
+                                        <input type="number" name="trial_price" class="form-control trial-price" placeholder="例)500" value="{{ $shop->trial_price }}">
+                                        <p class="price-en">円（税込）</p>
                                     </div>
-                                @enderror
-                                <select name="trial" class="form-control form-ken">
-                                    <option value="{{ $shop->trial }}" selected>{{ $shop->trial }}</option>
-                                    @switch ($shop->trial)
-                                        @case('無料')
-                                            <option value="有料">有料</option>
-                                            <option value="なし">なし</option>
-                                            @break
-                                        @case('有料')
-                                            <option value="無料">無料</option>
-                                            <option value="なし">なし</option>
-                                            @break
-                                        @case('なし')
-                                            <option value="無料">無料</option>
-                                            <option value="有料">有料</option>
-                                            @break
-                                    @endswitch
-                                </select>
-                                <label class="shop-text">有料の場合のみ金額を記入</lebel>
-                                <input type="number" name="trial_price" class="form-control form-ken" placeholder="例)500" value="{{ $shop->trial_price }}">
-                                <p class="price-en">円（税込）</p>
+                              </div>
                             </div>
 
 
@@ -303,17 +309,17 @@
                                             <p class="error price-en">{{ $message }}</p>
                                         </div>
                                     @enderror
-                                    <input type="file" name="image" value="画像アップロード">
+                                    <input type="file" name="image" class="file-upload" value="画像アップロード">
                                 </div>
                             @endif
                             <input type="hidden" name="id" value="{{ $shop->id }}">
 
                             <div class="form-group row justify-content-center">
                                 <div class="btn-group">
-                                    <a href="#" class="btn btn-success shop-btn-lg">戻る</a>
+                                    <button type="button" class="btn btn-success show-btn" onclick=history.back()>戻る</button>
                                 </div>
                                 <div class="btn-group">
-                                    <input type="submit" class="btn btn-primary shop-btn-lg" value="登録">
+                                    <input type="submit" class="btn btn-primary show-btn" value="登録">
                                 </div>
                             </div>
                         {{ csrf_field() }}

@@ -29,6 +29,9 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
     Route::get('search', 'UserController@search')->name('search');
     Route::get('shop', 'UserController@shop')->name('shop');
 
+    Route::get('privacy', 'UserController@privacy');
+    Route::get('description', 'UserController@description');
+
     // ログイン認証後
     Route::middleware('auth:user')->group(function () {
 

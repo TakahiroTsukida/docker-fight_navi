@@ -28,18 +28,28 @@ $tab: 768px; // タブレット
 }
 
 .profile-img {
+    object-fit: cover;
+    height: 80px;
     width: 80px;
     float: left;
+    position: relative;
     @include tab {
         width: 150px;
+        height: 150px;
     }
 }
 
 .myname {
-    margin: 15px 0 15px 90px;
+    position: absolute;
+    top: 50px;
+    left: 115px;
     @include tab {
-        margin: 37px 0 15px 170px;
-        font-size: 18px;
+        top: 114px;
+        left: 237px;
+    }
+    @include pc {
+        top: 142px;
+        left: 265px;
     }
 }
 
@@ -49,8 +59,17 @@ $tab: 768px; // タブレット
 }
 
 .review-user {
+    object-fit: cover;
+    height: 70px;
     width: 70px;
     float: left;
+    margin: 0 15px 10px 15px;
+    position: relative;
+    @include tab {
+        height: 100px;
+        width: 100px;
+        margin: 7px 80px 10px 80px;
+    }
 }
 
 .mypage-body {
@@ -96,10 +115,10 @@ h3 {
 }
 
 label {
-  font-size: 13px;
+  font-size: 12px;
 
   @include tab {
-      font-size: 18px;
+      font-size: 16px;
   }
 }
 
@@ -111,7 +130,13 @@ p {
   @include tab {
     font-size: 16px
   }
+}
 
+li {
+    font-size: 12px;
+    @include tab {
+        font-size: 16px;
+    }
 }
 
 i {
@@ -380,7 +405,13 @@ label.right-group {
 
 
 p.user-name {
-    margin: 15px 0 0 75px;
+    position: absolute;
+    top: 40px;
+    left: 98px;
+    @include tab {
+        top: 75px;
+        left: 200px;
+    }
 }
 
 p.review-shop {
@@ -440,7 +471,10 @@ p.review-point {
 }
 
 .review-text-group {
-    margin: 15px 0;
+    margin: 15px;
+    @include tab {
+        margin: 15px 80px;
+    }
 }
 
 label.review-coment {
@@ -505,10 +539,23 @@ i.fas.fa-edit.fa-lg.review {
     vertical-align: baseline;
 }
 
-span.small-text {
-    font-size: 13px;
-    margin-left: 3px;
-    vertical-align: middle;
+span {
+
+    &.small-text {
+        font-size: 13px;
+        margin-left: 3px;
+        vertical-align: middle;
+    }
+
+    &.favorite_count {
+        font-size: 10px;
+
+        @include tab {
+            font-size: 12px;
+        }
+    }
+
+
 }
 
 .search-body {
@@ -599,3 +646,55 @@ p.shop-img img {
         height: 620px;
     }
 }
+
+form.favorite-form {
+    display: inline;
+}
+
+.rv-ca-btn {
+    font-size: 12px;
+    @include tab {
+      font-size: 15px;
+      margin: 15px 30px 15px 0;
+      width: 150px;
+    }
+}
+
+.review-up-group {
+    display: inline-block;
+    margin: 5px 15px;
+    @include tab {
+        margin: 5px 80px;
+    }
+}
+
+.title {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.post-h2 {
+    /* border-bottom: initial; */
+    padding: 0.5em 1em;
+    margin: 54px 0 10px 0;
+    color: #232323;
+    background: #ffffff;
+    border-left: solid 10px #6a67ff;
+}
+
+.information {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+// button.back-btn {
+//     border-width: 0;
+//     border-style: solid;
+//     border-color: rgb(255, 255, 255) rgb(255, 255, 255) rgb(255, 255, 255);
+//     color: #000;
+//     margin: 5px 0 0 5px;
+//     background-color: #fff;
+// }

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class User/ReviewSeeder extends Seeder
+class ReviewsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,9 +11,6 @@ class User/ReviewSeeder extends Seeder
      */
     public function run()
     {
-        $type = new \App\User\Review([
-        'name' => 'ボクシング',
-        ]);
-        $type->save();
+        factory(App\User\Review::class, 20)->create();
     }
 }
