@@ -46,8 +46,8 @@
                   <label>運営元</label>
               </div>
               <div class="card-body">
-                  <p class="card-body py-1">fightなび事務局</p>
-                  <p class="card-body py-1"><a href="mailto:fightnavi.information&#64;gmail.com">fightnavi.information@gmail.com</a></p>
+                  <p class="pb-2">fightなび事務局</p>
+                  <p><a href="mailto:fightnavi.information&#64;gmail.com">fightnavi.information@gmail.com</a></p>
               </div>
           </div>
         </div>

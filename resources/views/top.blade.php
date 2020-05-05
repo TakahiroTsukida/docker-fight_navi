@@ -9,7 +9,7 @@
     </div>
 
     <div>
-        <p class="main-text">Fightなびは、あなたの身近な格闘技ジムの情報を共有やレビューができるサービスです。<br>
+        <p class="main-text">Fightなびは、あなたの身近な格闘技ジムのレビューや情報共有ができるサービスです。<br>
           ジムの評価やコメントも見れるので、好みのジムを検索してみつけられます。</p>
     </div>
     <div class="container">

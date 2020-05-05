@@ -24,9 +24,9 @@
                                         <p class="error price-en">{{ $message }}</p>
                                     </div>
                                 @enderror
-                                <input type="file" class="form-control-file" name="image">
+                                @if (isset($user->image_path))
                                 <div class="form-text text-info">
-                                    設定中:  {{ isset($user->image_path) ? $user->image_path : '' }}
+                                    <p>設定中:  {{ isset($user->image_path) ? $user->image_path : '' }}</p>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
@@ -34,6 +34,9 @@
                                         画像を削除
                                     </label>
                                 </div>
+                                @else
+                                <input type="file" class="form-control-file" name="image">
+                                @endif
                             </div>
 
 
@@ -115,12 +118,16 @@
 
                             <input type="hidden" name="user_id" value="{{ $user->id }}">
 
+
                             <div class="form-group row justify-content-center">
-                                <div>
-                                    <a href="#" class="btn btn-success mx-3 mt-5 mb-3 px-5 rounded-pill">戻る</a>
-                                    <input type="submit" class="btn btn-primary mx-3 mt-5 mb-3 px-5 rounded-pill" value="更新">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success show-btn" onclick=history.back()>戻る</button>
+                                </div>
+                                <div class="btn-group">
+                                    <input type="submit" class="btn btn-primary show-btn" value="更新">
                                 </div>
                             </div>
+                            
                         {{ csrf_field() }}
                         </form>
 

@@ -4,7 +4,6 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 mt-3">
-
                 <div class="card page-title border-dark">
                     <div class="card-body">
 
@@ -109,7 +108,7 @@
             <!-- </div>
 
             <div class=""> -->
-                @if (count($shops) >= 1)
+                @if (isset($shops))
                     @foreach ($shops as $shop)
 
                             @if (Auth::guard('user')->check())
@@ -373,15 +372,12 @@
                           </div>
 
                     @endforeach
-                @elseif ($shops == null)
-                    <div class="page-title title">
-
-                    </div>
                 @else
                     <div class="page-title title">
                         <label>検索結果がありません</label>
                     </div>
                 @endif
+
             </div>
         </div>
     </div>

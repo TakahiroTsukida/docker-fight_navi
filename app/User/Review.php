@@ -30,11 +30,11 @@ class Review extends Model
     );
 
 
-    public function users() {
+    public function user() {
         return $this->belongsTo('App\User');
     }
 
-    public function shops() {
+    public function shop() {
         return $this->belongsTo('App\Admin\Shop');
     }
 }

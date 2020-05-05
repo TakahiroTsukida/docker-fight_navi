@@ -30,7 +30,16 @@
                                       </span></i></button>
                                   </form>
                               @endif
+                          @else
+                              <label class="favorite-icon">
+                                <i class="fas fa-bookmark" style="color: #C0C0C0;"><span class="favorite_count">
+                                @foreach($shop_info as $info)
+                                {{ $info['favorites_count'] }}
+                                @endforeach
+                              </span></i>
+                            </label>
                           @endif
+
 
                       </div>
 

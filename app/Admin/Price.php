@@ -16,7 +16,7 @@ class Price extends Model
 
 
 
-  public function shops()
+  public function shop()
   {
       return $this->belongsTo('App\Admin\Shop');
   }
