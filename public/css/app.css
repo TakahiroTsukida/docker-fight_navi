@@ -12193,6 +12193,19 @@ form.favorite-form {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 
+.review-count {
+  position: absolute;
+  top: 70px;
+  left: 217px;
+}
+
+@media (min-width: 768px) {
+  .review-count {
+    top: 105px;
+    left: 367px;
+  }
+}
+
 .shop-name {
   font-size: 18px;
   border-bottom: solid 1px #C0C0C0;

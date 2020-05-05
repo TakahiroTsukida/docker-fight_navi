@@ -93,6 +93,8 @@
                                         <option value="point_asc" {{ $search_sort == 'point_asc' ? 'selected="selected"' : '' }}>総合評価が低い順</option>
                                         <option value="favorite_desc" {{ $search_sort == 'favorite_desc' ? 'selected="selected"' : '' }}>お気に入り数が多い順</option>
                                         <option value="favorite_asc" {{ $search_sort == 'favorite_asc' ? 'selected="selected"' : '' }}>お気に入り数が少ない順</option>
+                                        <option value="review_desc" {{ $search_sort == 'review_desc' ? 'selected="selected"' : '' }}>レビューが多い順</option>
+                                        <option value="review_asc" {{ $search_sort == 'review_asc' ? 'selected="selected"' : '' }}>レビューが少ない順</option>
                                     </select>
                                 </div>
                             </div>
@@ -200,6 +202,7 @@
                                               @endswitch
 
                                               <p class="review-point">{{ round($shop['point'], 1) }}点</p>
+                                              <p class="review-count">（{{ $shop['reviews'] }}件）</p>
                                         @else
                                             <p class="review-point">レビューなし</p>
                                         @endif
@@ -364,6 +367,10 @@
                           </div>
 
                     @endforeach
+                @elseif ($shops == null)
+                    <div class="page-title title">
+
+                    </div>
                 @else
                     <div class="page-title title">
                         <label>検索結果がありません</label>

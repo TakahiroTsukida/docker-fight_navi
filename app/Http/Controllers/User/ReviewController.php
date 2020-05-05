@@ -68,6 +68,6 @@ class ReviewController extends Controller
         $review->delete();
 
 
-        return redirect('user/profile/mypage');
+       return back()->withInput(); //redirect('user/profile/mypage');
     }
 }

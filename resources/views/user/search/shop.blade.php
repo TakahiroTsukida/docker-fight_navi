@@ -113,11 +113,15 @@
                           <button type="button" class="btn btn-primary show-btn" data-toggle="modal" data-target="#exampleModalLong{{ $shop->id }}">詳細</button>
 
                           @unless (Auth::guard('admin')->check())
-                              @php
-                                  $user_reviews = $shop->reviews;
-                                  $user_review = $reviews->where('user_id', Auth::user()->id)->toArray();
-                              @endphp
-                              @if (count($user_review) == 0)
+                              @if (Auth::guard('user')->check())
+                                  @if (isset($shop->reviews))
+                                  @php
+                                      $user_reviews = $shop->reviews;
+                                      $user_review = $reviews->where('user_id', Auth::user()->id)->toArray();
+                                  @endphp
+                                  @endif
+                              @endif
+                              @if (empty($user_review))
                               <a href="{{ action('User\ReviewController@add', ['id' => $shop->id]) }}" class="btn btn-success rv-ca-btn"><i class="fas fa-edit fa-lg review"></i>新規レビュー</a>
                               @endif
                           @endunless
