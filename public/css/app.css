@@ -12206,6 +12206,19 @@ form.favorite-form {
   }
 }
 
+.shop-review-count {
+  position: absolute;
+  top: 74px;
+  left: 217px;
+}
+
+@media (min-width: 768px) {
+  .shop-review-count {
+    top: 110px;
+    left: 367px;
+  }
+}
+
 .shop-name {
   font-size: 18px;
   border-bottom: solid 1px #C0C0C0;

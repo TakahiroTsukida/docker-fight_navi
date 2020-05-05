@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                                  <a href="{{ action('User\FavoriteController@mypage_delete', ['shop_id' => $favorite->shop_id]) }}" class="btn btn-danger">削除</a>
+                                  <a href="{{ action('User\FavoriteController@delete', ['shop_id' => $favorite->shop_id]) }}" class="btn btn-danger">削除</a>
                                 </div>
                               </div>
                             </div>

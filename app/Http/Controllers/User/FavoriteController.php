@@ -28,7 +28,8 @@ class FavoriteController extends Controller
         $favorite->user_id = Auth::user()->id;
         $favorite->shop_id = $request->shop_id;
         $favorite->save();
-        return redirect()->route('user.shop', ['id' => $request->shop_id]);
+        return back()->withInput();
+        // return redirect()->route('user.shop', ['id' => $request->shop_id]);
     }
 
     public function delete(Request $request) {
@@ -39,18 +40,19 @@ class FavoriteController extends Controller
 
         $favorite->delete();
 
-        return redirect()->route('user.shop', ['id' => $request->shop_id]);
+        return back()->withInput();
+        // return redirect()->route('user.shop', ['id' => $request->shop_id]);
     }
 
-    public function mypage_delete(Request $request){
-        $favorite = Favorite::where('user_id', Auth::user()->id)
-                            ->where('shop_id', $request->shop_id)
-                            ->first();
-
-        $favorite->delete();
-
-        return redirect('user/profile/favorite');
-    }
+    // public function mypage_delete(Request $request){
+    //     $favorite = Favorite::where('user_id', Auth::user()->id)
+    //                         ->where('shop_id', $request->shop_id)
+    //                         ->first();
+    //
+    //     $favorite->delete();
+    //
+    //     return redirect('user/profile/favorite');
+    // }
 
 
     // public function search_add(Request $request) {
@@ -66,7 +68,7 @@ class FavoriteController extends Controller
     //       // 'address_city' => $search_address_city,
     //     ]);
     // }
-    // 
+    //
     //
     // public function search_delete(Request $request) {
     //     $favorite = Favorite::where('user_id', Auth::user()->id)

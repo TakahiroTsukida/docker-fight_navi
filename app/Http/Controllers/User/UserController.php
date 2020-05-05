@@ -158,41 +158,43 @@ class UserController extends Controller
         $shop = Shop::find($request->id);
         $user = Auth::user();
 
-        // if (isset($shop)) {
-        //     $shops = array();
-        //     $total_point = 0;
-        //     $reviews_count = 0;
-        //     $favorites_count = 0;
-        //     //ポイント平均、レビュー件数の取得
-        //     if (count($shop->reviews) >= 1) {
-        //         //shopに対するreviewの取得
-        //         $reviews = $shop->reviews->toArray();
-        //         //総合評価の平均点（割り算）
-        //         $total_point = array_sum(array_column($reviews, 'total_point')) / count(array_column($reviews, 'total_point'));
-        //         //レビュー件数の取得
-        //         $reviews_count = count($reviews);
-        //     }
-        //
-        //     //お気に入り総数の取得
-        //     if (count($shop->favorites) >= 1) {
-        //         $all_fovorites = $shop->favorites->toArray();
-        //         $favorites_count = count($all_fovorites);
-        //     }
-        //
-        //     $shops[] = array(
-        //                   'shop' => $shop,
-        //                   'reviews' => $reviews,
-        //                   'point' => $total_point,
-        //                   'favorites' => $favorites_count,
-        //                   'reviews_count' => $reviews_count,
-        //               );
-        //
-        //
-        //
-        // } else {
-        //     abort(404);
-        // }
-        // dd($shops);
+        if (isset($shop)) {
+            $shop_info = array();
+            $total_point = 0;
+            $reviews_count = 0;
+            $favorites_count = 0;
+            //ポイント平均、レビュー件数の取得
+            if (count($shop->reviews) >= 1) {
+                //shopに対するreviewの取得
+                $reviews = $shop->reviews->toArray();
+                //総合評価の平均点（割り算）
+                $total_point = array_sum(array_column($reviews, 'total_point')) / count(array_column($reviews, 'total_point'));
+                //レビュー件数の取得
+                $reviews_count = count($reviews);
+            }
+
+            //お気に入り総数の取得
+            if (count($shop->favorites) >= 1) {
+                $all_fovorites = $shop->favorites->toArray();
+                $favorites_count = count($all_fovorites);
+            }
+
+            $shop_info[] = array(
+                          'shop' => $shop,
+                          'reviews' => $reviews,
+                          'total_point' => $total_point,
+                          'favorites_count' => $favorites_count,
+                          'reviews_count' => $reviews_count,
+                      );
+
+
+
+        } else {
+            abort(404);
+        }
+        // dd($shop_info);
+
+
         $query = Review::query();
         //$reviewsに、レビュー内容＋userの情報をjoin
         $query->join('users', 'reviews.user_id', '=', 'users.id')
@@ -212,6 +214,7 @@ class UserController extends Controller
         if(isset($user)) {
             if (count($shop->favorites) >= 1) {
                 $favorites = $shop->favorites;
+                $favorites_count = count($favorites);
                 $favorite = $favorites->where('user_id', $user->id)->first();
             } else {
                 $favorite = null;
@@ -222,8 +225,8 @@ class UserController extends Controller
 
         return view('user.search.shop', [
             'shop' => $shop,
+            'shop_info' => $shop_info,
             'reviews' => $reviews,
-            'user' => $user,
             'favorite' => $favorite,
             'total_point' => $total_point,
         ]);

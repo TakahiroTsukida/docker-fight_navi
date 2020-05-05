@@ -130,9 +130,15 @@
                                           @if (Auth::guard('user')->check())
 
                                               @if (isset($favorite))
-                                                  <i class="fas fa-bookmark" style="color: #FF3366;"><span class="favorite_count">{{ $shop['favorites'] }}</span></i>
+                                                  <form action="{{ action('User\FavoriteController@delete') }}" class="favorite-form">
+                                                      <input type="hidden" name="shop_id" value="{{ $shop['shop']->id }}">
+                                                      <button type="submit" class="favorite-icon"><i class="fas fa-bookmark" style="color: #FF3366;"><span class="favorite_count">{{ $shop['favorites'] }}</span></i></button>
+                                                  </form>
                                               @else
-                                                  <i class="fas fa-bookmark" style="color: #C0C0C0;"><span class="favorite_count">{{ $shop['favorites'] }}</span></i>
+                                                  <form action="{{ action('User\FavoriteController@add') }}" class="favorite-form">
+                                                      <input type="hidden" name="shop_id" value="{{ $shop['shop']->id }}">
+                                                      <button type="submit" class="favorite-icon"><i class="fas fa-bookmark" style="color: #C0C0C0;"><span class="favorite_count">{{ $shop['favorites'] }}</span></i></button>
+                                                  </form>
                                               @endif
 
                                           @else

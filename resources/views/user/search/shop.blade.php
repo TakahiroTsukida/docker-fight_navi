@@ -6,7 +6,6 @@
             <div class="col-sm-12">
               <div class="card card-group page-title">
                   <div class="search-body">
-
                       <div class="search-list">
                           <h2 class="search-name">{{ $shop->name }}</h2>
                           @if (Auth::guard('user')->check())
@@ -14,13 +13,21 @@
                                   <form action="{{ action('User\FavoriteController@delete') }}" class="favorite-form">
                                       <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                                       <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                      <button type="submit" class="favorite-icon"><i class="fas fa-bookmark" style="color: #FF3366;"></i></button>
+                                      <button type="submit" class="favorite-icon"><i class="fas fa-bookmark" style="color: #FF3366;"><span class="favorite_count">
+                                        @foreach($shop_info as $info)
+                                        {{ $info['favorites_count'] }}
+                                        @endforeach
+                                      </span></i></button>
                                   </form>
                               @else
                                   <form action="{{ action('User\FavoriteController@add') }}" class="favorite-form">
                                       <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                                       <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                      <button type="submit" class="favorite-icon"><i class="fas fa-bookmark" style="color: #C0C0C0;"></i></button>
+                                      <button type="submit" class="favorite-icon"><i class="fas fa-bookmark" style="color: #C0C0C0;"><span class="favorite_count">
+                                        @foreach($shop_info as $info)
+                                        {{ $info['favorites_count'] }}
+                                        @endforeach
+                                      </span></i></button>
                                   </form>
                               @endif
                           @endif
@@ -89,6 +96,11 @@
                                       @break
                                   @endswitch
                                   <p class="review-point">{{ round($total_point, 1) }}点</p>
+                                  <p class="shop-review-count">（
+                                    @foreach($shop_info as $info)
+                                    {{ $info['reviews_count'] }}
+                                    @endforeach
+                                    件）</p>
                             @else
                               <p class="review-point">レビューなし</p>
                             @endif
