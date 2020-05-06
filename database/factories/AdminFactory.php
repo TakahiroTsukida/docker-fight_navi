@@ -8,9 +8,15 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
 $factory->define(Admin::class, function (Faker $faker) {
+
+    $genders = [
+        '男性',
+        '女性'
+    ];
+
     return [
         'name' => $faker->name,
-        'gender' => $faker->titleMale,
+        'gender' => $faker->randomElement($genders),
         'birthday' => $faker->datetime($max = 'now', $timezone = date_default_timezone_get()),
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),

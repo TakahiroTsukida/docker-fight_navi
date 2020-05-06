@@ -9,6 +9,7 @@ class Shop extends Model
 
   protected $fillable = [
         'admin_id',
+        'name',
         'tel',
         'address_number',
         'address_ken',
@@ -25,7 +26,7 @@ class Shop extends Model
   protected $guarded = array('id');
 
   public static $rules = array(
-      'shop_name' => 'required',
+      'name' => 'required',
 
       //配列で最低１個以上はチェック必須
       'type' => 'array|required',
@@ -56,7 +57,7 @@ class Shop extends Model
       'description' => 'nullable|max:300',
 
       //images
-      'image' => 'nullable|image|max:512',
+      'image' => 'nullable|image|max:1024',
 
   );
 
@@ -80,11 +81,6 @@ class Shop extends Model
       return $this->hasMany('App\Admin\Personal');
   }
 
-  public function images()
-  {
-      return $this->hasMany('App\Admin\Image');
-  }
-
   public function reviews() {
       return $this->hasMany('App\User\Review');
   }
@@ -92,13 +88,5 @@ class Shop extends Model
   public function favorites() {
       return $this->hasMany('App\User\Favorite');
   }
-
-  // public function favorites() {
-  //     return $this->belongsToMany('App\User')->withTimestamps();
-  // }
-
-  // public function favorite_users() {
-  //     return $this->belongsToMany('App\User')->withTimestamps();
-  // }
 
 }

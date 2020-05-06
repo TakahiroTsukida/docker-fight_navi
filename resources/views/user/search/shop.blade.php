@@ -13,30 +13,18 @@
                                   <form action="{{ action('User\FavoriteController@delete') }}" class="favorite-form">
                                       <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                                       <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                      <button type="submit" class="favorite-icon"><i class="fas fa-bookmark" style="color: #FF3366;"><span class="favorite_count">
-                                        @foreach($shop_info as $info)
-                                        {{ $info['favorites_count'] }}
-                                        @endforeach
-                                      </span></i></button>
+                                      <button type="submit" class="favorite-icon"><i class="fas fa-bookmark" style="color: #FF3366;"><span class="favorite_count">{{ $shop->favorites_count }}</span></i></button>
                                   </form>
                               @else
                                   <form action="{{ action('User\FavoriteController@add') }}" class="favorite-form">
                                       <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                                       <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                      <button type="submit" class="favorite-icon"><i class="fas fa-bookmark" style="color: #C0C0C0;"><span class="favorite_count">
-                                        @foreach($shop_info as $info)
-                                        {{ $info['favorites_count'] }}
-                                        @endforeach
-                                      </span></i></button>
+                                      <button type="submit" class="favorite-icon"><i class="fas fa-bookmark" style="color: #C0C0C0;"><span class="favorite_count">{{ $shop->favorites_count }}</span></i></button>
                                   </form>
                               @endif
                           @else
                               <label class="favorite-icon">
-                                <i class="fas fa-bookmark" style="color: #C0C0C0;"><span class="favorite_count">
-                                @foreach($shop_info as $info)
-                                {{ $info['favorites_count'] }}
-                                @endforeach
-                              </span></i>
+                                <i class="fas fa-bookmark" style="color: #C0C0C0;"><span class="favorite_count">{{ $shop->favorites_count }}</span></i>
                             </label>
                           @endif
 
@@ -50,53 +38,53 @@
                       <div class="review-item mb-2">
                           <p class="review-text">総合評価</p>
                               <div class="review-star">
-                                @if(isset($total_point))
+                                @if(isset($shop->point))
 
-                                  @switch ($total_point)
-                                      @case ($total_point == 0)
+                                  @switch ($shop->point)
+                                      @case ($shop->point == 0)
                                           <p class="review-point">レビューなし</p>
                                       @break
-                                      @case ($total_point < 1.5)
+                                      @case ($shop->point < 1.5)
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                       @break
-                                      @case ($total_point < 2)
+                                      @case ($shop->point < 2)
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                           <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
                                       @break
-                                      @case ($total_point < 2.5)
+                                      @case ($shop->point < 2.5)
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                       @break
-                                      @case ($total_point < 3)
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
-                                      @break
-                                      @case ($total_point < 3.5)
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                      @break
-                                      @case ($total_point < 4)
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                      @case ($shop->point < 3)
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                           <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
                                       @break
-                                      @case ($total_point < 4.5)
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                      @case ($shop->point < 3.5)
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                       @break
-                                      @case ($total_point < 5)
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                      @case ($shop->point < 4)
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                           <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
                                       @break
-                                      @case ($total_point = 5)
+                                      @case ($shop->point < 4.5)
+                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                      @break
+                                      @case ($shop->point < 5)
+                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                          <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
+                                      @break
+                                      @case ($shop->point = 5)
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
@@ -104,24 +92,18 @@
                                           <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                       @break
                                   @endswitch
-                                  <p class="review-point">{{ round($total_point, 1) }}点</p>
-                                  <p class="shop-review-count">（
-                                    @foreach($shop_info as $info)
-                                    {{ $info['reviews_count'] }}
-                                    @endforeach
-                                    件）</p>
+                                  <p class="review-point">{{ $shop->point }}点</p>
+                                  <p class="shop-review-count">（{{ $shop->reviews_count }}件）</p>
                             @else
                               <p class="review-point">レビューなし</p>
                             @endif
                         </div>
                       </div>
 
-                      @if (count($shop->images) >= 1)
-                          @foreach ($shop->images as $image)
-                              <div class="image-group">
-                                  <p class="shop-img"><img src="{{ asset('storage/image/store_images/'.$image->image_path) }}"></p>
-                              </div>
-                          @endforeach
+                      @if (isset($shop->image_path))
+                          <div class="image-group">
+                              <p class="shop-img"><img src="{{ asset('storage/image/shop_images/'.$shop->image_path) }}"></p>
+                          </div>
                       @else
                           <div class="profile">
                               <p class="shop-img"><img src="{{ asset('storage/image/app_images/l_e_others_501.png') }}"></p>
@@ -138,7 +120,7 @@
                                   @if (isset($shop->reviews))
                                   @php
                                       $user_reviews = $shop->reviews;
-                                      $user_review = $reviews->where('user_id', Auth::user()->id)->toArray();
+                                      $user_review = $user_reviews->where('user_id', Auth::user()->id)->toArray();
                                   @endphp
                                   @endif
                               @endif
@@ -272,25 +254,25 @@
                   </div>
               </div>
 
-              @if(isset($reviews))
-              @foreach ($reviews as $review)
+              @if(count($shop->reviews) >= 1)
+              @foreach ($shop->reviews as $review)
                   <div class="card page-title">
                       <div class="search-body">
                           <div class="review-group">
-                              @if(isset($review->image_path))
-                                  <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$review->image_path) }}" alt="name" class="rounded-circle"></p>
+                              @if(isset($review->user->image_path))
+                                  <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$review->user->image_path) }}" alt="name" class="rounded-circle"></p>
                               @else
                                   <p class="review-user"><img src="{{ asset('storage/image/app_images/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
                               @endif
-                              <p class="user-name"> {{ $review->name }} </p>
+                              <p class="user-name"> {{ $review->user->name }} </p>
                           </div>
                           <div class="search-list">
                               <a href="{{ action('User\UserController@shop', ['id' => $review->shop_id]) }}">
-                                  <h2 class="search-name">{{ $shop->name }}</h2>
+                                  <h2 class="search-name">{{ $review->shop->name }}</h2>
                               </a>
                           </div>
                           <div class="search-list">
-                              <p class="search-name"><i class="fas fa-map-marker-alt fa-lg mr-1"></i> {{ $shop->address_ken }}  {{ $shop->address_city }}</p>
+                              <p class="search-name"><i class="fas fa-map-marker-alt fa-lg mr-1"></i> {{ $review->shop->address_ken }}  {{ $review->shop->address_city }}</p>
                           </div>
                           <div class="review-item">
                               <p class="review-text">総合評価</p>
@@ -354,7 +336,7 @@
                               <p class="review-update"><i class="fas fa-undo fa-lg"></i>更新日時</p>
                               <p class="review-updated_at">{{ $review->updated_at->format('Y / m / d') }}</p>
                           </div>
-                          @auth
+                          @if (Auth::guard('user')->check())
                               @if ($review->user_id == Auth::user()->id)
                                   <div class="revier-btn-group">
                                       <div>
@@ -376,7 +358,7 @@
                                           </button>
                                         </div>
                                         <div class="modal-body">
-                                          本当にこのレビューを削除してもよろしいでしょうか？
+                                          {{ $review->shop->name }} のレビューを削除しますか？
                                         </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
@@ -388,13 +370,16 @@
 
 
                               @endif
-                          @endauth
+                          @endif
 
                       </div>
                   </div>
 
             @endforeach
-
+            @else
+                <div class="col admin-login">
+                    <p class="title">現在レビューはありません</p>
+                </div>
             @endif
             </div>
         </div>

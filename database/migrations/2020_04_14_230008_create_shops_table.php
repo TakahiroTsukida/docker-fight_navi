@@ -17,7 +17,7 @@ class CreateShopsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('admin_id');
             $table->string('name');
-            $table->string('tel', 11)->nullable();
+            $table->string('tel', 14)->nullable();
             $table->string('address_number')->nullable();
             $table->string('address_ken');
             $table->string('address_city');
@@ -28,6 +28,10 @@ class CreateShopsTable extends Migration
             $table->string('trial');
             $table->string('trial_price')->nullable();
             $table->string('description')->nullable();
+            $table->string('image_path')->nullable();
+            $table->double('point', 3, 2)->nullable();
+            $table->integer('reviews_count')->default(0);
+            $table->integer('favorites_count')->default(0);
             $table->timestamps();
         });
     }

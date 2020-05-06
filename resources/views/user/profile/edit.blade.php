@@ -39,22 +39,6 @@
                                 @endif
                             </div>
 
-
-                            {{-- <div>
-                                <input type="file" class="btn btn-success">編集</button>
-                                <a href="#" class="btn btn-danger">削除</a>
-                            </div> --}}
-
-
-
-                            @if(count($errors) > 0)
-                                <ul>
-                                    @foreach($errors->all() as $e)
-                                        <li>{{ $e }}</li>
-                                    @endforeach
-                                </ul>
-                            @endif
-
                             <div>
                                 <div class="form-group">
                                     <label>名前</label>
@@ -102,6 +86,11 @@
 
                                 <div class="form-group">
                                     <label for="birthday">生年月日</label>
+                                    @error('birthday')
+                                        <div>
+                                            <p class="error price-en">{{ $message }}</p>
+                                        </div>
+                                    @enderror
                                     <input type="date" name="birthday" class="form-control" value="{{ $user->birthday }}">
                                 </div>
 
@@ -127,7 +116,7 @@
                                     <input type="submit" class="btn btn-primary show-btn" value="更新">
                                 </div>
                             </div>
-                            
+
                         {{ csrf_field() }}
                         </form>
 

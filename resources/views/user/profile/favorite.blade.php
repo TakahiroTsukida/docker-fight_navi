@@ -11,7 +11,7 @@
                               <div class="search-body">
                                   <div class="search-list">
                                       <a href="{{ action('User\UserController@shop', ['id' => $favorite->shop_id]) }}">
-                                      <h2 class="search-name">{{ $favorite->name }}</h2>
+                                      <h2 class="search-name">{{ $favorite->shop->name }}</h2>
                                       </a>
                                       <button type="button" data-toggle="modal" data-target="#exampleModalCenter{{ $favorite->id }}" class="favorite-icon">
                                         <i class="fas fa-bookmark fa-lg" style="color: #FF3366;"></i>
@@ -20,7 +20,7 @@
 
 
                                   <div class="search-list mb-2">
-                                      <p class="search-name"><i class="fas fa-map-marker-alt fa-lg mr-1"></i>{{ $favorite->address_ken }}{{ $favorite->address_city }}</p>
+                                      <p class="search-name"><i class="fas fa-map-marker-alt fa-lg mr-1"></i>{{ $favorite->shop->address_ken }}{{ $favorite->shop->address_city }}</p>
                                   </div>
                               </div>
                           </div>
@@ -36,7 +36,7 @@
                                   </button>
                                 </div>
                                 <div class="modal-body">
-                                  {{ $favorite->name }}をお気に入りから削除しますか？
+                                  {{ $favorite->shop->name }}をお気に入りから削除しますか？
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>

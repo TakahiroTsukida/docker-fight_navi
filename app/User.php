@@ -46,7 +46,7 @@ class User extends Authenticatable //implements MustVerifyEmail
     public static $rules = array(
         'name' => 'required|max:60',
         'gender' => 'nullable',
-        'birthday' => 'nullable',
+        'birthday' => 'nullable|before:now',
         'introduction' => 'nullable',
 
         'image' => 'nullable|image|max:512',

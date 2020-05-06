@@ -15,10 +15,10 @@
                             <div class="form-group mt-4">
                                 @include('parts/admin/label/shop/name')
 
-                                @error('shop_name')
+                                @error('name')
                                     <p class="error">{{ $message }}</p>
                                 @enderror
-                                <input type="text" name="shop_name" class="form-control" placeholder="例）Example GYM" value="{{ $shop->name }}">
+                                <input type="text" name="name" class="form-control" placeholder="例）Example GYM" value="{{ $shop->name }}">
                             </div>
 
 
@@ -286,12 +286,7 @@
                                 <textarea name="description" class="form-control shop-text" rows="10" placeholder="ご自由にお書きください">{{ $shop->description }}</textarea>
                             </div>
 
-                            @php
-                                $shop_image = $shop->images->first();
-                            @endphp
-
-
-                            @if (isset($shop_image))
+                            @if (isset($shop->image_path))
                                 <div class="form-check mt-4">
                                     <p class="form-check-label">
                                         <input type="checkbox" class="form-check-input" name="remove" value="true">
@@ -299,7 +294,7 @@
                                     </p>
                                 </div>
                                 <div class="form-text text-info">
-                                    <p>設定中<img src="{{ asset('storage/image/store_images/'.$shop_image->image_path) }}"></p>
+                                    <p>設定中<img src="{{ asset('storage/image/shop_images/'.$shop->image_path) }}"></p>
                                 </div>
 
                             @else

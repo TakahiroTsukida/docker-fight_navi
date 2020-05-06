@@ -120,8 +120,10 @@ return [
         'name' => '名前',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
-
-
+        'gender' => '性別',
+        'birthday' => '生年月日',
+        'now' => '今日',
+        'introduction' => '自己紹介',
         'shop_name' => 'ジム・道場名',
         'tel' => '電話番号',
         'type' => 'ジャンル',
@@ -132,6 +134,14 @@ return [
 
         'trial' => '入会前の体験',
         'trial_price' => '体験の金額',
+
+
+        'total_point' => '総合評価',
+        'learn' => '通い方',
+        'season' => '時期',
+        'merit' => '良かったところ',
+        'demerit' => 'イマイチなところ',
+
 
     ],
 

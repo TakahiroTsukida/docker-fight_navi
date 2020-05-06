@@ -15,7 +15,7 @@
                             </div>
                             <div class="form-group row mb-5">
                                 <div class="col-md-8 offset-md-2">
-                                    <input type="text" name="search_shop" class="form-control" value="{{ $search_shop }}">
+                                    <input type="text" name="search_name" class="form-control" value="{{ $search_name }}">
                                 </div>
                             </div>
 
@@ -113,8 +113,8 @@
 
                             @if (Auth::guard('user')->check())
                               @php
-                                if(isset($shop['shop']->favorites)) {
-                                    $favorites = $shop['shop']->favorites;
+                                if(isset($shop->favorites)) {
+                                    $favorites = $shop->favorites;
                                     $favorite = $favorites->where('user_id', Auth::user()->id)->first();
                                 }
                               @endphp
@@ -122,82 +122,82 @@
 
                           <div class="card card-group">
                               <div class="search-body">
-                                  <a href="{{ action('User\UserController@shop', ['id' => $shop['shop']->id]) }}">
+                                  <a href="{{ action('User\UserController@shop', ['id' => $shop->id]) }}">
                                   <div class="search-list">
-                                      <h2 class="search-name">{{ $shop['shop']->name }}</h2>
+                                      <h2 class="search-name">{{ $shop->name }}</h2>
                                       <label class="favorite-icon">
                                           @if (Auth::guard('user')->check())
 
                                               @if (isset($favorite))
                                                   <form action="{{ action('User\FavoriteController@delete') }}" class="favorite-form">
-                                                      <input type="hidden" name="shop_id" value="{{ $shop['shop']->id }}">
-                                                      <button type="submit" class="favorite-icon"><i class="fas fa-bookmark" style="color: #FF3366;"><span class="favorite_count">{{ $shop['favorites'] }}</span></i></button>
+                                                      <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                                                      <button type="submit" class="favorite-icon"><i class="fas fa-bookmark" style="color: #FF3366;"><span class="favorite_count">{{ $shop->favorites_count }}</span></i></button>
                                                   </form>
                                               @else
                                                   <form action="{{ action('User\FavoriteController@add') }}" class="favorite-form">
-                                                      <input type="hidden" name="shop_id" value="{{ $shop['shop']->id }}">
-                                                      <button type="submit" class="favorite-icon"><i class="fas fa-bookmark" style="color: #C0C0C0;"><span class="favorite_count">{{ $shop['favorites'] }}</span></i></button>
+                                                      <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                                                      <button type="submit" class="favorite-icon"><i class="fas fa-bookmark" style="color: #C0C0C0;"><span class="favorite_count">{{ $shop->favorites_count }}</span></i></button>
                                                   </form>
                                               @endif
 
                                           @else
-                                              <i class="fas fa-bookmark" style="color: #C0C0C0;"><span class="favorite_count">{{ $shop['favorites'] }}</span></i>
+                                              <i class="fas fa-bookmark" style="color: #C0C0C0;"><span class="favorite_count">{{ $shop->favorites_count }}</span></i>
                                           @endif
                                       </label>
                                   </div>
                                   </a>
 
                                   <div class="search-list">
-                                      <p class="search-name"><i class="fas fa-map-marker-alt fa-lg mr-1"></i>{{ $shop['shop']->address_ken }}{{ $shop['shop']->address_city }}</p>
+                                      <p class="search-name"><i class="fas fa-map-marker-alt fa-lg mr-1"></i>{{ $shop->address_ken }}{{ $shop->address_city }}</p>
                                   </div>
 
                                   <div class="review-item mb-2">
                                       <p class="review-text">総合評価</p>
                                           <div class="review-star">
-                                            @if(($shop['point']) > 0)
+                                            @if(($shop->point) > 0)
 
-                                              @switch ($shop['point'])
-                                                  @case ($shop['point'] < 1.5)
+                                              @switch ($shop->point)
+                                                  @case ($shop->point < 1.5)
                                                       <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                                   @break
-                                                  @case ($shop['point'] < 2)
+                                                  @case ($shop->point < 2)
                                                       <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                                       <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
                                                   @break
-                                                  @case ($shop['point'] < 2.5)
+                                                  @case ($shop->point < 2.5)
                                                       <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                                       <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                                   @break
-                                                  @case ($shop['point'] < 3)
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
-                                                  @break
-                                                  @case ($shop['point'] < 3.5)
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                  @break
-                                                  @case ($shop['point'] < 4)
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                  @case ($shop->point < 3)
                                                       <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                                       <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                                       <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
                                                   @break
-                                                  @case ($shop['point'] < 4.5)
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                  @case ($shop->point < 3.5)
                                                       <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                                       <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                                       <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                                   @break
-                                                  @case ($shop['point'] < 5)
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                  @case ($shop->point < 4)
                                                       <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                                       <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                                       <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                                       <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
                                                   @break
-                                                  @case ($shop['point'] == 5)
+                                                  @case ($shop->point < 4.5)
+                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                  @break
+                                                  @case ($shop->point < 5)
+                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                      <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
+                                                  @break
+                                                  @case ($shop->point == 5)
                                                       <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                                       <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                                       <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
@@ -206,20 +206,18 @@
                                                   @break
                                               @endswitch
 
-                                              <p class="review-point">{{ round($shop['point'], 1) }}点</p>
-                                              <p class="review-count">（{{ $shop['reviews'] }}件）</p>
+                                              <p class="review-point">{{ $shop->point }}点</p>
+                                              <p class="review-count">（{{ $shop->reviews_count }}件）</p>
                                         @else
                                             <p class="review-point">レビューなし</p>
                                         @endif
                                       </div>
                                   </div>
 
-                                  @if (count($shop['shop']->images) >= 1)
-                                      @foreach ($shop['shop']->images as $image)
-                                          <div class="image-group">
-                                              <p class="shop-img"><img src="{{ asset('storage/image/store_images/'.$image->image_path) }}"></p>
-                                          </div>
-                                      @endforeach
+                                  @if (isset($shop->image_path))
+                                      <div class="image-group">
+                                          <p class="shop-img"><img src="{{ asset('storage/image/shop_images/'.$shop->image_path) }}"></p>
+                                      </div>
                                   @else
                                       <div class="profile">
                                           <p class="shop-img"><img src="{{ asset('storage/image/app_images/l_e_others_501.png') }}"></p>
@@ -228,43 +226,37 @@
 
                                   <div class="right-btn">
                                   <!-- Button trigger modal -->
-                                      <button type="button" class="btn btn-primary show-btn" data-toggle="modal" data-target="#exampleModalLong{{ $shop['shop']->id }}">
+                                      <button type="button" class="btn btn-primary show-btn" data-toggle="modal" data-target="#exampleModalLong{{ $shop->id }}">
                                         詳細
                                       </button>
                                   </div>
 
                                   <!-- Modal -->
-                                  <div class="modal fade" id="exampleModalLong{{ $shop['shop']->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                  <div class="modal fade" id="exampleModalLong{{ $shop->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                       <div class="modal-content">
                                         <div class="modal-header">
-                                          <h2 class="modal-title" id="exampleModalLongTitle">{{ $shop['shop']->name }}</h2>
+                                          <h2 class="modal-title" id="exampleModalLongTitle">{{ $shop->name }}</h2>
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
                                         </div>
 
-                                        @if (isset($shop['shop']->images))
-                                            @foreach ($shop['shop']->images as $image)
-                                                <div class="image-group">
-                                                    <img src="{{ asset('storage/image/store_images/'.$image->image_path) }}">
-                                                </div>
-                                            @endforeach
-                                        @else
-                                            <div class="profile">
-                                                <label class="shop-about">現在写真は登録されていません</label>
+                                        @if (isset($shop->image_path))
+                                            <div class="image-group">
+                                                <img src="{{ asset('storage/image/shop_images/'.$shop->image_path) }}">
                                             </div>
                                         @endif
 
                                         <div class="modal-cont">
                                             <div class="profile">
-                                                <p class="address"><i class="fas fa-map-marker-alt fa-lg mr-1"></i>{{ $shop['shop']->address_ken }}{{ $shop['shop']->address_city }}</p>
+                                                <p class="address"><i class="fas fa-map-marker-alt fa-lg mr-1"></i>{{ $shop->address_ken }}{{ $shop->address_city }}</p>
                                             </div>
 
                                             <div class="profile">
                                                 <label class="type">ジャンル：</label>
                                                 <ul class="type-list">
-                                                    @foreach($shop['shop']->types as $type)
+                                                    @foreach($shop->types as $type)
                                                         <li class="type-text"><i class="fas fa-check"></i> {{ $type->name }}</li>
                                                     @endforeach
                                                 </ul>
@@ -272,16 +264,16 @@
 
                                             <div class="profile">
                                                 <label class="shop-about d-inline"><i class="fas fa-star" style="color: #fbca4d;"></i>入会前の体験：</label>
-                                                    <p class="type-text d-inline">{{ $shop['shop']->trial }}</p>
-                                                    @if ($shop['shop']->trial == '有料')
-                                                    <p class="type-text d-inline">{{ $shop['shop']->trial_price }}<span class="symbol">円</span></p>
+                                                    <p class="type-text d-inline">{{ $shop->trial }}</p>
+                                                    @if ($shop->trial == '有料')
+                                                    <p class="type-text d-inline">{{ $shop->trial_price }}<span class="symbol">円</span></p>
                                                     @endif
                                             </div>
 
-                                            @if (isset($shop['shop']->prices))
+                                            @if (isset($shop->prices))
                                             <div class="profile">
                                                 <i class="far fa-handshake"></i>
-                                                @foreach ($shop['shop']->prices as $price)
+                                                @foreach ($shop->prices as $price)
                                                     @if ($price->name == "入会金")
                                                     <label class="join">{{ $price->name }}</label>
                                                     <p class="join"><strong>{{ $price->price }}</strong><span class="symbol">円（税込）</span></p><br>
@@ -290,11 +282,11 @@
                                             </div>
                                             @endif
 
-                                            @if (isset($shop['shop']->prices))
+                                            @if (isset($shop->prices))
                                             <div class="profile">
                                                 <i class="fas fa-yen-sign fa-lg"></i>
                                                 <label class="shop-about">月会費</label>
-                                                @foreach ($shop['shop']->prices as $price)
+                                                @foreach ($shop->prices as $price)
                                                     @if ($price->name != "入会金")
                                                     <p class="shop-price">{{ $price->name }} <strong>{{ $price->price }}</strong><span class="symbol">円（税込）</span></p>
                                                     @endif
@@ -302,12 +294,12 @@
                                             </div>
                                             @endif
 
-                                            @if (isset($shop['shop']->personals))
+                                            @if (isset($shop->personals))
                                             <div class="profile mt-3">
                                                 <i class="fas fa-user-friends fa-lg"></i>
                                                 <label class="shop-about">パーソナルトレーニング会費</label>
                                             </div>
-                                                @foreach ($shop['shop']->personals as $personal)
+                                                @foreach ($shop->personals as $personal)
                                                     <div class="shop-price">
                                                         <p class="personal-course">{{ $personal->course }}</p>
                                                         <p class="personal-time">{{ $personal->time }} 分</p>
@@ -318,51 +310,51 @@
                                                 @endforeach
                                             @endif
 
-                                            @if (isset($shop['shop']->open))
+                                            @if (isset($shop->open))
                                             <div class="profile">
                                                 <i class="fas fa-calendar-alt fa-lg"></i>
                                                 <label class="shop-about">営業日</label>
-                                                <p class="open">{{ $shop['shop']->open }}</p>
+                                                <p class="open">{{ $shop->open }}</p>
                                             </div>
                                             @endif
 
-                                            @if (isset($shop['shop']->close))
+                                            @if (isset($shop->close))
                                             <div class="profile">
                                                 <i class="fas fa-calendar-alt fa-lg" style="color: #7d7d7d;"></i>
                                                 <label class="shop-about">定休日</label>
-                                                <p class="open">{{ $shop['shop']->close }}</p>
+                                                <p class="open">{{ $shop->close }}</p>
                                             </div>
                                             @endif
 
-                                            @if (isset($shop['shop']->tel))
+                                            @if (isset($shop->tel))
                                             <div class="profile">
                                                 <i class="fas fa-phone fa-lg"></i>
                                                 <label class="shop-about">電話番号</label>
-                                                <p class="open">{{ $shop['shop']->tel }}</p>
+                                                <p class="open">{{ $shop->tel }}</p>
                                             </div>
                                             @endif
 
-                                            @if (isset($shop['shop']->web))
+                                            @if (isset($shop->web))
                                             <div class="profile">
                                                 <i class="fas fa-home fa-lg"></i>
                                                 <label class="shop-about">ホームページ</label>
-                                                <a href="{{ $shop['shop']->web }}" class="open">{{ $shop['shop']->web }}</a>
+                                                <a href="{{ $shop->web }}" class="open">{{ $shop->web }}</a>
                                             </div>
                                             @endif
 
                                             <div class="profile mb-2">
                                                 <i class="fas fa-map-marker-alt fa-lg"></i>
                                                 <label class="shop-about">住所</label>
-                                                @if (isset($shop['shop']->address_number))
-                                                <p class="open"><span class="symbol">〒 </span>{{ $shop['shop']->address_number }}</p>
+                                                @if (isset($shop->address_number))
+                                                <p class="open"><span class="symbol">〒 </span>{{ $shop->address_number }}</p>
                                                 @endif
-                                                <p class="open">{{ $shop['shop']->address_ken }}{{ $shop['shop']->address_city }}{{ $shop['shop']->address_other }}</p>
+                                                <p class="open">{{ $shop->address_ken }}{{ $shop->address_city }}{{ $shop->address_other }}</p>
                                             </div>
 
                                         </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <a href="{{ action('User\UserController@shop', ['id' => $shop['shop']->id]) }}" class="btn btn-primary">レビューを見る</a>
+                                          <a href="{{ action('User\UserController@shop', ['id' => $shop->id]) }}" class="btn btn-primary">レビューを見る</a>
                                         </div>
                                       </div>
                                     </div>
@@ -377,7 +369,6 @@
                         <label>検索結果がありません</label>
                     </div>
                 @endif
-
             </div>
         </div>
     </div>

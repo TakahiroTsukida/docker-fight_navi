@@ -12580,6 +12580,16 @@ form.favorite-form {
   }
 }
 
+.admin-mypage-body {
+  margin: 0 15px;
+}
+
+@media (min-width: 768px) {
+  .admin-mypage-body {
+    margin: 0 80px;
+  }
+}
+
 footer {
   margin-top: 50px;
   width: 100%;

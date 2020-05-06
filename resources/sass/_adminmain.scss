@@ -291,3 +291,10 @@ $tab: 768px; // タブレット
         font-size: 16px;
     }
 }
+
+.admin-mypage-body {
+    margin: 0 15px;
+    @include tab {
+        margin: 0 80px;
+    }
+}

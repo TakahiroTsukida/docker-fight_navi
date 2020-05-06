@@ -45,20 +45,20 @@
                     <div class="card page-title">
                         <div class="search-body">
                             <div class="review-group">
-                                @if(isset($user->image_path))
-                                    <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$user->image_path) }}" alt="name" class="rounded-circle"></p>
+                                @if(isset($review->user->image_path))
+                                    <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$review->user->image_path) }}" alt="name" class="rounded-circle"></p>
                                 @else
                                     <p class="review-user"><img src="{{ asset('storage/image/app_images/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
                                 @endif
-                                <p class="user-name"> {{ $user->name }} </p>
+                                <p class="user-name"> {{ $review->user->name }} </p>
                             </div>
                             <div class="search-list">
                                 <a href="{{ action('User\UserController@shop', ['id' => $review->shop_id]) }}">
-                                    <p class="search-name">{{ $review->name }}</p>
+                                    <p class="search-name">{{ $review->shop->name }}</p>
                                 </a>
                             </div>
                             <div class="search-list">
-                                <p class="search-name"><i class="fas fa-map-marker-alt fa-lg mr-1"></i> {{ $review->address_ken }}  {{ $review->address_city }}</p>
+                                <p class="search-name"><i class="fas fa-map-marker-alt fa-lg mr-1"></i> {{ $review->shop->address_ken }}  {{ $review->shop->address_city }}</p>
                             </div>
                             <div class="review-item">
                                 <p class="review-text">総合評価</p>

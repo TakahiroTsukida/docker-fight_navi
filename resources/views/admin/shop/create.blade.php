@@ -14,12 +14,12 @@
                             <div class="form-group mt-4">
                                 @include('parts/admin/label/shop/name')
 
-                                @error('shop_name')
+                                @error('name')
                                     <div>
                                         <p class="error price-en">{{ $message }}</p>
                                     </div>
                                 @enderror
-                                <input type="text" name="shop_name" class="form-control" placeholder="例）Example GYM" value="{{ old('shop_name') }}">
+                                <input type="text" name="name" class="form-control" placeholder="例）Example GYM" value="{{ old('name') }}">
                             </div>
 
 

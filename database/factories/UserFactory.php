@@ -18,11 +18,20 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+
+    $genders = [
+        '男性',
+        '女性'
+    ];
+
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => Hash::make('12345678'), // password
+        'gender' => $faker->randomElement($genders),
+        'birthday' => $faker->datetime($max = 'now', $timezone = date_default_timezone_get()),
+        'introduction' => $faker->realText(50),
         'remember_token' => Str::random(10),
         'created_at' => $faker->datetime($max = 'now', $timezone = date_default_timezone_get()),
     ];

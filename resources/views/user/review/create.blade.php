@@ -25,14 +25,11 @@
 
                         <form action="{{ route('user.review.create') }}" method="post">
 
-                            @if (count($errors) > 0)
-                                <ul>
-                                    @foreach($errors->all() as $e)
-                                        <li>{{ $e }}</li>
-                                    @endforeach
-                                </ul>
-                            @endif
-
+                            @error('total_point')
+                                <div>
+                                    <p class="error price-en">{{ $message }}</p>
+                                </div>
+                            @enderror
                             <div class="form-group row">
                                 <p class="col-sm-3 col-lg-2 col-form-label review-label">総合評価</p>
                                 <select name="total_point" class="col-sm-9 col-lg-10 form-control">
@@ -40,6 +37,11 @@
                                 </select>
                             </div>
 
+                            @error('learn')
+                                <div>
+                                    <p class="error price-en">{{ $message }}</p>
+                                </div>
+                            @enderror
                             <div class="form-group row">
                                 <p class="col-sm-3 col-lg-2 col-form-label review-label">通い方</p>
                                 <select name="learn" class="col-sm-9 col-lg-10 form-control">
@@ -47,6 +49,11 @@
                                 </select>
                             </div>
 
+                            @error('season')
+                                <div>
+                                    <p class="error price-en">{{ $message }}</p>
+                                </div>
+                            @enderror
                             <div class="form-group row">
                                 <p class="col-sm-3 col-lg-2 col-form-label review-label">時期</p>
                                 <select name="season" class="col-sm-9 col-lg-10 form-control">
@@ -54,11 +61,21 @@
                                 </select>
                             </div>
 
+                            @error('merit')
+                                <div>
+                                    <p class="error price-en">{{ $message }}</p>
+                                </div>
+                            @enderror
                             <div class="form-group row">
                                 <label class="col-form-label review-label">良かったところ</label>
                                 <textarea rows="10" cols="200" name="merit" class="form-control" placeholder="ご自由にお書きください"></textarea>
                             </div>
 
+                            @error('demerit')
+                                <div>
+                                    <p class="error price-en">{{ $message }}</p>
+                                </div>
+                            @enderror
                             <div class="form-group row">
                                 <label class="col-form-label review-label">イマイチなところ</label>
                                 <textarea rows="10" cols="200" name="demerit" class="form-control" placeholder="ご自由にお書きください"></textarea>
