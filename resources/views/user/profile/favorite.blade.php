@@ -51,6 +51,8 @@
                         <label>お気に入りがありません</label>
                     </div>
                 @endif
+
+                {{ $favorites->links() }}
             </div>
         </div>
     </div>

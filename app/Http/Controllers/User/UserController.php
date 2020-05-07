@@ -91,51 +91,55 @@ class UserController extends Controller
                 //お気に入り順
                 if ($search_sort == 'favorite_desc')
                 {
-                    $shops = $cond_shops->sortByDesc('favorites_count');
+                    $shop_info = $cond_shops->sortByDesc('favorites_count');
                 }
                 if ($search_sort == 'favorite_asc')
                 {
-                    $shops = $cond_shops->sortBy('favorites_count');
+                    $shop_info = $cond_shops->sortBy('favorites_count');
                 }
 
                 //ポイント順
                 if ($search_sort == 'point_desc')
                 {
-                    $shops = $cond_shops->sortByDesc('point');
+                    $shop_info = $cond_shops->sortByDesc('point');
                 }
                 if ($search_sort == 'point_asc')
                 {
-                    $shops = $cond_shops->sortBy('point');
+                    $shop_info = $cond_shops->sortBy('point');
                 }
 
                 //レビュー件数順
                 if ($search_sort == 'review_desc')
                 {
-                    $shops = $cond_shops->sortByDesc('reviews_count');
+                    $shop_info = $cond_shops->sortByDesc('reviews_count');
                 }
                 if ($search_sort == 'review_asc')
                 {
-                    $shops = $cond_shops->sortBy('reviews_count');
+                    $shop_info = $cond_shops->sortBy('reviews_count');
                 }
             } else
             {
-                $shops = $cond_shops;
+                $shop_info = $cond_shops;
             }
+        } else
+        {
+            $shop_info = null;
+        }
+
+        // // ページネーション
+        if (isset($shop_info))
+        {
+            $shops = new LengthAwarePaginator(
+                $shop_info->forPage($request->page, 20),
+                count($shop_info),
+                20,
+                $request->page,
+                array('path' => $request->url())
+            );
         } else
         {
             $shops = null;
         }
-// dd($shops);
-        // $shop_info = $shops;
-        // unset($shops);
-        // // ページネーション
-        // $shops = new LengthAwarePaginator(
-        //     $shop_info->forPage($request->page, 2),
-        //     count($shop_info),
-        //     2,
-        //     $request->page,
-        //     array('path' => $request->url())
-        // );
 
         // dd($shops);
 
@@ -156,59 +160,6 @@ class UserController extends Controller
     {
         $shop = Shop::find($request->id);
         $user = Auth::user();
-        //
-        // if (isset($shop)) {
-        //     $shop_info = array();
-        //     $total_point = 0;
-        //     $reviews_count = 0;
-        //     $favorites_count = 0;
-        //     //ポイント平均、レビュー件数の取得
-        //     if (count($shop->reviews) >= 1) {
-        //         //shopに対するreviewの取得
-        //         $reviews = $shop->reviews->toArray();
-        //         //総合評価の平均点（割り算）
-        //         $total_point = array_sum(array_column($reviews, 'total_point')) / count(array_column($reviews, 'total_point'));
-        //         //レビュー件数の取得
-        //         $reviews_count = count($reviews);
-        //     }
-        //
-        //     //お気に入り総数の取得
-        //     if (count($shop->favorites) >= 1) {
-        //         $all_fovorites = $shop->favorites->toArray();
-        //         $favorites_count = count($all_fovorites);
-        //     }
-        //
-        //     $shop_info[] = array(
-        //                   'shop' => $shop,
-        //                   'reviews' => $reviews,
-        //                   'total_point' => $total_point,
-        //                   'favorites_count' => $favorites_count,
-        //                   'reviews_count' => $reviews_count,
-        //               );
-        //
-        //
-        //
-        // } else {
-        //     abort(404);
-        // }
-        // // dd($shop_info);
-        //
-        //
-        // $query = Review::query();
-        // //$reviewsに、レビュー内容＋userの情報をjoin
-        // $query->join('users', 'reviews.user_id', '=', 'users.id')
-        //       ->where('shop_id', $shop->id)
-        //       ->select('reviews.*', 'name', 'gender', 'image_path');
-        // $reviews = $query->get();
-        //
-        // //$total_pointに評価点の平均をもとめる、レビューがなければNULL
-        // $point = $reviews->toArray();
-        // if (count($point) >= 1) {
-        //     $total_point = array_sum(array_column($point, 'total_point')) / count(array_column($point, 'total_point'));
-        // } else {
-        //     $total_point = null;
-        // }
-        //
         // //$favoriteにユーザーがログインしており、かつそのshopをお気に入りをしているかをチェック
         $favorite = null;
         if(isset($user)) {
@@ -221,10 +172,7 @@ class UserController extends Controller
 
         return view('user.search.shop', [
             'shop' => $shop,
-            // 'shop_info' => $shop_info,
-            // 'reviews' => $reviews,
             'favorite' => $favorite,
-            // 'total_point' => $total_point,
         ]);
     }
 }

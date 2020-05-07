@@ -157,6 +157,8 @@
                     </div>
                 @endforeach
               @endif
+
+              {{ $reviews->links() }}
             </div>
         </div>
     </div>

@@ -104,7 +104,7 @@
                             </div>
 
                             <div class="form-address">
-                                {{-- 市区町村 --}}
+                                {{-- 市区郡 --}}
                                 @include('parts/admin/label/shop/address_city')
                                 @error('address_city')
                                     <div>

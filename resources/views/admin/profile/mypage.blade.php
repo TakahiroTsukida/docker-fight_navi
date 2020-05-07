@@ -292,6 +292,8 @@
                       </div>
                   </div>
               @endforeach
+              
+              {{ $shops->links() }}
 
           </div>
       </div>

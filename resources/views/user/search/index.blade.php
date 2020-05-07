@@ -364,6 +364,8 @@
                           </div>
 
                     @endforeach
+
+                    {{ $shops->appends(request()->input())->links() }}
                 @else
                     <div class="page-title title">
                         <label>検索結果がありません</label>

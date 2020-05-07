@@ -1,1 +1,1 @@
-<label class="mt-3 shop-text">それ以降</label>
+<label class="mt-3 shop-text">町村名以降</label>
