@@ -12196,27 +12196,31 @@ form.favorite-form {
 .review-count {
   position: absolute;
   top: 74px;
-  left: 217px;
+  left: 240px;
 }
 
 @media (min-width: 768px) {
   .review-count {
     top: 102px;
-    left: 367px;
+    left: 380px;
   }
 }
 
 .shop-review-count {
   position: absolute;
   top: 70px;
-  left: 217px;
+  left: 240px;
 }
 
 @media (min-width: 768px) {
   .shop-review-count {
     top: 105px;
-    left: 367px;
+    left: 380px;
   }
+}
+
+a.user-name {
+  color: #000;
 }
 
 .shop-name {

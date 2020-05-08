@@ -12,7 +12,7 @@
                         <nav class="navbar navbar-light">
                             <div class="header">
                                 <a class="navbar-brand header-img" href="{{ url('/') }}">
-                                    <img src="{{ asset('storage/image/app_images/Fightなび.png') }}" alt="Fightなび">
+                                    <img src="{{ asset('image/Fightなび.png') }}" alt="Fightなび">
                                 </a>
                                 <button class="navbar-toggler menu-icon" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
@@ -44,7 +44,7 @@
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <div class="header">
                                 <a class="navbar-brand header-img" href="{{ url('/') }}">
-                                    <img src="{{ asset('storage/image/app_images/Fightなび.png') }}" alt="Fightなび">
+                                    <img src="{{ asset('image/Fightなび.png') }}" alt="Fightなび">
                                 </a>
                                 <button class="navbar-toggler menu-icon" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
@@ -80,7 +80,7 @@
                <ul class="footer-list">
                   <li class="footer-item"><a href="{{ url('/') }}">fightなびトップページ</a></li>
                   <li class="footer-item"><a href="{{ action('User\UserController@privacy') }}" class="footer-link">プライバシーポリシー</a></li>
-                  <li class="footer-item"><a href="#">ジム・道場運営者の方々へ</a></li>
+                  <li class="footer-item"><a href="{{ action('User\UserController@description') }}">ジム・道場運営者の方々へ</a></li>
                   <li class="footer-item"><a href="{{ route('user.login') }}" class="footer-link">一般ユーザーはこちら</a></li>
                </ul>
             </div>

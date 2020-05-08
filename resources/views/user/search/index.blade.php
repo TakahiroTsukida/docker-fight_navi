@@ -207,7 +207,7 @@
                                               @endswitch
 
                                               <p class="review-point">{{ $shop->point }}点</p>
-                                              <p class="review-count">（{{ $shop->reviews_count }}件）</p>
+                                              <p class="review-count"><i class="far fa-comment-alt fa-lg"></i>{{ $shop->reviews_count }}</p>
                                         @else
                                             <p class="review-point">レビューなし</p>
                                         @endif
@@ -220,7 +220,7 @@
                                       </div>
                                   @else
                                       <div class="profile">
-                                          <p class="shop-img"><img src="{{ asset('storage/image/app_images/l_e_others_501.png') }}"></p>
+                                          <p class="shop-img"><img src="{{ asset('image/l_e_others_501.png') }}"></p>
                                       </div>
                                   @endif
 

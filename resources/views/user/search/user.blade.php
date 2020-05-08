@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'マイページ')
+@section('title', 'ユーザー情報')
 @section('content')
     <div class="container">
         <div class="card page-title">
@@ -18,8 +18,13 @@
                 </div>
                 @endif
                 @if (isset($user->birthday))
+                @php
+                    $now = date("Ymd");
+                    $user_birthday = str_replace("-", "", $user->birthday);
+                    $birthday = floor(($now-$user_birthday)/10000).'歳';
+                @endphp
                 <div class="profile">
-                    <p><i class="fas fa-birthday-cake fa-lg"></i> {{ $user->birthday }}</p>
+                    <p><i class="fas fa-birthday-cake fa-lg"></i> {{ $birthday }}</p>
                 </div>
                 @endif
                 <div class="profile">
@@ -27,6 +32,11 @@
                     @if(isset($user->introduction))
                         <p class="text-left">{{ $user->introduction }}</p>
                     @endif
+                </div>
+                <div class="revier-btn-group">
+                    <div>
+                        <button type="button" class="btn btn-success show-btn" onclick=history.back()>戻る</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -121,36 +131,6 @@
                             <div class="review-up-group">
                                 <p class="review-update"><i class="fas fa-undo fa-lg"></i>更新日時</p>
                                 <p class="review-updated_at">{{ $review->updated_at->format('Y / m / d') }}</p>
-                            </div>
-
-                            <div class="revier-btn-group">
-                                <div>
-                                    <a href="{{ route('user.review.edit', ['review_id' => $review->id, 'shop_id' => $review->shop_id]) }}" class="btn btn-success show-btn">編集</a>
-                                    <button type="button" class="btn btn-danger show-btn" data-toggle="modal" data-target="#exampleModalCenter{{ $review->id }}">
-                                      削除
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModalCenter{{ $review->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                              <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalCenterTitle">削除確認画面</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    本当にこのレビューを削除してもよろしいでしょうか？
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                                    <a href="{{ route('user.review.delete',['review_id' => $review->id]) }}" class="btn btn-danger">削除</a>
-                                  </div>
-                                </div>
-                              </div>
                             </div>
 
                         </div>

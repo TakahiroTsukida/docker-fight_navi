@@ -75,8 +75,16 @@ class ReviewController extends Controller
     {
           $this->validate($request, Review::$rules);
           $review = Review::find($request->review_id);
-          $form = $request->all();
-          $review->fill($form)->save();
+
+          //ログインしているユーザーかチェック
+          if ($review->user_id == Auth::user()->id)
+          {
+              $form = $request->all();
+              $review->fill($form)->save();
+          } else
+          {
+              abort(404);
+          }
 
           //shopのレビュー件数、平均点の更新
           $shop = Shop::find($request->shop_id);

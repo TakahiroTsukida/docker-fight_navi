@@ -93,7 +93,7 @@
                                       @break
                                   @endswitch
                                   <p class="review-point">{{ $shop->point }}点</p>
-                                  <p class="shop-review-count">（{{ $shop->reviews_count }}件）</p>
+                                  <p class="shop-review-count"><i class="far fa-comment-alt fa-lg"></i>{{ $shop->reviews_count }}</p>
                             @else
                               <p class="review-point">レビューなし</p>
                             @endif
@@ -106,7 +106,7 @@
                           </div>
                       @else
                           <div class="profile">
-                              <p class="shop-img"><img src="{{ asset('storage/image/app_images/l_e_others_501.png') }}"></p>
+                              <p class="shop-img"><img src="{{ asset('image/l_e_others_501.png') }}"></p>
                           </div>
                       @endif
 
@@ -254,18 +254,20 @@
                   </div>
               </div>
 
-              @if(count($shop->reviews) >= 1)
-              @foreach ($shop->reviews as $review)
+              @if(isset($reviews))
+              @foreach ($reviews as $review)
                   <div class="card page-title">
                       <div class="search-body">
-                          <div class="review-group">
-                              @if(isset($review->user->image_path))
-                                  <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$review->user->image_path) }}" alt="name" class="rounded-circle"></p>
-                              @else
-                                  <p class="review-user"><img src="{{ asset('storage/image/app_images/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
-                              @endif
-                              <p class="user-name"> {{ $review->user->name }} </p>
-                          </div>
+                          <a href="{{ action('User\UserController@user_info', ['user_id' => $review->user_id]) }}" class="user-name">
+                              <div class="review-group">
+                                  @if(isset($review->user->image_path))
+                                      <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$review->user->image_path) }}" alt="name" class="rounded-circle"></p>
+                                  @else
+                                      <p class="review-user"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
+                                  @endif
+                                  <p class="user-name"> {{ $review->user->name }} </p>
+                              </div>
+                          </a>
                           <div class="search-list">
                               <a href="{{ action('User\UserController@shop', ['id' => $review->shop_id]) }}">
                                   <h2 class="search-name">{{ $review->shop->name }}</h2>
@@ -381,6 +383,8 @@
                     <p class="title">現在レビューはありません</p>
                 </div>
             @endif
+
+            {{ $reviews->appends(request()->input())->links() }}
             </div>
         </div>
     </div>

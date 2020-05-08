@@ -149,7 +149,7 @@
                               </div>
                           @else
                               <div class="profile">
-                                  <p class="shop-img"><img src="{{ asset('storage/image/app_images/l_e_others_501.png') }}"></p>
+                                  <p class="shop-img"><img src="{{ asset('image/l_e_others_501.png') }}"></p>
                               </div>
                           @endif
 
@@ -292,7 +292,7 @@
                       </div>
                   </div>
               @endforeach
-              
+
               {{ $shops->links() }}
 
           </div>

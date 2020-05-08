@@ -169,10 +169,55 @@ class UserController extends Controller
                 $favorite = $favorites->where('user_id', $user->id)->first();
             }
         }
+        $shop_reviews = $shop->reviews;
+        if (isset($shop_reviews))
+        {
+            $reviews = new LengthAwarePaginator(
+                $shop_reviews->forPage($request->page, 20),
+                count($shop_reviews),
+                20,
+                $request->page,
+                array('path' => $request->url())
+            );
+        } else
+        {
+            $reviews = null;
+        }
 
         return view('user.search.shop', [
             'shop' => $shop,
             'favorite' => $favorite,
+            'reviews' => $reviews,
         ]);
+    }
+
+
+
+    public function user_info(Request $request)
+    {
+        $user = User::find($request->user_id);
+
+        if (empty($user))
+        {
+            abort(404);
+        }
+
+        $user_reviews = $user->reviews;
+
+        if (isset($user_reviews))
+        {
+            $reviews = new LengthAwarePaginator(
+                $user_reviews->forPage($request->page, 20),
+                count($user_reviews),
+                20,
+                $request->page,
+                array('path' => $request->url())
+            );
+        } else
+        {
+            $reviews = null;
+        }
+
+        return view('user.search.user', ['user' => $user, 'reviews' => $reviews]);
     }
 }
