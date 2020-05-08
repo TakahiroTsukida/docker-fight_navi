@@ -4,20 +4,23 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-12">
+          @if (session('flash_message_no_user_auth'))
+            <div class="flash_message alert-danger text-center rounded py-3 my-2">
+                {{ session('flash_message_no_user_auth') }}
+            </div>
+            @endif
             <h2 class="text-center page-title">レビューの編集</h2>
             <div class="card">
                 <div class="card-body mypage-body">
-
                     <div>
-                        <a href="{{ action('User\UserController@shop', ['id' => $shop->id]) }}">
-                        <p class="review-shop">{{ $shop->name }}</P></a>
-                        <p class="review-address"><i class="fas fa-map-marker-alt fa-lg"></i> {{ $shop->address_ken }}  {{ $shop->address_city }}</p>
+                        <a href="{{ action('User\UserController@shop', ['id' => $review->shop_id]) }}">
+                        <p class="review-shop">{{ $review->shop->name }}</P></a>
+                        <p class="review-address"><i class="fas fa-map-marker-alt fa-lg"></i> {{ $review->shop->address_ken }}  {{ $review->shop->address_city }}</p>
                     </div>
-
                     <div class="profile my-3">
                         <label class="type">ジャンル：</label>
                         <ul class="type-list">
-                            @foreach($shop->types as $type)
+                            @foreach($review->shop->types as $type)
                                 <li class="type-text"><i class="fas fa-check"></i> {{ $type->name }}</li>
                             @endforeach
                         </ul>
@@ -68,8 +71,6 @@
                         </div>
 
                         <input type="hidden" name="review_id" value="{{ $review->id }}">
-                        <input type="hidden" name="shop_id" value="{{ $shop->id }}">
-                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 
                         <div class="form-group row justify-content-center">
                             <div class="revier-btn-group">

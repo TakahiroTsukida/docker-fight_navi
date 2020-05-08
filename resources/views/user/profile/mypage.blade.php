@@ -2,6 +2,26 @@
 @section('title', 'マイページ')
 @section('content')
     <div class="container">
+            @if (session('flash_message_no_user_auth'))
+            <div class="flash_message alert-danger text-center rounded py-3 my-2">
+                {{ session('flash_message_no_user_auth') }}
+            </div>
+            @endif
+            @if (session('flash_message_review_create'))
+            <div class="flash_message alert-primary text-center rounded py-3 my-2">
+                {{ session('flash_message_review_create') }}
+            </div>
+            @endif
+            @if (session('flash_message_review_update'))
+            <div class="flash_message alert-success text-center rounded py-3 my-2">
+                {{ session('flash_message_review_update') }}
+            </div>
+            @endif
+            @if (session('flash_message_review_delete'))
+            <div class="flash_message alert-danger text-center rounded py-3 my-2">
+                {{ session('flash_message_review_delete') }}
+            </div>
+            @endif
         <div class="card page-title">
             <div class="col-sm-12 mx-auto card-body mypage-body">
                 <div class="myprofile">
@@ -53,7 +73,7 @@
                                 <p class="user-name"> {{ $review->user->name }} </p>
                             </div>
                             <div class="search-list">
-                                <a href="{{ action('User\UserController@shop', ['id' => $review->shop_id]) }}">
+                                <a href="{{ action('User\UserController@shop', ['review_id' => $review->id]) }}">
                                     <p class="search-name">{{ $review->shop->name }}</p>
                                 </a>
                             </div>
@@ -125,7 +145,7 @@
 
                             <div class="revier-btn-group">
                                 <div>
-                                    <a href="{{ route('user.review.edit', ['review_id' => $review->id, 'shop_id' => $review->shop_id]) }}" class="btn btn-success show-btn">編集</a>
+                                    <a href="{{ action('User\ReviewController@edit', ['review_id' => $review->id]) }}" class="btn btn-success show-btn">編集</a>
                                     <button type="button" class="btn btn-danger show-btn" data-toggle="modal" data-target="#exampleModalCenter{{ $review->id }}">
                                       削除
                                     </button>
@@ -143,7 +163,7 @@
                                     </button>
                                   </div>
                                   <div class="modal-body">
-                                    本当にこのレビューを削除してもよろしいでしょうか？
+                                    {{ $review->shop->name }} のレビューを削除しますか？
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>

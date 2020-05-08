@@ -79,6 +79,7 @@ class ShopController extends Controller
         }
         unset($form['_token']);
 
+        session()->flash('flash_message_create', $shop->name.' を新規登録しました');
         return redirect('admin/profile/mypage');
     }
 
@@ -94,6 +95,13 @@ class ShopController extends Controller
         {
            abort(404);
         }
+        //他のユーザーの情報の制御
+        $admin = Admin::find(Auth::user()->id);
+        if ($shop->admin_id != Auth::user()->id)
+        {
+            session()->flash('flash_message_no_auth', '他のユーザーの編集情報は見れません');
+            return redirect('admin/profile/mypage');
+        }
         $types = array_column ( $shop->types->toArray() , 'id');
         return view('admin.shop.edit',['shop' => $shop, 'types' => $types]);
     }
@@ -106,9 +114,17 @@ class ShopController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, Shop::$rules);
+        $admin = Admin::find(Auth::user()->id);
+
         $form = $request->all();
         //shopsテーブル保存
         $shop = Shop::find($request->id);
+        //他のユーザーの情報の制御
+        if ($shop->admin_id != $admin->id)
+        {
+            session()->flash('flash_message_no_auth', '他のユーザーの編集情報は見れません');
+            return redirect('admin/profile/mypage');
+        }
         if (isset($form['image']))
         {
             $path = $request->file('image')->store('public/image/shop_images');
@@ -157,6 +173,7 @@ class ShopController extends Controller
             }
         }
         unset($form['_token']);
+        session()->flash('flash_message_update', $shop->name.' を更新しました');
         return redirect('admin/profile/mypage');
     }
 
@@ -168,6 +185,7 @@ class ShopController extends Controller
       {
           $shop = Shop::find($request->id);
           $shop->delete();
+          session()->flash('flash_message_delete', $shop->name.' を削除しました');
           return redirect('admin/profile/mypage');
       }
 }

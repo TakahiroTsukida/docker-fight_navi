@@ -4,6 +4,16 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 mt-3">
+                @if (session('flash_message_add'))
+                <div class="flash_message alert-success text-center rounded py-3 my-2">
+                    {{ session('flash_message_add') }}
+                </div>
+                @endif
+                @if (session('flash_message_delete'))
+                <div class="flash_message alert-danger text-center rounded py-3 my-2">
+                    {{ session('flash_message_delete') }}
+                </div>
+                @endif
                 <div class="card page-title border-dark">
                     <div class="card-body">
 

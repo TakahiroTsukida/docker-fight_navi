@@ -30,6 +30,7 @@ class FavoriteController extends Controller
             $shop->favorites_count = 0;
             $shop->save();
         }
+        session()->flash('flash_message_add', $favorite->shop->name.' をお気に入り登録しました');
         return back()->withInput();
     }
 
@@ -55,6 +56,7 @@ class FavoriteController extends Controller
             $shop->favorites_count = 0;
             $shop->save();
         }
+        session()->flash('flash_message_delete', $favorite->shop->name.' をお気に入りから削除しました');
         return back()->withInput();
     }
 }

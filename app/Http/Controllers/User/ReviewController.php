@@ -55,6 +55,7 @@ class ReviewController extends Controller
             $shop->save();
         }
 
+        session()->flash('flash_message_review_create', $review->shop->name.' のレビューを作成しました');
         return redirect('user/profile/mypage');
     }
 
@@ -64,9 +65,17 @@ class ReviewController extends Controller
     public function edit(Request $request)
     {
         $review = Review::find($request->review_id);
-        $shop = Shop::find($request->shop_id);
-
-        return view('user.review.edit', ['review' => $review, 'shop' => $shop]);
+        if (empty($review))
+        {
+            session()->flash('flash_message_no_user_auth', '他のユーザーの編集情報は見れません');
+            return back();
+        }
+        if ($review->user_id != Auth::user()->id)
+        {
+            session()->flash('flash_message_no_user_auth', '他のユーザーの編集情報は見れません');
+            return back();
+        }
+        return view('user.review.edit', ['review' => $review]);
     }
 
 
@@ -76,6 +85,10 @@ class ReviewController extends Controller
           $this->validate($request, Review::$rules);
           $review = Review::find($request->review_id);
 
+          if (empty($review))
+          {
+              abort(404);
+          }
           //ログインしているユーザーかチェック
           if ($review->user_id == Auth::user()->id)
           {
@@ -87,7 +100,7 @@ class ReviewController extends Controller
           }
 
           //shopのレビュー件数、平均点の更新
-          $shop = Shop::find($request->shop_id);
+          $shop = Shop::find($review->shop_id);
           if (count($shop->reviews) >= 1)
           {
               $reviews = $shop->reviews->toArray();
@@ -102,7 +115,7 @@ class ReviewController extends Controller
               $shop->reviews_count = 0;
               $shop->save();
           }
-
+          session()->flash('flash_message_review_update', $review->shop->name.' のレビューを編集しました');
           return redirect('user/profile/mypage');
     }
 
@@ -133,6 +146,7 @@ class ReviewController extends Controller
             $shop->save();
         }
 
-       return back()->withInput();
+        session()->flash('flash_message_review_delete', $review->shop->name.' のレビューを削除しました');
+        return back()->withInput();
     }
 }

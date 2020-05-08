@@ -4,6 +4,26 @@
   <div class="container">
       <div class="row justify-content-center">
           <div class="col-sm-12 mx-auto">
+              @if (session('flash_message_create'))
+              <div class="flash_message alert-primary text-center rounded py-3 my-2">
+                  {{ session('flash_message_create') }}
+              </div>
+              @endif
+              @if (session('flash_message_update'))
+              <div class="flash_message alert-success text-center rounded py-3 my-2">
+                  {{ session('flash_message_update') }}
+              </div>
+              @endif
+              @if (session('flash_message_delete'))
+              <div class="flash_message alert-danger text-center rounded py-3 my-2">
+                  {{ session('flash_message_delete') }}
+              </div>
+              @endif
+              @if (session('flash_message_no_auth'))
+              <div class="flash_message alert-danger text-center rounded py-3 my-2">
+                  {{ session('flash_message_no_auth') }}
+              </div>
+              @endif
               <h1 class="page-title title">マイページ</h1>
               <div class="card card-group">
                   <div class="card-body">

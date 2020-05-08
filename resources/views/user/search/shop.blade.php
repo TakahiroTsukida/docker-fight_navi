@@ -4,6 +4,21 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12">
+              @if (session('flash_message_add'))
+              <div class="flash_message alert-success text-center rounded py-3 my-2">
+                  {{ session('flash_message_add') }}
+              </div>
+              @endif
+              @if (session('flash_message_delete'))
+              <div class="flash_message alert-danger text-center rounded py-3 my-2">
+                  {{ session('flash_message_delete') }}
+              </div>
+              @endif
+              @if (session('flash_message_review_delete'))
+              <div class="flash_message alert-danger text-center rounded py-3 my-2">
+                  {{ session('flash_message_review_delete') }}
+              </div>
+              @endif
               <div class="card card-group page-title">
                   <div class="search-body">
                       <div class="search-list">
