@@ -118,10 +118,6 @@
             <!-- </div>
 
             <div class=""> -->
-
-            <div class="page-title">
-                {{ $shops->appends(request()->input())->links() }}
-            </div>
                 @if (isset($shops))
                     @foreach ($shops as $shop)
 
@@ -378,6 +374,9 @@
                           </div>
 
                     @endforeach
+                    <div class="page-title">
+                        {{ $shops->appends(request()->input())->links() }}
+                    </div>
 
                 @else
                     <div class="page-title title">
@@ -385,9 +384,6 @@
                     </div>
                 @endif
 
-                <div class="page-title">
-                    {{ $shops->appends(request()->input())->links() }}
-                </div>
             </div>
         </div>
     </div>

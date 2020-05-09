@@ -12134,6 +12134,23 @@ a.user-name {
   justify-content: center;
 }
 
+.sns-login {
+  border-top: solid 1px #6b5b5b;
+  text-align: center;
+  margin: 30px 0 0px 0;
+  padding: 30px;
+}
+
+@media (min-width: 768px) {
+  .sns-login {
+    margin: 64px 0 0px 0;
+  }
+}
+
+.g-login {
+  margin-bottom: 30px;
+}
+
 .shop-name {
   font-size: 18px;
   border-bottom: solid 1px #C0C0C0;

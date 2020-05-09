@@ -732,6 +732,20 @@ a.user-name {
 .pagination {
     justify-content: center;
 }
+
+.sns-login {
+    border-top: solid 1px #6b5b5b;
+    text-align: center;
+    margin: 30px 0 0px 0;
+    padding: 30px;
+    @include tab {
+        margin: 64px 0 0px 0;
+    }
+}
+
+.g-login {
+    margin-bottom: 30px;
+}
 // button.back-btn {
 //     border-width: 0;
 //     border-style: solid;

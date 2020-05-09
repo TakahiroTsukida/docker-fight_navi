@@ -25,6 +25,9 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
         'verify'   => false
     ]);
 
+    Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
+    Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
+
     Route::get('home', 'UserController@show_home')->name('home');
     Route::get('search', 'UserController@search')->name('search');
     Route::get('shop', 'UserController@shop')->name('shop');

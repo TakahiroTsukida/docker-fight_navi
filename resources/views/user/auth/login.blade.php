@@ -58,7 +58,6 @@
                                 <button type="submit" class="btn btn-primary btn-lg col mt-5">
                                     ログイン
                                 </button>
-
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link d-block my-3" href="{{ route('password.request') }}">
                                         パスワードをお忘れの方
@@ -67,6 +66,9 @@
                             </div>
                         </div>
                     </form>
+
+                    @include('parts/google_auth')
+                    
                 </div>
             </div>
         </div>

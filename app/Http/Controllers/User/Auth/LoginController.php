@@ -7,6 +7,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
+use Socialite;
 
 class LoginController extends Controller
 {
@@ -68,5 +70,36 @@ class LoginController extends Controller
     {
         session()->flash('flash_message_user_logout', 'ログアウトしました');
         return redirect(route('user.login'));
+    }
+
+
+    //google認証
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleGoogleCallback()
+    {
+        $gUser = Socialite::driver('google')->stateless()->user();
+        // email が合致するユーザーを取得
+        $user = User::where('email', $gUser->email)->first();
+        // 見つからなければ新しくユーザーを作成
+        if ($user == null) {
+            $user = $this->createUserByGoogle($gUser);
+        }
+        // ログイン処理
+        \Auth::login($user, true);
+        return redirect('user/profile/mypage');
+    }
+
+    public function createUserByGoogle($gUser)
+    {
+        $user = User::create([
+            'name'     => $gUser->name,
+            'email'    => $gUser->email,
+            'password' => \Hash::make(uniqid()),
+        ]);
+        return $user;
     }
 }

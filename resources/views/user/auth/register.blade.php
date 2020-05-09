@@ -64,6 +64,8 @@
                             </div>
                         </div>
                     </form>
+
+                    @include('parts/google_auth')
                 </div>
             </div>
         </div>
