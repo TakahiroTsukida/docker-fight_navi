@@ -1,5 +1,5 @@
 <div class="app_imgtext">
-    <img src="{{ asset('image/1700ec56fa396b05d10486da417d0f65_m.jpg') }}" alt="fightなび">
+    <img src="{{ asset('image/fight_top.jpg') }}" alt="fightなび">
     <p>あなたにあった<br>
       ボクシング、キックボクシング<br>
       総合格闘技ジムをみつけよう。</p>
