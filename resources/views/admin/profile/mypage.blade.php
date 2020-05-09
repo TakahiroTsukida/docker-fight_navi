@@ -30,7 +30,7 @@
               </div>
               @endif
               <h1 class="page-title title">マイページ</h1>
-              <div class="card card-group">
+              <div class="card card-group border-dark">
                   <div class="card-body">
                       <div class="body">
 
@@ -91,13 +91,17 @@
                   </div>
               </div>
 
+              <div class="page-title title">
+                  <h2>登録済みジム（{{ count($admin->shops->toArray()) }}件）</h2>
+              </div>
+
               @foreach ($shops as $shop)
                   <div class="card card-group">
                       <div class="search-body">
                           <div class="search-list">
                               <h2 class="search-name">{{ $shop->name }}</h2>
                               <label class="favorite-icon">
-                                  <i class="fas fa-bookmark" style="color: #C0C0C0;"><span class="favorite_count">{{ $shop->favorite_count }}</span></i>
+                                  <i class="fas fa-bookmark" style="color: #C0C0C0;"><span class="favorite_count">{{ $shop->favorites_count }}</span></i>
                               </label>
                           </div>
 

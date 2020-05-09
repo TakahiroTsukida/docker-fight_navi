@@ -84,7 +84,7 @@
 
                             <div class="form-group row">
                                 <div class="col mb-3">
-                                    <input type="text" name="address_city" class="form-control col-sm-12 col-md-8 offset-md-2" placeholder="市区町村名をご入力ください" value="{{ $search_address_city }}">
+                                    <input type="text" name="address_city" class="form-control col-sm-12 col-md-8 offset-md-2" placeholder="市区郡名をご入力ください" value="{{ $search_address_city }}">
                                 </div>
                             </div>
 
@@ -118,6 +118,10 @@
             <!-- </div>
 
             <div class=""> -->
+
+            <div class="page-title">
+                {{ $shops->appends(request()->input())->links() }}
+            </div>
                 @if (isset($shops))
                     @foreach ($shops as $shop)
 
@@ -375,12 +379,15 @@
 
                     @endforeach
 
-                    {{ $shops->appends(request()->input())->links() }}
                 @else
                     <div class="page-title title">
                         <label>検索結果がありません</label>
                     </div>
                 @endif
+
+                <div class="page-title">
+                    {{ $shops->appends(request()->input())->links() }}
+                </div>
             </div>
         </div>
     </div>

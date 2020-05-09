@@ -76,14 +76,7 @@
                 </main>
         </div>
         <footer>
-            <div class="footer-menu">
-               <ul class="footer-list">
-                  <li class="footer-item"><a href="{{ url('/') }}">fightなびトップページ</a></li>
-                  <li class="footer-item"><a href="{{ action('User\UserController@privacy') }}" class="footer-link">プライバシーポリシー</a></li>
-                  <li class="footer-item"><a href="{{ action('User\UserController@description') }}">ジム・道場運営者の方々へ</a></li>
-                  <li class="footer-item"><a href="{{ route('user.login') }}" class="footer-link">一般ユーザーはこちら</a></li>
-               </ul>
-            </div>
+            @include('parts/footer')
         </footer>
     </body>
 </html>

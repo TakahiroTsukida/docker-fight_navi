@@ -115,7 +115,7 @@ class ReviewController extends Controller
               $shop->reviews_count = 0;
               $shop->save();
           }
-          session()->flash('flash_message_review_update', $review->shop->name.' のレビューを編集しました');
+          session()->flash('flash_message_review_update', $review->shop->name.' のレビューを更新しました');
           return redirect('user/profile/mypage');
     }
 

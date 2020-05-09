@@ -11020,7 +11020,7 @@ a.navbar-brand.header-img {
 
 a.nav-item {
   font-size: 16px;
-  margin: 7px 9px 7px 9px;
+  margin: 9px 9px 9px 9px;
   color: #000;
   position: relative;
   display: inline-block;
@@ -11255,6 +11255,11 @@ nav.site-header {
   .radio-inline {
     display: block;
   }
+}
+
+.card {
+  border-radius: 20px;
+  box-shadow: 0px 0px 15px -6px rgba(0, 0, 0, 0.4);
 }
 
 .icon {
@@ -11492,6 +11497,13 @@ input.center {
   .main-text {
     line-height: 2em;
     margin: 60px 8px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 992px) {
+  .main-text {
+    font-size: 16px;
   }
 }
 
@@ -11959,7 +11971,7 @@ span.favorite_count {
 }
 
 button.favorite-icon {
-  margin-right: 0;
+  margin-right: 5px;
   background-color: #fff;
   border-width: 1px;
   border-style: solid;
@@ -12116,6 +12128,10 @@ form.favorite-form {
 
 a.user-name {
   color: #000;
+}
+
+.pagination {
+  justify-content: center;
 }
 
 .shop-name {

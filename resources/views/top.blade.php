@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 mt-3">
-                <div class="card text-right">
+                <div class="card text-right border-dark">
                     <div class="card-body">
                         <div class="form-group row justify-content-center">
                             <div class="my-3">
@@ -36,7 +36,7 @@
             </div>
 
             <div class="col-lg-6 my-3">
-                <div class="card">
+                <div class="card border-dark">
                     <div class="card-body">
                         <div class="form-group row justify-content-center">
                             <div class="mt-2 mb-3 text-center type-group">
@@ -72,7 +72,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card border-dark">
                     <div class="card-body">
                         <div class="form-group row justify-content-center my-3">
                             <div class="text-center">

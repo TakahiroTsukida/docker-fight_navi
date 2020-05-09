@@ -27,7 +27,7 @@
                 {{ session('flash_message_review_delete') }}
             </div>
             @endif
-        <div class="card page-title">
+        <div class="card page-title border-dark">
             <div class="col-sm-12 mx-auto card-body mypage-body">
                 <div class="myprofile">
                     @if (isset($user->image_path))

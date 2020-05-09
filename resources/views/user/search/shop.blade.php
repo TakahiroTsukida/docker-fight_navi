@@ -24,7 +24,7 @@
                   {{ session('flash_message_review_delete') }}
               </div>
               @endif
-              <div class="card card-group page-title">
+              <div class="card card-group page-title border-dark">
                   <div class="search-body">
                       <div class="search-list">
                           <h2 class="search-name">{{ $shop->name }}</h2>
@@ -272,6 +272,10 @@
                           </div>
                       </div>
                   </div>
+              </div>
+
+              <div class="page-title title">
+                  <h2>レビュー ({{ $shop->reviews_count }}件)</h2>
               </div>
 
               @if(isset($reviews))

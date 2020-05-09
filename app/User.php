@@ -70,40 +70,4 @@ class User extends Authenticatable //implements MustVerifyEmail
     public function favorites() {
         return $this->hasMany('App\User\Favorite');
     }
-
-
-    //favorite
-    // public function favorites() {
-    //     return $this->belongsToMany('App\Admin\Shop')->withTimestamps();
-    // }
-
-    // public function favorite($shop_id)
-    // {
-    //     $exist = $this->is_favorite($shop_id);
-    //
-    //     if($exist){
-    //         return false;
-    //     }else{
-    //         $this->favorites()->attach($shop_id);
-    //         return true;
-    //     }
-    // }
-    //
-    // public function unfavorite($shop_id)
-    // {
-    //     $exist = $this->is_favorite($shop_id);
-    //
-    //     if($exist){
-    //         $this->favorites()->detach($shop_id);
-    //         return true;
-    //     }else{
-    //         return false;
-    //     }
-    // }
-    //
-    // public function is_favorite($shop_id)
-    // {
-    //     $shop = Shop::find($shop_id);
-    //     return $shop->favorites()->where('shop_id', $shop_id)->exists();
-    // }
 }

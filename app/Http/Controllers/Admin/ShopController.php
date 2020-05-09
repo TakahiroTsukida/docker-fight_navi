@@ -91,17 +91,20 @@ class ShopController extends Controller
     public function edit(Request $request)
     {
         $shop = Shop::find($request->id);
-        if(empty($shop))
-        {
-           abort(404);
-        }
+
         //他のユーザーの情報の制御
-        $admin = Admin::find(Auth::user()->id);
+        // $admin = Admin::find(Auth::user()->id);
+        if (empty($shop))
+        {
+            session()->flash('flash_message_no_auth', '他のユーザーの編集情報は見れません');
+            return back();
+        }
         if ($shop->admin_id != Auth::user()->id)
         {
             session()->flash('flash_message_no_auth', '他のユーザーの編集情報は見れません');
-            return redirect('admin/profile/mypage');
+            return back();
         }
+        
         $types = array_column ( $shop->types->toArray() , 'id');
         return view('admin.shop.edit',['shop' => $shop, 'types' => $types]);
     }

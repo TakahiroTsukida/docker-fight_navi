@@ -18,6 +18,11 @@ $tab: 768px; // タブレット
     }
 }
 
+.card {
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px -6px rgba(0, 0, 0, 0.4);
+}
+
 .icon {
     color: #808080;
 }
@@ -199,6 +204,10 @@ input.center {
     @include tab {
         line-height: 2em;
         margin: 60px 8px;
+        font-size: 14px;
+    }
+    @include pc {
+        font-size: 16px;
     }
 }
 
@@ -598,7 +607,7 @@ span {
 }
 
 button.favorite-icon {
-    margin-right: 0;
+    margin-right: 5px;
     background-color: #fff;
     border-width: 1px;
     border-style: solid;
@@ -718,6 +727,10 @@ form.favorite-form {
 
 a.user-name {
     color: #000;
+}
+
+.pagination {
+    justify-content: center;
 }
 // button.back-btn {
 //     border-width: 0;

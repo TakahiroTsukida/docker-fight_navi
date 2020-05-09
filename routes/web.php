@@ -66,6 +66,7 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
     });
 });
 
+
 // 管理者
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 

@@ -2,6 +2,11 @@
 @section('title', '登録済みジム・道場編集')
 @section('content')
     <div class="container">
+            @if (session('flash_message_no_auth'))
+            <div class="flash_message alert-danger text-center rounded py-3 my-2">
+                {{ session('flash_message_no_auth') }}
+            </div>
+            @endif
         <div class="row justify-content-center">
             <div class="col-sm-12">
                 <h2 class="page-title title">登録済みジム・道場編集</h2>
