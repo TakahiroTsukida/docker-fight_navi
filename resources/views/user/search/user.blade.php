@@ -2,6 +2,11 @@
 @section('title', 'ユーザー情報')
 @section('content')
     <div class="container">
+        @if (session('flash_message_user_login'))
+        <div class="flash_message alert-primary text-center rounded py-3 my-2">
+            {{ session('flash_message_user_login') }}
+        </div>
+        @endif
         <div class="card page-title">
             <div class="col-sm-12 mx-auto card-body mypage-body">
                 <div class="myprofile">
@@ -100,8 +105,8 @@
                                                 <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                             @break
                                         @endswitch
+                                        <p class="review-point">{{ $review->total_point }}点</p>
                                     </div>
-                                <p class="review-point">{{ $review->total_point }}点</p>
                             </div>
 
                             <div class="review-item">

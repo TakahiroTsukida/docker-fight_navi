@@ -4,6 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col admin-login">
+            @if (session('flash_message_admin_logout'))
+            <div class="flash_message alert-danger text-center rounded py-3 my-2">
+                {{ session('flash_message_admin_logout') }}
+            </div>
+            @endif
             <div class="card page-title">
                 <div class="card-body">
                     <h5 class="text-center mt-5 mb-3">管理ユーザー  ログイン</h5>

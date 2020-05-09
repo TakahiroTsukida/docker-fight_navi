@@ -106,7 +106,7 @@
                             </div>
 
                             <div class="form-group">
-                                {{-- それ以降 --}}
+                                {{-- 町村名以降 --}}
                                 @include('parts/admin/label/shop/address_other')
                                 @error('address_other')
                                     <div>

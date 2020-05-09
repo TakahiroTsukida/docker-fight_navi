@@ -4,6 +4,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12">
+                @if (session('flash_message_user_login'))
+                <div class="flash_message alert-primary text-center rounded py-3 my-2">
+                    {{ session('flash_message_user_login') }}
+                </div>
+                @endif
                 <h2 class="text-center page-title">レビューの投稿</h2>
                 <div class="card">
                     <div class="card-body mypage-body">

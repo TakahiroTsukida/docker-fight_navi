@@ -162,8 +162,10 @@ class UserController extends Controller
         $user = Auth::user();
         // //$favoriteにユーザーがログインしており、かつそのshopをお気に入りをしているかをチェック
         $favorite = null;
-        if(isset($user)) {
-            if (count($shop->favorites) >= 1) {
+        if(isset($user))
+        {
+            if (count($shop->favorites) >= 1)
+            {
                 $favorites = $shop->favorites;
                 $favorites_count = count($favorites);
                 $favorite = $favorites->where('user_id', $user->id)->first();

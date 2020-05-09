@@ -4,6 +4,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12">
+              @if (session('flash_message_user_login'))
+              <div class="flash_message alert-primary text-center rounded py-3 my-2">
+                  {{ session('flash_message_user_login') }}
+              </div>
+              @endif
               @if (session('flash_message_add'))
               <div class="flash_message alert-success text-center rounded py-3 my-2">
                   {{ session('flash_message_add') }}
@@ -108,7 +113,7 @@
                                       @break
                                   @endswitch
                                   <p class="review-point">{{ $shop->point }}点</p>
-                                  <p class="shop-review-count"><i class="far fa-comment-alt fa-lg"></i>{{ $shop->reviews_count }}</p>
+                                  <p class="review-count"><i class="far fa-comment-alt fa-lg"></i> {{ $shop->reviews_count }}</p>
                             @else
                               <p class="review-point">レビューなし</p>
                             @endif
@@ -321,8 +326,9 @@
                                               <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                           @break
                                       @endswitch
+
+                                      <p class="review-point">{{ $review->total_point }}点</p>
                                   </div>
-                              <p class="review-point">{{ $review->total_point }}点</p>
                           </div>
 
                           <div class="review-item">

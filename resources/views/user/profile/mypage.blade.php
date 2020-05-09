@@ -2,6 +2,11 @@
 @section('title', 'マイページ')
 @section('content')
     <div class="container">
+            @if (session('flash_message_user_login'))
+            <div class="flash_message alert-primary text-center rounded py-3 my-2">
+                {{ session('flash_message_user_login') }}
+            </div>
+            @endif
             @if (session('flash_message_no_user_auth'))
             <div class="flash_message alert-danger text-center rounded py-3 my-2">
                 {{ session('flash_message_no_user_auth') }}
@@ -73,7 +78,7 @@
                                 <p class="user-name"> {{ $review->user->name }} </p>
                             </div>
                             <div class="search-list">
-                                <a href="{{ action('User\UserController@shop', ['review_id' => $review->id]) }}">
+                                <a href="{{ action('User\UserController@shop', ['id' => $review->shop_id]) }}">
                                     <p class="search-name">{{ $review->shop->name }}</p>
                                 </a>
                             </div>
@@ -110,8 +115,8 @@
                                                 <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
                                             @break
                                         @endswitch
+                                        <p class="review-point">{{ $review->total_point }}点</p>
                                     </div>
-                                <p class="review-point">{{ $review->total_point }}点</p>
                             </div>
 
                             <div class="review-item">

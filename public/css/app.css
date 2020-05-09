@@ -10969,114 +10969,6 @@ img {
   width: 100%;
 }
 
-/* メモ
-@mixin media-query($device) {
-    @media screen and (min-width: $device) {
-        @content;
-    }
-}
-
-@include media-query($tab){
-}
-*/
-
-#nav-drawer {
-  position: relative;
-}
-
-/*チェックボックス等は非表示に*/
-
-.nav-unshown {
-  display: none;
-}
-
-/*アイコンのスペース*/
-
-#nav-open {
-  display: inline-block;
-  width: 30px;
-  height: 22px;
-  vertical-align: middle;
-}
-
-/*ハンバーガーアイコンをCSSだけで表現*/
-
-#nav-open span,
-#nav-open span:before,
-#nav-open span:after {
-  position: absolute;
-  height: 3px;
-  /*線の太さ*/
-  width: 25px;
-  /*長さ*/
-  border-radius: 3px;
-  background: #555;
-  display: block;
-  content: "";
-  cursor: pointer;
-}
-
-#nav-open span:before {
-  bottom: -8px;
-}
-
-#nav-open span:after {
-  bottom: -16px;
-}
-
-/*閉じる用の薄黒カバー*/
-
-#nav-close {
-  display: none;
-  /*はじめは隠しておく*/
-  position: fixed;
-  z-index: 99;
-  top: 0;
-  /*全体に広がるように*/
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  opacity: 0;
-  transition: 0.3s ease-in-out;
-}
-
-/*中身*/
-
-#nav-content {
-  overflow: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  /*最前面に*/
-  width: 90%;
-  /*右側に隙間を作る*/
-  max-width: 330px;
-  /*最大幅*/
-  height: 100%;
-  background: #fff;
-  /*背景色*/
-  transition: 0.3s ease-in-out;
-  /*滑らかに表示*/
-  transform: translateX(-105%);
-  /*左に隠しておく*/
-}
-
-/*チェックが入ったらもろもろ表示*/
-
-#nav-input:checked ~ #nav-close {
-  display: block;
-  /*カバーを表示*/
-  opacity: 0.5;
-}
-
-#nav-input:checked ~ #nav-content {
-  transform: translateX(0%);
-  /*中身を表示*/
-  box-shadow: 6px 0 25px rgba(0, 0, 0, 0.15);
-}
-
 nav img {
   width: 120px;
 }
@@ -11127,8 +11019,8 @@ a.navbar-brand.header-img {
 }
 
 a.nav-item {
-  font-size: 14px;
-  margin: 5px 5px 5px 10px;
+  font-size: 16px;
+  margin: 7px 9px 7px 9px;
   color: #000;
   position: relative;
   display: inline-block;
@@ -11137,7 +11029,7 @@ a.nav-item {
 
 @media (min-width: 768px) {
   a.nav-item {
-    font-size: 19px;
+    font-size: 20px;
     margin: 10px 5px 10px 15px;
   }
 }
@@ -11166,8 +11058,8 @@ a.nav-item {
 }
 
 a.nav-item-login {
-  font-size: 14px;
-  margin: 5px 5px 5px 10px;
+  font-size: 16px;
+  margin: 7px 9px 7px 9px;
   color: #000;
   position: relative;
   display: inline-block;
@@ -11218,9 +11110,9 @@ a.nav-item::after {
   transition: transform 0.3s;
 }
 
-@media (min-width: 350px) {
+@media (min-width: 374px) {
   a.nav-item::after {
-    width: 45%;
+    width: 50%;
   }
 }
 
@@ -11451,8 +11343,12 @@ nav.site-header {
   font-weight: bold;
 }
 
+body {
+  font-family: "Avenir", "Helvetica Neue", "Helvetica", "Arial", "Hiragino Sans", "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF", YuGothic, "Yu Gothic", "\30E1\30A4\30EA\30AA", Meiryo, "\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF", "MS PGothic";
+}
+
 h1 {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -11463,7 +11359,7 @@ h1 {
 }
 
 h2 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -11474,7 +11370,7 @@ h2 {
 }
 
 h3 {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: bold;
 }
 
@@ -11485,29 +11381,29 @@ h3 {
 }
 
 label {
-  font-size: 12px;
+  font-size: 15px;
 }
 
 @media (min-width: 768px) {
   label {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 
 p {
   display: block;
   float: none;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 @media (min-width: 768px) {
   p {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 
 li {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -11536,26 +11432,26 @@ input.center {
   position: absolute;
   color: white;
   top: 35%;
-  left: 5%;
-  font-size: 5px;
+  left: 3%;
+  font-size: 13px;
   text-shadow: 1px 1px 15px black, 0 0 1em black, 0 0 0.2em black;
 }
 
 @media (min-width: 380px) {
   .app_imgtext p {
-    font-size: 12px;
+    font-size: 13px;
   }
 }
 
 @media (min-width: 420px) {
   .app_imgtext p {
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 
 @media (min-width: 500px) {
   .app_imgtext p {
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 
@@ -11588,19 +11484,12 @@ input.center {
 
 .main-text {
   text-align: center;
-  font-size: 12px;
   margin: 40px 8px;
-}
-
-@media (min-width: 500px) {
-  .main-text {
-    font-size: 15px;
-  }
+  font-size: 13px;
 }
 
 @media (min-width: 768px) {
   .main-text {
-    font-size: 17px;
     line-height: 2em;
     margin: 60px 8px;
   }
@@ -11871,52 +11760,56 @@ p.review-address {
   display: inline-block;
   width: 100%;
   margin: 5px 0 5px 0;
+  position: relative;
+  height: 19px;
 }
 
 @media (min-width: 768px) {
   .review-item {
-    margin: 10px 0 10px 0;
+    margin: 4px 0;
+    height: 24px;
   }
 }
 
 p.review-text {
   float: left;
-  margin: 2px 3px 0 15px;
   position: absolute;
+  left: 15px;
 }
 
 @media (min-width: 768px) {
   p.review-text {
-    margin: 0 3px 0 80px;
+    left: 80px;
   }
 }
 
 .review-star {
   display: inline;
-  margin-left: 71px;
-  font-size: 12px;
-  vertical-align: text-bottom;
+  font-size: 14px;
+  position: absolute;
+  vertical-align: middle;
+  left: 82px;
 }
 
 @media (min-width: 768px) {
   .review-star {
-    margin-left: 155px;
+    left: 160px;
     font-size: 15px;
-    vertical-align: baseline;
   }
 }
 
 p.review-point {
   display: inline;
   position: absolute;
-  left: 185px;
+  left: 133px;
   font-weight: bold;
-  padding-top: 2px;
+  width: 60px;
 }
 
 @media (min-width: 768px) {
   p.review-point {
-    left: 300px;
+    left: 144px;
+    width: 73px;
   }
 }
 
@@ -12031,6 +11924,7 @@ span.favorite_count {
 .search-list {
   display: inline-block;
   width: 100%;
+  margin: 4px 0;
 }
 
 @media (min-width: 768px) {
@@ -12079,14 +11973,14 @@ button.favorite-icon {
 }
 
 .show-btn {
-  font-size: 12px;
+  font-size: 14px;
   margin-right: 15px;
   width: 70px;
 }
 
 @media (min-width: 768px) {
   .show-btn {
-    font-size: 15px;
+    font-size: 16px;
     margin: 15px 30px 15px 0;
     width: 150px;
   }
@@ -12195,14 +12089,15 @@ form.favorite-form {
 
 .review-count {
   position: absolute;
-  top: 74px;
-  left: 240px;
+  top: 0px;
+  left: 195px;
+  width: 54px;
 }
 
 @media (min-width: 768px) {
   .review-count {
-    top: 102px;
-    left: 380px;
+    left: 220px;
+    width: 65px;
   }
 }
 
@@ -12292,13 +12187,13 @@ a.user-name {
 }
 
 .type-text {
-  font-size: 12px;
+  font-size: 15px;
   margin: 3px 0;
 }
 
 @media (min-width: 768px) {
   .type-text {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 

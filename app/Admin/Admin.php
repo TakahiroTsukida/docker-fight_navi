@@ -50,7 +50,7 @@ class Admin extends Authenticatable
 
   public static $rules = array(
       'name' => 'required|max:60',
-      'birthday' => 'required',
+      'birthday' => 'required|before:now',
 
       'company_name' => 'required|max:255',
       'tel' => 'max:11',

@@ -170,7 +170,7 @@
 
                         <div class="form-group row justify-content-center mt-4">
                             <div class="col-md-8 col-lg-6">
-                                <label>市町村以降</label>
+                                <label>市区町村名以降</label>
                                 <input id="address_city" type="text" class="form-control @error('name') is-invalid @enderror" name="address_city" value="{{ old('address_city') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
