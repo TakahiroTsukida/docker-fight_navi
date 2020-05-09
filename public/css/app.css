@@ -11112,19 +11112,19 @@ a.nav-item::after {
 
 @media (min-width: 374px) {
   a.nav-item::after {
-    width: 50%;
+    width: 80%;
   }
 }
 
 @media (min-width: 500px) {
   a.nav-item::after {
-    width: 30%;
+    width: 50%;
   }
 }
 
 @media (min-width: 768px) {
   a.nav-item::after {
-    width: 25%;
+    width: 50%;
   }
 }
 
@@ -11153,19 +11153,19 @@ a.nav-item-login::after {
 
 @media (min-width: 350px) {
   a.nav-item-login::after {
-    width: 50%;
+    width: 80%;
   }
 }
 
 @media (min-width: 500px) {
   a.nav-item-login::after {
-    width: 40%;
+    width: 50%;
   }
 }
 
 @media (min-width: 768px) {
   a.nav-item-login::after {
-    width: 30%;
+    width: 40%;
   }
 }
 
@@ -11982,7 +11982,7 @@ button.favorite-icon {
   .show-btn {
     font-size: 16px;
     margin: 15px 30px 15px 0;
-    width: 150px;
+    width: 133px;
   }
 }
 
@@ -12141,16 +12141,6 @@ a.user-name {
   }
 }
 
-.admin-label {
-  font-size: 13px;
-}
-
-@media (min-width: 768px) {
-  .admin-label {
-    font-size: 15px;
-  }
-}
-
 .shop-about {
   margin-left: 0px;
   display: inline;
@@ -12198,13 +12188,13 @@ a.user-name {
 }
 
 .description {
-  font-size: 12px;
+  font-size: 14px;
   margin-bottom: 30px;
 }
 
 @media (min-width: 768px) {
   .description {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
@@ -12486,6 +12476,16 @@ a.user-name {
 @media (min-width: 768px) {
   .admin-mypage-body {
     margin: 0 80px;
+  }
+}
+
+a.show-btn.long-btn {
+  width: 85px;
+}
+
+@media (min-width: 768px) {
+  a.show-btn.long-btn {
+    width: 133px;
   }
 }
 

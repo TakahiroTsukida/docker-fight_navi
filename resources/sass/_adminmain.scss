@@ -29,12 +29,7 @@ $tab: 768px; // タブレット
 
   }
 }
-.admin-label {
-  font-size: 13px;
-  @include tab {
-    font-size: 15px;
-  }
-}
+
 
 .shop-about {
   margin-left: 0px;
@@ -71,10 +66,10 @@ $tab: 768px; // タブレット
 }
 
 .description {
-  font-size: 12px;
+  font-size: 14px;
   margin-bottom: 30px;
   @include tab {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
@@ -296,5 +291,12 @@ $tab: 768px; // タブレット
     margin: 0 15px;
     @include tab {
         margin: 0 80px;
+    }
+}
+
+a.show-btn.long-btn {
+    width: 85px;
+    @include tab {
+        width: 133px;
     }
 }

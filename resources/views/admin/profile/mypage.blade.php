@@ -198,7 +198,7 @@
 
                               @if (isset($shop->description))
                               <div class="profile">
-                                  <label class="admin-label">簡単な説明</label>
+                                  <label>簡単な説明</label>
                                   <p class="description">{{ $shop->description }}</p>
                               </div>
                               @endif
@@ -286,9 +286,9 @@
 
                               <div class="profile">
                                   <div class="center-btn">
-                                      <a href="{{ action('User\UserController@shop', ['id' => $shop->id]) }}" class="btn btn-primary show-btn">レビューを見る</a>
-                                      <a href="{{ route('admin.shop.edit',['id' => $shop->id]) }}" class="btn btn-success shop-btn">編集</a>
-                                      <button type="button" class="btn btn-danger shop-btn" data-toggle="modal" data-target="#exampleModalCenter{{ $shop->id }}">削除</button>
+                                      <a href="{{ action('User\UserController@shop', ['id' => $shop->id]) }}" class="btn btn-primary show-btn long-btn">レビュー</a>
+                                      <a href="{{ route('admin.shop.edit',['id' => $shop->id]) }}" class="btn btn-success show-btn">編集</a>
+                                      <button type="button" class="btn btn-danger show-btn" data-toggle="modal" data-target="#exampleModalCenter{{ $shop->id }}">削除</button>
                                   </div>
                               </div>
                           </div>
