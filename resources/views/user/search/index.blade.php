@@ -14,6 +14,7 @@
                     {{ session('flash_message_delete') }}
                 </div>
                 @endif
+
                 <div class="card page-title border-dark">
                     <div class="card-body">
 

@@ -20,7 +20,7 @@ $tab: 768px; // タブレット
 
 .card {
     border-radius: 20px;
-    box-shadow: 0px 0px 15px -6px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.4);
 }
 
 .icon {
@@ -95,6 +95,14 @@ $tab: 768px; // タブレット
 body {
     font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
 }
+
+// main {
+//   margin-top: 83px;
+//   @include tab {
+//       margin-top: 106px;
+//   }
+// }
+
 h1 {
   font-size: 16px;
   font-weight: bold;
@@ -745,6 +753,10 @@ a.user-name {
 
 .g-login {
     margin-bottom: 30px;
+}
+
+input.btn-outline-dark {
+    border-radius: 15px;
 }
 // button.back-btn {
 //     border-width: 0;

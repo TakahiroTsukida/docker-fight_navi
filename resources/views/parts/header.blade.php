@@ -8,7 +8,7 @@
 <meta property="og:url" content="https://fightgymnavi.com/" /> <!--③-->
 <meta property="og:title" content="fightなび" /> <!--④-->
 <meta property="og:description" content="全国の格闘技ジムをレビューで評価をしあって、あなたにあったジムを見つけよう！" /> <!--⑤-->
-<meta property="og:image" content="" /> <!--⑥-->
+<meta property="og:image" content="{{ asset('image/fightnavi_logo.png') }}" /> <!--⑥-->
 <title>@yield('title')</title>
 <script src="{{ asset('js/app.js') }}" defer></script>
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">

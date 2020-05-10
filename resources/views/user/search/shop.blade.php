@@ -120,21 +120,10 @@
                         </div>
                       </div>
 
-                      @if (isset($shop->image_path))
-                          <div class="image-group">
-                              <p class="shop-img"><img src="{{ asset('storage/image/shop_images/'.$shop->image_path) }}"></p>
-                          </div>
-                      @else
-                          <div class="profile">
-                              <p class="shop-img"><img src="{{ asset('image/l_e_others_501.png') }}"></p>
-                          </div>
-                      @endif
-
-                      <div class="center-btn">
-                          <button type="button" class="btn btn-success show-btn" onclick=history.back()>戻る</button>
+                      <div class="text-center">
+                          <!-- <button type="button" class="btn btn-success show-btn" onclick=history.back()>戻る</button> -->
                           <!-- Button trigger modal -->
-                          <button type="button" class="btn btn-primary show-btn" data-toggle="modal" data-target="#exampleModalLong{{ $shop->id }}">詳細</button>
-
+                          <button type="button" class="btn btn-primary show-btn" data-toggle="modal" data-target="#exampleModalLongshop{{ $shop->id }}">詳細</button>
                           @unless (Auth::guard('admin')->check())
                               @if (Auth::guard('user')->check())
                                   @if (isset($shop->reviews))
@@ -151,7 +140,7 @@
                       </div>
 
                       <!-- Modal -->
-                      <div class="modal fade" id="exampleModalLong{{ $shop->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                      <div class="modal fade" id="exampleModalLongshop{{ $shop->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                   <div class="modal-header">
@@ -160,6 +149,17 @@
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                   </div>
+
+                                  @if (isset($shop->image_path))
+                                      <div class="image-group">
+                                          <p><img src="{{ asset('storage/image/shop_images/'.$shop->image_path) }}"></p>
+                                      </div>
+                                  @else
+                                      <div class="profile">
+                                          <p><img src="{{ asset('image/l_e_others_501.png') }}"></p>
+                                      </div>
+                                  @endif
+
                                   <div class="modal-body">
 
                                       <div class="profile">
