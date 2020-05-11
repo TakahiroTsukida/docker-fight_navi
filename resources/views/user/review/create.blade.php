@@ -9,7 +9,7 @@
                     {{ session('flash_message_user_login') }}
                 </div>
                 @endif
-                <h2 class="text-center page-title">レビューの投稿</h2>
+                <h1 class="text-center page-title">レビューの投稿</h1>
                 <div class="card">
                     <div class="card-body mypage-body">
 
@@ -30,9 +30,16 @@
 
                         <form action="{{ route('user.review.create') }}" method="post">
 
+                            <div class="form-group row">
+                                <label>
+                                    <input type="checkbox" name="secret_name" value="1">
+                                    匿名でのレビュー
+                                </label>
+                            </div>
+
                             @error('total_point')
                                 <div>
-                                    <p class="error price-en">{{ $message }}</p>
+                                    <p class="error">{{ $message }}</p>
                                 </div>
                             @enderror
                             <div class="form-group row">
@@ -42,33 +49,26 @@
                                 </select>
                             </div>
 
-                            @error('learn')
-                                <div>
-                                    <p class="error price-en">{{ $message }}</p>
-                                </div>
-                            @enderror
                             <div class="form-group row">
                                 <p class="col-sm-3 col-lg-2 col-form-label review-label">通い方</p>
-                                <select name="learn" class="col-sm-9 col-lg-10 form-control">
+                                <select name="learn" class="col-sm-9 col-lg-10 form-control @error('learn') is-invalid @enderror">
                                     @include('parts/review/learn')
                                 </select>
                             </div>
 
-                            @error('season')
-                                <div>
-                                    <p class="error price-en">{{ $message }}</p>
-                                </div>
-                            @enderror
                             <div class="form-group row">
                                 <p class="col-sm-3 col-lg-2 col-form-label review-label">時期</p>
-                                <select name="season" class="col-sm-9 col-lg-10 form-control">
+                                <select name="season_begin" class="col-sm-9 col-lg-10 form-control @error('season_begin') is-invalid @enderror">
+                                    @include('parts/review/season')
+                                </select>
+                                <select name="season_end" class="col-sm-9 col-lg-10 form-control">
                                     @include('parts/review/season')
                                 </select>
                             </div>
 
                             @error('merit')
                                 <div>
-                                    <p class="error price-en">{{ $message }}</p>
+                                    <p class="error">{{ $message }}</p>
                                 </div>
                             @enderror
                             <div class="form-group row">
@@ -78,7 +78,7 @@
 
                             @error('demerit')
                                 <div>
-                                    <p class="error price-en">{{ $message }}</p>
+                                    <p class="error">{{ $message }}</p>
                                 </div>
                             @enderror
                             <div class="form-group row">

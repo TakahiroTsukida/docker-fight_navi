@@ -35,8 +35,8 @@
                       <div class="body">
 
                           <div>
-                              <h2>登録情報</h2>
-                              <h3>個人情報</h3>
+                              <h1>登録情報</h1>
+                              <h2>個人情報</h2>
                           </div>
 
                           <div class="profile">
@@ -44,29 +44,39 @@
                               <p class="admin">{{ $admin->name }}</p>
                           </div>
 
+                          @if (isset($admin->geder))
                           <div class="profile">
                               <label class="admin-label">性別</label>
                               <p class="admin">{{ $admin->gender }}</p>
                           </div>
+                          @endif
 
+                          @if (isset($admin->birthday))
                           <div class="profile">
                               <label class="admin-label">誕生日</label>
                               <p class="admin">{{ $admin->birthday }}</p>
                           </div>
+                          @endif
+
                           <div class="profile">
                               <label class="admin-label">メールアドレス</label>
                               <p class="admin">{{ $admin->email }}</p>
                           </div>
 
-
                           <div class="profile mt-3">
-                              <h3>会社情報</h3>
+                              @if (isset($admin->company_name, $admin->tel, $admin->address_number, $admin->address_ken, $admin->address_city, $admin->web))
+                                  <h2>会社情報</h2>
+                              @else
+                                  <label>会社情報が登録されていません</label>
+                              @endif
                           </div>
 
+                          @if (isset($admin->company_name))
                           <div class="profile">
                               <label class="admin-label">会社名</label>
                               <p class="admin">{{ $admin->company_name }}</p>
                           </div>
+                          @endif
 
                           @if (isset($admin->tel))
                               <div class="profile">
@@ -75,13 +85,15 @@
                               </div>
                           @endif
 
+                          @if (isset($admin->address_number, $admin->address_ken, $admin->address_city))
                           <div class="profile">
                               <label class="admin-label">住所</label>
                               <p class="admin"><span class="symbol">〒 </span>{{ $admin->address_number }}</p>
                               <p class="admin">{{ $admin->address_ken }}{{ $admin->address_city }}</p>
                           </div>
+                          @endif
 
-                          @if (isset($admin->tel))
+                          @if (isset($admin->web))
                               <div class="profile">
                                   <label class="admin-label">ホームページ</label>
                                   <a class="link admin" href="{{ $admin->web }}">{{ $admin->web }}</a>
@@ -207,9 +219,7 @@
                               </div>
                               @endif
 
-                              @if (isset($shop->prices))
-                              <div class="profile">
-                                  <i class="far fa-handshake fa-lg"></i>
+                              <!-- @if (isset($shop->prices))
                                   @foreach ($shop->prices as $price)
                                       @if ($price->name == "入会金")
                                       <label class="join">{{ $price->name }}</label>
@@ -217,16 +227,14 @@
                                       @endif
                                   @endforeach
                               </div>
-                              @endif
+                              @endif -->
 
                               @if (isset($shop->prices))
                               <div class="profile">
                                   <i class="fas fa-yen-sign fa-lg"></i>
-                                  <label class="shop-about">月会費</label>
+                                  <label class="shop-about">会費</label>
                                   @foreach ($shop->prices as $price)
-                                      @if ($price->name != "入会金")
                                       <p class="shop-price">{{ $price->name }} <strong>{{ $price->price }}</strong><span class="symbol">円（税込）</span></p>
-                                      @endif
                                   @endforeach
                               </div>
                               @endif

@@ -83,6 +83,12 @@
                                         </label>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" name="secret_gender" value="1" {{ $user->secret_gender == '1' ? 'checked="checked"' : '' }}>
+                                        非公開
+                                    </label>
+                                </div>
 
                                 <div class="form-group">
                                     <label for="birthday">生年月日</label>
@@ -92,6 +98,13 @@
                                         </div>
                                     @enderror
                                     <input type="date" name="birthday" class="form-control" value="{{ $user->birthday }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" name="secret_birthday" value="1" {{ $user->secret_birthday == '1' ? 'checked="checked"' : '' }}>
+                                        非公開
+                                    </label>
                                 </div>
 
                                 <div class="form-group">

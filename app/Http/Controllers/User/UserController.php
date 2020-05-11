@@ -204,7 +204,7 @@ class UserController extends Controller
             abort(404);
         }
 
-        $user_reviews = $user->reviews;
+        $user_reviews = $user->reviews->where('secret_name', null);
 
         if (isset($user_reviews))
         {

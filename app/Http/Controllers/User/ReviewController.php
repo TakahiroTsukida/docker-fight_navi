@@ -36,6 +36,13 @@ class ReviewController extends Controller
         $form = $request->all();
         $review->shop_id = $request->shop_id;
         $review->user_id = $user_id;
+        if (isset($form['secret_name']))
+        {
+            $review->secret_name = $form['secret_name'];
+        } else
+        {
+            $review->secret_name = null;
+        }
         $review->fill($form)->save();
 
         //shopのレビュー件数、平均点の更新
@@ -93,6 +100,13 @@ class ReviewController extends Controller
           if ($review->user_id == Auth::user()->id)
           {
               $form = $request->all();
+              if (isset($form['secret_name']))
+              {
+                  $review->secret_name = $form['secret_name'];
+              } else
+              {
+                  $review->secret_name = null;
+              }
               $review->fill($form)->save();
           } else
           {

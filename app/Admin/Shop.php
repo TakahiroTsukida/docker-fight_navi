@@ -31,11 +31,11 @@ class Shop extends Model
       //配列で最低１個以上はチェック必須
       'type' => 'array|required',
 
-      'tel' => 'nullable|max:11',
-      'address_number' => 'nullable|digits:7',
+      'tel' => 'nullable|max:13',
+      'address_number' => 'nullable|max:8',
       'address_ken' => 'required',
       'address_city' => 'required',
-      'address_city' => 'nullable',
+      'address_other' => 'nullable',
 
       //prices
       //片方が入力されている場合、片方も必須

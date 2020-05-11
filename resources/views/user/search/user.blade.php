@@ -17,19 +17,19 @@
                     @endif
                     <p class="myname">{{ $user->name }}</p>
                 </div>
-                @if (isset($user->gender))
+                @if (isset($user->gender) && $user->secret_gender != "1")
                 <div class="profile">
                     <p><i class="fas fa-transgender fa-lg"></i> {{ $user->gender }}</p>
                 </div>
                 @endif
-                @if (isset($user->birthday))
+                @if (isset($user->birthday) && $user->secret_birthday != "1")
                 @php
                     $now = date("Ymd");
                     $user_birthday = str_replace("-", "", $user->birthday);
-                    $birthday = floor(($now-$user_birthday)/10000).'歳';
+                    $age = floor(($now-$user_birthday)/10000).'歳';
                 @endphp
                 <div class="profile">
-                    <p><i class="fas fa-birthday-cake fa-lg"></i> {{ $birthday }}</p>
+                    <p><i class="fas fa-birthday-cake fa-lg"></i> {{ $age }}</p>
                 </div>
                 @endif
                 <div class="profile">
@@ -119,7 +119,7 @@
                             <div class="review-item">
                                 <p class="review-text">時期</p>
                                 <div class="review-star">
-                                    <p class="d-inline">{{ $review->season }}</p>
+                                    <p class="d-inline">{{ $review->season_begin }} 〜 {{ $review->season_end }}</p>
                                 </div>
                             </div>
 

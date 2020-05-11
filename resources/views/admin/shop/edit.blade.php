@@ -67,7 +67,7 @@
                                 @error('tel')
                                     <p class="error">{{ $message }}</p>
                                 @enderror
-                                <input type="text" name="tel" maxlength="11" class="form-control form-tel" placeholder="例) 0312345678" value="{{ $shop->tel }}">
+                                <input type="text" name="tel" maxlength="13" class="form-control form-tel" placeholder="例) 03-1234-5678" value="{{ $shop->tel }}">
                             </div>
 
 
@@ -82,7 +82,7 @@
                                 @error('address_number')
                                     <p class="error">{{ $message }}</p>
                                 @enderror
-                                <input type="tel" name="address_number" maxlength="7" class="form-control form-number" placeholder="例）1030013" value="{{ $shop->address_number }}">
+                                <input type="tel" name="address_number" maxlength="8" class="form-control form-number" placeholder="例）103-0013" value="{{ $shop->address_number }}">
                             </div>
 
                             <div class="form-address">

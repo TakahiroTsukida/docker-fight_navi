@@ -65,6 +65,20 @@ class ProfileController extends Controller
         }
         $form = $request->all();
 
+        if (isset($form['secret_gender']))
+        {
+            $user->secret_gender = 1;
+        } else {
+            $user->secret_gender = null;
+        }
+
+        if (isset($form['secret_birthday']))
+        {
+            $user->secret_birthday = 1;
+        } else {
+            $user->secret_birthday = null;
+        }
+
         if (isset($form['image']))
         {
             $path = $request->file('image')->store('public/image/profile_images');

@@ -64,16 +64,16 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'gender' => ['required', 'string', 'max:8'],
-            'birthday' => ['required', 'date', 'before:now'],
+            // 'gender' => ['nullable'],
+            // 'birthday' => ['nullable', 'date', 'before:now'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:admins','unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:4', 'confirmed'],
 
-            'company_name' => ['required', 'string', 'max:255'],
-            'tel' => ['max:11'],
-            'address_number' => ['required', 'string', 'max:255'],
-            'address_ken' => ['required', 'string', 'max:255'],
-            'address_city' => ['required', 'string', 'max:255'],
+            // 'company_name' => ['nullable', 'string', 'max:255'],
+            // 'tel' => ['nullable', 'max:13'],
+            // 'address_number' => ['nullable', 'string', 'max:8'],
+            // 'address_ken' => ['nullable', 'string', 'max:255'],
+            // 'address_city' => ['nullable', 'string', 'max:255'],
 
         ]);
     }
@@ -88,17 +88,17 @@ class RegisterController extends Controller
     {
         return Admin::create([
             'name' => $data['name'],
-            'gender' => $data['gender'],
-            'birthday' => $data['birthday'],
+            // 'gender' => $data['gender'],
+            // 'birthday' => $data['birthday'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
 
-            'company_name' => $data['company_name'],
-            'tel' => $data['tel'],
-            'address_number' => $data['address_number'],
-            'address_ken' => $data['address_ken'],
-            'address_city' => $data['address_city'],
-            'web' => $data['web'],
+            // 'company_name' => $data['company_name'],
+            // 'tel' => $data['tel'],
+            // 'address_number' => $data['address_number'],
+            // 'address_ken' => $data['address_ken'],
+            // 'address_city' => $data['address_city'],
+            // 'web' => $data['web'],
         ]);
     }
 }

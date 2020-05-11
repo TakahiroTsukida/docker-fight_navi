@@ -50,13 +50,14 @@ class Admin extends Authenticatable
 
   public static $rules = array(
       'name' => 'required|max:60',
-      'birthday' => 'required|before:now',
+      'gender' => 'nullable',
+      'birthday' => 'nullable|before:now',
 
-      'company_name' => 'required|max:255',
-      'tel' => 'max:11',
-      'address_number' => 'required|max:7',
-      'address_ken' => 'required',
-      'address_city' => 'required|max:255',
+      'company_name' => 'nullable|max:255',
+      'tel' => 'nullable|max:13',
+      'address_number' => 'nullable|max:8',
+      'address_ken' => 'nullable',
+      'address_city' => 'nullable|max:255',
 
   );
 

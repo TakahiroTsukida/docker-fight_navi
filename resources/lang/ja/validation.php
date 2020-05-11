@@ -142,6 +142,8 @@ return [
         'merit' => '良かったところ',
         'demerit' => 'イマイチなところ',
 
+        'season_begin' => '通いはじめ',
+
 
     ],
 

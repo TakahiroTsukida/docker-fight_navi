@@ -6,26 +6,13 @@
         <div class="col">
             <div class="card page-title">
                 <div class="card-body">
-                    <h5 class="text-center mt-5 mb-3">管理ユーザー　新規登録</h5>
+                    <h1 class="text-center mt-5 mb-3">管理ユーザー　新規登録</h1>
                     <form method="POST" action="{{ route('admin.register') }}">
                         @csrf
 
                         <div class="form-group row justify-content-center mt-5">
                             <div class="col-md-8 col-lg-6">
-                                @if (count($errors) > 0)
-                                    <ul>
-                                        @foreach($errors->all() as $e)
-                                            <li><span>{{ $e }}</span></li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-                            </div>
-                        </div>
-
-
-                        <div class="form-group row justify-content-center mt-5">
-                            <div class="col-md-8 col-lg-6">
-                                <label>名前</label>
+                                <label>名前<span class="badge badge-danger">必須</span></label>
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
@@ -36,7 +23,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row justify-content-center mt-4">
+                        <!-- <div class="form-group row justify-content-center mt-4">
                             <div class="col-md-8 col-lg-6">
                                 <label>性別</label>
                                 <div>
@@ -49,19 +36,13 @@
                                         女性
                                     </label>
                                 </div>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group row justify-content-center mt-4">
                             <div class="col-md-8 col-lg-6">
                                 <label>生年月日</label>
-                                <input id="birthday" type="date" class="form-control @error('name') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" required autocomplete="name" autofocus>
+                                <input id="birthday" type="date" class="form-control @error('name') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" >
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -69,11 +50,11 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row justify-content-center mt-4">
                             <div class="col-md-8 col-lg-6">
-                                <label for="email">メールアドレス</label>
+                                <label for="email">メールアドレス<span class="badge badge-danger">必須</span></label>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
@@ -86,7 +67,7 @@
 
                         <div class="form-group row  justify-content-center mt-4">
                             <div class="col-md-8 col-lg-6">
-                                <label for="password">パスワード</label>
+                                <label for="password">パスワード<span class="badge badge-danger">必須</span></label>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="new-password">
 
                                 @error('password')
@@ -99,13 +80,18 @@
 
                         <div class="form-group row justify-content-center mt-4">
                             <div class="col-md-8 col-lg-6">
-                                <label for="password-confirm">パスワード（確認用）</label>
+                                <label for="password-confirm">パスワード（確認用）<span class="badge badge-danger">必須</span></label>
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" required autocomplete="new-password">
+                                @error('password_confirmation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
 
-                        <div class="form-group row justify-content-center mt-5">
+                        <!-- <div class="form-group row justify-content-center mt-5">
                             <div class="col-md-8 col-lg-6">
                                 <label>会社情報</label>
                             </div>
@@ -115,7 +101,7 @@
                         <div class="form-group row justify-content-center mt-2">
                             <div class="col-md-8 col-lg-6">
                                 <label>会社名</label>
-                                <input id="company_name" type="text" class="form-control @error('name') is-invalid @enderror" name="company_name" value="{{ old('company_name') }}" required autocomplete="company_name" autofocus>
+                                <input id="company_name" type="text" class="form-control @error('name') is-invalid @enderror" name="company_name" value="{{ old('company_name') }}">
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -141,7 +127,7 @@
                         <div class="form-group row justify-content-center mt-4">
                             <div class="col-md-8 col-lg-6">
                                 <label>郵便番号</label>
-                                <input id="address_number" type="text" maxlength="7" class="form-control @error('name') is-invalid @enderror" name="address_number" value="{{ old('address_number') }}" required autocomplete="name" autofocus>
+                                <input id="address_number" type="text" maxlength="7" class="form-control @error('name') is-invalid @enderror" name="address_number" value="{{ old('address_number') }}">
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -159,25 +145,13 @@
                                   @include('parts/address_ken')
 
                                 </select>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group row justify-content-center mt-4">
                             <div class="col-md-8 col-lg-6">
                                 <label>市区町村名以降</label>
-                                <input id="address_city" type="text" class="form-control @error('name') is-invalid @enderror" name="address_city" value="{{ old('address_city') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="address_city" type="text" class="form-control @error('name') is-invalid @enderror" name="address_city" value="{{ old('address_city') }}">
                             </div>
                         </div>
 
@@ -185,14 +159,8 @@
                             <div class="col-md-8 col-lg-6">
                                 <label>ホームページ</label>
                                 <input id="web" type="text" class="form-control @error('name') is-invalid @enderror" name="web" value="{{ old('web') }}">
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
-                        </div>
+                        </div> -->
 
 
 

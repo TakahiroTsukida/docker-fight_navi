@@ -11801,6 +11801,7 @@ p.review-text {
   position: absolute;
   vertical-align: middle;
   left: 82px;
+  top: 2px;
 }
 
 @media (min-width: 768px) {
@@ -11813,9 +11814,10 @@ p.review-text {
 p.review-point {
   display: inline;
   position: absolute;
-  left: 133px;
+  left: 135px;
   font-weight: bold;
-  width: 60px;
+  width: 54px;
+  top: -2px;
 }
 
 @media (min-width: 768px) {
@@ -12102,8 +12104,8 @@ form.favorite-form {
 .review-count {
   position: absolute;
   top: 0px;
-  left: 195px;
-  width: 54px;
+  left: 200px;
+  width: 47px;
 }
 
 @media (min-width: 768px) {
@@ -12153,6 +12155,10 @@ a.user-name {
 
 input.btn-outline-dark {
   border-radius: 15px;
+}
+
+.badge-danger {
+  margin-left: 5px;
 }
 
 .shop-name {

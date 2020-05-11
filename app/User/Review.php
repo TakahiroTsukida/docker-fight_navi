@@ -12,7 +12,8 @@ class Review extends Model
         'shop_id',
         'total_point',
         'learn',
-        'season',
+        'season_begin',
+        'season_end',
         'merit',
         'demerit',
     ];
@@ -22,9 +23,11 @@ class Review extends Model
     protected $dates = ['display_date'];
 
     public static $rules = array(
+        'secret_name' => 'nullable',
         'total_point' => 'required|numeric',
         'learn' => 'required',
-        'season' => 'required',
+        'season_begin' => 'required',
+        'season_end' => 'nullable',
         'merit' => 'nullable|max:300',
         'demerit' => 'nullable|max:300',
     );

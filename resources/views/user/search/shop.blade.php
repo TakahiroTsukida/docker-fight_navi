@@ -27,7 +27,7 @@
               <div class="card card-group page-title border-dark">
                   <div class="search-body">
                       <div class="search-list">
-                          <h2 class="search-name">{{ $shop->name }}</h2>
+                          <h1 class="search-name">{{ $shop->name }}</h1>
                           @if (Auth::guard('user')->check())
                               @if(isset($favorite))
                                   <form action="{{ action('User\FavoriteController@delete') }}" class="favorite-form">
@@ -283,16 +283,24 @@
               @foreach ($reviews as $review)
                   <div class="card page-title">
                       <div class="search-body">
-                          <a href="{{ action('User\UserController@user_info', ['user_id' => $review->user_id]) }}" class="user-name">
+                          @if ($review->secret_name == "1")
                               <div class="review-group">
-                                  @if(isset($review->user->image_path))
-                                      <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$review->user->image_path) }}" alt="name" class="rounded-circle"></p>
-                                  @else
-                                      <p class="review-user"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
-                                  @endif
-                                  <p class="user-name"> {{ $review->user->name }} </p>
+                                  <p class="review-user"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
+                                  <p class="user-name"> 匿名でのレビュー </p>
                               </div>
-                          </a>
+                          @else
+                              <a href="{{ action('User\UserController@user_info', ['user_id' => $review->user_id]) }}" class="user-name">
+                                  <div class="review-group">
+                                      @if(isset($review->user->image_path))
+                                          <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$review->user->image_path) }}" alt="name" class="rounded-circle"></p>
+                                      @else
+                                          <p class="review-user"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
+                                      @endif
+                                      <p class="user-name"> {{ $review->user->name }} </p>
+                                  </div>
+                              </a>
+                          @endif
+
                           <div class="search-list">
                               <a href="{{ action('User\UserController@shop', ['id' => $review->shop_id]) }}">
                                   <h2 class="search-name">{{ $review->shop->name }}</h2>
@@ -346,7 +354,7 @@
                           <div class="review-item">
                               <p class="review-text">時期</p>
                               <div class="review-star">
-                                  <p class="d-inline">{{ $review->season }}</p>
+                                  <p class="d-inline">{{ $review->season_begin }} 〜 {{ $review->season_end }}</p>
                               </div>
                           </div>
 

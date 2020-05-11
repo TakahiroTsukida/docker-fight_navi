@@ -37,14 +37,21 @@
                     @endif
                     <p class="myname">{{ $user->name }}</p>
                 </div>
+
                 @if (isset($user->gender))
                 <div class="profile">
-                    <p><i class="fas fa-transgender fa-lg"></i> {{ $user->gender }}</p>
+                    <p><i class="fas fa-transgender fa-lg"></i> {{ $user->gender }}
+                      @if (isset($user->secret_gender))
+                          <span class="badge badge-danger">非公開</span></p>
+                      @endif
                 </div>
                 @endif
                 @if (isset($user->birthday))
                 <div class="profile">
-                    <p><i class="fas fa-birthday-cake fa-lg"></i> {{ $user->birthday }}</p>
+                    <p><i class="fas fa-birthday-cake fa-lg"></i> {{ $user->birthday }}
+                      @if (isset($user->secret_birthday))
+                          <span class="badge badge-danger">非公開</span></p>
+                      @endif</p>
                 </div>
                 @endif
                 <div class="profile">
@@ -70,12 +77,17 @@
                     <div class="card page-title">
                         <div class="search-body">
                             <div class="review-group">
-                                @if(isset($review->user->image_path))
-                                    <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$review->user->image_path) }}" alt="name" class="rounded-circle"></p>
-                                @else
-                                    <p class="review-user"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
-                                @endif
-                                <p class="user-name"> {{ $review->user->name }} </p>
+                              @if ($review->secret_name == '1')
+                                  <p class="review-user"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
+                                  <p class="user-name"> 匿名で投稿 </p>
+                              @else
+                                  @if(isset($review->user->image_path))
+                                      <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$review->user->image_path) }}" alt="name" class="rounded-circle"></p>
+                                  @else
+                                      <p class="review-user"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
+                                  @endif
+                                  <p class="user-name"> {{ $review->user->name }} </p>
+                              @endif
                             </div>
                             <div class="search-list">
                                 <a href="{{ action('User\UserController@shop', ['id' => $review->shop_id]) }}">
@@ -129,7 +141,7 @@
                             <div class="review-item">
                                 <p class="review-text">時期</p>
                                 <div class="review-star">
-                                    <p class="d-inline">{{ $review->season }}</p>
+                                    <p class="d-inline">{{ $review->season_begin }} 〜 {{ $review->season_end }}</p>
                                 </div>
                             </div>
 
