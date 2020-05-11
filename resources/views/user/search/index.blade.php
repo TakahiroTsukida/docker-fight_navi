@@ -217,7 +217,7 @@
                                                   @break
                                               @endswitch
 
-                                              <p class="review-point">{{ $shop->point }}点</p>
+                                              <p class="review-point">{{ round($shop->point, 2) }}点</p>
                                               <p class="review-count"><i class="far fa-comment-alt fa-lg"></i> {{ $shop->reviews_count }}</p>
                                         @else
                                             <p class="review-point"></p>
