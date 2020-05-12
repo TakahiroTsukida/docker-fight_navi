@@ -374,6 +374,7 @@
                                        <strong>{{ $message }}</strong>
                                    </span>
                                 @enderror
+                                <p class="badge badge-danger">画像は1MB以下のものにしてください</p>
                                 <input type="file" name="image" class="file-upload @error('image') is-invalid @enderror" value="画像アップロード">
                             </div>
 

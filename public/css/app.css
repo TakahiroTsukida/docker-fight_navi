@@ -12154,11 +12154,77 @@ a.user-name {
 }
 
 input.btn-outline-dark {
-  border-radius: 15px;
+  border-radius: 8px;
 }
 
 .badge-danger {
   margin-left: 5px;
+}
+
+.season-b {
+  width: 46%;
+  display: inline;
+}
+
+@media (min-width: 576px) {
+  .season-b {
+    width: 164px;
+  }
+}
+
+@media (min-width: 768px) {
+  .season-b {
+    width: 208px;
+  }
+}
+
+.season-e {
+  width: 46%;
+  display: inline;
+}
+
+@media (min-width: 576px) {
+  .season-e {
+    width: 164px;
+  }
+}
+
+@media (min-width: 768px) {
+  .season-e {
+    width: 208px;
+  }
+}
+
+.season-btw {
+  width: 6%;
+  display: inline;
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  .season-btw {
+    width: 11px;
+  }
+}
+
+input.form-control::-webkit-input-placeholder {
+  color: #d4d4d4;
+}
+
+input.form-control::-moz-placeholder {
+  color: #d4d4d4;
+}
+
+input.form-control:-ms-input-placeholder {
+  color: #d4d4d4;
+}
+
+input.form-control::-ms-input-placeholder {
+  color: #d4d4d4;
+}
+
+input.form-control::placeholder {
+  color: #d4d4d4;
 }
 
 .shop-name {
@@ -12210,7 +12276,7 @@ input.btn-outline-dark {
 }
 
 .type-list {
-  margin-left: 70px;
+  margin-left: 80px;
 }
 
 @media (min-width: 768px) {

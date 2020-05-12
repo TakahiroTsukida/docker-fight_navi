@@ -54,7 +54,7 @@ class User extends Authenticatable //implements MustVerifyEmail
         'birthday' => 'nullable|before:now',
         'introduction' => 'nullable',
 
-        'image' => 'nullable|image|max:512',
+        'image' => 'nullable|image|max:1024',
     );
 
 

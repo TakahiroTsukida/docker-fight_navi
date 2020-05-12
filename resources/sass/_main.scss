@@ -758,11 +758,46 @@ a.user-name {
 }
 
 input.btn-outline-dark {
-    border-radius: 15px;
+    border-radius: 8px;
 }
 
 .badge-danger {
     margin-left: 5px;
+}
+
+.season-b {
+    width: 46%;
+    display: inline;
+    @media (min-width: 576px) {
+        width: 164px;
+    }
+    @include tab {
+        width: 208px;
+    }
+}
+
+.season-e {
+    width: 46%;
+    display: inline;
+    @media (min-width: 576px) {
+        width: 164px;
+    }
+    @include tab {
+        width: 208px;
+    }
+}
+
+.season-btw {
+    width: 6%;
+    display: inline;
+    text-align: center;
+    @media (min-width: 576px) {
+        width: 11px;
+    }
+}
+
+input.form-control::placeholder {
+    color: #d4d4d4;
 }
 // button.back-btn {
 //     border-width: 0;
