@@ -136,7 +136,8 @@
                           <!-- Button trigger modal -->
                           <button type="button" class="btn btn-primary show-btn" data-toggle="modal" data-target="#exampleModalLongshop{{ $shop->id }}">詳細</button>
                           @if (Auth::guard('admin')->check())
-                              @if ($shop->admin_id == Auth::user()->id)
+
+                              <!-- {{--@if ($shop->admin_id == $admin->id)
                                   <a href="{{ route('admin.shop.edit',['id' => $shop->id]) }}" class="btn btn-success show-btn">編集</a>
                                   <button type="button" class="btn btn-danger show-btn" data-toggle="modal" data-target="#exampleModalCenterdelete{{ $shop->id }}">削除</button>
 
@@ -158,9 +159,9 @@
                                               </div>
                                           </div>
                                       </div>
-
                                   </div>
-                              @endif
+                              @endif--}} -->
+
                           @else
                               @if (Auth::guard('user')->check())
                                   @if (isset($shop->reviews))

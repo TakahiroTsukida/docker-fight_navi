@@ -183,8 +183,7 @@ class UserController extends Controller
                 $request->page,
                 array('path' => $request->url())
             );
-        } else
-        {
+        } else {
             $reviews = null;
         }
 
