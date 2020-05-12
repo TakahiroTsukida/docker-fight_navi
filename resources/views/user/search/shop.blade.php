@@ -19,6 +19,16 @@
                   {{ session('flash_message_delete') }}
               </div>
               @endif
+              @if (session('flash_message_review_create'))
+              <div class="flash_message alert-primary text-center rounded py-3 my-2">
+                  {{ session('flash_message_review_create') }}
+              </div>
+              @endif
+              @if (session('flash_message_review_update'))
+              <div class="flash_message alert-success text-center rounded py-3 my-2">
+                  {{ session('flash_message_review_update') }}
+              </div>
+              @endif
               @if (session('flash_message_review_delete'))
               <div class="flash_message alert-danger text-center rounded py-3 my-2">
                   {{ session('flash_message_review_delete') }}
@@ -125,19 +135,46 @@
                           <!-- <button type="button" class="btn btn-success show-btn" onclick=history.back()>戻る</button> -->
                           <!-- Button trigger modal -->
                           <button type="button" class="btn btn-primary show-btn" data-toggle="modal" data-target="#exampleModalLongshop{{ $shop->id }}">詳細</button>
-                          @unless (Auth::guard('admin')->check())
+                          @if (Auth::guard('admin')->check())
+                              @if ($shop->admin_id == Auth::user()->id)
+                                  <a href="{{ route('admin.shop.edit',['id' => $shop->id]) }}" class="btn btn-success show-btn">編集</a>
+                                  <button type="button" class="btn btn-danger show-btn" data-toggle="modal" data-target="#exampleModalCenterdelete{{ $shop->id }}">削除</button>
+
+                                  <div class="modal fade" id="exampleModalCenterdelete{{ $shop->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                      <div class="modal-dialog modal-dialog-centered" role="document">
+                                          <div class="modal-content">
+                                              <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalCenterTitle">削除確認画面</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                              </div>
+                                              <div class="modal-body">
+                                                {{ $shop->name }} のデータを削除しますか？
+                                              </div>
+                                              <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                                                  <a href="{{ route('admin.shop.delete',['id' => $shop->id]) }}" class="btn btn-danger">削除</a>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                  </div>
+                              @endif
+                          @else
                               @if (Auth::guard('user')->check())
                                   @if (isset($shop->reviews))
-                                  @php
-                                      $user_reviews = $shop->reviews;
-                                      $user_review = $user_reviews->where('user_id', Auth::user()->id)->toArray();
-                                  @endphp
+                                      @php
+                                          $user_reviews = $shop->reviews;
+                                          $user_review = $user_reviews->where('user_id', Auth::user()->id)->toArray();
+                                      @endphp
                                   @endif
                               @endif
                               @if (empty($user_review))
-                              <a href="{{ action('User\ReviewController@add', ['id' => $shop->id]) }}" class="btn btn-success rv-ca-btn"><i class="fas fa-edit fa-lg review"></i>新規レビュー</a>
+                                  <a href="{{ action('User\ReviewController@add', ['id' => $shop->id]) }}" class="btn btn-success rv-ca-btn"><i class="fas fa-edit fa-lg review"></i>新規レビュー</a>
                               @endif
-                          @endunless
+
+                          @endif
                       </div>
 
                       <!-- Modal -->

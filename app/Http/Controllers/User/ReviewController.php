@@ -63,7 +63,8 @@ class ReviewController extends Controller
         }
 
         session()->flash('flash_message_review_create', $review->shop->name.' のレビューを作成しました');
-        return redirect('user/profile/mypage');
+        return redirect()->route('user.shop', ['id' => $shop->id]);
+        // return redirect('user/profile/mypage');
     }
 
 
@@ -130,7 +131,8 @@ class ReviewController extends Controller
               $shop->save();
           }
           session()->flash('flash_message_review_update', $review->shop->name.' のレビューを更新しました');
-          return redirect('user/profile/mypage');
+          return redirect()->route('user.shop', ['id' => $shop->id]);
+          // return redirect('user/profile/mypage');
     }
 
 

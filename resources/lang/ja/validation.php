@@ -124,6 +124,10 @@ return [
         'birthday' => '生年月日',
         'now' => '今日',
         'introduction' => '自己紹介',
+
+        'company_name' => '会社名',
+
+
         'shop_name' => 'ジム・道場名',
         'tel' => '電話番号',
         'type' => 'ジャンル',
@@ -131,6 +135,20 @@ return [
         'address_ken' => '都道府県',
         'address_city' => '市区町村',
         'address_other' => '市区町村以降',
+        'description' => '簡単な説明',
+        'open' => '営業日',
+        'close' => '定休日',
+
+        'price' => [
+            'name' => '会費名',
+            'price' => '金額',
+        ],
+
+        'personal' => [
+            'course' => 'コース名',
+            'time' => '時間',
+            'price' => '金額',
+        ],
 
         'trial' => '入会前の体験',
         'trial_price' => '体験の金額',
@@ -138,11 +156,10 @@ return [
 
         'total_point' => '総合評価',
         'learn' => '通い方',
-        'season' => '時期',
+        'season_begin' => '通いはじめ',
+        'season_end' => '通いおわり',
         'merit' => '良かったところ',
         'demerit' => 'イマイチなところ',
-
-        'season_begin' => '通いはじめ',
 
 
     ],

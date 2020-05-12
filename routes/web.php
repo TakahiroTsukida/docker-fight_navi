@@ -80,7 +80,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         'verify'   => false
     ]);
 
-
     // ログイン認証後
     Route::middleware('auth:admin')->group(function () {
 
