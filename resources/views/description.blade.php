@@ -47,7 +47,7 @@
               </div>
               <div class="card-body">
                   <p class="pb-2">fightなび事務局</p>
-                  <p><a href="mailto:fightnavi.information&#64;gmail.com">fightnavi.information@gmail.com</a></p>
+                  <p><a href="mailto:info&#64;fightgymnavi.com">info@fightgymnavi.com</a></p>
               </div>
           </div>
         </div>

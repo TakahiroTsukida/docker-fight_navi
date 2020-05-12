@@ -124,7 +124,7 @@
 
 
                             {{-- price --}}
-                            @foreach ($shop->prices as $price)
+                            <!-- @foreach ($shop->prices as $price)
                                 @if ($price->name == "入会金")
                                     <div class="form-group mt-4">
                                         <label class="shop-text">
@@ -138,23 +138,21 @@
                                         @enderror
                                     </div>
                                 @endif
-                            @endforeach
+                            @endforeach -->
 
                             <div class="form-group mt-4">
                                 @include('parts/admin/label/shop/price')
                             </div>
 
                             @foreach ($shop->prices as $price)
-                                @if ($price->name != "入会金")
-                                    <div class="form-group mt-4">
-                                        <input type="text" name="price[name][]" class="form-control center price-item-name" value="{{ $price->name }}">
-                                        <input type="number" name="price[price][]" class="form-control price-item" placeholder="半角数字" value="{{ $price->price }}">
-                                        <p class="price-en">円（税込）</p>
-                                        @error('price[price][]')
-                                            <p class="error">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                @endif
+                                <div class="form-group mt-4">
+                                    <input type="text" name="price[name][]" class="form-control price-item-name" value="{{ $price->name }}">
+                                    <input type="number" name="price[price][]" class="form-control price-item" placeholder="半角数字" value="{{ $price->price }}">
+                                    <p class="price-en">円（税込）</p>
+                                    @error('price[price][]')
+                                        <p class="error">{{ $message }}</p>
+                                    @enderror
+                                </div>
                             @endforeach
 
                             <div class="form-group mt-4">

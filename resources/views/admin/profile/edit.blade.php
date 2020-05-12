@@ -39,8 +39,18 @@
                                 <div class="form-group">
                                     <label>性別</label>
                                     <div>
-                                        <label class="ml-sm-1 mr-5">
-                                            {{ $admin->gender }}
+                                        @error('gender')
+                                            <div>
+                                                <p class="error price-en">{{ $message }}</p>
+                                            </div>
+                                        @enderror
+                                        <label class="radio-inline ml-sm-1 mr-5">
+                                            <input type="radio" name="gender" value="男性" {{ $admin->gender == '男性' ? 'checked="checked"' : '' }}>
+                                            男性
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="gender" value="女性" {{ $admin->gender == '女性' ? 'checked="checked"' : '' }}>
+                                            女性
                                         </label>
                                     </div>
                                 </div>

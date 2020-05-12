@@ -48,7 +48,7 @@
 
         <div class="row justify-content-center">
             <div class="col-sm-12">
-                <h2 class="text-center page-title">最近の投稿</h2>
+                <h2 class="text-center page-title">投稿したレビュー（{{ $reviews->total() }}件）</h2>
             </div>
         </div>
 

@@ -35,8 +35,8 @@
                       <div class="body">
 
                           <div>
-                              <h1>登録情報</h1>
-                              <h2>個人情報</h2>
+                              <h2>登録情報</h2>
+                              <h3>個人情報</h3>
                           </div>
 
                           <div class="profile">
@@ -44,7 +44,7 @@
                               <p class="admin">{{ $admin->name }}</p>
                           </div>
 
-                          @if (isset($admin->geder))
+                          @if (isset($admin->gender))
                           <div class="profile">
                               <label class="admin-label">性別</label>
                               <p class="admin">{{ $admin->gender }}</p>
@@ -65,9 +65,9 @@
 
                           <div class="profile mt-3">
                               @if (isset($admin->company_name, $admin->tel, $admin->address_number, $admin->address_ken, $admin->address_city, $admin->web))
-                                  <h2>会社情報</h2>
+                                  <h3>会社情報</h3>
                               @else
-                                  <label>会社情報が登録されていません</label>
+                                  <h3>会社情報が登録されていません</h3>
                               @endif
                           </div>
 

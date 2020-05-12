@@ -11112,13 +11112,13 @@ a.nav-item::after {
 
 @media (min-width: 374px) {
   a.nav-item::after {
-    width: 80%;
+    width: 100%;
   }
 }
 
 @media (min-width: 500px) {
   a.nav-item::after {
-    width: 50%;
+    width: 70%;
   }
 }
 
@@ -11153,25 +11153,25 @@ a.nav-item-login::after {
 
 @media (min-width: 350px) {
   a.nav-item-login::after {
-    width: 80%;
+    width: 100%;
   }
 }
 
 @media (min-width: 500px) {
   a.nav-item-login::after {
-    width: 50%;
+    width: 70%;
   }
 }
 
 @media (min-width: 768px) {
   a.nav-item-login::after {
-    width: 40%;
+    width: 50%;
   }
 }
 
 @media (min-width: 992px) {
   a.nav-item-login::after {
-    width: 25%;
+    width: 30%;
   }
 }
 

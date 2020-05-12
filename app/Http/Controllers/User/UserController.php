@@ -156,6 +156,8 @@ class UserController extends Controller
 
 
 
+
+
     public function shop(Request $request)
     {
         $shop = Shop::find($request->id);
@@ -192,6 +194,8 @@ class UserController extends Controller
             'reviews' => $reviews,
         ]);
     }
+
+
 
 
 

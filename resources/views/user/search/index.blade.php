@@ -120,6 +120,9 @@
 
             <div class=""> -->
                 @if (isset($shops))
+                    <div class="page-title title">
+                        <p>検索結果（{{ $shops->total() }}件）</p>
+                    </div>
                     @foreach ($shops as $shop)
 
                             @if (Auth::guard('user')->check())
@@ -284,24 +287,10 @@
 
                                             @if (isset($shop->prices))
                                             <div class="profile">
-                                                <i class="far fa-handshake"></i>
-                                                @foreach ($shop->prices as $price)
-                                                    @if ($price->name == "入会金")
-                                                    <label class="join">{{ $price->name }}</label>
-                                                    <p class="join"><strong>{{ $price->price }}</strong><span class="symbol">円（税込）</span></p><br>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                            @endif
-
-                                            @if (isset($shop->prices))
-                                            <div class="profile">
                                                 <i class="fas fa-yen-sign fa-lg"></i>
-                                                <label class="shop-about">月会費</label>
+                                                <label class="shop-about">会費</label>
                                                 @foreach ($shop->prices as $price)
-                                                    @if ($price->name != "入会金")
                                                     <p class="shop-price">{{ $price->name }} <strong>{{ $price->price }}</strong><span class="symbol">円（税込）</span></p>
-                                                    @endif
                                                 @endforeach
                                             </div>
                                             @endif
@@ -379,10 +368,9 @@
                     <div class="page-title">
                         {{ $shops->appends(request()->input())->links() }}
                     </div>
-
                 @else
                     <div class="page-title title">
-                        <label>検索結果がありません</label>
+                        <p>検索結果（0件）</p>
                     </div>
                 @endif
 

@@ -26,7 +26,7 @@
                                 @enderror
                                 @if (isset($user->image_path))
                                 <div class="form-text text-info">
-                                    <p>設定中:  {{ isset($user->image_path) ? $user->image_path : '' }}</p>
+                                    <p>設定中</p>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
@@ -66,19 +66,11 @@
                                             </div>
                                         @enderror
                                         <label class="radio-inline ml-sm-1 mr-5">
-                                            @if (isset($user->gender))
                                             <input type="radio" name="gender" value="男性" {{ $user->gender == '男性' ? 'checked="checked"' : '' }}>
-                                            @else
-                                            <input type="radio" name="gender" value="男性">
-                                            @endif
                                             男性
                                         </label>
                                         <label class="radio-inline">
-                                            @if (isset($profile->gender))
                                             <input type="radio" name="gender" value="女性" {{ $user->gender == '女性' ? 'checked="checked"' : '' }}>
-                                            @else
-                                            <input type="radio" name="gender" value="女性">
-                                            @endif
                                             女性
                                         </label>
                                     </div>
@@ -86,7 +78,7 @@
                                 <div class="form-group">
                                     <label>
                                         <input type="checkbox" name="secret_gender" value="1" {{ $user->secret_gender == '1' ? 'checked="checked"' : '' }}>
-                                        非公開
+                                        性別を非公開
                                     </label>
                                 </div>
 
@@ -103,7 +95,7 @@
                                 <div class="form-group">
                                     <label>
                                         <input type="checkbox" name="secret_birthday" value="1" {{ $user->secret_birthday == '1' ? 'checked="checked"' : '' }}>
-                                        非公開
+                                        年齢を非公開
                                     </label>
                                 </div>
 

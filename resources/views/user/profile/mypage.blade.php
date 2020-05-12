@@ -35,7 +35,7 @@
                     @else
                         <p class="profile-img"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
                     @endif
-                    <p class="myname">{{ $user->name }}</p>
+                    <h1 class="myname">{{ $user->name }}</h1>
                 </div>
 
                 @if (isset($user->gender))
@@ -65,7 +65,7 @@
 
         <div class="row justify-content-center">
             <div class="col-sm-12">
-                <h2 class="text-center page-title">最近の投稿</h2>
+                <h2 class="text-center page-title">投稿したレビュー（{{ $reviews->total() }}件）</h2>
             </div>
         </div>
 

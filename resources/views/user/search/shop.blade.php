@@ -186,24 +186,10 @@
 
                                       @if (isset($shop->prices))
                                       <div class="profile">
-                                          <i class="far fa-handshake fa-lg"></i>
-                                          @foreach ($shop->prices as $price)
-                                              @if ($price->name == "入会金")
-                                              <label class="join">{{ $price->name }}</label>
-                                              <p class="join"><strong>{{ $price->price }}</strong><span class="symbol">円（税込）</span></p><br>
-                                              @endif
-                                          @endforeach
-                                      </div>
-                                      @endif
-
-                                      @if (isset($shop->prices))
-                                      <div class="profile">
                                           <i class="fas fa-yen-sign fa-lg"></i>
-                                          <label class="shop-about">月会費</label>
+                                          <label class="shop-about">会費</label>
                                           @foreach ($shop->prices as $price)
-                                              @if ($price->name != "入会金")
                                               <p class="shop-price">{{ $price->name }} <strong>{{ $price->price }}</strong><span class="symbol">円（税込）</span></p>
-                                              @endif
                                           @endforeach
                                       </div>
                                       @endif
@@ -275,11 +261,12 @@
                   </div>
               </div>
 
-              <div class="page-title title">
-                  <h2>レビュー ({{ $shop->reviews_count }}件)</h2>
-              </div>
+
 
               @if(isset($reviews))
+                  <div class="page-title title">
+                      <h2>レビュー ({{ $reviews->total() }}件)</h2>
+                  </div>
               @foreach ($reviews as $review)
                   <div class="card page-title">
                       <div class="search-body">
@@ -413,8 +400,8 @@
 
             @endforeach
             @else
-                <div class="col admin-login">
-                    <p class="title">現在レビューはありません</p>
+                <div class="page-title title">
+                    <h2>レビュー (0件)</h2>
                 </div>
             @endif
 

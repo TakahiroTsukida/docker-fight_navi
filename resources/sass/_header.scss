@@ -229,10 +229,10 @@ a.nav-item::after {
     transition: transform .3s;
 
     @media (min-width: 374px) {
-        width: 80%;
+        width: 100%;
     }
     @media (min-width: 500px) {
-        width: 50%;
+        width: 70%;
     }
     @include tab {
         width: 50%;
@@ -261,16 +261,16 @@ a.nav-item-login::after {
     transform-origin: left top;
     transition: transform .3s;
     @media (min-width: 350px) {
-        width: 80%;
+        width: 100%;
     }
     @media (min-width: 500px) {
-        width: 50%;
+        width: 70%;
     }
     @include tab {
-        width: 40%;
+        width: 50%;
     }
     @include pc {
-        width: 25%;
+        width: 30%;
     }
 }
 
