@@ -12337,12 +12337,22 @@ th.num {
 }
 
 th.name {
-  width: 60%;
+  width: 50%;
 }
 
 @media (min-width: 576px) {
   th.name {
-    width: 70%;
+    width: 53%;
+  }
+}
+
+th.price-lg {
+  width: 36%;
+}
+
+@media (min-width: 576px) {
+  th.price-lg {
+    width: 39%;
   }
 }
 

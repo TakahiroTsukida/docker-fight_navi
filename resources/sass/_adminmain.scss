@@ -100,9 +100,16 @@ th {
     }
 
     &.name {
-        width: 60%;
+        width: 50%;
         @media (min-width: 576px) {
-            width: 70%;
+            width: 53%;
+        }
+    }
+
+    &.price-lg {
+        width: 36%;
+        @media (min-width: 576px) {
+            width: 39%;
         }
     }
 

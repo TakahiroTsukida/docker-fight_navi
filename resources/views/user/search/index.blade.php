@@ -293,7 +293,7 @@
                                                         <tr>
                                                             <th class="num"></th>
                                                             <th class="name">会費名</th>
-                                                            <th class="price">金額</th>
+                                                            <th class="price-lg">金額</th>
                                                         </tr>
                                                         @foreach ($shop->prices as $price)
                                                             <tr>
