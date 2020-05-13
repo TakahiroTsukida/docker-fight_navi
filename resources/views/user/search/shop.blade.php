@@ -218,7 +218,7 @@
                                           <label class="shop-about d-inline"><i class="fas fa-star" style="color: #fbca4d;"></i>入会前の体験：</label>
                                               <p class="type-text d-inline">{{ $shop->trial }}</p>
                                               @if ($shop->trial == '有料')
-                                              <p class="type-text d-inline">{{ $shop->trial_price }}<span class="symbol">円</span></p>
+                                              <p class="type-text d-inline">{{ number_format($shop->trial_price) }}<span class="symbol">円</span></p>
                                               @endif
                                       </div>
 
@@ -236,7 +236,7 @@
                                                       <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $price->name }}</td>
-                                                        <td><strong>{{ $price->price }}</strong><span class="symbol">円</span></td>
+                                                        <td><strong>{{ number_format($price->price) }}</strong><span class="symbol">円</span></td>
                                                       </tr>
                                                   @endforeach
                                               </table>
@@ -259,7 +259,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $personal->course }}</td>
                                                         <td>{{ $personal->time }}<small>分</small></td>
-                                                        <td><strong>{{ $personal->price }}</strong><small>円</small></td>
+                                                        <td><strong>{{ number_format($personal->price) }}</strong><small>円</small></td>
                                                       </tr>
                                                   @endforeach
                                               </table>

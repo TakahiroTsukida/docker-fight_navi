@@ -208,7 +208,7 @@
                                   <label class="shop-about d-inline"><i class="fas fa-star" style="color: #fbca4d;"></i>入会前の体験：</label>
                                       <p class="type-text d-inline">{{ $shop->trial }}</p>
                                       @if ($shop->trial == '有料')
-                                      <p class="type-text d-inline">{{ $shop->trial_price }}<span class="symbol">円</span></p>
+                                      <p class="type-text d-inline">{{ number_format($shop->trial_price) }}<span class="symbol">円</span></p>
                                       @endif
                               </div>
 
@@ -229,30 +229,49 @@
                               </div>
                               @endif -->
 
-                              @if (isset($shop->prices))
-                              <div class="profile">
-                                  <i class="fas fa-yen-sign fa-lg"></i>
-                                  <label class="shop-about">会費</label>
-                                  @foreach ($shop->prices as $price)
-                                      <p class="shop-price">{{ $price->name }} <strong>{{ $price->price }}</strong><span class="symbol">円（税込）</span></p>
-                                  @endforeach
-                              </div>
+
+                              @if (count($shop->prices) >= 1)
+                                  <div class="profile">
+                                      <i class="fas fa-yen-sign fa-lg"></i>
+                                      <label class="shop-about">会費<small>（税込）</small></label>
+                                      <table class="table table-bordered">
+                                          <tr>
+                                              <th class="num"></th>
+                                              <th class="name">会費名</th>
+                                              <th class="price-lg">金額</th>
+                                          </tr>
+                                          @foreach ($shop->prices as $price)
+                                              <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $price->name }}</td>
+                                                <td><strong>{{ number_format($price->price) }}</strong><span class="symbol">円</span></td>
+                                              </tr>
+                                          @endforeach
+                                      </table>
+                                  </div>
                               @endif
 
-                              @if (isset($shop->personals))
-                              <div class="profile mt-3">
-                                  <i class="fas fa-user-friends fa-lg"></i>
-                                  <label class="shop-about">パーソナルトレーニング会費</label>
-                              </div>
-                                  @foreach ($shop->personals as $personal)
-                                      <div class="shop-price">
-                                          <p class="personal-course">{{ $personal->course }}</p>
-                                          <p class="personal-time">{{ $personal->time }} 分</p>
-                                          <p class="personal-price">{{ $personal->price }}
-                                             <span class="symbol">円（税込）</span>
-                                          </p><br>
-                                      </div>
-                                  @endforeach
+                              @if (count($shop->personals) >= 1)
+                                  <div class="profile">
+                                      <i class="fas fa-user-friends fa-lg"></i>
+                                      <label class="shop-about">パーソナルトレーニング会費<small>（税込）</small></label>
+                                      <table class="table table-bordered">
+                                          <tr>
+                                              <th class="num"></th>
+                                              <th class="course">コース名</th>
+                                              <th class="time">時間</th>
+                                              <th class="price">金額</th>
+                                          </tr>
+                                          @foreach ($shop->personals as $personal)
+                                              <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $personal->course }}</td>
+                                                <td>{{ $personal->time }}<small>分</small></td>
+                                                <td><strong>{{ number_format($personal->price) }}</strong><small>円</small></td>
+                                              </tr>
+                                          @endforeach
+                                      </table>
+                                  </div>
                               @endif
 
                               @if (isset($shop->open))
