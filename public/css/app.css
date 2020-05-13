@@ -12321,53 +12321,58 @@ input.form-control::placeholder {
   display: inline;
 }
 
-.price-name {
-  font-size: 14px;
-  margin-left: 30px;
-  display: block;
-}
-
-@media (min-width: 768px) {
-  .price-name {
-    font-size: 16px;
-    display: inline;
-  }
-}
-
 .shop-price {
   margin-left: 35px;
   margin-top: 10px;
 }
 
-.personal-course {
-  display: block;
-  margin: 10px 0 0 0;
+th.num {
+  width: 14%;
 }
 
-@media (min-width: 768px) {
-  .personal-course {
-    display: inline;
+@media (min-width: 576px) {
+  th.num {
+    width: 8%;
   }
 }
 
-.personal-time {
-  display: inline;
-  margin-left: 30px;
+th.name {
+  width: 60%;
 }
 
-@media (min-width: 768px) {
-  .personal-time {
-    margin-left: 15px;
+@media (min-width: 576px) {
+  th.name {
+    width: 70%;
   }
 }
 
-.personal-price {
-  display: inline;
+th.course {
+  width: 40%;
 }
 
-@media (min-width: 768px) {
-  .personal-price {
-    margin-left: 10px;
+@media (min-width: 576px) {
+  th.course {
+    width: 53%;
+  }
+}
+
+th.time {
+  width: 20%;
+}
+
+@media (min-width: 576px) {
+  th.time {
+    width: 17%;
+  }
+}
+
+th.price {
+  width: 26%;
+}
+
+@media (min-width: 576px) {
+  th.price {
+    width: 22%;
   }
 }
 

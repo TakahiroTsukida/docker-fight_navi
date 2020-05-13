@@ -90,6 +90,7 @@ class LoginController extends Controller
         }
         // ログイン処理
         \Auth::login($user, true);
+        session()->flash('flash_message_user_login', 'ログインしました');
         return redirect('user/profile/mypage');
     }
 

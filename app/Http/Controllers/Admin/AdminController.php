@@ -26,6 +26,7 @@ class AdminController extends Controller
             $request->page,
             array('path' => $request->url())
         );
+
         return view('admin.profile.mypage', ['admin' => $admin, 'shops' => $shops]);
     }
 

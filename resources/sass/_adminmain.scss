@@ -85,44 +85,52 @@ $tab: 768px; // タブレット
   display: inline;
 }
 
-.price-name {
-  font-size: 14px;
-  margin-left: 30px;
-  display: block;
-  @include tab {
-    font-size: 16px;
-    display: inline;
-  }
-}
 
 .shop-price {
   margin-left: 35px;
   margin-top: 10px;
 }
 
-.personal-course {
-  display: block;
-  margin: 10px 0 0 0;
+th {
+    &.num {
+        width: 14%;
+        @media (min-width: 576px) {
+            width: 8%
+        }
+    }
 
-  @include tab {
-    display: inline;
-  }
+    &.name {
+        width: 60%;
+        @media (min-width: 576px) {
+            width: 70%;
+        }
+    }
+
+    &.course {
+        width: 40%;
+        @media (min-width: 576px) {
+            width: 53%;
+        }
+    }
+
+    &.time {
+        width: 20%;
+        @media (min-width: 576px) {
+            width: 17%;
+        }
+    }
+
+    &.price {
+        width: 26%;
+        @media (min-width: 576px) {
+            width: 22%;
+        }
+    }
 }
 
-.personal-time {
-  display: inline;
-  margin-left: 30px;
-  @include tab {
-    margin-left: 15px;
-  }
-}
 
-.personal-price {
-  display: inline;
-  @include tab {
-    margin-left: 10px;
-  }
-}
+
+
 
 .open {
   margin-left: 30px;
