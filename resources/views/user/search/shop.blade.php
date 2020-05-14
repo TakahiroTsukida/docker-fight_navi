@@ -137,7 +137,7 @@
                           <button type="button" class="btn btn-primary show-btn" data-toggle="modal" data-target="#exampleModalLongshop{{ $shop->id }}">詳細</button>
                           @if (Auth::guard('admin')->check())
 
-                              <!-- {{--@if ($shop->admin_id == $admin->id)
+                              @if ($shop->admin_id == Auth::guard('admin')->user()->id)
                                   <a href="{{ route('admin.shop.edit',['id' => $shop->id]) }}" class="btn btn-success show-btn">編集</a>
                                   <button type="button" class="btn btn-danger show-btn" data-toggle="modal" data-target="#exampleModalCenterdelete{{ $shop->id }}">削除</button>
 
@@ -151,7 +151,10 @@
                                                   </button>
                                               </div>
                                               <div class="modal-body">
-                                                {{ $shop->name }} のデータを削除しますか？
+                                                  <div class="text-left">
+                                                      <p>{{ $shop->name }} のデータを削除するとユーザーが書いたレビューやお気に入り登録なども削除されます。<br>
+                                                      本当に {{ $shop->name }} を削除しますか？</p>
+                                                  </div>
                                               </div>
                                               <div class="modal-footer">
                                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
@@ -160,7 +163,7 @@
                                           </div>
                                       </div>
                                   </div>
-                              @endif--}} -->
+                              @endif
 
                           @else
                               @if (Auth::guard('user')->check())

@@ -13,7 +13,7 @@ use App\User\Profile;
 use App\User\Review;
 use App\User\Favorite;
 use App\Admin\Shop;
-
+use App\Admin\Admin;
 use Carbon\Carbon;
 use Storage;
 
@@ -161,16 +161,17 @@ class UserController extends Controller
     public function shop(Request $request)
     {
         $shop = Shop::find($request->id);
-        $user = Auth::user();
+        // $user = Auth::user();
+        // dd(Auth::user());
         // //$favoriteにユーザーがログインしており、かつそのshopをお気に入りをしているかをチェック
         $favorite = null;
-        if(isset($user))
+        if(Auth::guard('user')->check())
         {
             if (count($shop->favorites) >= 1)
             {
                 $favorites = $shop->favorites;
                 $favorites_count = count($favorites);
-                $favorite = $favorites->where('user_id', $user->id)->first();
+                $favorite = $favorites->where('user_id', Auth::user()->id)->first();
             }
         }
         $shop_reviews = $shop->reviews;
