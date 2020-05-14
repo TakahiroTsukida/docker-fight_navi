@@ -259,7 +259,7 @@
 
                                         @if (isset($shop->image_path))
                                             <div class="image-group">
-                                                <img src="{{ asset('storage/image/shop_images/'.$shop->image_path) }}">
+                                                <p class="shop-img"><img src="{{ asset('storage/image/shop_images/'.$shop->image_path) }}"></p>
                                             </div>
                                         @endif
 

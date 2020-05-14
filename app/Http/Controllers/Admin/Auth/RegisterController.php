@@ -30,8 +30,11 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::ADMIN_HOME;
-
+    // protected $redirectTo = RouteServiceProvider::ADMIN_HOME;
+    protected function redirectTo() {
+        session()->flash('flash_message_admin_login', 'ログインしました');
+        return '/admin/profile/mypage';
+    }
     /**
      * Create a new controller instance.
      *

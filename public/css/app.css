@@ -12326,6 +12326,16 @@ input.form-control::placeholder {
   margin-top: 10px;
 }
 
+td {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  td {
+    font-size: 15px;
+  }
+}
+
 th.num {
   width: 14%;
 }

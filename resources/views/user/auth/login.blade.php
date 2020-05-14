@@ -9,6 +9,11 @@
                 {{ session('flash_message_user_logout') }}
             </div>
             @endif
+            @if (session('flash_message_user_email_unique'))
+            <div class="flash_message alert-danger text-center rounded py-3 my-2">
+                {{ session('flash_message_user_email_unique') }}
+            </div>
+            @endif
             <div class="card page-title">
                 <div class="card-body">
                     <h5 class="text-center mt-5 mb-3">ログイン</h5>
@@ -68,7 +73,7 @@
                     </form>
 
                     @include('parts/google_auth')
-                    
+
                 </div>
             </div>
         </div>

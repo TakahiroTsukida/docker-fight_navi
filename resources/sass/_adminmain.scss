@@ -91,6 +91,13 @@ $tab: 768px; // タブレット
   margin-top: 10px;
 }
 
+td {
+    font-size: 14px;
+    @include tab {
+        font-size: 15px;
+    }
+}
+
 th {
     &.num {
         width: 14%;

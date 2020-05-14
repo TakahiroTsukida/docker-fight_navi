@@ -194,10 +194,10 @@
 
                                   @if (isset($shop->image_path))
                                       <div class="image-group">
-                                          <p><img src="{{ asset('storage/image/shop_images/'.$shop->image_path) }}"></p>
+                                          <p class="shop-img"><img src="{{ asset('storage/image/shop_images/'.$shop->image_path) }}"></p>
                                       </div>
                                   @else
-                                      <div class="profile">
+                                      <div class="image-group">
                                           <p><img src="{{ asset('image/l_e_others_501.png') }}"></p>
                                       </div>
                                   @endif
@@ -233,7 +233,7 @@
                                                   <tr>
                                                       <th class="num"></th>
                                                       <th class="name">会費名</th>
-                                                      <th class="price">金額</th>
+                                                      <th class="price-lg">金額</th>
                                                   </tr>
                                                   @foreach ($shop->prices as $price)
                                                       <tr>
@@ -321,150 +321,149 @@
               </div>
 
 
-
               @if(isset($reviews))
                   <div class="page-title title">
                       <h2>レビュー ({{ $reviews->total() }}件)</h2>
                   </div>
-              @foreach ($reviews as $review)
-                  <div class="card page-title">
-                      <div class="search-body">
-                          @if ($review->secret_name == "1")
-                              <div class="review-group">
-                                  <p class="review-user"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
-                                  <p class="user-name"> 匿名でのレビュー </p>
-                              </div>
-                          @else
-                              <a href="{{ action('User\UserController@user_info', ['user_id' => $review->user_id]) }}" class="user-name">
+                  @foreach ($reviews as $review)
+                      <div class="card page-title">
+                          <div class="search-body">
+                              @if ($review->secret_name == "1")
                                   <div class="review-group">
-                                      @if(isset($review->user->image_path))
-                                          <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$review->user->image_path) }}" alt="name" class="rounded-circle"></p>
-                                      @else
-                                          <p class="review-user"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
-                                      @endif
-                                      <p class="user-name"> {{ $review->user->name }} </p>
+                                      <p class="review-user"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
+                                      <p class="user-name"> 匿名でのレビュー </p>
                                   </div>
-                              </a>
-                          @endif
-
-                          <div class="search-list">
-                              <a href="{{ action('User\UserController@shop', ['id' => $review->shop_id]) }}">
-                                  <h2 class="search-name">{{ $review->shop->name }}</h2>
-                              </a>
-                          </div>
-                          <div class="search-list">
-                              <p class="search-name"><i class="fas fa-map-marker-alt fa-lg mr-1"></i> {{ $review->shop->address_ken }}  {{ $review->shop->address_city }}</p>
-                          </div>
-                          <div class="review-item">
-                              <p class="review-text">総合評価</p>
-                                  <div class="review-star">
-                                      @switch ($review->total_point)
-                                          @case ($review->total_point = 1)
-                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          @break
-                                          @case ($review->total_point = 2)
-                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          @break
-                                          @case ($review->total_point = 3)
-                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          @break
-                                          @case ($review->total_point = 4)
-                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          @break
-                                          @case ($review->total_point = 5)
-                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                              <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          @break
-                                      @endswitch
-
-                                      <p class="review-point">{{ $review->total_point }}点</p>
-                                  </div>
-                          </div>
-
-                          <div class="review-item">
-                              <p class="review-text">通い方</p>
-                              <div class="review-star">
-                                  <p class="d-inline">{{ $review->learn }}</p>
-                              </div>
-                          </div>
-
-                          <div class="review-item">
-                              <p class="review-text">時期</p>
-                              <div class="review-star">
-                                  <p class="d-inline">{{ $review->season_begin }} 〜 {{ $review->season_end }}</p>
-                              </div>
-                          </div>
-
-                          <div class="review-text-group">
-                              <p><i class="far fa-thumbs-up fa-lg"></i>良かったところ</p>
-                              <p class="review-merit"> {{ $review->merit }} </p>
-                          </div>
-
-                          <div class="review-text-group">
-                              <p><i class="far fa-hand-point-down fa-lg"></i>イマイチなところ</p>
-                              <p class="review-merit"> {{ $review->demerit }} </p>
-                          </div>
-
-                          <div class="review-up-group">
-                              <p class="review-update"><i class="fas fa-undo fa-lg"></i>更新日時</p>
-                              <p class="review-updated_at">{{ $review->updated_at->format('Y / m / d') }}</p>
-                          </div>
-                          @if (Auth::guard('user')->check())
-                              @if ($review->user_id == Auth::user()->id)
-                                  <div class="revier-btn-group">
-                                      <div>
-                                          <a href="{{ route('user.review.edit', ['review_id' => $review->id, 'shop_id' => $shop->id]) }}" class="btn btn-success show-btn">編集</a>
-                                          <button type="button" class="btn btn-danger show-btn" data-toggle="modal" data-target="#exampleModalCenter{{ $review->id }}">
-                                            削除
-                                          </button>
+                              @else
+                                  <a href="{{ action('User\UserController@user_info', ['user_id' => $review->user_id]) }}" class="user-name">
+                                      <div class="review-group">
+                                          @if(isset($review->user->image_path))
+                                              <p class="review-user"><img src="{{ asset('storage/image/profile_images/'.$review->user->image_path) }}" alt="name" class="rounded-circle"></p>
+                                          @else
+                                              <p class="review-user"><img src="{{ asset('image/macOS-Guest-user-logo-icon.jpg') }}" alt="name" class="rounded-circle"></p>
+                                          @endif
+                                          <p class="user-name"> {{ $review->user->name }} </p>
                                       </div>
-                                  </div>
-
-                                  <!-- Modal -->
-                                  <div class="modal fade" id="exampleModalCenter{{ $review->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalCenterTitle">削除確認画面</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                        </div>
-                                        <div class="modal-body">
-                                          {{ $review->shop->name }} のレビューを削除しますか？
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                                          <a href="{{ route('user.review.delete',['review_id' => $review->id]) }}" class="btn btn-danger">削除</a>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-
-
+                                  </a>
                               @endif
-                          @endif
 
+                              <div class="search-list">
+                                  <a href="{{ action('User\UserController@shop', ['id' => $review->shop_id]) }}">
+                                      <h2 class="search-name">{{ $review->shop->name }}</h2>
+                                  </a>
+                              </div>
+                              <div class="search-list">
+                                  <p class="search-name"><i class="fas fa-map-marker-alt fa-lg mr-1"></i> {{ $review->shop->address_ken }}  {{ $review->shop->address_city }}</p>
+                              </div>
+                              <div class="review-item">
+                                  <p class="review-text">総合評価</p>
+                                      <div class="review-star">
+                                          @switch ($review->total_point)
+                                              @case ($review->total_point = 1)
+                                                  <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              @break
+                                              @case ($review->total_point = 2)
+                                                  <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                  <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              @break
+                                              @case ($review->total_point = 3)
+                                                  <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                  <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                  <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              @break
+                                              @case ($review->total_point = 4)
+                                                  <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                  <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                  <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                  <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              @break
+                                              @case ($review->total_point = 5)
+                                                  <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                  <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                  <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                  <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                                  <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
+                                              @break
+                                          @endswitch
+
+                                          <p class="review-point">{{ $review->total_point }}点</p>
+                                      </div>
+                              </div>
+
+                              <div class="review-item">
+                                  <p class="review-text">通い方</p>
+                                  <div class="review-star">
+                                      <p class="d-inline">{{ $review->learn }}</p>
+                                  </div>
+                              </div>
+
+                              <div class="review-item">
+                                  <p class="review-text">時期</p>
+                                  <div class="review-star">
+                                      <p class="d-inline">{{ $review->season_begin }} 〜 {{ $review->season_end }}</p>
+                                  </div>
+                              </div>
+
+                              <div class="review-text-group">
+                                  <p><i class="far fa-thumbs-up fa-lg"></i>良かったところ</p>
+                                  <p class="review-merit"> {{ $review->merit }} </p>
+                              </div>
+
+                              <div class="review-text-group">
+                                  <p><i class="far fa-hand-point-down fa-lg"></i>イマイチなところ</p>
+                                  <p class="review-merit"> {{ $review->demerit }} </p>
+                              </div>
+
+                              <div class="review-up-group">
+                                  <p class="review-update"><i class="fas fa-undo fa-lg"></i>更新日時</p>
+                                  <p class="review-updated_at">{{ $review->updated_at->format('Y / m / d') }}</p>
+                              </div>
+                              @if (Auth::guard('user')->check())
+                                  @if ($review->user_id == Auth::user()->id)
+                                      <div class="revier-btn-group">
+                                          <div>
+                                              <a href="{{ route('user.review.edit', ['review_id' => $review->id, 'shop_id' => $shop->id]) }}" class="btn btn-success show-btn">編集</a>
+                                              <button type="button" class="btn btn-danger show-btn" data-toggle="modal" data-target="#exampleModalCenter{{ $review->id }}">
+                                                削除
+                                              </button>
+                                          </div>
+                                      </div>
+
+                                      <!-- Modal -->
+                                      <div class="modal fade" id="exampleModalCenter{{ $review->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalCenterTitle">削除確認画面</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              {{ $review->shop->name }} のレビューを削除しますか？
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                                              <a href="{{ route('user.review.delete',['review_id' => $review->id]) }}" class="btn btn-danger">削除</a>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+
+                                  @endif
+                              @endif
+
+                          </div>
                       </div>
-                  </div>
 
-            @endforeach
+                @endforeach
+                {{ $reviews->appends(request()->input())->links() }}
             @else
                 <div class="page-title title">
                     <h2>レビュー (0件)</h2>
                 </div>
             @endif
 
-            {{ $reviews->appends(request()->input())->links() }}
             </div>
         </div>
     </div>

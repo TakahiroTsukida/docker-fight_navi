@@ -187,7 +187,7 @@ class UserController extends Controller
         } else {
             $reviews = null;
         }
-
+// dd($reviews);
         return view('user.search.shop', [
             'shop' => $shop,
             'favorite' => $favorite,

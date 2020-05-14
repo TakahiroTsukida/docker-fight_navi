@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Admin\Admin;
 use Socialite;
 
 class LoginController extends Controller
@@ -84,9 +85,17 @@ class LoginController extends Controller
         $gUser = Socialite::driver('google')->stateless()->user();
         // email が合致するユーザーを取得
         $user = User::where('email', $gUser->email)->first();
+        $admin = Admin::where('email', $gUser->email)->first();
         // 見つからなければ新しくユーザーを作成
         if ($user == null) {
-            $user = $this->createUserByGoogle($gUser);
+            if ($admin == null)
+            {
+                $user = $this->createUserByGoogle($gUser);
+            } else {
+                session()->flash('flash_message_user_email_unique', 'そのメールアドレスは既に使われています');
+                return redirect()->route('user.login');
+            }
+
         }
         // ログイン処理
         \Auth::login($user, true);
