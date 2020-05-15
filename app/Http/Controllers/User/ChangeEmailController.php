@@ -39,7 +39,6 @@ class ChangeEmailController extends Controller
             DB::commit();
             return redirect('user/email')->with('flash_message', '確認メールを送信しました。');
         } catch (\Exception $e) {
-            dd($e);
             DB::rollback();
             return redirect('user/email')->with('flash_message', 'メール更新に失敗しました。');
         }

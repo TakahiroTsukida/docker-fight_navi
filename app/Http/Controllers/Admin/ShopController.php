@@ -10,6 +10,7 @@ use App\Admin\Shop;
 use App\Admin\Type;
 use App\Admin\Price;
 use App\Admin\Personal;
+use App\Admin\Open;
 use App\User\Favorite;
 use Carbon\Carbon;
 use Storage;
@@ -77,6 +78,18 @@ class ShopController extends Controller
                 $personal->save();
             }
         }
+        //opensテーブルに保存
+        foreach ($form['open']['day'] as $key => $value)
+        {
+            if ($value != null)
+            {
+                $open = new Open;
+                $open->shop_id = $shop->id;
+                $open->day = $value;
+                $open->time = $form['open']['time'][$key];
+                $open->save();
+            }
+        }
         unset($form['_token']);
 
         session()->flash('flash_message_create', $shop->name.' を新規登録しました');
@@ -104,7 +117,7 @@ class ShopController extends Controller
             session()->flash('flash_message_no_auth', '他のユーザーの編集情報は見れません');
             return back();
         }
-        
+
         $types = array_column ( $shop->types->toArray() , 'id');
         return view('admin.shop.edit',['shop' => $shop, 'types' => $types]);
     }
@@ -135,7 +148,7 @@ class ShopController extends Controller
             unset($form['image']);
         } elseif (isset($form['remove']))
         {
-            $shop->image_path->delete();
+            $shop->image_path = null;
             unset($form['remove']);
         }
         $shop->fill($form)->save();
@@ -173,6 +186,19 @@ class ShopController extends Controller
                 $personal->time = $form['personal']['time'][$key];
                 $personal->price = $form['personal']['price'][$key];
                 $personal->save();
+            }
+        }
+        //opensテーブルに保存
+        Open::where('shop_id', $shop->id)->delete();
+        foreach ($form['open']['day'] as $key => $value)
+        {
+            if ($value != null)
+            {
+                $open = new Open;
+                $open->shop_id = $shop->id;
+                $open->day = $value;
+                $open->time = $form['open']['time'][$key];
+                $open->save();
             }
         }
         unset($form['_token']);

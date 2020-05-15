@@ -11737,6 +11737,21 @@ input.center {
   width: 100%;
 }
 
+.review-item {
+  display: inline-block;
+  width: 100%;
+  margin: 5px 0 5px 0;
+  position: relative;
+  height: 19px;
+}
+
+@media (min-width: 768px) {
+  .review-item {
+    margin: 4px 0;
+    height: 24px;
+  }
+}
+
 p.user-name {
   position: absolute;
   top: 40px;
@@ -11768,30 +11783,33 @@ p.review-address {
   margin: 5px 0 10px 3px;
 }
 
-.review-item {
-  display: inline-block;
-  width: 100%;
-  margin: 5px 0 5px 0;
-  position: relative;
-  height: 19px;
-}
-
-@media (min-width: 768px) {
-  .review-item {
-    margin: 4px 0;
-    height: 24px;
-  }
-}
-
 p.review-text {
   float: left;
   position: absolute;
   left: 15px;
+  color: #000;
 }
 
 @media (min-width: 768px) {
   p.review-text {
     left: 80px;
+  }
+}
+
+p.review-point {
+  display: inline;
+  position: absolute;
+  left: 135px;
+  font-weight: bold;
+  width: 54px;
+  top: -2px;
+  color: #000;
+}
+
+@media (min-width: 768px) {
+  p.review-point {
+    left: 144px;
+    width: 73px;
   }
 }
 
@@ -11808,22 +11826,6 @@ p.review-text {
   .review-star {
     left: 160px;
     font-size: 15px;
-  }
-}
-
-p.review-point {
-  display: inline;
-  position: absolute;
-  left: 135px;
-  font-weight: bold;
-  width: 54px;
-  top: -2px;
-}
-
-@media (min-width: 768px) {
-  p.review-point {
-    left: 144px;
-    width: 73px;
   }
 }
 
@@ -11845,6 +11847,15 @@ p.review-merit {
   margin: 5px 3px;
 }
 
+p.review-update {
+  display: inline;
+}
+
+p.review-updated_at {
+  display: inline;
+  margin-left: 15px;
+}
+
 i.far.fa-hand-point-down {
   margin-right: 2px;
 }
@@ -11860,13 +11871,8 @@ i.fas.fa-undo {
   vertical-align: middle;
 }
 
-p.review-update {
-  display: inline;
-}
-
-p.review-updated_at {
-  display: inline;
-  margin-left: 15px;
+i.fas.fa-edit.fa-lg.review {
+  vertical-align: baseline;
 }
 
 .revier-btn-group {
@@ -11902,10 +11908,6 @@ h2.shop-name {
 
 a.new-review {
   font-size: 18px;
-}
-
-i.fas.fa-edit.fa-lg.review {
-  vertical-align: baseline;
 }
 
 span.small-text {
@@ -12106,6 +12108,7 @@ form.favorite-form {
   top: 0px;
   left: 200px;
   width: 47px;
+  color: #000;
 }
 
 @media (min-width: 768px) {
@@ -12396,6 +12399,16 @@ th.price {
   }
 }
 
+th.open-day {
+  width: 25%;
+  text-align: center;
+}
+
+th.open-time {
+  width: 75%;
+  text-align: center;
+}
+
 .open {
   margin-left: 30px;
   display: block;
@@ -12459,24 +12472,24 @@ th.price {
 }
 
 .price-item-name {
-  width: 100px;
+  width: 43%;
   display: inline;
 }
 
 @media (min-width: 768px) {
   .price-item-name {
-    width: 130px;
+    width: 160px;
   }
 }
 
 .price-item {
-  width: 80px;
+  width: 35%;
   display: inline;
 }
 
 @media (min-width: 768px) {
   .price-item {
-    width: 100px;
+    width: 150px;
   }
 }
 
@@ -12531,19 +12544,19 @@ th.price {
 }
 
 .form-personal-c {
-  width: 170px;
+  width: 100%;
   display: block;
 }
 
 @media (min-width: 768px) {
   .form-personal-c {
-    width: 230px;
+    width: 319px;
     display: inline;
   }
 }
 
 .form-personal-t {
-  width: 60px;
+  width: 40%;
   margin-top: 5px;
   display: inline;
 }
@@ -12551,11 +12564,12 @@ th.price {
 @media (min-width: 768px) {
   .form-personal-t {
     margin-left: 10px;
+    width: 100px;
   }
 }
 
 .form-personal-p {
-  width: 80px;
+  width: 40%;
   margin-top: 5px;
   display: inline;
 }
@@ -12621,6 +12635,22 @@ a.show-btn.long-btn {
   a.show-btn.long-btn {
     width: 133px;
   }
+}
+
+.open-group {
+  display: inline-block;
+  width: 100%;
+  margin: 5px 0;
+}
+
+input.open-day {
+  width: 30%;
+  display: inline;
+}
+
+input.open-time {
+  display: inline;
+  width: 68%;
 }
 
 footer {

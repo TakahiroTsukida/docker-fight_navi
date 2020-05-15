@@ -159,7 +159,7 @@
                                           @endif
                                       </label>
                                   </div>
-                                  </a>
+
 
                                   <div class="search-list">
                                       <p class="search-name"><i class="fas fa-map-marker-alt fa-lg mr-1"></i>{{ $shop->address_ken }}{{ $shop->address_city }}</p>
@@ -238,6 +238,7 @@
                                           <p class="shop-img"><img src="{{ asset('image/l_e_others_501.png') }}"></p>
                                       </div>
                                   @endif
+                                </a>
 
                                   <div class="right-btn">
                                   <!-- Button trigger modal -->
@@ -329,11 +330,22 @@
                                                 </div>
                                             @endif
 
-                                            @if (isset($shop->open))
+                                            @if (count($shop->opens) >= 1)
                                             <div class="profile">
                                                 <i class="fas fa-calendar-alt fa-lg"></i>
                                                 <label class="shop-about">営業日</label>
-                                                <p class="open">{{ $shop->open }}</p>
+                                                <table class="table table-bordered">
+                                                    <tr>
+                                                        <th class="open-day">日時</th>
+                                                        <th class="open-time">営業時間</th>
+                                                    </tr>
+                                                    @foreach ($shop->opens as $open)
+                                                        <tr>
+                                                          <td class="text-center">{{ $open->day }}</td>
+                                                          <td>{{ $open->time }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                </table>
                                             </div>
                                             @endif
 

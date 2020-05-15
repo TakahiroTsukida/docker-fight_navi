@@ -417,34 +417,6 @@ label.right-group {
 }
 
 
-
-
-
-p.user-name {
-    position: absolute;
-    top: 40px;
-    left: 98px;
-    @include tab {
-        top: 75px;
-        left: 200px;
-    }
-}
-
-p.review-shop {
-    font-size: 17px;
-    color: #000;
-    border-bottom: solid 1px #cccccc;
-    margin: 15px 0;
-    @include tab {
-      margin: 30px 0;
-      font-size: 20px;
-    }
-}
-
-p.review-address {
-    margin: 5px 0 10px 3px;
-}
-
 .review-item {
     display: inline-block;
     width: 100%;
@@ -457,12 +429,54 @@ p.review-address {
     }
 }
 
-p.review-text {
-    float: left;
-    position: absolute;
-    left: 15px;
-    @include tab {
-      left: 80px;
+p {
+    &.user-name {
+        position: absolute;
+        top: 40px;
+        left: 98px;
+        @include tab {
+            top: 75px;
+            left: 200px;
+        }
+    }
+
+    &.review-shop {
+        font-size: 17px;
+        color: #000;
+        border-bottom: solid 1px #cccccc;
+        margin: 15px 0;
+        @include tab {
+          margin: 30px 0;
+          font-size: 20px;
+        }
+    }
+
+    &.review-address {
+        margin: 5px 0 10px 3px;
+    }
+
+    &.review-text {
+        float: left;
+        position: absolute;
+        left: 15px;
+        color: #000;
+        @include tab {
+          left: 80px;
+        }
+    }
+
+    &.review-point {
+        display: inline;
+        position: absolute;
+        left: 135px;
+        font-weight: bold;
+        width: 54px;
+        top: -2px;
+        color: #000;
+        @include tab {
+            left: 144px;
+            width: 73px;
+        }
     }
 }
 
@@ -479,18 +493,7 @@ p.review-text {
     }
 }
 
-p.review-point {
-    display: inline;
-    position: absolute;
-    left: 135px;
-    font-weight: bold;
-    width: 54px;
-    top: -2px;
-    @include tab {
-        left: 144px;
-        width: 73px;
-    }
-}
+
 
 .review-text-group {
     margin: 15px;
@@ -503,29 +506,36 @@ label.review-coment {
     font-size: 14px;
 }
 
-p.review-merit {
-    margin: 5px 3px;
-}
+p {
+    &.review-merit {
+        margin: 5px 3px;
+    }
 
-i.far.fa-hand-point-down {
-    margin-right: 2px;
-    @include tab {
-        margin-right: 0;
+    &.review-update {
+        display: inline;
+    }
+
+    &.review-updated_at {
+        display: inline;
+        margin-left: 15px;
     }
 }
 
-i.fas.fa-undo {
-    margin-right: 2px;
-    vertical-align: middle;
-}
+i {
+    &.far.fa-hand-point-down {
+        margin-right: 2px;
+        @include tab {
+            margin-right: 0;
+        }
+    }
+    &.fas.fa-undo {
+        margin-right: 2px;
+        vertical-align: middle;
+    }
 
-p.review-update {
-    display: inline;
-}
-
-p.review-updated_at {
-    display: inline;
-    margin-left: 15px;
+    &.fas.fa-edit.fa-lg.review {
+        vertical-align: baseline;
+    }
 }
 
 .revier-btn-group {
@@ -555,10 +565,6 @@ h2.shop-name {
 
 a.new-review {
     font-size: 18px;
-}
-
-i.fas.fa-edit.fa-lg.review {
-    vertical-align: baseline;
 }
 
 span {
@@ -719,6 +725,7 @@ form.favorite-form {
     top: 0px;
     left: 200px;
     width: 47px;
+    color: #000;
     @include tab {
       left: 220px;
       width: 65px;

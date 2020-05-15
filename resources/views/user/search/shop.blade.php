@@ -269,11 +269,22 @@
                                           </div>
                                       @endif
 
-                                      @if (isset($shop->open))
+                                      @if (count($shop->opens) >= 1)
                                       <div class="profile">
                                           <i class="fas fa-calendar-alt fa-lg"></i>
                                           <label class="shop-about">営業日</label>
-                                          <p class="open">{{ $shop->open }}</p>
+                                          <table class="table table-bordered">
+                                              <tr>
+                                                  <th class="open-day">日時</th>
+                                                  <th class="open-time">営業時間</th>
+                                              </tr>
+                                              @foreach ($shop->opens as $open)
+                                                  <tr>
+                                                    <td class="text-center">{{ $open->day }}</td>
+                                                    <td>{{ $open->time }}</td>
+                                                  </tr>
+                                              @endforeach
+                                          </table>
                                       </div>
                                       @endif
 
@@ -312,7 +323,7 @@
 
                                   </div>
                                   <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
                                   </div>
                               </div>
                           </div>

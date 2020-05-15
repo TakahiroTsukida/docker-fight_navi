@@ -40,6 +40,10 @@ class ShopObserver
             $personal->delete();
         });
 
+        $shop->opens()->each(function ($open) {
+            $open->delete();
+        });
+
         $shop->reviews()->each(function ($review) {
             $review->delete();
         });

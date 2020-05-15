@@ -15,7 +15,6 @@ class Shop extends Model
         'address_ken',
         'address_city',
         'address_other',
-        'open',
         'close',
         'web',
         'trial',
@@ -49,7 +48,6 @@ class Shop extends Model
       'personal.price.*' => 'required_with:personal.course.*|required_with:personal.time.*',
 
       //shops
-      'open' => 'nullable',
       'close' => 'nullable',
       'web' => 'nullable|active_url',
       'trial' => 'required',
@@ -59,6 +57,8 @@ class Shop extends Model
       //images
       'image' => 'nullable|image|max:1024',
 
+      'open.day.*' => 'nullable|required_with:open.time.*|max:100',
+      'open.time.*' => 'nullable|required_with:open.day.*|max:255',
   );
 
   public function admin()
@@ -74,6 +74,11 @@ class Shop extends Model
   public function prices()
   {
       return $this->hasMany('App\Admin\Price');
+  }
+
+  public function opens()
+  {
+      return $this->hasMany('App\Admin\Open');
   }
 
   public function personals()

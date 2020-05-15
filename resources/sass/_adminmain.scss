@@ -140,6 +140,16 @@ th {
             width: 22%;
         }
     }
+
+    &.open-day {
+        width: 25%;
+        text-align: center;
+    }
+
+    &.open-time {
+        width: 75%;
+        text-align: center;
+    }
 }
 
 
@@ -201,18 +211,18 @@ th {
 }
 
 .price-item-name {
-  width: 100px;
+  width: 43%;
   display: inline;
   @include tab {
-    width: 130px;
+    width: 160px;
   }
 }
 
 .price-item {
-  width: 80px;
+  width: 35%;
   display: inline;
   @include tab {
-    width: 100px;
+    width: 150px;
   }
 }
 
@@ -252,25 +262,26 @@ th {
 }
 
 .form-personal-c {
-  width: 170px;
+  width: 100%;
   display: block;
   @include tab {
-    width: 230px;
+    width: 319px;
     display: inline;
   }
 }
 
 .form-personal-t {
-  width: 60px;
+  width: 40%;
   margin-top: 5px;
   display: inline;
   @include tab {
     margin-left: 10px;
+    width: 100px;
   }
 }
 
 .form-personal-p {
-  width: 80px;
+  width: 40%;
   margin-top: 5px;
   display: inline;
   @include tab {
@@ -321,4 +332,24 @@ a.show-btn.long-btn {
     @include tab {
         width: 133px;
     }
+}
+
+.open-group {
+    display: inline-block;
+    width: 100%;
+    margin: 5px 0;
+}
+
+input {
+
+    &.open-day {
+        width: 30%;
+        display: inline;
+    }
+
+    &.open-time {
+        display: inline;
+        width: 68%;
+    }
+
 }

@@ -124,63 +124,37 @@
 
 
                             {{-- price --}}
-                            <!-- @foreach ($shop->prices as $price)
-                                @if ($price->name == "入会金")
-                                    <div class="form-group mt-4">
-                                        <label class="shop-text">
-                                            <input type="hidden" name="price[name][]" value="入会金">
-                                            入会金
-                                        </label>
-                                        <input type="number" name="price[price][]" class="form-control price-item form-join" placeholder="半角数字" value="{{ $price->price }}">
-                                        <p class="price-en">円（税込）</p>
-                                        @error('price[price].*')
-                                            <p class="error">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                @endif
-                            @endforeach -->
-
                             <div class="form-group mt-4">
                                 @include('parts/admin/label/shop/price')
                             </div>
+
+                            @error('price.name.*')
+                                <div>
+                                    <p class="error">{{ $message }}</p>
+                                </div>
+                            @enderror
+
+                            @error('price.price.*')
+                                <div>
+                                    <p class="error">{{ $message }}</p>
+                                </div>
+                            @enderror
 
                             @foreach ($shop->prices as $price)
                                 <div class="form-group mt-4">
                                     <input type="text" name="price[name][]" class="form-control price-item-name" value="{{ $price->name }}">
                                     <input type="number" name="price[price][]" class="form-control price-item" placeholder="半角数字" value="{{ $price->price }}">
-                                    <p class="price-en">円（税込）</p>
-                                    @error('price[price][]')
-                                        <p class="error">{{ $message }}</p>
-                                    @enderror
+                                    <p class="price-en">円</p>
                                 </div>
                             @endforeach
 
+                            @for ($i = 0; $i < 5; $i++)
                             <div class="form-group mt-4">
                                 <input type="text" name="price[name][]" class="form-control price-item-name" value="{{ old('price[name][]') }}">
                                 <input type="number" name="price[price][]" class="form-control price-item" value="{{ old('price[price][]') }}">
-                                <p class="price-en"><small>円（税込）</small></p>
-                                @error('price[price][]')
-                                    <p class="error">{{ $message }}</p>
-                                @enderror
+                                <p class="price-en"><small>円</small></p>
                             </div>
-
-                            <div class="form-group mt-4">
-                                <input type="text" name="price[name][]" class="form-control price-item-name" value="{{ old('price[name][]') }}">
-                                <input type="number" name="price[price][]" class="form-control price-item" value="{{ old('price[price][]') }}">
-                                <p class="price-en"><small>円（税込）</small></p>
-                                @error('price[price][]')
-                                    <p class="error">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <div class="form-group mt-4">
-                                <input type="text" name="price[name][]" class="form-control price-item-name" value="{{ old('price[name][]') }}">
-                                <input type="number" name="price[price][]" class="form-control price-item" value="{{ old('price[price][]') }}">
-                                <p class="price-en"><small>円（税込）</small></p>
-                                @error('price[price][]')
-                                    <p class="error">{{ $message }}</p>
-                                @enderror
-                            </div>
+                            @endfor
 
 
                             <div class="form-group mt-4">
@@ -196,10 +170,13 @@
                                     <p class="price-en">分</p>
                                     {{-- 金額 --}}
                                     <input type="number" name="personal[price][]" class="form-control shop-text form-personal-p" placeholder="例)5500" value="{{ $personal->price }}">
-                                    <p class="price-en">円（税込）</p>
+                                    <p class="price-en">円</p>
                                 </div>
                             @endforeach
-
+                            @php
+                                $personals_count = 10 - count($shop->personals->toArray());
+                            @endphp
+                            @for ($i = 0; $i < $personals_count; $i++)
                             <div class="form-group personal-group">
                                 {{-- コース名 --}}
                                 <input type="text" name="personal[course][]" class="form-control shop-text form-personal-c" value="{{ old('personal[course][]') }}">
@@ -208,32 +185,59 @@
                                 <p class="price-en">分</p>
                                 {{-- 金額 --}}
                                 <input type="number" name="personal[price][]" class="form-control shop-text form-personal-p" value="{{ old('personal[price][]') }}">
-                                <p class="price-en">円（税込）</p>
+                                <p class="price-en">円</p>
                             </div>
-
-                            <div class="form-group personal-group">
-                                {{-- コース名 --}}
-                                <input type="text" name="personal[course][]" class="form-control shop-text form-personal-c" value="{{ old('personal[course][]') }}">
-                                {{-- 時間 --}}
-                                <input type="number" name="personal[time][]" class="form-control shop-text form-personal-t" value="{{ old('personal[time][]') }}">
-                                <p class="price-en">分</p>
-                                {{-- 金額 --}}
-                                <input type="number" name="personal[price][]" class="form-control shop-text form-personal-p" value="{{ old('personal[price][]') }}">
-                                <p class="price-en">円（税込）</p>
-                            </div>
+                            @endfor
 
 
-
+                            {{-- 営業日 --}}
                             <div class="form-group mt-4">
                                 @include('parts/admin/label/shop/open')
-                                <input type="text" name="open" class="form-control" placeholder="例）平日15:00~21:00　土日祝13:00~17:00" value="{{ $shop->open }}">
+
+                                {{-- バリデーションエラー --}}
+                                @error('open.day')
+                                    <span class="invalid-feedback" role="alert">
+                                       <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                @error('open.time')
+                                    <span class="invalid-feedback" role="alert">
+                                       <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                                @if (isset($shop->open))
+                                <p>{{ $shop->open }}</p>
+                                @endif
+
+                                @foreach ($shop->opens as $open)
+                                    <div class="open-group">
+                                        {{-- 曜日 --}}
+                                        <input type="text" name="open[day][]" class="form-control open-day @error('open.day.*') is-invalid @enderror" value="{{ $open->day }}">
+                                        {{-- 営業時間 --}}
+                                        <input type="text" name="open[time][]" class="form-control open-time @error('open.time.*') is-invalid @enderror" placeholder="営業時間をお書きください" value="{{ $open->time }}">
+                                    </div>
+                                @endforeach
+                                @php
+                                    $open_count = 9 - count($shop->opens->toArray());
+                                @endphp
+                                @for ($i = 0; $i < $open_count ; $i++)
+                                    <div class="open-group">
+                                        {{-- 曜日 --}}
+                                        <input type="text" name="open[day][]" class="form-control open-day @error('open.day.*') is-invalid @enderror" placeholder="例）曜日" value="{{ old('open.day.*') }}">
+                                        {{-- 営業時間 --}}
+                                        <input type="text" name="open[time][]" class="form-control open-time @error('open.time.*') is-invalid @enderror" placeholder="営業時間をお書きください" value="{{ old('open.time.*') }}">
+                                    </div>
+                                @endfor
                             </div>
 
+                            {{-- 定休日 --}}
                             <div class="form-group mt-4">
                                 @include('parts/admin/label/shop/close')
                                 <input type="text" name="close" class="form-control shop-text" placeholder="例）毎月第２水曜日" value="{{ $shop->close }}">
                             </div>
 
+                            {{-- ホームページ --}}
                             <div class="form-group mt-4">
                                 @include('parts/admin/label/shop/web')
                                 <input type="text" name="web" class="form-control" placeholder="例）https://example.com" value="{{ $shop->web }}">
@@ -272,7 +276,7 @@
                                     <label class="mt-3 shop-text">有料の場合のみ金額を記入</lebel>
                                     <div class="trial-block">
                                         <input type="number" name="trial_price" class="form-control trial-price" placeholder="例)500" value="{{ $shop->trial_price }}">
-                                        <p class="price-en">円（税込）</p>
+                                        <p class="price-en">円</p>
                                     </div>
                               </div>
                             </div>

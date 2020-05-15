@@ -43,7 +43,6 @@ class UserController extends Controller
 
     public function search(Request $request)
     {
-      // dd($request);
         $search_name = $request->input('search_name');
         $search_type = $request->input('type');
         $search_address_ken = $request->input('address_ken');
@@ -141,8 +140,6 @@ class UserController extends Controller
             $shops = null;
         }
 
-        // dd($shops);
-
         return view('user.search.index', [
           'shops' => $shops,
           'search_name' => $search_name,
@@ -161,9 +158,7 @@ class UserController extends Controller
     public function shop(Request $request)
     {
         $shop = Shop::find($request->id);
-        // $user = Auth::user();
-        // dd(Auth::user());
-        // //$favoriteにユーザーがログインしており、かつそのshopをお気に入りをしているかをチェック
+        //$favoriteにユーザーがログインしており、かつそのshopをお気に入りをしているかをチェック
         $favorite = null;
         if(Auth::guard('user')->check())
         {
@@ -187,7 +182,7 @@ class UserController extends Controller
         } else {
             $reviews = null;
         }
-// dd($reviews);
+
         return view('user.search.shop', [
             'shop' => $shop,
             'favorite' => $favorite,
