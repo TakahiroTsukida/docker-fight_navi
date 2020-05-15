@@ -123,7 +123,7 @@
 
 
 
-                            {{-- price --}}
+                            {{-- プライス --}}
                             <div class="form-group mt-4">
                                 @include('parts/admin/label/shop/price')
                             </div>
@@ -147,8 +147,10 @@
                                     <p class="price-en">円</p>
                                 </div>
                             @endforeach
-
-                            @for ($i = 0; $i < 5; $i++)
+                            @php
+                                $price_count = 10 - count($shop->prices->toArray());
+                            @endphp
+                            @for ($i = 0; $i < $price_count; $i++)
                             <div class="form-group mt-4">
                                 <input type="text" name="price[name][]" class="form-control price-item-name" value="{{ old('price[name][]') }}">
                                 <input type="number" name="price[price][]" class="form-control price-item" value="{{ old('price[price][]') }}">
@@ -156,10 +158,28 @@
                             </div>
                             @endfor
 
-
+                            {{-- パーソナル --}}
                             <div class="form-group mt-4">
                                 @include('parts/admin/label/shop/personal')
                             </div>
+
+                            @error('personal.course.*')
+                                <div>
+                                    <p class="error">{{ $message }}</p>
+                                </div>
+                            @enderror
+
+                            @error('personal.time.*')
+                                <div>
+                                    <p class="error">{{ $message }}</p>
+                                </div>
+                            @enderror
+
+                            @error('personal.price.*')
+                                <div>
+                                    <p class="error">{{ $message }}</p>
+                                </div>
+                            @enderror
 
                             @foreach ($shop->personals as $personal)
                                 <div class="form-group personal-group">
