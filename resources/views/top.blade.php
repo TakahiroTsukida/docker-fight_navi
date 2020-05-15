@@ -3,9 +3,9 @@
 @section('content')
     <div class="app_imgtext">
         <img src="{{ asset('image/fight_top.jpg') }}" alt="fightなび">
-        <p>あなたにあった<br>
+        <h1>あなたにあった<br>
           ボクシング、キックボクシング<br>
-          総合格闘技ジムをみつけよう。</p>
+          総合格闘技ジムをみつけよう。</h1>
     </div>
 
     <div>
@@ -98,29 +98,18 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="row justify-content-center mt-3">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="form-group row justify-content-center my-3">
-                            <div class="">
-                                <a class="btn btn-primary btn-lg col" href="{{ route('user.login') }}">ログイン</a>
-                            </div>
-                            <div class="text-center">
-                                <label>SNSで簡単ログインこちら</label>
-                                <div class="form-group row justify-content-center">
-                                    <div class="col-md-8 col-lg-6 text-center">
-                                        <a href="{{ action('User\Auth\LoginController@redirectToGoogle') }}" class="btn btn-danger btn-lg col g-login" role="button">
-                                            <i class="fab fa-google fa-lg"></i> ログイン
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="row justify-content-center">
+            <div class="col-md-12 sale">
+                <h2>あなたのジムを登録してみませんか？</h2>
+                <a href="{{ url('admin/register') }}" class="btn btn-danger"><i class="fa fa-edit mr-2"></i>登録してみる(30秒で完了)</a>
+                <p>ジムの登録は無料で行えます。</p>
+                <div class="warning">
+                    <p>※ジムを登録する際には管理者ユーザーとして登録が必要になります。</p>
+                    <p>※管理者ユーザーはレビューやお気に入り登録などは行なえません。</p>
+                    <p>※既に掲載されているジムの情報の修正依頼などは、<a href="{{ url('user/description') }}">こちら</a>に記載のメールアドレスからお願い致します。</p>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 
 @endsection

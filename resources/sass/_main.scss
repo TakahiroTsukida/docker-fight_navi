@@ -172,7 +172,8 @@ input.center {
     position: relative;
 }
 
-.app_imgtext p {
+.app_imgtext h1 {
+    font-weight: normal;
     position: absolute;
     color: white;
     top: 35%;
@@ -805,6 +806,56 @@ input.btn-outline-dark {
 
 input.form-control::placeholder {
     color: #d4d4d4;
+}
+
+.sale {
+    text-align: center;
+    margin: 80px 0 52px 0;
+    & h2 {
+        margin: 8px 0;
+    }
+
+    & a {
+        margin: 7px 0 15px 0;
+    }
+    & p {
+        font-size: 12px;
+    }
+    &.warning {
+        text-align: left;
+        margin: 5px;
+        @include tab {
+            margin: 5px 55px;
+        }
+        @include pc {
+            margin: 0px 25%;
+        }
+    }
+}
+
+.register-warning {
+    text-align: center;
+    margin-top: 29px;
+
+    & h2 {
+        margin-bottom: 15px;
+    }
+
+    & p {
+        text-align: left;
+        font-size: 12px;
+        line-height: 1.3rem;
+        margin-bottom: 10px;
+        @include pc {
+            margin: 0px 17% 10px 17%;
+        }
+    }
+}
+
+span {
+    &.red {
+        color: #f14141;
+    }
 }
 // button.back-btn {
 //     border-width: 0;

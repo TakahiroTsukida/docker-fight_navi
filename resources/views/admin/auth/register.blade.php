@@ -7,6 +7,14 @@
             <div class="card page-title">
                 <div class="card-body">
                     <h1 class="text-center mt-5 mb-3">管理ユーザー　新規登録</h1>
+                    <div class="register-warning">
+                        <h2 class="badge badge-danger">ご登録前に必ずお読みください</h2>
+                        <p>①Fightなびにはユーザー登録フォームが『一般ユーザー』と『管理ユーザー』の２種類があります。<p/>
+                        <p>②現在選択中の『管理ユーザー』では、<span class="red">ジムのレビューやお気に入り登録などは一切行えません</span>。ただし閲覧は可能です</p>
+                        <p>③管理ユーザー登録に関して、『一般ユーザー』の登録の際に使用したメールアドレスは使用でません。</p>
+                        <p>これらの認識についてお間違いのないことをご確認の上でご登録をお願いいたします。</p>
+                    </div>
+
                     <form method="POST" action="{{ route('admin.register') }}">
                         @csrf
 
