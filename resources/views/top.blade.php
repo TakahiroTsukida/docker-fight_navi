@@ -5,7 +5,8 @@
         <img src="{{ asset('image/fight_top.jpg') }}" alt="fightなび">
         <h1>あなたにあった<br>
           ボクシング、キックボクシング<br>
-          総合格闘技ジムをみつけよう。</h1>
+          総合格闘技ジムをみつけよう。<br>
+          <a href="{{ url('user/register') }}" class="btn btn-primary login-btn"><i class="fa fa-edit mr-1"></i>レビューしてみる(30秒で完了)</a></h1>
     </div>
 
     <div>

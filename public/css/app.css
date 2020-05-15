@@ -12291,6 +12291,48 @@ span.red {
   color: #f14141;
 }
 
+.login-btn {
+  position: absolute;
+  top: 66px;
+  font-size: 10px;
+}
+
+@media (min-width: 500px) {
+  .login-btn {
+    top: 80px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 600px) {
+  .login-btn {
+    top: 90px;
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 768px) {
+  .login-btn {
+    font-size: 0.9rem;
+    top: 97px;
+    left: 2%;
+  }
+}
+
+@media (min-width: 900px) {
+  .login-btn {
+    top: 107px;
+    left: 6%;
+  }
+}
+
+@media (min-width: 992px) {
+  .login-btn {
+    left: 4%;
+    font-size: 16px;
+  }
+}
+
 .shop-name {
   font-size: 18px;
   border-bottom: solid 1px #C0C0C0;

@@ -147,11 +147,9 @@
                                     <p class="price-en">円</p>
                                 </div>
                             @endforeach
-
                             @php
                                 $price_count = 10 - count($shop->prices->toArray());
                             @endphp
-                            
                             @for ($i = 0; $i < $price_count; $i++)
                             <div class="form-group mt-4">
                                 <input type="text" name="price[name][]" class="form-control price-item-name" value="{{ old('price[name][]') }}">
