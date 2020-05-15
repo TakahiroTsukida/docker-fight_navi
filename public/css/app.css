@@ -12233,7 +12233,13 @@ input.form-control::placeholder {
 
 .sale {
   text-align: center;
-  margin: 80px 0 52px 0;
+  margin: 100px 0 65px 0;
+}
+
+@media (min-width: 768px) {
+  .sale {
+    margin: 123px 0 73px 0;
+  }
 }
 
 .sale h2 {
