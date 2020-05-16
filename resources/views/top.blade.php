@@ -6,7 +6,11 @@
         <h1>あなたにあった<br>
           ボクシング、キックボクシング<br>
           総合格闘技ジムをみつけよう。<br>
-          <a href="{{ url('user/register') }}" class="btn btn-primary login-btn"><i class="fa fa-edit mr-1"></i>レビューしてみる(30秒で完了)</a></h1>
+          @unless(Auth::guard('user')->check() || Auth::guard('admin')->check())
+          <a href="{{ url('user/register') }}" class="btn btn-primary login-btn"><i class="fa fa-edit mr-1"></i>レビューしてみる(30秒で完了)</a>
+          @endunless
+        </h1>
+
     </div>
 
     <div>
@@ -99,7 +103,7 @@
                 </div>
             </div>
         </div>
-        @unless (Auth::guard('user')->check() && Auth::guard('admin')->check())
+        @unless(Auth::guard('user')->check() || Auth::guard('admin')->check())
             <div class="row justify-content-center">
                 <div class="col-md-12 sale">
                     <h2>あなたのジムを登録してみませんか？</h2>
