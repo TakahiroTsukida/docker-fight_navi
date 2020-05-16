@@ -568,6 +568,10 @@ a.new-review {
     font-size: 18px;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 span {
 
     &.small-text {
@@ -656,25 +660,26 @@ button.favorite-icon {
 
 p.shop-img img {
     object-fit: cover;
-    height: 190px;
-    @media only screen and (min-width: 350px) {
-        height: 240px;
-    }
-    @media only screen and (min-width: 420px) {
-        height: 300px;
-    }
-    @media only screen and (min-width: 500px) {
-        height: 330px;
-    }
-    @media only screen and (min-width: 576px) {
-        height: 350px;
-    }
-    @include tab {
-        height: 460px;
-    }
-    @include pc {
-        height: 620px;
-    }
+    width: 100%;
+    // height: 190px;
+    // @media only screen and (min-width: 350px) {
+    //     height: 240px;
+    // }
+    // @media only screen and (min-width: 420px) {
+    //     height: 300px;
+    // }
+    // @media only screen and (min-width: 500px) {
+    //     height: 330px;
+    // }
+    // @media only screen and (min-width: 576px) {
+    //     height: 350px;
+    // }
+    // @include tab {
+    //     height: 460px;
+    // }
+    // @include pc {
+    //     height: 620px;
+    // }
 }
 
 form.favorite-form {
@@ -886,6 +891,68 @@ span {
         left: 4%;
         font-size: 16px;
     }
+}
+
+label{
+    &.index-desc {
+        margin: 0 15px 5px 15px;
+        color: #000;
+        @include tab {
+            margin: 0 80px 10px 80px;
+        }
+    }
+}
+
+p{
+    &.index-desc {
+        margin: 0 15px;
+        color: #000;
+        line-height: 1.5rem;
+        font-size: 13px;
+        @include tab {
+            margin: 0 80px;
+            font-size: 15px;
+            line-height: 1.7rem;
+        }
+    }
+}
+
+.index-type {
+    margin: 0px 15px;
+    color: #000;
+    @include tab {
+        margin: 15px 80px;
+    }
+}
+
+.rank {
+    margin-right: 5px;
+}
+
+.rank-top {
+
+    & img {
+        margin: -10px 0;
+        width: 24px;
+    }
+}
+
+.index-btn {
+    border-radius: 27px;
+    margin: 20px 0;
+    font-size: 13px;
+    width: 100%;
+    @include tab {
+        width: 60%;
+    }
+    @include pc {
+        width: 40%;
+    }
+}
+
+.index-btn-group {
+    margin: 0 15px;
+    text-align: center;
 }
 // button.back-btn {
 //     border-width: 0;

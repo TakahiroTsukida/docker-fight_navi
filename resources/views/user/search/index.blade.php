@@ -123,7 +123,7 @@
                     <div class="page-title title">
                         <p>検索結果（{{ $shops->total() }}件）</p>
                     </div>
-                    @foreach ($shops as $shop)
+                    @foreach ($shops as $key => $shop)
 
                             @if (Auth::guard('user')->check())
                               @php
@@ -138,7 +138,17 @@
                               <div class="search-body">
                                   <a href="{{ action('User\UserController@shop', ['id' => $shop->id]) }}">
                                   <div class="search-list">
-                                      <h2 class="search-name">{{ $shop->name }}</h2>
+                                      <h2 class="search-name">
+                                        @if ($key + 1 == 1)
+                                            <span class="rank-top"><img src="{{ asset('image/rank1.png') }}"></span>
+                                        @elseif ($key + 1 == 2)
+                                            <span class="rank-top"><img src="{{ asset('image/rank2.png') }}"></span>
+                                        @elseif ($key + 1 == 3)
+                                            <span class="rank-top"><img src="{{ asset('image/rank3.png') }}"></span>
+                                        @else
+                                            <span class="rank">{{ $key+1 }}</span>
+                                        @endif
+                                        {{ $shop->name }}</h2>
                                       <label class="favorite-icon">
                                           @if (Auth::guard('user')->check())
 
@@ -229,20 +239,27 @@
                                       </div>
                                   </div>
 
-                                  @if (isset($shop->image_path))
-                                      <div class="image-group">
-                                          <p class="shop-img"><img src="{{ asset('storage/image/shop_images/'.$shop->image_path) }}"></p>
-                                      </div>
-                                  @else
-                                      <div class="profile">
-                                          <p class="shop-img"><img src="{{ asset('image/l_e_others_501.png') }}"></p>
-                                      </div>
+                                  <div class="index-type">
+                                      <label class="type">ジャンル：</label>
+                                      <ul class="type-list">
+                                          @foreach($shop->types as $type)
+                                              <li class="type-text"><i class="fas fa-check"></i> {{ $type->name }}</li>
+                                          @endforeach
+                                      </ul>
+                                  </div>
+
+                                  @if (isset($shop->description))
+                                  <div class="profile">
+                                      <label class="index-desc">簡単な説明</label>
+                                      <p class="index-desc">{!! nl2br(e($shop->description)) !!}</p>
+                                  </div>
                                   @endif
+
                                 </a>
 
-                                  <div class="right-btn">
+                                  <div class="index-btn-group">
                                   <!-- Button trigger modal -->
-                                      <button type="button" class="btn btn-primary show-btn" data-toggle="modal" data-target="#exampleModalLong{{ $shop->id }}">
+                                      <button type="button" class="btn btn-primary index-btn" data-toggle="modal" data-target="#exampleModalLong{{ $shop->id }}">
                                         詳細
                                       </button>
                                   </div>
@@ -261,6 +278,10 @@
                                         @if (isset($shop->image_path))
                                             <div class="image-group">
                                                 <p class="shop-img"><img src="{{ asset('storage/image/shop_images/'.$shop->image_path) }}"></p>
+                                            </div>
+                                        @else
+                                            <div class="profile">
+                                                <p class="shop-img"><img src="{{ asset('image/l_e_others_501.png') }}"></p>
                                             </div>
                                         @endif
 
@@ -285,6 +306,13 @@
                                                     <p class="type-text d-inline">{{ number_format($shop->trial_price) }}<span class="symbol">円</span></p>
                                                     @endif
                                             </div>
+
+                                            @if (isset($shop->description))
+                                            <div class="profile">
+                                                <label>簡単な説明</label>
+                                                <p class="description">{!! nl2br(e($shop->description)) !!}</p>
+                                            </div>
+                                            @endif
 
                                             @if (count($shop->prices) >= 1)
                                                 <div class="profile">

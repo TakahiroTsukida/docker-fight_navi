@@ -6,7 +6,7 @@
       @if (Auth::guard('user')->check())
       @elseif(Auth::guard('admin')->check())
       @else
-      <li class="footer-item"><a href="{{ route('admin.login') }}" class="footer-link">管理ユーザーメニュー</a></li>
+      <li class="footer-item"><a href="{{ route('admin.login') }}" class="footer-link">管理ユーザーログイン</a></li>
       @endif
    </ul>
 </div>

@@ -131,6 +131,23 @@
                         </div>
                       </div>
 
+                      <div class="index-type">
+                          <label class="type">ジャンル：</label>
+                          <ul class="type-list">
+                              @foreach($shop->types as $type)
+                                  <li class="type-text"><i class="fas fa-check"></i> {{ $type->name }}</li>
+                              @endforeach
+                          </ul>
+                      </div>
+
+                      @if (isset($shop->description))
+                      <div class="profile">
+                          <label class="index-desc">簡単な説明</label>
+                          <p class="index-desc">{!! nl2br(e($shop->description)) !!}</p>
+                      </div>
+                      @endif
+
+
                       <div class="text-center">
                           <!-- <button type="button" class="btn btn-success show-btn" onclick=history.back()>戻る</button> -->
                           <!-- Button trigger modal -->
@@ -224,6 +241,13 @@
                                               <p class="type-text d-inline">{{ number_format($shop->trial_price) }}<span class="symbol">円</span></p>
                                               @endif
                                       </div>
+
+                                      @if (isset($shop->description))
+                                      <div class="profile">
+                                          <label>簡単な説明</label>
+                                          <p class="description">{!! nl2br(e($shop->description)) !!}</p>
+                                      </div>
+                                      @endif
 
                                       @if (count($shop->prices) >= 1)
                                           <div class="profile">

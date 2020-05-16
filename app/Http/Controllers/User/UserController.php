@@ -129,9 +129,9 @@ class UserController extends Controller
         if (isset($shop_info))
         {
             $shops = new LengthAwarePaginator(
-                $shop_info->forPage($request->page, 20),
+                $shop_info->forPage($request->page, 15),
                 count($shop_info),
-                20,
+                15,
                 $request->page,
                 array('path' => $request->url())
             );
@@ -173,9 +173,9 @@ class UserController extends Controller
         if (isset($shop_reviews))
         {
             $reviews = new LengthAwarePaginator(
-                $shop_reviews->forPage($request->page, 20),
+                $shop_reviews->forPage($request->page, 15),
                 count($shop_reviews),
-                20,
+                15,
                 $request->page,
                 array('path' => $request->url())
             );
@@ -208,9 +208,9 @@ class UserController extends Controller
         if (isset($user_reviews))
         {
             $reviews = new LengthAwarePaginator(
-                $user_reviews->forPage($request->page, 20),
+                $user_reviews->forPage($request->page, 15),
                 count($user_reviews),
-                20,
+                15,
                 $request->page,
                 array('path' => $request->url())
             );

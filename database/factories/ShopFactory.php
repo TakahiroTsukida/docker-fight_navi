@@ -34,15 +34,20 @@ $factory->define(Shop::class, function (Faker $faker) {
         'なし',
     ];
 
+    $search_address_ken = [
+        '東京都'
+    ];
+
     return [
         'admin_id' => $faker->randomElement($adminIDs),
         'name' => $faker->company,
         'tel' => $faker->isbn10,
         'address_number' => $faker->postcode,
-        'address_ken' => $faker->prefecture,
+        // 'address_ken' => $faker->prefecture,
+        'address_ken' => $faker->randomElement($search_address_ken),
         'address_city' => $faker->city,
         'address_other' => $faker->streetAddress,
-        'open' => $faker->randomElement($opens),
+        // 'open' => $faker->randomElement($opens),
         'close' => $faker->randomElement($closes),
         'web' => $faker->url,
         'trial' => $faker->randomElement($trials),

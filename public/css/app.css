@@ -11911,6 +11911,10 @@ a.new-review {
   font-size: 18px;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 span.small-text {
   font-size: 13px;
   margin-left: 3px;
@@ -12015,43 +12019,7 @@ button.favorite-icon {
 p.shop-img img {
   -o-object-fit: cover;
      object-fit: cover;
-  height: 190px;
-}
-
-@media only screen and (min-width: 350px) {
-  p.shop-img img {
-    height: 240px;
-  }
-}
-
-@media only screen and (min-width: 420px) {
-  p.shop-img img {
-    height: 300px;
-  }
-}
-
-@media only screen and (min-width: 500px) {
-  p.shop-img img {
-    height: 330px;
-  }
-}
-
-@media only screen and (min-width: 576px) {
-  p.shop-img img {
-    height: 350px;
-  }
-}
-
-@media (min-width: 768px) {
-  p.shop-img img {
-    height: 460px;
-  }
-}
-
-@media (min-width: 992px) {
-  p.shop-img img {
-    height: 620px;
-  }
+  width: 100%;
 }
 
 form.favorite-form {
@@ -12339,6 +12307,76 @@ span.red {
   }
 }
 
+label.index-desc {
+  margin: 0 15px 5px 15px;
+  color: #000;
+}
+
+@media (min-width: 768px) {
+  label.index-desc {
+    margin: 0 80px 10px 80px;
+  }
+}
+
+p.index-desc {
+  margin: 0 15px;
+  color: #000;
+  line-height: 1.5rem;
+  font-size: 13px;
+}
+
+@media (min-width: 768px) {
+  p.index-desc {
+    margin: 0 80px;
+    font-size: 15px;
+    line-height: 1.7rem;
+  }
+}
+
+.index-type {
+  margin: 0px 15px;
+  color: #000;
+}
+
+@media (min-width: 768px) {
+  .index-type {
+    margin: 15px 80px;
+  }
+}
+
+.rank {
+  margin-right: 5px;
+}
+
+.rank-top img {
+  margin: -10px 0;
+  width: 24px;
+}
+
+.index-btn {
+  border-radius: 27px;
+  margin: 20px 0;
+  font-size: 13px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .index-btn {
+    width: 60%;
+  }
+}
+
+@media (min-width: 992px) {
+  .index-btn {
+    width: 40%;
+  }
+}
+
+.index-btn-group {
+  margin: 0 15px;
+  text-align: center;
+}
+
 .shop-name {
   font-size: 18px;
   border-bottom: solid 1px #C0C0C0;
@@ -12411,11 +12449,13 @@ span.red {
 .description {
   font-size: 14px;
   margin-bottom: 30px;
+  line-height: 1.5rem;
 }
 
 @media (min-width: 768px) {
   .description {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.7rem;
   }
 }
 

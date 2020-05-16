@@ -68,8 +68,10 @@ $tab: 768px; // タブレット
 .description {
   font-size: 14px;
   margin-bottom: 30px;
+  line-height: 1.5rem;
   @include tab {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.7rem;
   }
 }
 

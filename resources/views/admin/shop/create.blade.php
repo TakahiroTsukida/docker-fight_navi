@@ -144,12 +144,13 @@
                             {{-- プライス --}}
                             @php
                                 $basics = ['入会金', '男性', '女性', '', '', '', '', ''];
+                                $n = 0;
                             @endphp
                             @foreach ($basics as $basic)
                                 <div class="form-group mt-4">
-                                    <input type="text" name="price[name][]" class="form-control price-item-name @error('price.name.*') is-invalid @enderror" value="{{ old('price.name.*') == null ? $basic : old('price.name.*') }}">
+                                    <input type="text" name="price[name][]" class="form-control price-item-name @error('price.name.*') is-invalid @enderror" value="{{ old('price.name.$n++') == null ? $basic : old('price.name.$n++') }}">
 
-                                    <input type="number" name="price[price][]" class="form-control price-item @error('price.price.*') is-invalid @enderror" value="{{ old('price.price.*') }}">
+                                    <input type="number" name="price[price][]" class="form-control price-item @error('price.price.$n++') is-invalid @enderror" value="{{ old('price.price.$n++') }}">
                                     <p class="price-en"><small>円</small></p>
                                 </div>
                             @endforeach
@@ -162,31 +163,31 @@
                                {{-- バリデーションエラー --}}
 
                                 @error('personal.course.*')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                    <div>
+                                        <p class="error">{{ $message }}</p>
+                                    </div>
                                 @enderror
                                 @error('personal.time.*')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                    <div>
+                                        <p class="error">{{ $message }}</p>
+                                    </div>
                                 @enderror
                                 @error('personal.price.*')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                    <div>
+                                        <p class="error">{{ $message }}</p>
+                                    </div>
                                 @enderror
                             </div>
 
                             @for ($i = 0; $i < 5; $i++)
                                 <div class="form-group personal-group">
                                   {{-- コース名 --}}
-                                  <input type="text" name="personal[course][]" class="form-control shop-text form-personal-c @error('personal.course.*') is-invalid @enderror" placeholder="コース名" value="{{ old('personal.course.*') }}">
+                                  <input type="text" name="personal[course][]" class="form-control shop-text form-personal-c @error('personal.course.$i') is-invalid @enderror" placeholder="コース名" value="{{ old('personal.course.$i') }}">
                                   {{-- 時間 --}}
-                                  <input type="number" name="personal[time][]" class="form-control shop-text form-personal-t @error('personal.time.*') is-invalid @enderror" placeholder="例)50" value="{{ old('personal.time.*') }}">
+                                  <input type="number" name="personal[time][]" class="form-control shop-text form-personal-t @error('personal.time.$i') is-invalid @enderror" placeholder="例)50" value="{{ old('personal.time.$i') }}">
                                   <p class="price-en">分</p>
                                   {{-- 金額 --}}
-                                  <input type="number" name="personal[price][]" class="form-control shop-text form-personal-p @error('personal.price.*') is-invalid @enderror" placeholder="例)5500" value="{{ old('personal.price.*') }}">
+                                  <input type="number" name="personal[price][]" class="form-control shop-text form-personal-p @error('personal.price.$i') is-invalid @enderror" placeholder="例)5500" value="{{ old('personal.price.$i') }}">
                                   <p class="price-en">円</p>
                                 </div>
                             @endfor
@@ -197,21 +198,21 @@
                                 {{-- 営業日 --}}
                                 @include('parts/admin/label/shop/open')
                                 @error('open')
-                                    <span class="invalid-feedback" role="alert">
-                                       <strong>{{ $message }}</strong>
-                                    </span>
+                                    <div>
+                                        <p class="error">{{ $message }}</p>
+                                    </div>
                                 @enderror
 
                                 {{-- バリデーションエラー --}}
                                 @error('open.day')
-                                    <span class="invalid-feedback" role="alert">
-                                       <strong>{{ $message }}</strong>
-                                    </span>
+                                    <div>
+                                        <p class="error">{{ $message }}</p>
+                                    </div>
                                 @enderror
                                 @error('open.time')
-                                    <span class="invalid-feedback" role="alert">
-                                       <strong>{{ $message }}</strong>
-                                    </span>
+                                    <div>
+                                        <p class="error">{{ $message }}</p>
+                                    </div>
                                 @enderror
 
                                 {{-- opens --}}
