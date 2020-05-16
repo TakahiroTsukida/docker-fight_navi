@@ -57,7 +57,7 @@
                 <div class="profile">
                     <p>自己紹介</p>
                     @if(isset($user->introduction))
-                        <p class="text-left">{{ $user->introduction }}</p>
+                        <p class="text-left">{{ nl2br(e($user->introduction)) }}</p>
                     @endif
                 </div>
             </div>
@@ -147,12 +147,12 @@
 
                             <div class="review-text-group">
                                 <p><i class="far fa-thumbs-up fa-lg"></i>良かったところ</p>
-                                <p class="review-merit"> {{ $review->merit }} </p>
+                                <p class="review-merit"> {!! nl2br(e($review->merit)) !!} </p>
                             </div>
 
                             <div class="review-text-group">
                                 <p><i class="far fa-hand-point-down fa-lg"></i>イマイチなところ</p>
-                                <p class="review-merit"> {{ $review->demerit }} </p>
+                                <p class="review-merit"> {!! nl2br(e($review->demerit)) !!} </p>
                             </div>
 
                             <div class="review-up-group">
