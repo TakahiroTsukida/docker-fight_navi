@@ -148,7 +148,7 @@
                       @endif
 
 
-                      <div class="text-center">
+                      <div class="text-center my-2">
                           <!-- <button type="button" class="btn btn-success show-btn" onclick=history.back()>戻る</button> -->
                           <!-- Button trigger modal -->
                           <button type="button" class="btn btn-primary show-btn" data-toggle="modal" data-target="#exampleModalLongshop{{ $shop->id }}">詳細</button>

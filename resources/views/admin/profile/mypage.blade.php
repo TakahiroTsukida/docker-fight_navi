@@ -112,7 +112,7 @@
                       <div class="search-body">
                           <a href="{{ action('User\UserController@shop', ['id' => $shop->id]) }}">
                               <div class="search-list">
-                                  <h2 class="search-name">{{ $shop->name }}</h2>
+                                  <h2 class="search-name"><span class="rank">{{ $loop->iteration + ($shops->currentPage() - 1) * $shops->perPage() }}</span>{{ $shop->name }}</h2>
                                   <label class="favorite-icon">
                                       <i class="fas fa-bookmark" style="color: #C0C0C0;"><span class="favorite_count">{{ $shop->favorites_count }}</span></i>
                                   </label>
@@ -187,15 +187,22 @@
                               </div>
                           </div>
 
-                          @if (isset($shop->image_path))
-                              <div class="image-group">
-                                  <p class="shop-img"><img src="{{ asset('storage/image/shop_images/'.$shop->image_path) }}"></p>
-                              </div>
-                          @else
-                              <div class="profile">
-                                  <p class="shop-img"><img src="{{ asset('image/l_e_others_501.png') }}"></p>
-                              </div>
+                          <div class="index-type">
+                              <label class="type">ジャンル：</label>
+                              <ul class="type-list">
+                                  @foreach($shop->types as $type)
+                                      <li class="type-text"><i class="fas fa-check"></i> {{ $type->name }}</li>
+                                  @endforeach
+                              </ul>
+                          </div>
+
+                          @if (isset($shop->description))
+                          <div class="profile">
+                              <label class="index-desc">簡単な説明</label>
+                              <p class="index-desc">{!! nl2br(e($shop->description)) !!}</p>
+                          </div>
                           @endif
+
                           </a>
 
                           <div class="profile">
@@ -218,6 +225,17 @@
                                             <span aria-hidden="true">&times;</span>
                                           </button>
                                       </div>
+
+                                      @if (isset($shop->image_path))
+                                          <div class="image-group">
+                                              <p class="shop-img"><img src="{{ asset('storage/image/shop_images/'.$shop->image_path) }}"></p>
+                                          </div>
+                                      @else
+                                          <div class="profile">
+                                              <p class="shop-img"><img src="{{ asset('image/l_e_others_501.png') }}"></p>
+                                          </div>
+                                      @endif
+
                                       <div class="modal-body">
                                           <div class="profile">
                                               <label class="type">ジャンル：</label>
@@ -239,7 +257,7 @@
                                           @if (isset($shop->description))
                                           <div class="profile">
                                               <label>簡単な説明</label>
-                                              <p class="description">{{ $shop->description }}</p>
+                                              <p class="description">{!! nl2br(e($shop->description)) !!}</p>
                                           </div>
                                           @endif
 

@@ -117,8 +117,8 @@
                     </div>
                 </div>
             <!-- </div>
-
             <div class=""> -->
+
                 @if (isset($shops))
                     <div class="page-title title">
                         <p>検索結果（{{ $shops->total() }}件）</p>
@@ -139,14 +139,14 @@
                                   <a href="{{ action('User\UserController@shop', ['id' => $shop->id]) }}">
                                   <div class="search-list">
                                       <h2 class="search-name">
-                                        @if ($key + 1 == 1)
+                                        @if ($loop->iteration + ($shops->currentPage() - 1) * $shops->perPage() == 1)
                                             <span class="rank-top"><img src="{{ asset('image/rank1.png') }}"></span>
-                                        @elseif ($key + 1 == 2)
+                                        @elseif ($loop->iteration + ($shops->currentPage() - 1) * $shops->perPage() == 2)
                                             <span class="rank-top"><img src="{{ asset('image/rank2.png') }}"></span>
-                                        @elseif ($key + 1 == 3)
+                                        @elseif ($loop->iteration + ($shops->currentPage() - 1) * $shops->perPage() == 3)
                                             <span class="rank-top"><img src="{{ asset('image/rank3.png') }}"></span>
                                         @else
-                                            <span class="rank">{{ $key+1 }}</span>
+                                            <span class="rank">{{ $loop->iteration + ($shops->currentPage() - 1) * $shops->perPage() }}</span>
                                         @endif
                                         {{ $shop->name }}</h2>
                                       <label class="favorite-icon">
