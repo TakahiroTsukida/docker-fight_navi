@@ -119,4 +119,23 @@ class ProfileController extends Controller
 
         return view('user.profile.favorite', ['favorites' => $favorites]);
     }
+
+
+
+    public function delete()
+    {
+        return view('user.profile.delete');
+    }
+
+    public function destroy()
+    {
+        $user = User::find(Auth::guard('user')->user()->id);
+        if (empty($user))
+        {
+            return back()->withInput();
+        }
+        $user->delete();
+        Auth::guard('user')->logout();
+        return redirect('/');
+    }
 }

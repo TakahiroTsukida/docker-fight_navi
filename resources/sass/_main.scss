@@ -693,7 +693,7 @@ form.favorite-form {
 }
 
 .rv-ca-btn {
-    font-size: 12px;
+    font-size: 14px;
     @include tab {
       font-size: 15px;
       margin: 15px 30px 15px 0;
@@ -963,6 +963,24 @@ p{
 .index-btn-group {
     margin: 0 15px;
     text-align: center;
+}
+
+.delete-message {
+    margin: 30px 0;
+    line-height: 1.7rem;
+    @include tab {
+        margin: 30px 10%;
+        line-height: 2rem;
+    }
+}
+
+.delete-btn {
+    margin: 0 10px;
+    width: 90px;
+    @include tab {
+        margin: 0 20px;
+        width: 130px;
+    }
 }
 // button.back-btn {
 //     border-width: 0;

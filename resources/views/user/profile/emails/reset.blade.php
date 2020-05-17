@@ -10,23 +10,17 @@
                 {{ session('flash_message') }}
             </div>
             @endif
-            <div class="card">
-                <div class="card-header">メールアドレス変更</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
+            <div class="card mt-5">
+                <div class="card-header text-center">
+                    <h1>メールアドレス変更</h1>
                 </div>
 
-                <div class="card-body">
-                    新しいメールアドレスを入力してください
+                <div class="card-body text-center mt-4">
+                    <label>新しいメールアドレスを入力してください</label>
                     <form action={{ action('User\ChangeEmailController@sendChangeEmailLink') }} method="POST">
                         {{ csrf_field() }}
-                        <input type="email" name="new_email">
-                        <input type="submit">
+                        <input type="email" name="new_email" class="form-control mt-4">
+                        <input type="submit" class="btn btn-primary ken-submit mt-2">
                     </form>
                 </div>
             </div>

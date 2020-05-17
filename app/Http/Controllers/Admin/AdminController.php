@@ -59,4 +59,23 @@ class AdminController extends Controller
         return redirect()->route('admin.profile.mypage');
     }
 
+
+
+    public function delete()
+    {
+        return view('admin.profile.delete');
+    }
+
+    public function destroy()
+    {
+        $admin = Admin::find(Auth::guard('admin')->user()->id);
+        if (empty($admin))
+        {
+            return back()->withInput();
+        }
+        $admin->delete();
+        Auth::guard('admin')->logout();
+        return redirect('/');
+    }
+
 }

@@ -46,6 +46,8 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
         Route::get('email', 'ProfileController@resets_email')->name('resets.email');
         Route::get("reset/{token}", "ChangeEmailController@reset");
         Route::post('email', 'ChangeEmailController@sendChangeEmailLink');
+        Route::get('delete', 'ProfileController@delete')->name('delete');
+        Route::get('destroy', 'ProfileController@destroy')->name('destroy');
 
         Route::get('profile/mypage', 'ProfileController@mypage')->name('profile.mypage');
         Route::get('profile/favorite', 'ProfileController@favorite')->name('profile.favorite');
@@ -90,6 +92,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
         Route::get('profile/edit', 'AdminController@edit')->name('profile.edit');
         Route::post('profile/edit', 'AdminController@update')->name('profile.update');
+        Route::get('delete', 'AdminController@delete')->name('delete');
+        Route::get('destroy', 'AdminController@destroy')->name('destroy');
 
         Route::get('shop/create', 'ShopController@add')->name('shop.add');
         Route::post('shop/create', 'ShopController@create')->name('shop.create');

@@ -28,7 +28,7 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'password' => Hash::make('12345678'), // password
+        'password' => Hash::make('1234'), // password
         'gender' => $faker->randomElement($genders),
         'birthday' => $faker->datetime($max = 'now', $timezone = date_default_timezone_get()),
         'introduction' => $faker->realText(50),

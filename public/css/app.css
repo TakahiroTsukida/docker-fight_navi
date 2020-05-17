@@ -12036,7 +12036,7 @@ form.favorite-form {
 }
 
 .rv-ca-btn {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -12391,6 +12391,30 @@ p.index-desc {
 .index-btn-group {
   margin: 0 15px;
   text-align: center;
+}
+
+.delete-message {
+  margin: 30px 0;
+  line-height: 1.7rem;
+}
+
+@media (min-width: 768px) {
+  .delete-message {
+    margin: 30px 10%;
+    line-height: 2rem;
+  }
+}
+
+.delete-btn {
+  margin: 0 10px;
+  width: 90px;
+}
+
+@media (min-width: 768px) {
+  .delete-btn {
+    margin: 0 20px;
+    width: 130px;
+  }
 }
 
 .shop-name {

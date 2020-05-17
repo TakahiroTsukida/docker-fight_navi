@@ -32,7 +32,7 @@
 
                                       <!-- <a class="nav-item-login" href="{{ route('user.search') }}"><i class="fas fa-edit fa-lg default"></i><span class="login-label">新規レビュー</span></a> -->
 
-                                      <!-- <a class="nav-item-login" href="{{ route('user.resets.email') }}"><i class="fas fa-envelope fa-lg default"></i><span class="login-label">メールアドレス変更</span></a> -->
+                                      <a class="nav-item-login" href="{{ route('user.resets.email') }}"><i class="fas fa-envelope fa-lg default"></i><span class="login-label">メールアドレス変更</span></a>
 
                                       <a class="nav-item-login disabled" href="{{ route('user.logout') }}" onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">

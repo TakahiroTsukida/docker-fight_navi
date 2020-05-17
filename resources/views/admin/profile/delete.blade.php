@@ -4,10 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12 mt-3">
-            <h1 class="post-h1 title">退会について</h1>
+            <h1 class="post-h1 title">管理ユーザー 退会について</h1>
             <div class="delete-message">
                 <p>この度はFightなびをご利用いただき誠にありがとうございます。<br>
-                退会についてのご確認ですが、退会処理を完了されますと今までに作成したレビューやお気に入り登録などのデータが全て削除され、元の状態に戻ることができません。</p>
+                退会についてのご確認ですが、退会処理を完了されますと今までに作成したジムのデータや一般ユーザーが投稿してくれたレビュー、お気に入り登録などのデータが全て削除され、元の状態に戻ることができません。</p>
             </div>
             <div class="center-btn">
                 <button type="button" class="btn btn-success delete-btn" onclick=history.back()>戻る</button>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                    <a href="{{ route('user.destroy') }}" class="btn btn-danger">退会する</a>
+                    <a href="{{ route('admin.destroy') }}" class="btn btn-danger">退会する</a>
                 </div>
             </div>
         </div>

@@ -96,7 +96,7 @@
 
                             <div class="form-group row justify-content-center">
                                 <div class="btn-group">
-                                    <a href="{{ route('admin.profile.mypage') }}" class="btn btn-success shop-btn-lg">戻る</a>
+                                    <button type="button" class="btn btn-success show-btn shop-btn-lg" onclick=history.back()>戻る</button>
                                 </div>
                                 <div class="btn-group">
                                     <input type="submit" class="btn btn-primary shop-btn-lg" value="更新">
