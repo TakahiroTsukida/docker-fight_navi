@@ -63,6 +63,30 @@
                                 </div>
                             </div>
 
+
+
+                            <!-- <div class="form-group row justify-content-center col-sm-8 offset-md-2 mt-2 mb-3 text-left">
+                                @php
+                                    $types = [
+                                        1 => 'ボクシング',
+                                        2 => 'キックボクシング',
+                                        3 => '総合格闘技',
+                                        4 => 'パーソナルトレーニング',
+                                    ];
+                                @endphp
+
+                                @foreach ($types as $key => $type)
+                                    <div class="category-group col-sm-6 col-md-6">
+                                        <label for="category{{ $key }}" class="right-group">
+                                            <input type="checkbox" name="type[]" id="category{{ $key }}" value="{{ $key }}" {{ is_array($search_type) && in_array($key, $search_type, true)? 'checked="checked"' : '' }}>
+                                            <p>{{ $type }}</p>
+                                        </label>
+                                    </div>
+                                @endforeach
+                            </div> -->
+
+
+
                             <div class="form-group row mt-4">
                                 <div class="col-sm-8 offset-md-2 my-3 text-left">
                                     <img src="{{ asset('image/地図マーカーのアイコン素材4.png') }}" alt="検索" class="i-con">
@@ -73,11 +97,8 @@
                             <div class="form-group row">
                                 <div class="col mb-3">
                                     <select name="address_ken" class="form-control col-sm-12 col-md-8 offset-md-2">
-                                        @if (isset($search_address_ken))
-                                        <option value="{{ $search_address_ken }}" selected>{{ $search_address_ken }}</option>
-                                        @endif
 
-                                        @include('parts/address_ken');
+                                        @include('parts/address_ken_search');
 
                                     </select>
                                 </div>
@@ -98,13 +119,26 @@
                             <div class="form-group row">
                                 <div class="col mb-3">
                                     <select name="sort" class="form-control col-sm-12 col-md-8 offset-md-2">
-                                        <option value="">並び替えができます</option>
-                                        <option value="point_desc" {{ $search_sort == 'point_desc' ? 'selected="selected"' : '' }}>総合評価が高い順</option>
+                                        @php
+                                            $sorts = [
+                                                'point_desc' => '総合評価が高い順',
+                                                'point_asc' => '総合評価が低い順',
+                                                'favorite_desc' => 'お気に入り数が多い順',
+                                                'favorite_asc' => 'お気に入り数が少ない順',
+                                                'review_desc' => 'レビューが多い順',
+                                                'review_asc' => 'レビューが少ない順',
+                                            ];
+                                        @endphp
+                                        <!-- <option value="">並び替えができます</option> -->
+                                        @foreach ($sorts as $key => $value)
+                                            <option value="{{ $key }}" {{ isset($search_sort) && $search_sort == $key ? 'selected="selected"' : '' }}>{{ $value }}</option>
+                                        @endforeach
+                                        <!-- <option value="point_desc" {{ $search_sort == 'point_desc' ? 'selected="selected"' : '' }}>総合評価が高い順</option>
                                         <option value="point_asc" {{ $search_sort == 'point_asc' ? 'selected="selected"' : '' }}>総合評価が低い順</option>
                                         <option value="favorite_desc" {{ $search_sort == 'favorite_desc' ? 'selected="selected"' : '' }}>お気に入り数が多い順</option>
                                         <option value="favorite_asc" {{ $search_sort == 'favorite_asc' ? 'selected="selected"' : '' }}>お気に入り数が少ない順</option>
                                         <option value="review_desc" {{ $search_sort == 'review_desc' ? 'selected="selected"' : '' }}>レビューが多い順</option>
-                                        <option value="review_asc" {{ $search_sort == 'review_asc' ? 'selected="selected"' : '' }}>レビューが少ない順</option>
+                                        <option value="review_asc" {{ $search_sort == 'review_asc' ? 'selected="selected"' : '' }}>レビューが少ない順</option> -->
                                     </select>
                                 </div>
                             </div>
@@ -118,7 +152,6 @@
                 </div>
             <!-- </div>
             <div class=""> -->
-
                 @if (isset($shops))
                     <div class="page-title title">
                         <p>検索結果（{{ $shops->total() }}件）</p>
@@ -177,65 +210,8 @@
 
                                   <div class="review-item mb-2">
                                       <p class="review-text">総合評価</p>
-                                          <div class="review-star">
-                                            @if(($shop->point) > 0)
-
-                                              @switch ($shop->point)
-                                                  @case ($shop->point < 1.5)
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                  @break
-                                                  @case ($shop->point < 2)
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
-                                                  @break
-                                                  @case ($shop->point < 2.5)
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                  @break
-                                                  @case ($shop->point < 3)
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
-                                                  @break
-                                                  @case ($shop->point < 3.5)
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                  @break
-                                                  @case ($shop->point < 4)
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
-                                                  @break
-                                                  @case ($shop->point < 4.5)
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                  @break
-                                                  @case ($shop->point < 5)
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
-                                                  @break
-                                                  @case ($shop->point == 5)
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                      <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                                  @break
-                                              @endswitch
-
-                                              <p class="review-point">{{ round($shop->point, 2) }}点</p>
-                                              <p class="review-count"><i class="far fa-comment-alt fa-lg"></i> {{ $shop->reviews_count }}</p>
-                                        @else
-                                            <p class="review-point"></p>
-                                            <p class="review-count"><i class="far fa-comment-alt fa-lg"></i> {{ $shop->reviews_count }}</p>
-                                        @endif
+                                      <div class="review-star">
+                                          @include('parts/review/shop_point')
                                       </div>
                                   </div>
 
@@ -317,7 +293,7 @@
                                             @if (count($shop->prices) >= 1)
                                                 <div class="profile">
                                                     <i class="fas fa-yen-sign fa-lg"></i>
-                                                    <label class="shop-about">会費<small>（税込）</small></label>
+                                                    <label class="shop-about">会費</label>
                                                     <table class="table table-bordered">
                                                         <tr>
                                                             <th class="num"></th>
@@ -338,7 +314,7 @@
                                             @if (count($shop->personals) >= 1)
                                                 <div class="profile">
                                                     <i class="fas fa-user-friends fa-lg"></i>
-                                                    <label class="shop-about">パーソナルトレーニング会費<small>（税込）</small></label>
+                                                    <label class="shop-about">パーソナルトレーニング会費</label>
                                                     <table class="table table-bordered">
                                                         <tr>
                                                             <th class="num"></th>

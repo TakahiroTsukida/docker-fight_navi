@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', 'fightなび')
+@section('title', 'Fightなび')
 @section('content')
     <div class="app_imgtext">
-        <img src="{{ asset('image/fight_top.jpg') }}" alt="fightなび">
+        <img src="{{ asset('image/fight_top.jpg') }}" alt="Fightなび">
         <h1>あなたにあった<br>
           ボクシング、キックボクシング<br>
           総合格闘技ジムをみつけよう。<br>
@@ -92,7 +92,7 @@
                               <form action="{{ route('user.search') }}" method="get">
                                   <select name="address_ken" class="form-control">
 
-                                      @include('parts/address_ken');
+                                      @include('parts/address_ken_old');
 
                                   </select>
                                   <input type="submit" class="btn btn-primary mt-2 ken-submit" value="検索">

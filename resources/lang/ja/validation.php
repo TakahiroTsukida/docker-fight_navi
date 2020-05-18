@@ -138,6 +138,7 @@ return [
         'description' => '簡単な説明',
         'open' => '営業日',
         'close' => '定休日',
+        'image' => '画像',
 
         'price' => [
             'name' => '会費名',

@@ -34,25 +34,25 @@ class Shop extends Model
       'address_number' => 'nullable|max:8',
       'address_ken' => 'required',
       'address_city' => 'required',
-      'address_other' => 'nullable',
+      'address_other' => 'nullable:max:255',
 
       //prices
       //片方が入力されている場合、片方も必須
-      'price.name.*' => 'required_with:price.price.*',
-      'price.price.*'=> 'required_with:price.name.*',
+      'price.name.*' => 'required_with:price.price.*|max:255',
+      'price.price.*'=> 'required_with:price.name.*|max:255',
 
       //personals
       //どれかが入力されている場合、全ての行が入力必須
-      'personal.course.*' => 'required_with:personal.time.*|required_with:personal.price.*',
-      'personal.time.*' => 'required_with:personal.course.*|required_with:personal.price.*',
-      'personal.price.*' => 'required_with:personal.course.*|required_with:personal.time.*',
+      'personal.course.*' => 'required_with:personal.time.*|required_with:personal.price.*|max:255',
+      'personal.time.*' => 'required_with:personal.course.*|required_with:personal.price.*|max:255',
+      'personal.price.*' => 'required_with:personal.course.*|required_with:personal.time.*|max:255',
 
       //shops
-      'close' => 'nullable',
-      'web' => 'nullable|active_url',
-      'trial' => 'required',
-      'trial_price' => 'nullable|numeric',
-      'description' => 'nullable|max:300',
+      'close' => 'nullable|max:255',
+      'web' => 'nullable|max:255',
+      'trial' => 'required|max:255',
+      'trial_price' => 'nullable|numeric|max:10',
+      'description' => 'nullable|max:255',
 
       //images
       'image' => 'nullable|image|max:1024',

@@ -67,68 +67,9 @@
 
                       <div class="review-item mb-2">
                           <p class="review-text">総合評価</p>
-                              <div class="review-star">
-                                @if(isset($shop->point))
-
-                                  @switch ($shop->point)
-                                      @case ($shop->point == 0)
-                                          <p class="review-point">レビューなし</p>
-                                      @break
-                                      @case ($shop->point < 1.5)
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                      @break
-                                      @case ($shop->point < 2)
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
-                                      @break
-                                      @case ($shop->point < 2.5)
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                      @break
-                                      @case ($shop->point < 3)
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
-                                      @break
-                                      @case ($shop->point < 3.5)
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                      @break
-                                      @case ($shop->point < 4)
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
-                                      @break
-                                      @case ($shop->point < 4.5)
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                      @break
-                                      @case ($shop->point < 5)
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star-half fa-lg" style="color: #fbca4d;"></i>
-                                      @break
-                                      @case ($shop->point = 5)
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                          <i class="fas fa-star fa-lg" style="color: #fbca4d;"></i>
-                                      @break
-                                  @endswitch
-                                  <p class="review-point">{{ round($shop->point, 2) }}点</p>
-                                  <p class="review-count"><i class="far fa-comment-alt fa-lg"></i> {{ $shop->reviews_count }}</p>
-                            @else
-                              <p class="review-point"></p>
-                              <p class="review-count"><i class="far fa-comment-alt fa-lg"></i> {{ $shop->reviews_count }}</p>
-                            @endif
-                        </div>
+                          <div class="review-star">
+                              @include('parts/review/shop_point')
+                          </div>
                       </div>
 
                       <div class="index-type">
@@ -252,7 +193,7 @@
                                       @if (count($shop->prices) >= 1)
                                           <div class="profile">
                                               <i class="fas fa-yen-sign fa-lg"></i>
-                                              <label class="shop-about">会費<small>（税込）</small></label>
+                                              <label class="shop-about">会費</label>
                                               <table class="table table-bordered">
                                                   <tr>
                                                       <th class="num"></th>
@@ -273,7 +214,7 @@
                                       @if (count($shop->personals) >= 1)
                                           <div class="profile">
                                               <i class="fas fa-user-friends fa-lg"></i>
-                                              <label class="shop-about">パーソナルトレーニング会費<small>（税込）</small></label>
+                                              <label class="shop-about">パーソナルトレーニング会費</label>
                                               <table class="table table-bordered">
                                                   <tr>
                                                       <th class="num"></th>
