@@ -12,6 +12,9 @@
                 <h2 class="page-title title">登録済みジム・道場編集</h2>
                 <div class="card">
                     <div class="body">
+                      @foreach ($errors->all() as $message)
+                          <p>{{ $message }}</p>
+                      @endforeach
 
                         <form action="{{ route('admin.shop.update') }}" method="post" enctype="multipart/form-data">
 

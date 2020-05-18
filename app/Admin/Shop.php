@@ -51,7 +51,7 @@ class Shop extends Model
       'close' => 'nullable|max:255',
       'web' => 'nullable|max:255',
       'trial' => 'required|max:255',
-      'trial_price' => 'nullable|numeric|max:10',
+      'trial_price' => 'nullable|numeric',
       'description' => 'nullable|max:255',
 
       //images

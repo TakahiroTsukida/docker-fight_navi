@@ -17,7 +17,7 @@ class AdminController extends Controller
     public function mypage(Request $request)
     {
         $admin = Auth::user();
-        $admin_shops = $admin->shops->sortBy('updated_at');
+        $admin_shops = $admin->shops->sortByDesc('updated_at');
 
         $shops = new LengthAwarePaginator(
             $admin_shops->forPage($request->page, 10),
