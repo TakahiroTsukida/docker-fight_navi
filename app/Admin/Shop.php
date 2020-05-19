@@ -39,26 +39,26 @@ class Shop extends Model
       //prices
       //片方が入力されている場合、片方も必須
       'price.name.*' => 'required_with:price.price.*|max:255',
-      'price.price.*'=> 'required_with:price.name.*|numeric|min:0',
+      'price.price.*'=> 'required_with:price.name.*',
 
       //personals
       //どれかが入力されている場合、全ての行が入力必須
       'personal.course.*' => 'required_with:personal.time.*|required_with:personal.price.*|max:255',
       'personal.time.*' => 'required_with:personal.course.*|required_with:personal.price.*',
-      'personal.price.*' => 'required_with:personal.course.*|required_with:personal.time.*|numeric|min:0',
+      'personal.price.*' => 'required_with:personal.course.*|required_with:personal.time.*',
 
       //shops
       'close' => 'nullable|max:255',
       'web' => 'nullable|max:255',
       'trial' => 'required',
-      'trial_price' => 'nullable|numeric',
+      'trial_price' => 'nullable',
       'description' => 'nullable|max:255',
 
       //images
       'image' => 'nullable|image|max:1024',
 
       'open.day.*' => 'nullable|required_with:open.time.*|max:100',
-      'open.time.*' => 'nullable|required_with:open.day.*|numeric|min:0',
+      'open.time.*' => 'nullable|required_with:open.day.*',
   );
 
   public function admin()
