@@ -31,35 +31,6 @@
                             </div>
                         </div>
 
-                        <!-- <div class="form-group row justify-content-center mt-4">
-                            <div class="col-md-8 col-lg-6">
-                                <label>性別</label>
-                                <div>
-                                    <label class="radio-inline ml-sm-1 mr-5">
-                                        <input type="radio" name="gender" value="男性" {{ old('gender') == '男性' ? 'checked' : '' }}>
-                                        男性
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="gender" value="女性" {{ old('gender') == '女性' ? 'checked' : '' }}>
-                                        女性
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row justify-content-center mt-4">
-                            <div class="col-md-8 col-lg-6">
-                                <label>生年月日</label>
-                                <input id="birthday" type="date" class="form-control @error('name') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" >
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div> -->
-
                         <div class="form-group row justify-content-center mt-4">
                             <div class="col-md-8 col-lg-6">
                                 <label for="email">メールアドレス<span class="badge badge-danger">必須</span></label>
@@ -98,88 +69,22 @@
                             </div>
                         </div>
 
-
-                        <!-- <div class="form-group row justify-content-center mt-5">
-                            <div class="col-md-8 col-lg-6">
-                                <label>会社情報</label>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group row justify-content-center mt-2">
-                            <div class="col-md-8 col-lg-6">
-                                <label>会社名</label>
-                                <input id="company_name" type="text" class="form-control @error('name') is-invalid @enderror" name="company_name" value="{{ old('company_name') }}">
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row justify-content-center mt-4">
-                            <div class="col-md-8 col-lg-6">
-                                <label>電話番号</label>
-                                <input id="tel" type="tel" class="form-control @error('name') is-invalid @enderror" name="tel" value="{{ old('tel') }}">
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row justify-content-center mt-4">
-                            <div class="col-md-8 col-lg-6">
-                                <label>郵便番号</label>
-                                <input id="address_number" type="text" maxlength="7" class="form-control @error('name') is-invalid @enderror" name="address_number" value="{{ old('address_number') }}">
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row justify-content-center mt-4">
-                            <div class="col-md-8 col-lg-6">
-                                <label>都道府県</label>
-                                <select name="address_ken" class="form-control">
-
-                                  @include('parts/address_ken')
-
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row justify-content-center mt-4">
-                            <div class="col-md-8 col-lg-6">
-                                <label>市区町村名以降</label>
-                                <input id="address_city" type="text" class="form-control @error('name') is-invalid @enderror" name="address_city" value="{{ old('address_city') }}">
-                            </div>
-                        </div>
-
-                        <div class="form-group row justify-content-center mt-4">
-                            <div class="col-md-8 col-lg-6">
-                                <label>ホームページ</label>
-                                <input id="web" type="text" class="form-control @error('name') is-invalid @enderror" name="web" value="{{ old('web') }}">
-                            </div>
-                        </div> -->
-
-
-
                         <div class="form-group row justify-content-center">
                             <div class="col-md-8 col-lg-6 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg col my-5 ">
+                                <button type="submit" class="btn btn-primary btn-lg col my-5">
                                     新規会員登録
                                 </button>
                             </div>
                         </div>
                     </form>
+
+                    <div class="form-group row justify-content-center">
+                        <div class="col-md-8 col-lg-6 text-center">
+                            <a href="{{ route('admin.login') }}" class="btn btn-outline-primary btn-lg col mt-3 mb-5">
+                                ログインはこちら
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

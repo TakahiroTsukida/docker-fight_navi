@@ -72,6 +72,14 @@
                         </div>
                     </form>
 
+                    <div class="form-group row justify-content-center">
+                        <div class="col-md-8 col-lg-6 text-center">
+                            <a href="{{ route('user.register') }}" class="btn btn-outline-primary btn-lg col mt-5 mb-3">
+                                新規登録はこちら
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="sns-login">
                         <label>SNSでログイン</label>
                     </div>

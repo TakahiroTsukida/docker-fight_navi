@@ -67,6 +67,14 @@
                             </div>
                         </div>
                     </form>
+
+                    <div class="form-group row justify-content-center">
+                        <div class="col-md-8 col-lg-6 text-center">
+                            <a href="{{ route('admin.register') }}" class="btn btn-outline-primary btn-lg col my-5">
+                                新規登録はこちら
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
