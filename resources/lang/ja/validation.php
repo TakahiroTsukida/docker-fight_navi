@@ -24,7 +24,7 @@ return [
     'before'               => ':attributeには:date以前の日付を指定してください。',
     'before_or_equal'      => ':attributeには:dateかそれ以前の日付を指定してください。',
     'between'              => [
-        'numeric' => ':attributeには:min〜:maxまでの数値を指定してください。',
+        'numeric' => ':attributeには正の数値を指定してください。',
         'file'    => ':attributeには:min〜:max KBのファイルを指定してください。',
         'string'  => ':attributeには:min〜:max文字の文字列を指定してください。',
         'array'   => ':attributeには:min〜:max個の要素を持つ配列を指定してください。',
@@ -35,7 +35,7 @@ return [
     'date_format'          => '":format"という形式の日付を指定してください。',
     'different'            => ':attributeには:otherとは異なる値を指定してください。',
     'digits'               => ':attributeには:digits桁の数値を指定してください。',
-    'digits_between'       => ':attributeには:min〜:max桁の数値を指定してください。',
+    'digits_between'       => ':attributeには正の整数を指定してください。',
     'dimensions'           => ':attributeの画像サイズが不正です。',
     'distinct'             => '指定された:attributeは既に存在しています。',
     'email'                => ':attributeには正しい形式のメールアドレスを指定してください。',
@@ -140,16 +140,15 @@ return [
         'close' => '定休日',
         'image' => '画像',
 
-        'price' => [
-            'name' => '会費名',
-            'price' => '金額',
-        ],
+        'price.name.*' => '会費名',
+        'price.price.*' => '金額',
 
-        'personal' => [
-            'course' => 'コース名',
-            'time' => '時間',
-            'price' => '金額',
-        ],
+        'personal.course.*' => 'コース名',
+        'personal.time.*' => '時間',
+        'personal.price.*' => '金額',
+
+        'open.day.*' => '営業日',
+        'open.time.*' => '営業時間',
 
         'trial' => '入会前の体験',
         'trial_price' => '体験の金額',

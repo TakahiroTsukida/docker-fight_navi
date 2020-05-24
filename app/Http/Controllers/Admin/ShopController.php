@@ -27,69 +27,27 @@ class ShopController extends Controller
 
 
 
-
     public function create(Request $request)
     {
         $this->validate($request, Shop::$rules);
         $form = $request->all();
+        
         //shopsテーブル保存
         $shop = new Shop;
-        $admin = Auth::guard('admin')->user();
-        $shop->admin_id = $admin->id;
-        // imagesテーブル保存
-        if (isset($form['image']))
-        {
-            $path = $request->file('image')->store('public/image/shop_images');
-            $shop->image_path = basename($path);
-            unset($form['image']);
-        }
-        $shop->fill($form)->save();
+        $shop = Shop::shop_create($form, $shop);
+
         //shop_typeの中間テーブルに保存
-        if (is_array($form['type']))
-        {
-            foreach ($form['type'] as $key => $value)
-            {
-                $shop->types()->detach($value);
-                $shop->types()->attach($value);
-            }
-        }
+        Type::shop_type_create($form, $shop);
+        
         //pricesテーブルに保存
-        foreach ($form['price']['name'] as $key => $value)
-        {
-            if ($value != null)
-            {
-                $price = new Price;
-                $price->shop_id = $shop->id;
-                $price->name = $value;
-                $price->price = $form['price']['price'][$key];
-                $price->save();
-            }
-        }
+        Price::prices_create($form, $shop);
+
         //personalsテーブルに保存
-        foreach ($form['personal']['course'] as $key => $value)
-        {
-            if ($value != null)
-            {
-                $personal = new Personal;
-                $personal->shop_id = $shop->id;
-                $personal->course = $value;
-                $personal->time = $form['personal']['time'][$key];
-                $personal->price = $form['personal']['price'][$key];
-                $personal->save();
-            }
-        }
+        Personal::personals_create($form, $shop);
+
         //opensテーブルに保存
-        foreach ($form['open']['day'] as $key => $value)
-        {
-            if ($value != null)
-            {
-                $open = new Open;
-                $open->shop_id = $shop->id;
-                $open->day = $value;
-                $open->time = $form['open']['time'][$key];
-                $open->save();
-            }
-        }
+        Open::opens_create($form, $shop);
+        
         unset($form['_token']);
 
         session()->flash('flash_message_create', $shop->name.' を新規登録しました');
@@ -99,30 +57,19 @@ class ShopController extends Controller
 
 
 
-
-
     public function edit(Request $request)
     {
         $shop = Shop::find($request->id);
 
-        //他のユーザーの情報の制御
-        // $admin = Admin::find(Auth::user()->id);
-        if (empty($shop))
-        {
-            session()->flash('flash_message_no_auth', '他のユーザーの編集情報は見れません');
-            return back();
-        }
-        if ($shop->admin_id != Auth::guard('admin')->user()->id)
-        {
-            session()->flash('flash_message_no_auth', '他のユーザーの編集情報は見れません');
-            return back();
-        }
+        //shop_idがない場合
+        Shop::empty_shop($shop);
+
+        //他のユーザーの情報の更新禁止
+        Shop::admin_inspection($shop);
 
         $types = array_column ( $shop->types->toArray() , 'id');
         return view('admin.shop.edit',['shop' => $shop, 'types' => $types]);
     }
-
-
 
 
 
@@ -133,80 +80,34 @@ class ShopController extends Controller
         $admin = Admin::find(Auth::guard('admin')->user()->id);
 
         $form = $request->all();
-        //shopsテーブル保存
         $shop = Shop::find($request->id);
-        //他のユーザーの情報の制御
-        if ($shop->admin_id != $admin->id)
-        {
-            session()->flash('flash_message_no_auth', '他のユーザーの編集情報は見れません');
-            return redirect('admin/profile/mypage');
-        }
-        if (isset($form['image']))
-        {
-            $path = $request->file('image')->store('public/image/shop_images');
-            $shop->image_path = basename($path);
-            unset($form['image']);
-        } elseif (isset($form['remove']))
-        {
-            $shop->image_path = null;
-            unset($form['remove']);
-        }
-        $shop->fill($form)->save();
+        
+        //他のユーザーの情報の更新禁止
+        Shop::admin_inspection($shop);
+        
+        //shopsテーブル保存
+        $shop = Shop::shop_create($form, $shop);
+
         //shop_typeの中間テーブルに保存
-        if (is_array($form['type']))
-        {
-            foreach ($form['type'] as $key => $value)
-            {
-                $shop->types()->detach($value);
-                $shop->types()->attach($value);
-            }
-        }
+        Type::shop_type_create($form, $shop);
+
         //pricesテーブルに保存
         Price::where('shop_id', $shop->id)->delete();
-        foreach ($form['price']['name'] as $key => $value)
-        {
-            if ($value != null)
-            {
-                $price = new Price;
-                $price->shop_id = $shop->id;
-                $price->name = $value;
-                $price->price = $form['price']['price'][$key];
-                $price->save();
-            }
-        }
+        Price::prices_create($form, $shop);
+        
+
         //personalsテーブルに保存
         Personal::where('shop_id', $shop->id)->delete();
-        foreach ($form['personal']['course'] as $key => $value)
-        {
-            if ($value != null)
-            {
-                $personal = new Personal;
-                $personal->shop_id = $shop->id;
-                $personal->course = $value;
-                $personal->time = $form['personal']['time'][$key];
-                $personal->price = $form['personal']['price'][$key];
-                $personal->save();
-            }
-        }
+        Personal::personals_create($form, $shop);
+
         //opensテーブルに保存
         Open::where('shop_id', $shop->id)->delete();
-        foreach ($form['open']['day'] as $key => $value)
-        {
-            if ($value != null)
-            {
-                $open = new Open;
-                $open->shop_id = $shop->id;
-                $open->day = $value;
-                $open->time = $form['open']['time'][$key];
-                $open->save();
-            }
-        }
+        Open::opens_create($form, $shop);
+        
         unset($form['_token']);
         session()->flash('flash_message_update', $shop->name.' を更新しました');
         return redirect('admin/profile/mypage');
     }
-
-
 
 
 

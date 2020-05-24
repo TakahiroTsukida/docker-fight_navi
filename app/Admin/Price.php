@@ -15,6 +15,22 @@ class Price extends Model
   );
 
 
+  public static function prices_create($form, $shop)
+  {
+    foreach ($form['price']['name'] as $key => $value)
+    {
+        if ($value != null)
+        {
+            $price = new Price;
+            $price->shop_id = $shop->id;
+            $price->name = $value;
+            $price->price = $form['price']['price'][$key];
+            $price->save();
+        }
+    }
+  }
+
+
 
   public function shop()
   {

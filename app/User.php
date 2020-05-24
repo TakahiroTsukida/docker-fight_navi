@@ -68,6 +68,43 @@ class User extends Authenticatable //implements MustVerifyEmail
     //     $this->notify(new CustomPasswordReset($token));
     // }
 
+
+    public static function user_profile_create($form, $user)
+    {
+        if(empty($user))
+        {
+            abort(404);
+        }
+
+        if (isset($form['secret_gender']))
+        {
+            $user->secret_gender = 1;
+        } else {
+            $user->secret_gender = null;
+        }
+
+        if (isset($form['secret_birthday']))
+        {
+            $user->secret_birthday = 1;
+        } else {
+            $user->secret_birthday = null;
+        }
+
+        if (isset($form['image']))
+        {
+            $path = $form['image']->store('public/image/profile_images');
+            $user->image_path = basename($path);
+            unset($form['image']);
+        } elseif (isset($form['remove']))
+        {
+            $user->image_path = null;
+            unset($form['remove']);
+        }        
+        $user->fill($form)->save();
+    }
+
+
+
     public function reviews() {
         return $this->hasMany('App\User\Review');
     }

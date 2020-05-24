@@ -15,6 +15,23 @@ class Personal extends Model
       'price' => 'required|integer',
   );
 
+
+  public static function personals_create($form, $shop)
+  {
+    foreach ($form['personal']['course'] as $key => $value)
+        {
+            if ($value != null)
+            {
+                $personal = new Personal;
+                $personal->shop_id = $shop->id;
+                $personal->course = $value;
+                $personal->time = $form['personal']['time'][$key];
+                $personal->price = $form['personal']['price'][$key];
+                $personal->save();
+            }
+        }
+  }
+
   public function shop()
   {
       return $this->belongsTo('App\Admin\Shop');

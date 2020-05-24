@@ -55,30 +55,6 @@
                                         </label>
                                     </div>
                                 @endforeach
-                                <!-- <div class="checkbox">
-                                   <label>
-                                       <input type="checkbox" name="type[]" value="1" {{ in_array(1, $types) ? 'checked="checked"' : '' }}>
-                                       ボクシング
-                                   </label>
-                                </div>
-                                <div class="checkbox">
-                                   <label>
-                                       <input type="checkbox" name="type[]" value="2" {{ in_array(2, $types) ? 'checked="checked"' : '' }}>
-                                       キックボクシング
-                                   </label>
-                                </div>
-                                <div class="checkbox">
-                                   <label>
-                                       <input type="checkbox" name="type[]" value="3" {{ in_array(3, $types) ? 'checked="checked"' : '' }}>
-                                       総合格闘技
-                                   </label>
-                                </div>
-                                <div class="checkbox">
-                                   <label>
-                                       <input type="checkbox" name="type[]" value="4" {{ in_array(4, $types) ? 'checked="checked"' : '' }}>
-                                       パーソナルトレーニング
-                                   </label>
-                                </div> -->
                             </div>
 
 
@@ -347,6 +323,11 @@
                                 </div>
                                 <div class="trial-list">
                                     <label class="mt-3 shop-text">有料の場合のみ金額を記入</lebel>
+                                    @error('trial_price')
+                                        <div>
+                                            <p class="error">{{ $message }}</p>
+                                        </div>
+                                    @enderror
                                     <div class="trial-block">
                                         <input type="number" name="trial_price" class="form-control trial-price" placeholder="例)500" value="{{ $shop->trial_price }}">
                                         <p class="price-en">円</p>

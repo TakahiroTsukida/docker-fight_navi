@@ -2,12 +2,12 @@
 @section('title', 'お気に入り一覧')
 @section('content')
     <div class="container">
+    @if (session('flash_message_delete'))
+      <div class="flash_message alert-danger text-center rounded py-3 my-2">
+          {{ session('flash_message_delete') }}
+      </div>
+    @endif
         <div class="row justify-content-center">
-            @if (session('flash_message_delete'))
-            <div class="flash_message alert-danger text-center rounded py-3 my-2">
-                {{ session('flash_message_delete') }}
-            </div>
-            @endif
             <h2 class="page-title">お気に入り一覧</h2>
             <div class="col-md-12 mt-3">
                 @if (count($favorites) >= 1)

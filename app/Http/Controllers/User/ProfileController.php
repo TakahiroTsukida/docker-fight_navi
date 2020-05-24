@@ -58,39 +58,13 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, User::$rules);
-        $user = User::find(Auth::user()->id);
-        if(empty($user))
-        {
-            abort(404);
-        }
         $form = $request->all();
+        $user = User::find(Auth::user()->id);
+        
+        //userプロフィール保存
+        User::user_profile_create($form, $user);
 
-        if (isset($form['secret_gender']))
-        {
-            $user->secret_gender = 1;
-        } else {
-            $user->secret_gender = null;
-        }
-
-        if (isset($form['secret_birthday']))
-        {
-            $user->secret_birthday = 1;
-        } else {
-            $user->secret_birthday = null;
-        }
-
-        if (isset($form['image']))
-        {
-            $path = $request->file('image')->store('public/image/profile_images');
-            $user->image_path = basename($path);
-            unset($form['image']);
-        } elseif (isset($request->remove))
-        {
-            $user->image_path = null;
-            unset($form['remove']);
-        }
         unset($form['_token']);
-        $user->fill($form)->save();
 
         return redirect('user/profile/mypage');
     }

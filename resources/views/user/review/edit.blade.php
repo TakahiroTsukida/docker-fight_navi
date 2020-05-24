@@ -90,6 +90,7 @@
                         </div>
 
                         <input type="hidden" name="review_id" value="{{ $review->id }}">
+                        <input type="hidden" name="shop_id" value="{{ $review->shop_id }}">
 
                         <div class="form-group justify-content-center">
                             <div class="revier-btn-group">

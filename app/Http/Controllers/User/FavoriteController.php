@@ -12,24 +12,16 @@ use Carbon\Carbon;
 
 class FavoriteController extends Controller
 {
-    public function add(Request $request) {
-        $favorite = new Favorite;
-        $favorite->user_id = Auth::user()->id;
-        $favorite->shop_id = $request->shop_id;
-        $favorite->save();
+    public function add(Request $request)
+    {
+        $shop_id = $request->shop_id;
 
-        $shop = Shop::find($request->shop_id);
-        if (isset($shop->favorites))
-        {
-            $favorites = $shop->favorites->toArray();
-            $favorites_count = count($favorites);
-            $shop->favorites_count = $favorites_count;
-            $shop->save();
-        } else
-        {
-            $shop->favorites_count = 0;
-            $shop->save();
-        }
+        //お気に入り登録
+        $favorite = Favorite::favorite_add($shop_id);
+
+        //shopのお気に入り数を更新        
+        Favorite::shop_favorites($shop_id);
+        
         session()->flash('flash_message_add', $favorite->shop->name.' をお気に入り登録しました');
         return back()->withInput();
     }
@@ -39,23 +31,14 @@ class FavoriteController extends Controller
 
     public function delete(Request $request)
     {
-        $favorite = Favorite::where('user_id', Auth::user()->id)
-                            ->where('shop_id', $request->shop_id)
-                            ->first();
-        $favorite->delete();
+        $shop_id = $request->shop_id;
 
-        $shop = Shop::find($request->shop_id);
-        if (isset($shop->favorites))
-        {
-            $favorites = $shop->favorites->toArray();
-            $favorites_count = count($favorites);
-            $shop->favorites_count = $favorites_count;
-            $shop->save();
-        } else
-        {
-            $shop->favorites_count = 0;
-            $shop->save();
-        }
+        //お気に入り削除
+        $favorite = Favorite::favorite_delete($shop_id);
+
+        //shopのお気に入り数を更新
+        Favorite::shop_favorites($shop_id);
+
         session()->flash('flash_message_delete', $favorite->shop->name.' をお気に入りから削除しました');
         return back()->withInput();
     }

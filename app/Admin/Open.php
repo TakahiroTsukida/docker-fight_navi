@@ -20,6 +20,21 @@ class Open extends Model
     );
 
 
+    public static function opens_create($form, $shop)
+    {
+        foreach ($form['open']['day'] as $key => $value)
+        {
+            if ($value != null)
+            {
+                $open = new Open;
+                $open->shop_id = $shop->id;
+                $open->day = $value;
+                $open->time = $form['open']['time'][$key];
+                $open->save();
+            }
+        }
+    }
+
     public function shop()
     {
         return $this->belongsTo('App\Admin\Shop');

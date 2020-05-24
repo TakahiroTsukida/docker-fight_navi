@@ -16,7 +16,7 @@ class AdminController extends Controller
 
     public function mypage(Request $request)
     {
-        $admin = Auth::user();
+        $admin = Auth::guard('admin')->user();
         $admin_shops = $admin->shops->sortByDesc('updated_at');
 
         $shops = new LengthAwarePaginator(
@@ -65,7 +65,7 @@ class AdminController extends Controller
     {
         return view('admin.profile.delete');
     }
-    
+
 
     public function destroy()
     {

@@ -20,9 +20,11 @@ class ReviewController extends Controller
         {
             return view('top');
         }
-        $user = Auth::user();
+        $user = Auth::guard('user')->user();
         return view('user.review.create',['shop' => $shop, 'user' => $user]);
     }
+
+
 
 
 
@@ -30,42 +32,22 @@ class ReviewController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, Review::$rules);
-        $user_id = Auth::user()->id;
-        //レビューテーブルに保存
-        $review = new Review;
         $form = $request->all();
-        $review->shop_id = $request->shop_id;
-        $review->user_id = $user_id;
-        if (isset($form['secret_name']))
-        {
-            $review->secret_name = $form['secret_name'];
-        } else
-        {
-            $review->secret_name = null;
-        }
-        $review->fill($form)->save();
+        
+        //レビューテーブルに保存        
+        $review = new Review;
+        $review = Review::review_create($form, $review);        
 
         //shopのレビュー件数、平均点の更新
-        $shop = Shop::find($request->shop_id);
-        if (count($shop->reviews) >= 1)
-        {
-            $reviews = $shop->reviews->toArray();
-            $point = array_sum(array_column($reviews, 'total_point')) / count(array_column($reviews, 'total_point'));
-            $reviews_count = count($reviews);
-            $shop->point = round($point, 2);
-            $shop->reviews_count = $reviews_count;
-            $shop->save();
-        } else
-        {
-            $shop->point = null;
-            $shop->reviews_count = 0;
-            $shop->save();
-        }
+        $shop = Shop::find($form['shop_id']);
+        Review::shop_reviews($shop);
 
         session()->flash('flash_message_review_create', $review->shop->name.' のレビューを作成しました');
         return redirect()->route('user.shop', ['id' => $shop->id]);
         // return redirect('user/profile/mypage');
     }
+
+
 
 
 
@@ -78,7 +60,7 @@ class ReviewController extends Controller
             session()->flash('flash_message_no_user_auth', '他のユーザーの編集情報は見れません');
             return back();
         }
-        if ($review->user_id != Auth::user()->id)
+        if ($review->user_id != Auth::guard('user')->user()->id)
         {
             session()->flash('flash_message_no_user_auth', '他のユーザーの編集情報は見れません');
             return back();
@@ -88,53 +70,35 @@ class ReviewController extends Controller
 
 
 
+
+
+
+
     public function update(Request $request)
     {
           $this->validate($request, Review::$rules);
+          $form = $request->all();
           $review = Review::find($request->review_id);
 
-          if (empty($review))
-          {
-              abort(404);
-          }
           //ログインしているユーザーかチェック
-          if ($review->user_id == Auth::user()->id)
-          {
-              $form = $request->all();
-              if (isset($form['secret_name']))
-              {
-                  $review->secret_name = $form['secret_name'];
-              } else
-              {
-                  $review->secret_name = null;
-              }
-              $review->fill($form)->save();
-          } else
-          {
-              abort(404);
-          }
+          if ($review->user_id == Auth::guard('user')->user()->id || empty($review))
+            {
+                Review::review_create($form, $review);
+            } else
+            {
+                abort(404);
+            }
 
           //shopのレビュー件数、平均点の更新
           $shop = Shop::find($review->shop_id);
-          if (count($shop->reviews) >= 1)
-          {
-              $reviews = $shop->reviews->toArray();
-              $point = array_sum(array_column($reviews, 'total_point')) / count(array_column($reviews, 'total_point'));
-              $reviews_count = count($reviews);
-              $shop->point = round($point, 2);
-              $shop->reviews_count = $reviews_count;
-              $shop->save();
-          } else
-          {
-              $shop->point = null;
-              $shop->reviews_count = 0;
-              $shop->save();
-          }
+          Review::shop_reviews($shop);
+
           session()->flash('flash_message_review_update', $review->shop->name.' のレビューを更新しました');
           return redirect()->route('user.shop', ['id' => $shop->id]);
           // return redirect('user/profile/mypage');
     }
 
+    
 
 
 
@@ -145,22 +109,10 @@ class ReviewController extends Controller
         $review = Review::find($request->review_id);
         $shop_id = $review->shop_id;
         $review->delete();
+
         //shopのレビュー件数、平均点の更新
         $shop = Shop::find($shop_id);
-        if (count($shop->reviews) >= 1)
-        {
-            $reviews = $shop->reviews->toArray();
-            $point = array_sum(array_column($reviews, 'total_point')) / count(array_column($reviews, 'total_point'));
-            $reviews_count = count($reviews);
-            $shop->point = $point;
-            $shop->reviews_count = $reviews_count;
-            $shop->save();
-        } else
-        {
-            $shop->point = null;
-            $shop->reviews_count = 0;
-            $shop->save();
-        }
+        Review::shop_reviews($shop);
 
         session()->flash('flash_message_review_delete', $review->shop->name.' のレビューを削除しました');
         return back()->withInput();

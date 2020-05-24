@@ -64,7 +64,7 @@
                           </div>
 
                           <div class="profile mt-3">
-                              @if (isset($admin->company_name, $admin->tel, $admin->address_number, $admin->address_ken, $admin->address_city, $admin->web))
+                              @if (isset($admin->company_name) || isset($admin->tel) || isset($admin->address_number) || isset($admin->address_ken) || isset($admin->address_city) || isset($admin->web))
                                   <h3>会社情報</h3>
                               @else
                                   <h3>会社情報が登録されていません</h3>
@@ -85,11 +85,15 @@
                               </div>
                           @endif
 
-                          @if (isset($admin->address_number, $admin->address_ken, $admin->address_city))
+                          @if (isset($admin->address_number) || isset($admin->address_ken) || isset($admin->address_city))
                           <div class="profile">
                               <label class="admin-label">住所</label>
+                              @if (isset($admin->address_number))
                               <p class="admin"><span class="symbol">〒 </span>{{ $admin->address_number }}</p>
+                              @endif
+                              @if (isset($admin->address_ken) || isset($admin->address_city))
                               <p class="admin">{{ $admin->address_ken }}{{ $admin->address_city }}</p>
+                              @endif
                           </div>
                           @endif
 
@@ -305,30 +309,31 @@
                                               <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
                                           </div>
 
-                                          <!-- Modal -->
-                                          <div class="modal fade" id="exampleModalCenter{{ $shop->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                              <div class="modal-dialog modal-dialog-centered" role="document">
-                                                  <div class="modal-content">
-                                                      <div class="modal-header">
-                                                          <h5 class="modal-title" id="exampleModalCenterTitle">削除確認画面</h5>
-                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                          <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                      </div>
-                                                      <div class="modal-body">
-                                                        {{ $shop->name }} のデータを削除しますか？
-                                                      </div>
-                                                      <div class="modal-footer">
-                                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                                                          <a href="{{ route('admin.shop.delete',['id' => $shop->id]) }}" class="btn btn-danger">削除</a>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
                                       </div>
                                   </div>
                               </div>
                           </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter{{ $shop->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">削除確認画面</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        {{ $shop->name }} のデータを削除しますか？
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                                            <a href="{{ route('admin.shop.delete',['id' => $shop->id]) }}" class="btn btn-danger">削除</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                       </div>
                   </div>
               @endforeach
