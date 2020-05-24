@@ -79,7 +79,7 @@
                                     <label>都道府県</label>
                                     <select name="address_ken" class="form-control form-ken">
                                       <option value="{{ $admin->address_ken }}" selected>{{ $admin->address_ken }}</option>
-                                      @include('parts/address_ken')
+                                      @include('parts/address_ken_old')
                                     </select>
                                 </div>
 

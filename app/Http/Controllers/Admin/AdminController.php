@@ -36,7 +36,7 @@ class AdminController extends Controller
 
     public function edit()
     {
-        $admin = Auth::user();
+        $admin = Auth::guard('admin')->user();
         if (empty($admin)) {
             abort(404);
         }
@@ -50,7 +50,7 @@ class AdminController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, Admin::$rules);
-        $admin = Admin::find(Auth::user()->id);
+        $admin = Admin::find(Auth::guard('admin')->user()->id);
         $admin_form = $request->all();
 
         unset($admin_form['_token']);
@@ -65,6 +65,7 @@ class AdminController extends Controller
     {
         return view('admin.profile.delete');
     }
+    
 
     public function destroy()
     {

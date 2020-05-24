@@ -20,7 +20,7 @@ class ShopController extends Controller
 
     public function add ()
     {
-        $admin = Admin::find(Auth::user()->id);
+        $admin = Admin::find(Auth::guard('admin')->user()->id);
 
         return view('admin.shop.create', ['admin' => $admin]);
     }
@@ -34,7 +34,7 @@ class ShopController extends Controller
         $form = $request->all();
         //shopsテーブル保存
         $shop = new Shop;
-        $admin = Auth::user();
+        $admin = Auth::guard('admin')->user();
         $shop->admin_id = $admin->id;
         // imagesテーブル保存
         if (isset($form['image']))
@@ -112,7 +112,7 @@ class ShopController extends Controller
             session()->flash('flash_message_no_auth', '他のユーザーの編集情報は見れません');
             return back();
         }
-        if ($shop->admin_id != Auth::user()->id)
+        if ($shop->admin_id != Auth::guard('admin')->user()->id)
         {
             session()->flash('flash_message_no_auth', '他のユーザーの編集情報は見れません');
             return back();
@@ -130,7 +130,7 @@ class ShopController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, Shop::$rules);
-        $admin = Admin::find(Auth::user()->id);
+        $admin = Admin::find(Auth::guard('admin')->user()->id);
 
         $form = $request->all();
         //shopsテーブル保存
