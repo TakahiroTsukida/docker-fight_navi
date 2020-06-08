@@ -375,7 +375,12 @@
                               <div class="review-item">
                                   <p class="review-text">時期</p>
                                   <div class="review-star">
-                                      <p class="d-inline">{{ $review->season_begin }} 〜 {{ $review->season_end }}</p>
+                                      <p class="d-inline">
+                                        {{ $review->season_begin == "2009" ?
+                                        $review->season_begin."年以前" : $review->season_begin."年" }}
+                                         〜 
+                                         {{ $review->season_end == null ?
+                                          "" : $review->season_end."年" }}</p>
                                   </div>
                               </div>
 

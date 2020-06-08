@@ -42,12 +42,17 @@
                         @enderror
                         <div class="form-group">
                             <p class="col-sm-3 col-lg-2 col-form-label review-label row">総合評価</p>
-                            <select name="total_point" class="col-sm-9 col-lg-10 form-control">
+                            <select name="total_point" class="col-sm-9 col-lg-10 form-control @error('total_point') is-invalid @enderror">
                                 <option value="{{ $review->total_point }}" selected>{{ $review->total_point }}点</option>
                                 @include('parts/review/total_point')
                             </select>
                         </div>
 
+                        @error('learn')
+                            <div>
+                                <p class="error">{{ $message }}</p>
+                            </div>
+                        @enderror
                         <div class="form-group">
                             <p class="col-sm-3 col-lg-2 col-form-label review-label row">通い方</p>
                             <select name="learn" class="col-sm-9 col-lg-10 form-control @error('learn') is-invalid @enderror">
@@ -56,16 +61,36 @@
                             </select>
                         </div>
 
+                        @error('season_begin')
+                            <div>
+                                <p class="error">{{ $message }}</p>
+                            </div>
+                        @enderror
+                        @error('season_end')
+                            <div>
+                                <p class="error">{{ $message }}</p>
+                            </div>
+                        @enderror
                         <div class="form-group">
                             <p class="col-sm-3 col-lg-2 col-form-label review-label row">時期</p>
                             <select name="season_begin" class="season-b form-control @error('season_begin') is-invalid @enderror">
-                                <option value="{{ $review->season_begin }}" selected>{{ $review->season_begin }}</option>
+                                <option value="{{ $review->season_begin }}" selected>
+                                  {{ $review->season_begin == "2009" ?
+                                    $review->season_begin."年以前" : $review->season_begin."年" }}
+                               </option>
+
                                 @include('parts/review/season')
+
                             </select>
                             <p class="season-btw"> 〜 </p>
-                            <select name="season_end" class="season-e form-control">
-                                <option value="{{ $review->season_end }}" selected>{{ $review->season_end }}</option>
+                            <select name="season_end" class="season-e form-control @error('season_end') is-invalid @enderror">
+                                <option value="{{ $review->season_end }}" selected>
+                                  {{ $review->season_end == null ?
+                                    "" : $review->season_end."年" }}
+                                </option>
+
                                 @include('parts/review/season')
+
                             </select>
                         </div>
 

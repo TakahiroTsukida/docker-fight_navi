@@ -7,7 +7,23 @@
           ボクシング、キックボクシング<br>
           総合格闘技ジムをみつけよう。<br>
           @unless(Auth::guard('user')->check() || Auth::guard('admin')->check())
-          <a href="{{ url('user/register') }}" class="btn btn-primary login-btn"><i class="fa fa-edit mr-1"></i>レビューしてみる(30秒で完了)</a>
+
+          <form method="POST" action="{{ route('user.login') }}">
+              @csrf
+              <input type="hidden" name="email" value="test@test.test">
+              <input type="hidden" name="password" value="1234">
+              <button type="submit" class="btn btn-primary user-auto-login">一般ユーザー簡単ログイン</button>
+          </form>
+          <form method="POST" action="{{ route('admin.login') }}">
+              @csrf
+              <input type="hidden" name="email" value="test.admin@test.test">
+              <input type="hidden" name="password" value="1234">
+              <button type="submit" class="btn btn-success admin-auto-login">管理ユーザー簡単ログイン</button>
+          </form>
+
+
+
+
           @endunless
         </h1>
 

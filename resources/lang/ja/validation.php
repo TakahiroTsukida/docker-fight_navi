@@ -87,6 +87,12 @@ return [
     'unique'               => 'その:attributeはすでに使われています。',
     'uploaded'             => ':attributeのアップロードに失敗しました。',
     'url'                  => ':attributeには正しい形式のURLを指定してください。',
+    'gte'                  => [
+        'numeric' => ':attribute は 通いはじめ より後である必要があります。',
+        'file'    => ':attribute は :value キロバイト以上である必要があります。',
+        'string'  => ':attribute は :value 文字以上である必要があります。',
+        'array'   => ':attribute には value 個以上の項目が必要です。',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -156,7 +162,7 @@ return [
 
         'total_point' => '総合評価',
         'learn' => '通い方',
-        'season_begin' => '通いはじめ',
+        'season_begin' => '時期',
         'season_end' => '通いおわり',
         'merit' => '良かったところ',
         'demerit' => 'イマイチなところ',

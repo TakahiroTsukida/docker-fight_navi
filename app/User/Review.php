@@ -28,7 +28,7 @@ class Review extends Model
         'total_point' => 'required|numeric',
         'learn' => 'required',
         'season_begin' => 'required',
-        'season_end' => 'nullable',
+        'season_end' => 'nullable|gte:season_begin',
         'merit' => 'nullable|max:300',
         'demerit' => 'nullable|max:300',
     );
