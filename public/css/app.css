@@ -12826,6 +12826,27 @@ a.show-btn.long-btn {
   }
 }
 
+.admin-mypage-btn {
+  font-size: 14px;
+  margin: 0 5px;
+  width: 60px;
+}
+
+@media (min-width: 768px) {
+  .admin-mypage-btn {
+    font-size: 16px;
+    margin: 0 13px;
+    width: 90px;
+  }
+}
+
+@media (min-width: 992px) {
+  .admin-mypage-btn {
+    margin: 0px 20px;
+    width: 105px;
+  }
+}
+
 .open-group {
   display: inline-block;
   width: 100%;

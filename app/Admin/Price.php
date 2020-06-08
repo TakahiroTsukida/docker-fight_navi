@@ -15,6 +15,7 @@ class Price extends Model
   );
 
 
+  //priceテーブル作成
   public static function prices_create($form, $shop)
   {
     foreach ($form['price']['name'] as $key => $value)
@@ -28,6 +29,25 @@ class Price extends Model
             $price->save();
         }
     }
+  }
+
+
+
+  //priceテーブル複製
+  public static function prices_copy($shop, $new_shop)
+  {
+      if (isset($shop->prices))
+      {
+          $prices = $shop->prices;
+
+          foreach ($prices as $price) {
+              $new_price = New Price;
+              $new_price->shop_id = $new_shop->id;
+              $new_price->name = $price->name;
+              $new_price->price = $price->price;
+              $new_price->save();
+          }
+      }
   }
 
 

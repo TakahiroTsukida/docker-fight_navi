@@ -10,6 +10,8 @@
 <meta property="og:description" content="全国の格闘技ジムをレビューで評価をしあって、あなたにあったジムを見つけよう！"> <!--⑤-->
 <meta property="og:image" content="{{ asset('image/fight_top.jpg') }}"> <!--⑥-->
 
+<meta name="robots" content="noindex">
+
 <title>@yield('title')</title>
 <script src="{{ asset('js/app.js') }}" defer></script>
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">

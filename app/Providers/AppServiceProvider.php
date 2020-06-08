@@ -33,5 +33,10 @@ class AppServiceProvider extends ServiceProvider
         Shop::observe(ShopObserver::class);
         Admin::observe(AdminObserver::class);
         User::observe(UserObserver::class);
+
+        if (request()->isSecure())
+        {
+            \URL::forceScheme('https');
+        }
     }
 }

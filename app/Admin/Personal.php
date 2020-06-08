@@ -16,6 +16,8 @@ class Personal extends Model
   );
 
 
+
+  //personalテーブル作成
   public static function personals_create($form, $shop)
   {
     foreach ($form['personal']['course'] as $key => $value)
@@ -30,6 +32,25 @@ class Personal extends Model
                 $personal->save();
             }
         }
+  }
+
+
+  //personalテーブル複製
+  public static function personals_copy($shop, $new_shop)
+  {
+      if (isset($shop->personals))
+      {
+          $personals = $shop->personals;
+
+          foreach ($personals as $personal) {
+              $new_personal = New Personal;
+              $new_personal->shop_id = $new_shop->id;
+              $new_personal->course = $personal->course;
+              $new_personal->time = $personal->time;
+              $new_personal->price = $personal->price;
+              $new_personal->save();
+          }
+      }
   }
 
   public function shop()

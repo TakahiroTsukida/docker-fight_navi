@@ -14,6 +14,11 @@
                   {{ session('flash_message_create') }}
               </div>
               @endif
+              @if (session('flash_message_shop_copy'))
+              <div class="flash_message alert-primary text-center rounded py-3 my-2">
+                  {{ session('flash_message_shop_copy') }}
+              </div>
+              @endif
               @if (session('flash_message_update'))
               <div class="flash_message alert-success text-center rounded py-3 my-2">
                   {{ session('flash_message_update') }}
@@ -154,11 +159,13 @@
 
                           <div class="profile">
                               <div class="center-btn">
-                                  <button type="button" class="btn btn-primary show-btn" data-toggle="modal" data-target="#exampleModalLongshop{{ $shop->id }}">詳細</button>
+                                  <button type="button" class="btn btn-primary admin-mypage-btn" data-toggle="modal" data-target="#exampleModalLongshop{{ $shop->id }}">詳細</button>
 
-                                  <a href="{{ route('admin.shop.edit',['id' => $shop->id]) }}" class="btn btn-success show-btn">編集</a>
+                                  <a href="{{ route('admin.shop.edit',['id' => $shop->id]) }}" class="btn btn-success admin-mypage-btn">編集</a>
 
-                                  <button type="button" class="btn btn-danger show-btn" data-toggle="modal" data-target="#exampleModalCenter{{ $shop->id }}">削除</button>
+                                  <button type="button" class="btn btn-secondary admin-mypage-btn" data-toggle="modal" data-target="#exampleModalCenterCopy{{ $shop->id }}">複製</button>
+
+                                  <button type="button" class="btn btn-danger admin-mypage-btn" data-toggle="modal" data-target="#exampleModalCenter{{ $shop->id }}">削除</button>
                               </div>
                           </div>
 
@@ -329,6 +336,28 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
                                             <a href="{{ route('admin.shop.delete',['id' => $shop->id]) }}" class="btn btn-danger">削除</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenterCopy{{ $shop->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">複製確認画面</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        {{ $shop->name }} のデータを複製しますか？
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+
+                                            <a href="{{ route('admin.shop.copy',['shop_id' => $shop->id]) }}" class="btn btn-primary">複製する</a>
                                         </div>
                                     </div>
                                 </div>

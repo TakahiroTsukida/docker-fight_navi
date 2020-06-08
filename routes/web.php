@@ -98,6 +98,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('shop/create', 'ShopController@add')->name('shop.add');
         Route::post('shop/create', 'ShopController@create')->name('shop.create');
 
+        Route::get('shop/copy', 'ShopController@copy')->name('shop.copy');
+
         Route::get('shop/edit', 'ShopController@edit')->name('shop.edit');
         Route::post('shop/edit', 'ShopController@update')->name('shop.update');
 

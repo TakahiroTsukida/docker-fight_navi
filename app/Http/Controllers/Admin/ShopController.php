@@ -31,14 +31,14 @@ class ShopController extends Controller
     {
         $this->validate($request, Shop::$rules);
         $form = $request->all();
-        
+
         //shopsテーブル保存
         $shop = new Shop;
         $shop = Shop::shop_create($form, $shop);
 
         //shop_typeの中間テーブルに保存
         Type::shop_type_create($form, $shop);
-        
+
         //pricesテーブルに保存
         Price::prices_create($form, $shop);
 
@@ -47,10 +47,38 @@ class ShopController extends Controller
 
         //opensテーブルに保存
         Open::opens_create($form, $shop);
-        
+
         unset($form['_token']);
 
         session()->flash('flash_message_create', $shop->name.' を新規登録しました');
+        return redirect('admin/profile/mypage');
+    }
+
+
+
+
+
+    public function copy(Request $request) {
+        $shop = Shop::find($request->shop_id);
+
+        //shopテーブル複製
+        $new_shop = $shop->replicate();
+        $new_shop->name = $shop->name."コピー";
+        $new_shop->save();
+
+        //shop_type複製
+        Type::shop_type_copy($shop, $new_shop);
+
+        //priceテーブル複製
+        Price::prices_copy($shop, $new_shop);
+
+        //personalテーブル複製
+        Personal::personals_copy($shop, $new_shop);
+
+        //openテーブル複製
+        Open::opens_copy($shop, $new_shop);
+
+        session()->flash('flash_message_shop_copy', $shop->name.' を複製しました');
         return redirect('admin/profile/mypage');
     }
 
@@ -81,10 +109,10 @@ class ShopController extends Controller
 
         $form = $request->all();
         $shop = Shop::find($request->id);
-        
+
         //他のユーザーの情報の更新禁止
         Shop::admin_inspection($shop);
-        
+
         //shopsテーブル保存
         $shop = Shop::shop_create($form, $shop);
 
@@ -94,7 +122,7 @@ class ShopController extends Controller
         //pricesテーブルに保存
         Price::where('shop_id', $shop->id)->delete();
         Price::prices_create($form, $shop);
-        
+
 
         //personalsテーブルに保存
         Personal::where('shop_id', $shop->id)->delete();
@@ -103,7 +131,7 @@ class ShopController extends Controller
         //opensテーブルに保存
         Open::where('shop_id', $shop->id)->delete();
         Open::opens_create($form, $shop);
-        
+
         unset($form['_token']);
         session()->flash('flash_message_update', $shop->name.' を更新しました');
         return redirect('admin/profile/mypage');

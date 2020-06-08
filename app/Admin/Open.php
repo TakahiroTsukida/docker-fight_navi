@@ -20,6 +20,8 @@ class Open extends Model
     );
 
 
+
+    //openテーブル作成
     public static function opens_create($form, $shop)
     {
         foreach ($form['open']['day'] as $key => $value)
@@ -34,6 +36,28 @@ class Open extends Model
             }
         }
     }
+
+
+    //openテーブル複製
+    public static function opens_copy($shop, $new_shop)
+    {
+        if (isset($shop->opens))
+        {
+            $opens = $shop->opens;
+
+            foreach ($opens as $open) {
+                $new_open = New Open;
+                $new_open->shop_id = $new_shop->id;
+                $new_open->day = $open->day;
+                $new_open->time = $open->time;
+                $new_open->save();
+            }
+        }
+    }
+
+
+
+
 
     public function shop()
     {
