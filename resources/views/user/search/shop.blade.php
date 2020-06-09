@@ -378,7 +378,7 @@
                                       <p class="d-inline">
                                         {{ $review->season_begin == "2009" ?
                                         $review->season_begin."年以前" : $review->season_begin."年" }}
-                                         〜 
+                                         〜
                                          {{ $review->season_end == null ?
                                           "" : $review->season_end."年" }}</p>
                                   </div>

@@ -20,10 +20,7 @@
               <input type="hidden" name="password" value="1234">
               <button type="submit" class="btn btn-success admin-auto-login">管理ユーザー簡単ログイン</button>
           </form>
-
-
-
-
+          
           @endunless
         </h1>
 

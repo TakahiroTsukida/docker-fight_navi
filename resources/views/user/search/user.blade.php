@@ -130,12 +130,12 @@
 
                             <div class="review-text-group">
                                 <p><i class="far fa-thumbs-up fa-lg"></i>良かったところ</p>
-                                <p class="review-merit"> {{ nl2br(e($review->merit)) }} </p>
+                                <p class="review-merit"> {!! nl2br(e($review->merit)) !!} </p>
                             </div>
 
                             <div class="review-text-group">
                                 <p><i class="far fa-hand-point-down fa-lg"></i>イマイチなところ</p>
-                                <p class="review-merit"> {{ nl2br(e($review->demerit)) }} </p>
+                                <p class="review-merit"> {!! nl2br(e($review->demerit)) !!} </p>
                             </div>
 
                             <div class="review-up-group">

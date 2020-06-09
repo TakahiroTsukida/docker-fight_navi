@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Admin\Admin;
 use App\Admin\Shop;
 use Carbon\Carbon;
+use Storage;
 
 class Shop extends Model
 {
@@ -77,12 +78,19 @@ class Shop extends Model
             $path = $form['image']->store('public/image/shop_images');
             $shop->image_path = basename($path);
             unset($form['image']);
+
         } elseif (isset($form['remove'])) {
-            $shop->image_path = null;
-            unset($form['remove']);
+
+            if ($shop->image_path)
+            {
+                Storage::delete("public/image/shop_images/$shop->image_path");
+                $shop->image_path = null;
+                unset($form['remove']);
+            }
+            
         }
         $shop->fill($form)->save();
-        return $shop;        
+        return $shop;
   }
 
 
@@ -94,7 +102,7 @@ class Shop extends Model
             session()->flash('flash_message_no_auth', '他のユーザーの編集情報は見れません');
             return back();
         }
-  } 
+  }
 
 
   //shop_idがない場合

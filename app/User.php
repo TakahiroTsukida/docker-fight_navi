@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Notifications\User\VerifyEmailCustom;
 use App\Notifications\User\CustomPasswordReset;
 use App\Admin\Shop;
+use Storage;
 
 class User extends Authenticatable //implements MustVerifyEmail
 {
@@ -97,9 +98,13 @@ class User extends Authenticatable //implements MustVerifyEmail
             unset($form['image']);
         } elseif (isset($form['remove']))
         {
-            $user->image_path = null;
-            unset($form['remove']);
-        }        
+            if ($user->image_path)
+            {
+                Storage::delete("public/image/profile_images/$user->image_path");
+                $user->image_path = null;
+                unset($form['remove']);
+            }
+        }
         $user->fill($form)->save();
     }
 

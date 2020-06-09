@@ -68,6 +68,18 @@
                         </div>
                     </form>
 
+
+                    <form method="POST" action="{{ route('admin.login') }}">
+                        @csrf
+                        <div class="form-group row justify-content-center">
+                            <div class="col-md-8 col-lg-6 text-center">
+                                <input type="hidden" name="email" value="test.admin@test.test">
+                                <input type="hidden" name="password" value="1234">
+                                <button type="submit" class="btn btn-success btn-lg col mt-5">管理ユーザー簡単ログイン</button>
+                            </div>
+                        </div>
+                    </form>
+
                     <div class="form-group row justify-content-center">
                         <div class="col-md-8 col-lg-6 text-center">
                             <a href="{{ route('admin.register') }}" class="btn btn-outline-primary btn-lg col my-5">
