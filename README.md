@@ -64,4 +64,4 @@
   - CircleCI
 
 ## インフラ構成図
-<p align="center"><img src="https://github.com/TakahiroTsukida/fight_navi/issues/3#issue-637086600" width="400"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/59963646/84402990-219c5780-ac40-11ea-98bf-124d77ab1d5d.jpg" width="400"></p>
