@@ -12,6 +12,8 @@
 ## 機能
   - ログインせずに使える機能
     - ジムの検索
+      - キーワード、ジャンル、都道府県、市区群名検索
+      - 評価点順、お気に入り数順、レビュー総数順の並び替え検索
     - レビューの閲覧（総お気に入り数も表示）
 
   - 一般ユーザー（ログイン）
@@ -60,3 +62,6 @@
     - EC2
     - RDS (MySQL)
   - CircleCI
+
+## インフラ構成図
+<p align="center"><img src="https://github.com/TakahiroTsukida/fight_navi/issues/3#issue-637086600" width="400"></p>

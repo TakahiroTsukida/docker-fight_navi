@@ -51,24 +51,24 @@ jobs:
           path: tests/_output
 
 
-    deploy:
-        machine:
-          image: circleci/classic:edge
-        steps:
-          - add_ssh_keys:
-              fingerprints:
-                - "0b:24:a3:43:c2:75:02:c8:ec:92:a8:d8:bb:b3:5d:8a"
-          - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /docker-fight_navi/ && sudo git pull origin master'
-
-
-workflows:
-    version: 2
-    build_and_deploy:
-      jobs:
-        - build
-        - deploy:
-            requires:
-              - build
-            filters:
-              branches:
-                only: master
+#     deploy:
+#         machine:
+#           image: circleci/classic:edge
+#         steps:
+#           - add_ssh_keys:
+#               fingerprints:
+#                 - "0b:24:a3:43:c2:75:02:c8:ec:92:a8:d8:bb:b3:5d:8a"
+#           - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /docker-fight_navi/ && sudo git pull origin master'
+#
+#
+# workflows:
+#     version: 2
+#     build_and_deploy:
+#       jobs:
+#         - build
+#         - deploy:
+#             requires:
+#               - build
+#             filters:
+#               branches:
+#                 only: master
