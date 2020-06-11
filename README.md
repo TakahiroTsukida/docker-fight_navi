@@ -1,79 +1,62 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+## Fightなび
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+実在する全国の格闘技ジムを検索、レビューできるwebアプリケーションです。
+当サイトは実際に稼働しているものとは別に転職用のポートフォリオとして、簡単ログイン機能などを実装したものになります。
 
-## About Laravel
+## 開発の経緯
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+私は前職では格闘技の業界で仕事をしており、プロキックボクサーとして活動もしていましたが怪我をして引退を気に退職いたしました。
+興味があり、他県のジムなどを検索することもありましたが、その際に非常に数が多く、目当ての情報に行き着くまでにすごく時間がかかり、もう少し簡単に情報がまとまったものがあれば良いなと思っていました。
+ですので、それらのジムの情報をまとめて検索＋レビューができるものを作りました。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 機能
+  - ログインせずに使える機能
+    - ジムの検索
+    - レビューの閲覧（総お気に入り数も表示）
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+  - 一般ユーザー（ログイン）
+    - プロフィール作成、編集（非公開も可）
+    - ジムのお気に入り登録
+    - ジムのレビュー作成、編集、削除（匿名投稿も可）
+    - レビューしたユーザーのプロフィール閲覧
+    - 退会
 
-## Learning Laravel
+  - 管理ユーザー
+    - プロフィール作成、編集
+    - ジムの登録、編集、削除
+    - 退会
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## URL
 
-## Laravel Sponsors
+- [https://fightnavi-portfolio.net/](https://fightnavi-portfolio.net/)
+トップページの簡単ログイン機能でお試しログインできます。
+    - 一般ユーザー
+    - 管理ユーザー
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- 実際に稼働中のサイトはこちらです [https://fightgymnavi.com](https://fightgymnavi.com)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 使用技術
+- フロント
+  - SCSS
+  - Bootstrap 4
+- バックエンド
+  - PHP 7.2
+  - Laravel 7.4
+- サーバー
+  - nginx 1.17
+- DB
+  - MySQL 8.0 (ローカル)
+  - RDS (AWS)
+- インフラ
+  - Docker
+    - docker-compose （ローカル環境でdockerを用いて開発するため）
+  - AWS
+    - VPC
+    - IAM
+    - ALB
+    - Route53
+    - EC2
+    - RDS (MySQL)
+  - CircleCI
