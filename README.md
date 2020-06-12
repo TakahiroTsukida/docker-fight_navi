@@ -64,4 +64,4 @@
   - CircleCI
 
 ## インフラ構成図
-<p align="center"><img src="https://user-images.githubusercontent.com/59963646/84402990-219c5780-ac40-11ea-98bf-124d77ab1d5d.jpg" width="400"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/59963646/84474857-8601fa00-acc6-11ea-9c55-5f6210529d0f.jpg" width="95%"></p>
