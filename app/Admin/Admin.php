@@ -21,12 +21,12 @@ class Admin extends Authenticatable
       'birthday',
       'email',
       'password',
-      'company_name',
-      'tel',
-      'address_number',
-      'address_ken',
-      'address_city',
-      'web',
+      // 'company_name',
+      // 'tel',
+      // 'address_number',
+      // 'address_ken',
+      // 'address_city',
+      // 'web',
   ];
 
   /**
@@ -53,11 +53,11 @@ class Admin extends Authenticatable
       'gender' => 'nullable',
       'birthday' => 'nullable|before:now',
 
-      'company_name' => 'nullable|max:255',
-      'tel' => 'nullable|max:13',
-      'address_number' => 'nullable|max:8',
-      'address_ken' => 'nullable',
-      'address_city' => 'nullable|max:255',
+      // 'company_name' => 'nullable|max:255',
+      // 'tel' => 'nullable|max:13',
+      // 'address_number' => 'nullable|max:8',
+      // 'address_ken' => 'nullable',
+      // 'address_city' => 'nullable|max:255',
 
   );
 

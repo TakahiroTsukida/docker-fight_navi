@@ -60,7 +60,7 @@
                                     <input type="date" name="birthday" class="form-control" value="{{ $admin->birthday }}">
                                 </div>
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label>会社名</label>
                                     <input type="text" name="company_name" class="form-control" value="{{ $admin->company_name }}">
                                 </div>
@@ -92,11 +92,11 @@
                                     <label>ホームページ</label>
                                     <input type="text" name="web" class="form-control" value="{{ $admin->web }}">
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="form-group row justify-content-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-success show-btn shop-btn-lg" onclick=history.back()>戻る</button>
+                                    <button type="button" class="btn btn-success shop-btn-lg" onclick=history.back()>戻る</button>
                                 </div>
                                 <div class="btn-group">
                                     <input type="submit" class="btn btn-primary shop-btn-lg" value="更新">

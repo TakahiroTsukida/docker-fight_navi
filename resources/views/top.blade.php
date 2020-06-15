@@ -20,7 +20,7 @@
               <input type="hidden" name="password" value="1234">
               <button type="submit" class="btn btn-success admin-auto-login">管理ユーザー簡単ログイン</button>
           </form>
-          
+
           @endunless
         </h1>
 
@@ -121,12 +121,12 @@
                 <div class="col-md-12 sale">
                     <h2>あなたのジムを登録してみませんか？</h2>
                     <a href="{{ url('admin/register') }}" class="btn btn-danger"><i class="fa fa-edit mr-2"></i>登録してみる(30秒で完了)</a>
-                    <p>ジムの登録は無料で行えます。</p>
+                    <!-- <p>ジムの登録は無料で行えます。</p>
                     <div class="warning">
                         <p>※ジムを登録する際には管理者ユーザーとして登録が必要になります。</p>
                         <p>※管理者ユーザーはレビューやお気に入り登録などは行なえません。</p>
                         <p>※既に掲載されているジムの情報の修正依頼などは、<a href="{{ url('user/description') }}">こちら</a>に記載のメールアドレスからお願い致します。</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         @endunless

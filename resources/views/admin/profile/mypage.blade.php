@@ -68,7 +68,7 @@
                               <p class="admin">{{ $admin->email }}</p>
                           </div>
 
-                          <div class="profile mt-3">
+                          <!-- <div class="profile mt-3">
                               @if (isset($admin->company_name) || isset($admin->tel) || isset($admin->address_number) || isset($admin->address_ken) || isset($admin->address_city) || isset($admin->web))
                                   <h3>会社情報</h3>
                               @else
@@ -107,7 +107,7 @@
                                   <label class="admin-label">ホームページ</label>
                                   <a class="link admin" href="{{ $admin->web }}">{{ $admin->web }}</a>
                               </div>
-                          @endif
+                          @endif -->
                       </div>
                   </div>
               </div>
