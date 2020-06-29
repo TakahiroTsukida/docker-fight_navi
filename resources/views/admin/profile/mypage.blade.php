@@ -75,21 +75,18 @@
                                   <h3>会社情報が登録されていません</h3>
                               @endif
                           </div>
-
                           @if (isset($admin->company_name))
                           <div class="profile">
                               <label class="admin-label">会社名</label>
                               <p class="admin">{{ $admin->company_name }}</p>
                           </div>
                           @endif
-
                           @if (isset($admin->tel))
                               <div class="profile">
                                   <label class="admin-label">電話番号</label>
                                   <p class="admin">{{ $admin->tel }}</p>
                               </div>
                           @endif
-
                           @if (isset($admin->address_number) || isset($admin->address_ken) || isset($admin->address_city))
                           <div class="profile">
                               <label class="admin-label">住所</label>
@@ -101,7 +98,6 @@
                               @endif
                           </div>
                           @endif
-
                           @if (isset($admin->web))
                               <div class="profile">
                                   <label class="admin-label">ホームページ</label>
@@ -157,169 +153,18 @@
 
                           </a>
 
-                          <div class="profile">
-                              <div class="center-btn">
-                                  <button type="button" class="btn btn-primary admin-mypage-btn" data-toggle="modal" data-target="#exampleModalLongshop{{ $shop->id }}">詳細</button>
+                            <div class="profile">
+                                <div class="center-btn">
+                                    <a href="{{ action('User\UserController@shop', ['id' => $shop->id]) }}" class="btn btn-primary admin-mypage-btn">詳細</a>
 
-                                  <a href="{{ route('admin.shop.edit',['id' => $shop->id]) }}" class="btn btn-success admin-mypage-btn">編集</a>
+                                    <a href="{{ route('admin.shop.edit',['id' => $shop->id]) }}" class="btn btn-success admin-mypage-btn">編集</a>
 
-                                  <button type="button" class="btn btn-secondary admin-mypage-btn" data-toggle="modal" data-target="#exampleModalCenterCopy{{ $shop->id }}">複製</button>
+                                    <button type="button" class="btn btn-secondary admin-mypage-btn" data-toggle="modal" data-target="#exampleModalCenterCopy{{ $shop->id }}">複製</button>
 
-                                  <button type="button" class="btn btn-danger admin-mypage-btn" data-toggle="modal" data-target="#exampleModalCenter{{ $shop->id }}">削除</button>
+                                    <button type="button" class="btn btn-danger admin-mypage-btn" data-toggle="modal" data-target="#exampleModalCenter{{ $shop->id }}">削除</button>
                               </div>
                           </div>
 
-
-                          <div class="modal fade" id="exampleModalLongshop{{ $shop->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                              <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                      <div class="modal-header">
-                                          <h2 class="modal-title" id="exampleModalLongTitle">{{ $shop->name }}</h2>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                      </div>
-
-                                      @if (isset($shop->image_path))
-                                          <div class="image-group">
-                                              <p class="shop-img"><img src="{{ asset('storage/image/shop_images/'.$shop->image_path) }}"></p>
-                                          </div>
-                                      @else
-                                          <div class="profile">
-                                              <p class="shop-img"><img src="{{ asset('image/l_e_others_501.png') }}"></p>
-                                          </div>
-                                      @endif
-
-                                      <div class="modal-body">
-                                          <div class="profile">
-                                              <label class="type">ジャンル：</label>
-                                              <ul class="type-list">
-                                                  @foreach($shop->types as $type)
-                                                      <li class="type-text"><i class="fas fa-check"></i> {{ $type->name }}</li>
-                                                  @endforeach
-                                              </ul>
-                                          </div>
-
-                                          <div class="profile">
-                                              <label class="shop-about d-inline"><i class="fas fa-star" style="color: #fbca4d;"></i>入会前の体験：</label>
-                                                  <p class="type-text d-inline">{{ $shop->trial }}</p>
-                                                  @if ($shop->trial == '有料')
-                                                  <p class="type-text d-inline">{{ number_format($shop->trial_price) }}<span class="symbol">円</span></p>
-                                                  @endif
-                                          </div>
-
-                                          @if (isset($shop->description))
-                                          <div class="profile">
-                                              <label>簡単な説明</label>
-                                              <p class="description">{!! nl2br(e($shop->description)) !!}</p>
-                                          </div>
-                                          @endif
-
-                                          @if (count($shop->prices) >= 1)
-                                              <div class="profile">
-                                                  <i class="fas fa-yen-sign fa-lg"></i>
-                                                  <label class="shop-about">会費</label>
-                                                  <table class="table table-bordered">
-                                                      <tr>
-                                                          <th class="num"></th>
-                                                          <th class="name">会費名</th>
-                                                          <th class="price-lg">金額</th>
-                                                      </tr>
-                                                      @foreach ($shop->prices as $price)
-                                                          <tr>
-                                                            <td>{{ $loop->iteration }}</td>
-                                                            <td>{{ $price->name }}</td>
-                                                            <td><strong>{{ number_format($price->price) }}</strong><span class="symbol">円</span></td>
-                                                          </tr>
-                                                      @endforeach
-                                                  </table>
-                                              </div>
-                                          @endif
-
-                                          @if (count($shop->personals) >= 1)
-                                              <div class="profile">
-                                                  <i class="fas fa-user-friends fa-lg"></i>
-                                                  <label class="shop-about">パーソナルトレーニング会費</label>
-                                                  <table class="table table-bordered">
-                                                      <tr>
-                                                          <th class="num"></th>
-                                                          <th class="course">コース名</th>
-                                                          <th class="time">時間</th>
-                                                          <th class="price">金額</th>
-                                                      </tr>
-                                                      @foreach ($shop->personals as $personal)
-                                                          <tr>
-                                                            <td>{{ $loop->iteration }}</td>
-                                                            <td>{{ $personal->course }}</td>
-                                                            <td>{{ $personal->time }}<small>分</small></td>
-                                                            <td><strong>{{ number_format($personal->price) }}</strong><small>円</small></td>
-                                                          </tr>
-                                                      @endforeach
-                                                  </table>
-                                              </div>
-                                          @endif
-
-                                          @if (count($shop->opens) >= 1)
-                                          <div class="profile">
-                                              <i class="fas fa-calendar-alt fa-lg"></i>
-                                              <label class="shop-about">営業日</label>
-                                              <table class="table table-bordered">
-                                                  <tr>
-                                                      <th class="open-day">日時</th>
-                                                      <th class="open-time">営業時間</th>
-                                                  </tr>
-                                                  @foreach ($shop->opens as $open)
-                                                      <tr>
-                                                        <td class="text-center">{{ $open->day }}</td>
-                                                        <td>{{ $open->time }}</td>
-                                                      </tr>
-                                                  @endforeach
-                                              </table>
-                                          </div>
-                                          @endif
-
-                                          @if (isset($shop->close))
-                                          <div class="profile">
-                                              <i class="fas fa-calendar-alt fa-lg" style="color: #7d7d7d;"></i>
-                                              <label class="shop-about">定休日</label>
-                                              <p class="open">{{ $shop->close }}</p>
-                                          </div>
-                                          @endif
-
-                                          @if (isset($shop->tel))
-                                          <div class="profile">
-                                              <i class="fas fa-phone fa-lg"></i>
-                                              <label class="shop-about">電話番号</label>
-                                              <p class="open">{{ $shop->tel }}</p>
-                                          </div>
-                                          @endif
-
-                                          @if (isset($shop->web))
-                                          <div class="profile">
-                                              <i class="fas fa-home fa-lg"></i>
-                                              <label class="shop-about">ホームページ</label>
-                                              <a href="{{ $shop->web }}" class="open">{{ $shop->web }}</a>
-                                          </div>
-                                          @endif
-
-                                          <div class="profile">
-                                              <i class="fas fa-map-marker-alt fa-lg"></i>
-                                              <label class="shop-about">住所</label>
-                                              @if (isset($shop->address_number))
-                                              <p class="open"><span class="symbol">〒 </span>{{ $shop->address_number }}</p>
-                                              @endif
-                                              <p class="open">{{ $shop->address_ken }}{{ $shop->address_city }}{{ $shop->address_other }}</p>
-                                          </div>
-
-                                          <div class="modal-footer mt-4">
-                                              <a href="{{ route('admin.shop.edit',['id' => $shop->id]) }}" class="btn btn-success">編集</a>
-                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                                          </div>
-
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModalCenter{{ $shop->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">

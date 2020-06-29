@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Admin\Admin;
 use App\Admin\Shop;
 use App\Admin\Type;
+use App\Admin\Join_price;
 use App\Admin\Price;
+use App\Admin\Other_price;
 use App\Admin\Personal;
 use App\Admin\Open;
 use App\User\Favorite;
@@ -39,8 +41,14 @@ class ShopController extends Controller
         //shop_typeの中間テーブルに保存
         Type::shop_type_create($form, $shop);
 
+        //join_pricesテーブルに保存
+        Join_price::create($form, $shop);
+
         //pricesテーブルに保存
         Price::prices_create($form, $shop);
+
+        //other_pricesテーブルに保存
+        Other_price::create($form, $shop);
 
         //personalsテーブルに保存
         Personal::personals_create($form, $shop);
@@ -69,8 +77,14 @@ class ShopController extends Controller
         //shop_type複製
         Type::shop_type_copy($shop, $new_shop);
 
+        //join_priceテーブル複製
+        Join_price::copy($shop, $new_shop);
+
         //priceテーブル複製
         Price::prices_copy($shop, $new_shop);
+
+        //other_priceテーブル複製
+        Other_price::copy($shop, $new_shop);
 
         //personalテーブル複製
         Personal::personals_copy($shop, $new_shop);
@@ -119,10 +133,17 @@ class ShopController extends Controller
         //shop_typeの中間テーブルに保存
         Type::shop_type_create($form, $shop);
 
+        //join_pricesテーブルに保存
+        Join_price::where('shop_id', $shop->id)->delete();
+        Join_price::create($form, $shop);
+
         //pricesテーブルに保存
         Price::where('shop_id', $shop->id)->delete();
         Price::prices_create($form, $shop);
 
+        //other_pricesテーブルに保存
+        Other_price::where('shop_id', $shop->id)->delete();
+        Other_price::create($form, $shop);
 
         //personalsテーブルに保存
         Personal::where('shop_id', $shop->id)->delete();

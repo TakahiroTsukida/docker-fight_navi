@@ -119,7 +119,38 @@
                             </div>
 
 
-                            {{-- 会費 --}}
+                            {{-- 入会金 --}}
+                            <div class="form-group mt-4">
+                                @include('parts/admin/label/shop/join_price')
+                            </div>
+
+                            @error('join_price.name.*')
+                                <div>
+                                    <p class="error">{{ $message }}</p>
+                                </div>
+                            @enderror
+
+                            @error('join_price.price.*')
+                                <div>
+                                    <p class="error">{{ $message }}</p>
+                                </div>
+                            @enderror
+
+                            {{-- プライス --}}
+                            @php
+                                $basics = ['男性', '女性', '学生', '', '', ''];
+                            @endphp
+                            @foreach ($basics as $key => $basic)
+                                <div class="form-group mt-4">
+                                    <input type="text" name="join_price[name][]" class="form-control price-item-name @error('join_price.name.{{ $key }}') is-invalid @enderror" placeholder="{{ $basic }}" value="{{ is_array(old("join_price.name")) && old("join_price.name.$key") != '' ? old("join_price.name.$key") : '' }}">
+
+                                    <input type="number" name="join_price[price][]" class="form-control price-item @error('join_price.price.{{ $key }}') is-invalid @enderror" value="{{ is_array(old("join_price.price")) && old("join_price.price.$key") != '' ? old("join_price.price.$key") : '' }}">
+                                    <p class="price-en"><small>円</small></p>
+                                </div>
+                            @endforeach
+
+
+                            {{-- 月会費 --}}
                             <div class="form-group mt-4">
                                 @include('parts/admin/label/shop/price')
                             </div>
@@ -138,13 +169,44 @@
 
                             {{-- プライス --}}
                             @php
-                                $basics = ['入会金', '男性', '女性', '学生', '', '', '', '', '', ''];
+                                $basics = ['男性', '女性', '学生', '', '', '', '', '', ''];
                             @endphp
                             @foreach ($basics as $key => $basic)
                                 <div class="form-group mt-4">
                                     <input type="text" name="price[name][]" class="form-control price-item-name @error('price.name.{{ $key }}') is-invalid @enderror" placeholder="{{ $basic }}" value="{{ is_array(old("price.name")) && old("price.name.$key") != '' ? old("price.name.$key") : '' }}">
 
                                     <input type="number" name="price[price][]" class="form-control price-item @error('price.price.{{ $key }}') is-invalid @enderror" value="{{ is_array(old("price.price")) && old("price.price.$key") != '' ? old("price.price.$key") : '' }}">
+                                    <p class="price-en"><small>円</small></p>
+                                </div>
+                            @endforeach
+
+
+                            {{-- その他の会費 --}}
+                            <div class="form-group mt-4">
+                                @include('parts/admin/label/shop/other_price')
+                            </div>
+
+                            @error('other_price.name.*')
+                                <div>
+                                    <p class="error">{{ $message }}</p>
+                                </div>
+                            @enderror
+
+                            @error('other_price.price.*')
+                                <div>
+                                    <p class="error">{{ $message }}</p>
+                                </div>
+                            @enderror
+
+                            {{-- プライス --}}
+                            @php
+                                $basics = ['ビジター', '', '', '', ''];
+                            @endphp
+                            @foreach ($basics as $key => $basic)
+                                <div class="form-group mt-4">
+                                    <input type="text" name="other_price[name][]" class="form-control price-item-name @error('other_price.name.{{ $key }}') is-invalid @enderror" placeholder="{{ $basic }}" value="{{ is_array(old("other_price.name")) && old("other_price.name.$key") != '' ? old("other_price.name.$key") : '' }}">
+
+                                    <input type="number" name="other_price[price][]" class="form-control price-item @error('other_price.price.{{ $key }}') is-invalid @enderror" value="{{ is_array(old("other_price.price")) && old("other_price.price.$key") != '' ? old("other_price.price.$key") : '' }}">
                                     <p class="price-en"><small>円</small></p>
                                 </div>
                             @endforeach

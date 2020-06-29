@@ -132,6 +132,16 @@ class Shop extends Model
   {
       return $this->hasMany('App\Admin\Price');
   }
+  
+  public function join_prices()
+  {
+      return $this->hasMany('App\Admin\Join_price');
+  }
+
+  public function other_prices()
+  {
+      return $this->hasMany('App\Admin\Other_price');
+  }
 
   public function opens()
   {

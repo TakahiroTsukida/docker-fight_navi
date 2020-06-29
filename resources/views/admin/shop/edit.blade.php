@@ -124,7 +124,50 @@
 
 
 
-                            {{-- 会費 --}}
+                            {{-- 入会金 --}}
+                            <div class="form-group mt-4">
+                                @include('parts/admin/label/shop/join_price')
+                            </div>
+
+                            @error('join_price.name.*')
+                                <div>
+                                    <p class="error">{{ $message }}</p>
+                                </div>
+                            @enderror
+
+                            @error('join_price.price.*')
+                                <div>
+                                    <p class="error">{{ $message }}</p>
+                                </div>
+                            @enderror
+
+                            @foreach ($shop->join_prices as $join_price)
+                                <div class="form-group mt-4">
+                                    <input type="text" name="join_price[name][]" class="form-control price-item-name" value="{{ $join_price->name }}">
+                                    <input type="number" name="join_price[price][]" class="form-control price-item" placeholder="半角数字" value="{{ $join_price->price }}">
+                                    <p class="price-en">円</p>
+                                </div>
+                            @endforeach
+
+                            @php
+                                $price_count = 5 - count($shop->join_prices->toArray());
+                            @endphp
+
+                            @for ($i = 0; $i < $price_count; $i++)
+                                @php
+                                    $price_null = 5 + $i - $price_count;
+                                @endphp
+                                <div class="form-group mt-4">
+                                    <input type="text" name="join_price[name][]" class="form-control price-item-name" value="{{ is_array(old("join_price.name")) && old("join_price.name.$price_null") != '' ? old("join_price.name.$price_null") : '' }}">
+
+                                    <input type="number" name="join_price[price][]" class="form-control price-item" value="{{ is_array(old("join_price.price")) && old("join_price.price.$price_null") != '' ? old("join_price.price.$price_null") : '' }}">
+                                    <p class="price-en"><small>円</small></p>
+                                </div>
+                            @endfor
+
+
+
+                            {{-- 月会費 --}}
                             <div class="form-group mt-4">
                                 @include('parts/admin/label/shop/price')
                             </div>
@@ -161,6 +204,50 @@
                                     <input type="text" name="price[name][]" class="form-control price-item-name" value="{{ is_array(old("price.name")) && old("price.name.$price_null") != '' ? old("price.name.$price_null") : '' }}">
 
                                     <input type="number" name="price[price][]" class="form-control price-item" value="{{ is_array(old("price.price")) && old("price.price.$price_null") != '' ? old("price.price.$price_null") : '' }}">
+                                    <p class="price-en"><small>円</small></p>
+                                </div>
+                            @endfor
+
+
+
+
+                            {{-- その他の会費 --}}
+                            <div class="form-group mt-4">
+                                @include('parts/admin/label/shop/other_price')
+                            </div>
+
+                            @error('other_price.name.*')
+                                <div>
+                                    <p class="error">{{ $message }}</p>
+                                </div>
+                            @enderror
+
+                            @error('other_price.price.*')
+                                <div>
+                                    <p class="error">{{ $message }}</p>
+                                </div>
+                            @enderror
+
+                            @foreach ($shop->other_prices as $other_price)
+                                <div class="form-group mt-4">
+                                    <input type="text" name="other_price[name][]" class="form-control price-item-name" value="{{ $other_price->name }}">
+                                    <input type="number" name="other_price[price][]" class="form-control price-item" placeholder="半角数字" value="{{ $other_price->price }}">
+                                    <p class="price-en">円</p>
+                                </div>
+                            @endforeach
+
+                            @php
+                                $price_count = 5 - count($shop->join_prices->toArray());
+                            @endphp
+
+                            @for ($i = 0; $i < $price_count; $i++)
+                                @php
+                                    $price_null = 5 + $i - $price_count;
+                                @endphp
+                                <div class="form-group mt-4">
+                                    <input type="text" name="other_price[name][]" class="form-control price-item-name" value="{{ is_array(old("other_price.name")) && old("other_price.name.$price_null") != '' ? old("other_price.name.$price_null") : '' }}">
+
+                                    <input type="number" name="other_price[price][]" class="form-control price-item" value="{{ is_array(old("other_price.price")) && old("other_price.price.$price_null") != '' ? old("other_price.price.$price_null") : '' }}">
                                     <p class="price-en"><small>円</small></p>
                                 </div>
                             @endfor

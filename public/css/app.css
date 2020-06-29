@@ -11536,7 +11536,7 @@ input.center {
 
 @media (min-width: 768px) {
   .app_imgtext form button.admin-auto-login {
-    top: 185px;
+    top: 190px;
     left: 60px;
     font-size: 17px;
   }
@@ -12339,8 +12339,137 @@ input.form-control::placeholder {
   }
 }
 
+td.table-type {
+  border: 1px solid #dee2e6;
+  width: 75px;
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  td.table-type {
+    font-size: 15px;
+    width: 22%;
+  }
+}
+
 span.red {
   color: #f14141;
+}
+
+span.table-price-price {
+  position: absolute;
+  left: 180px;
+}
+
+@media (min-width: 768px) {
+  span.table-price-price {
+    left: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  span.table-price-price {
+    left: 370px;
+  }
+}
+
+@media (min-width: 1200px) {
+  span.table-price-price {
+    left: 430px;
+  }
+}
+
+span.table-personal-time {
+  position: absolute;
+  left: 228px;
+}
+
+@media (min-width: 400px) {
+  span.table-personal-time {
+    left: 254px;
+  }
+}
+
+@media (min-width: 440px) {
+  span.table-personal-time {
+    left: 285px;
+  }
+}
+
+@media (min-width: 768px) {
+  span.table-personal-time {
+    left: 410px;
+  }
+}
+
+@media (min-width: 992px) {
+  span.table-personal-time {
+    left: 470px;
+  }
+}
+
+@media (min-width: 1200px) {
+  span.table-personal-time {
+    left: 520px;
+  }
+}
+
+span.table-personal-price {
+  position: absolute;
+  left: 270px;
+}
+
+@media (min-width: 400px) {
+  span.table-personal-price {
+    left: 293px;
+  }
+}
+
+@media (min-width: 440px) {
+  span.table-personal-price {
+    left: 333px;
+  }
+}
+
+@media (min-width: 768px) {
+  span.table-personal-price {
+    left: 460px;
+  }
+}
+
+@media (min-width: 992px) {
+  span.table-personal-price {
+    left: 530px;
+  }
+}
+
+@media (min-width: 1200px) {
+  span.table-personal-price {
+    left: 580px;
+  }
+}
+
+span.table-open-time {
+  position: absolute;
+  left: 180px;
+}
+
+@media (min-width: 768px) {
+  span.table-open-time {
+    left: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  span.table-open-time {
+    left: 350px;
+  }
+}
+
+@media (min-width: 1200px) {
+  span.table-open-time {
+    left: 400px;
+  }
 }
 
 .login-btn {
@@ -12412,7 +12541,7 @@ p.index-desc {
 }
 
 .index-type {
-  margin: 0px 15px;
+  margin: 10px 15px;
   color: #000;
 }
 
@@ -12477,6 +12606,10 @@ p.index-desc {
     margin: 0 20px;
     width: 130px;
   }
+}
+
+.table {
+  border: 1px solid #dee2e6;
 }
 
 .shop-name {
@@ -12581,7 +12714,7 @@ p.index-desc {
 }
 
 td {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 @media (min-width: 768px) {
