@@ -94,7 +94,7 @@ $tab: 768px; // タブレット
 }
 
 td {
-    font-size: 12px;
+    font-size: 10px;
     @include tab {
         font-size: 15px;
     }

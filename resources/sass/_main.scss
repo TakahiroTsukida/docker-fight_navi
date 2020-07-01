@@ -131,11 +131,36 @@ h3 {
 }
 
 label {
-  font-size: 15px;
+    font-size: 15px;
 
-  @include tab {
-      font-size: 17px;
-  }
+    @include tab {
+        font-size: 17px;
+    }
+
+    &.left-group {
+        @media (min-width: 576px) {
+            margin-left: -16px;
+        }
+    }
+    
+    &.right-group {
+        @media (min-width: 576px) {
+            margin-right: -16px;
+        }
+    }
+
+    &.index-desc {
+        margin: 0 15px 5px 15px;
+        color: #000;
+        @include tab {
+            margin: 0 80px 10px 80px;
+        }
+    }
+
+    &.radio {
+        margin-top: 7px;
+        display: block;
+    }
 }
 
 p {
@@ -452,17 +477,6 @@ input.center {
   background-color: #000000;
 }
 
-label.left-group {
-    @media (min-width: 576px) {
-        margin-left: -16px;
-    }
-}
-
-label.right-group {
-    @media (min-width: 576px) {
-        margin-right: -16px;
-    }
-}
 
 .myprofile {
     display: inline-block;
@@ -926,89 +940,19 @@ td {
     &.table-type {
         border: 1px solid #dee2e6;
         width: 75px;
-        font-size: 12px;
         @include tab {
-            font-size: 15px;
             width: 22%;
         }
+    }
+
+    &.personal {
+        padding: 12px 0 !important;
     }
 }
 
 span {
     &.red {
         color: #f14141;
-    }
-
-    &.table-price-price {
-        position: absolute;
-        left: 180px;
-
-        @include tab {
-            left: 300px;
-        }
-        @include pc {
-            left: 370px;
-        }
-        @media (min-width: 1200px) {
-            left: 430px;
-        }
-    }
-
-    &.table-personal-time {
-        position: absolute;
-        left: 228px;
-
-        @media (min-width: 400px) {
-            left: 254px;
-        }
-        @media (min-width: 440px) {
-            left: 285px;
-        }
-        @include tab {
-            left: 410px;
-        }
-        @include pc {
-            left: 470px;
-        }
-        @media (min-width: 1200px) {
-            left: 520px;
-        }
-    }
-
-    &.table-personal-price {
-        position: absolute;
-        left: 270px;
-
-        @media (min-width: 400px) {
-            left: 293px;
-        }
-        @media (min-width: 440px) {
-            left: 333px;
-        }
-        @include tab {
-            left: 460px;
-        }
-        @include pc {
-            left: 530px;
-        }
-        @media (min-width: 1200px) {
-            left: 580px;
-        }
-    }
-
-    &.table-open-time {
-        position: absolute;
-        left: 180px;
-
-        @include tab {
-            left: 300px;
-        }
-        @include pc {
-            left: 350px;
-        }
-        @media (min-width: 1200px) {
-            left: 400px;
-        }
     }
 }
 
@@ -1036,16 +980,6 @@ span {
     @include pc {
         left: 4%;
         font-size: 16px;
-    }
-}
-
-label{
-    &.index-desc {
-        margin: 0 15px 5px 15px;
-        color: #000;
-        @include tab {
-            margin: 0 80px 10px 80px;
-        }
     }
 }
 
@@ -1124,6 +1058,26 @@ p{
 }
 
 
+
+.tax {
+    & p {
+        margin: 3px 20px -7px 20px;
+        font-size: 10px;
+        text-align: right;
+        @include tab {
+            margin: 5px 80px -10px 80px;
+            font-size: 13px;
+        }
+    }
+}
+
+
+.radio-group {
+    margin: 0 11px;
+    @include tab {
+        margin: 0 15px;
+    }
+}
 // button.back-btn {
 //     border-width: 0;
 //     border-style: solid;

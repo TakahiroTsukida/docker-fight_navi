@@ -169,7 +169,7 @@ class UserController extends Controller
                 $favorite = $favorites->where('user_id', Auth::user()->id)->first();
             }
         }
-        $shop_reviews = $shop->reviews;
+        $shop_reviews = $shop->reviews->sortByDesc('updated_at');
         if (isset($shop_reviews))
         {
             $reviews = new LengthAwarePaginator(

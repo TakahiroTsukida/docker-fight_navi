@@ -25,6 +25,7 @@ class Shop extends Model
         'trial',
         'trial_price',
         'description',
+        'tax',
     ];
 
   protected $guarded = array('id');
@@ -58,6 +59,7 @@ class Shop extends Model
       'trial' => 'required',
       'trial_price' => 'nullable|integer|between:1,1000000',
       'description' => 'nullable|max:255',
+      'tax' => 'required',
 
       //images
       'image' => 'nullable|image|max:1024',

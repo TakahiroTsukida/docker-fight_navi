@@ -11,17 +11,17 @@
               @endif
               @if (session('flash_message_create'))
               <div class="flash_message alert-primary text-center rounded py-3 my-2">
-                  {{ session('flash_message_create') }}
+                <a href="{{ action('User\UserController@shop', ['id' => $new_shop]) }}">{{ session('flash_message_create') }}</a>
               </div>
               @endif
               @if (session('flash_message_shop_copy'))
               <div class="flash_message alert-primary text-center rounded py-3 my-2">
-                  {{ session('flash_message_shop_copy') }}
+                <a href="{{ action('User\UserController@shop', ['id' => $new_shop]) }}">{{ session('flash_message_shop_copy') }}</a>
               </div>
               @endif
               @if (session('flash_message_update'))
               <div class="flash_message alert-success text-center rounded py-3 my-2">
-                  {{ session('flash_message_update') }}
+                <a href="{{ action('User\UserController@shop', ['id' => $new_shop]) }}">{{ session('flash_message_update') }}</a>
               </div>
               @endif
               @if (session('flash_message_delete'))

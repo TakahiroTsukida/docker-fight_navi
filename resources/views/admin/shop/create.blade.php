@@ -118,6 +118,28 @@
                                 <input type="text" name="address_other" class="form-control" placeholder="例）〇〇1丁目1-1" value="{{ old('address_other') }}">
                             </div>
 
+                            {{-- tax --}}
+                            <div class="form-group mt-4">
+                                <label class="shop-text">消費税表示</label>
+
+                                @error('tax')
+                                    <div>
+                                        <p class="error">{{ $message }}</p>
+                                    </div>
+                                @enderror
+                                
+                                <div class="radio-group">
+                                    <label class="radio">
+                                        <input type="radio" name="tax" value="0" {{ old("tax") == "0" ? 'checked="checked"' : '' }}>
+                                        税抜き
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="tax" value="1" {{ old("tax") == "1" || old("tax") == null ? 'checked="checked"' : '' }}>
+                                        税込み
+                                    </label>
+                                </div>
+                            </div>
+
 
                             {{-- 入会金 --}}
                             <div class="form-group mt-4">

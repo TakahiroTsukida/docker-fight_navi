@@ -59,7 +59,7 @@ class ShopController extends Controller
         unset($form['_token']);
 
         session()->flash('flash_message_create', $shop->name.' を新規登録しました');
-        return redirect('admin/profile/mypage');
+        return redirect(route('admin.profile.mypage', ['new_shop' => $shop->id]));
     }
 
 
@@ -92,8 +92,8 @@ class ShopController extends Controller
         //openテーブル複製
         Open::opens_copy($shop, $new_shop);
 
-        session()->flash('flash_message_shop_copy', $shop->name.' を複製しました');
-        return redirect('admin/profile/mypage');
+        session()->flash('flash_message_shop_copy', $shop->name.'コピー を複製しました');
+        return redirect(route('admin.profile.mypage', ['new_shop' => $new_shop->id]));
     }
 
 
@@ -155,7 +155,7 @@ class ShopController extends Controller
 
         unset($form['_token']);
         session()->flash('flash_message_update', $shop->name.' を更新しました');
-        return redirect('admin/profile/mypage');
+        return redirect(route('admin.profile.mypage', ['new_shop' => $shop->id]));
     }
 
 

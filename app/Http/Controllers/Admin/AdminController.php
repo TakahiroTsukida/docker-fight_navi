@@ -27,7 +27,14 @@ class AdminController extends Controller
             array('path' => $request->url())
         );
 
-        return view('admin.profile.mypage', ['admin' => $admin, 'shops' => $shops]);
+        if (isset($request->new_shop))
+        {
+            $new_shop = $request->new_shop;
+        } else {
+
+            $new_shop = null;
+        }
+        return view('admin.profile.mypage', ['admin' => $admin, 'shops' => $shops, 'new_shop' => $new_shop]);
     }
 
 

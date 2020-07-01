@@ -123,6 +123,23 @@
                             </div>
 
 
+                            {{-- tax --}}
+                            <div class="form-group mt-4">
+                                <label class="shop-text">消費税表示</label>
+                                
+                                <div class="radio-group">
+                                    <label class="radio">
+                                        <input type="radio" name="tax" value="0" {{ $shop->tax == "0" ? 'checked="checked"' : '' }}>
+                                        税抜き
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="tax" value="1" {{ $shop->tax == "1" ? 'checked="checked"' : '' }}>
+                                        税込み
+                                    </label>
+                                </div>
+                            </div>
+
+
 
                             {{-- 入会金 --}}
                             <div class="form-group mt-4">
@@ -237,7 +254,7 @@
                             @endforeach
 
                             @php
-                                $price_count = 5 - count($shop->join_prices->toArray());
+                                $price_count = 5 - count($shop->other_prices->toArray());
                             @endphp
 
                             @for ($i = 0; $i < $price_count; $i++)

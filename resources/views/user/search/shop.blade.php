@@ -104,18 +104,27 @@
                                 @endif
                         </div>
 
+                        <div class="tax">
+                            <p>※ 表は{{ $shop->tax == "0" ? "税抜" : "税込" }}です。</p>
+                        </div>
+
                         <div class="index-type">
                             <table class="table">
 
                                 @if (count($shop->join_prices) >= 1)
                                     <tr>
                                         <td class="table-type">入会金</td>
-                                        <td>
+                                        <td colspan="4">
                                             @foreach ($shop->join_prices as $join_price)
-                                                {{ $join_price->name }}
-                                                <span class="table-price-price"><strong>{{ number_format($join_price->price) }}</strong><span class="symbol">円</span></span><br>
+                                                {{ $join_price->name }}<br>
                                             @endforeach
                                         </td>
+                                        <td colspan="4">
+                                            @foreach ($shop->join_prices as $join_price)
+                                                <strong>{{ number_format($join_price->price) }}</strong>円<br>
+                                            @endforeach
+                                        </td>
+                                        <td colspan="2"></td>
                                     </tr>
                                 @endif
 
@@ -123,12 +132,17 @@
                                 @if (count($shop->prices) >= 1)
                                     <tr>
                                         <td class="table-type">月会費</td>
-                                        <td>
+                                        <td colspan="4">
                                             @foreach ($shop->prices as $price)
-                                                {{ $price->name }}
-                                                <span class="table-price-price"><strong>{{ number_format($price->price) }}</strong><span class="symbol">円</span></span><br>
+                                                {{ $price->name }}<br>
                                             @endforeach
                                         </td>
+                                        <td colspan="4">
+                                            @foreach ($shop->prices as $price)
+                                                <strong>{{ number_format($price->price) }}</strong>円<br>
+                                            @endforeach
+                                        </td>
+                                        <td colspan="2"></td>
                                     </tr>
                                 @endif
 
@@ -136,12 +150,17 @@
                                 @if (count($shop->other_prices) >= 1)
                                     <tr>
                                         <td class="table-type">その他の会費</td>
-                                        <td>
+                                        <td colspan="5">
                                             @foreach ($shop->other_prices as $other_price)
-                                                {{ $other_price->name }}
-                                                <span class="table-price-price"><strong>{{ number_format($other_price->price) }}</strong><span class="symbol">円</span></span><br>
+                                                {{ $other_price->name }}<br>
                                             @endforeach
                                         </td>
+                                        <td colspan="4">
+                                            @foreach ($shop->other_prices as $other_price)
+                                                <strong>{{ number_format($other_price->price) }}</strong>円<br>
+                                            @endforeach
+                                        </td>
+                                        <td></td>
                                     </tr>
                                 @endif
 
@@ -149,10 +168,9 @@
                                 @if (count($shop->opens) >= 1)
                                     <tr>
                                         <td class="table-type">営業日</td>
-                                        <td>
+                                        <td colspan="10">
                                             @foreach ($shop->opens as $open)
-                                                {{ $open->day }}
-                                                <span class="table-open-time">{{ $open->time }}</span><br>
+                                                {{ $open->day }} : {{ $open->time }}<br>
                                             @endforeach
                                         </td>
                                     </tr>
@@ -162,9 +180,7 @@
                                 @if (isset($shop->close))
                                     <tr>
                                         <td class="table-type">定休日</td>
-                                        <td>
-                                            {{ $shop->close }}
-                                        </td>
+                                        <td colspan="10">{{ $shop->close }}</td>
                                     </tr>
                                 @endif
 
@@ -172,11 +188,19 @@
                                 @if (count($shop->personals) >= 1)
                                     <tr>
                                         <td class="table-type">パーソナル</td>
-                                        <td>
+                                        <td colspan="5">
                                             @foreach ($shop->personals as $personal)
-                                                {{ $personal->course }}
-                                                <span class="table-personal-time">{{ $personal->time }}<small>分</small></span>
-                                                <span class="table-personal-price"><strong>{{ number_format($personal->price) }}</strong><small>円</small></span><br>
+                                                {{ $personal->course }}<br>
+                                            @endforeach
+                                        </td>
+                                        <td colspan="2" class="personal">
+                                            @foreach ($shop->personals as $personal)
+                                                {{ $personal->time }}分<br>
+                                            @endforeach
+                                        </td>
+                                        <td colspan="3" class="personal">
+                                            @foreach ($shop->personals as $personal)
+                                                <strong>{{ number_format($personal->price) }}</strong>円<br>
                                             @endforeach
                                         </td>
                                     </tr>
@@ -186,7 +210,7 @@
                                 @if (isset($shop->tel))
                                     <tr>
                                         <td class="table-type">電話番号</td>
-                                        <td>
+                                        <td colspan="10">
                                             <a href="tel:{{ $shop->tel }}">{{ $shop->tel }}</a>
                                         </td>
                                     </tr>
@@ -194,10 +218,9 @@
 
                                 <tr>
                                     <td class="table-type">住所</td>
-                                    <td>
+                                    <td colspan="10">
                                         @if (isset($shop->address_number))
-                                        <span class="symbol">〒 </span>
-                                        {{ $shop->address_number }}<br>
+                                        〒 {{ $shop->address_number }}<br>
                                         @endif
                                         {{ $shop->address_ken }}{{ $shop->address_city }}{{ $shop->address_other }}
                                     </td>
@@ -207,8 +230,8 @@
                                 @if (isset($shop->web))
                                     <tr>
                                         <td class="table-type">公式HP</td>
-                                        <td>
-                                            <a href="{{ $shop->web }}">{{ $shop->web }}</a>
+                                        <td colspan="10">
+                                            <a href="{{ $shop->web }}" target="_blank">{{ $shop->web }}</a>
                                         </td>
                                     </tr>
                                 @endif
