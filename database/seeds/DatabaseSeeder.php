@@ -18,9 +18,13 @@ class DatabaseSeeder extends Seeder
           // TypesTableSeeder::class,
           // UserSeeder::class,
           // AdminsTableSeeder::class,
-          ShopsTableSeeder::class,
+          // ShopsTableSeeder::class,
           // ReviewsTableSeeder::class,
           // FavoritesTableSeeder::class,
+          JoinPriceTableSeeder::class,
+          OpenTableSeeder::class,
+          OtherPriceTableSeeder::class,
+          PriceTableSeeder::class,
 
       ]);
     }
