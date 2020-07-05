@@ -11,6 +11,6 @@ class PriceTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Admin\Price::class, 300)->create();
+        factory(App\Admin\Price::class, 200)->create();
     }
 }

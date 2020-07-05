@@ -11,6 +11,6 @@ class JoinPriceTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Admin\Join_price::class, 200)->create();
+        factory(App\Admin\Join_price::class, 130)->create();
     }
 }
