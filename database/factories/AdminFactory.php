@@ -20,7 +20,7 @@ $factory->define(Admin::class, function (Faker $faker) {
         'birthday' => $faker->datetime($max = 'now', $timezone = date_default_timezone_get()),
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'password' => Hash::make('12345678'), // password
+        'password' => Hash::make('1234'), // password
         'company_name' => $faker->company,
         'tel' => $faker->phoneNumber,
         'address_number' => $faker->postcode,
