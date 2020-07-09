@@ -36,9 +36,6 @@
     - 一般ユーザー
     - 管理ユーザー
 
-- 実際に稼働中のサイトはこちらです [https://fightgymnavi.com](https://fightgymnavi.com)
-
-
 ## 使用技術
 - フロント
   - SCSS
