@@ -2,16 +2,18 @@
 
 実在する全国の格闘技ジムを検索、レビューできるwebアプリケーションです。
 当サイトは実際に稼働しているものとは別に転職用のポートフォリオとして、簡単ログイン機能などを実装したものになります。
-実際に運用しているものはGoogle検索で[『Fightなび』と検索する](https://www.google.com/search?q=Fight%E3%81%AA%E3%81%B3&oq=Fight%E3%81%AA%E3%81%B3&aqs=chrome.0.69i59j35i39j69i59j69i61l2j69i65j69i61.4017j0j8&sourceid=chrome&ie=UTF-8])と表示されます。
 
 
-## URL
+## ポートフォリオURL
 
 - [https://fightnavi-portfolio.net/](https://fightnavi-portfolio.net/)
 トップページの簡単ログイン機能でお試しログインできます。
     - 一般ユーザー
     - 管理ユーザー
     
+
+- 実際に運用しているものはGoogle検索で[『Fightなび』と検索する](https://www.google.com/search?q=Fight%E3%81%AA%E3%81%B3&oq=Fight%E3%81%AA%E3%81%B3&aqs=chrome.0.69i59j35i39j69i59j69i61l2j69i65j69i61.4017j0j8&sourceid=chrome&ie=UTF-8])と表示されます。
+
 
 ## 開発の経緯
 
